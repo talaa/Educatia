@@ -1,0 +1,433 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		69FE08AD1B84E51500C81ABC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08AC1B84E51500C81ABC /* main.m */; };
+		69FE08B01B84E51500C81ABC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08AF1B84E51500C81ABC /* AppDelegate.m */; };
+		69FE08B31B84E51500C81ABC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08B21B84E51500C81ABC /* ViewController.m */; };
+		69FE08B61B84E51500C81ABC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69FE08B41B84E51500C81ABC /* Main.storyboard */; };
+		69FE08B81B84E51500C81ABC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69FE08B71B84E51500C81ABC /* Images.xcassets */; };
+		69FE08BB1B84E51500C81ABC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69FE08B91B84E51500C81ABC /* LaunchScreen.xib */; };
+		69FE08C71B84E51500C81ABC /* Educatia_StudentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08C61B84E51500C81ABC /* Educatia_StudentTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		69FE08C11B84E51500C81ABC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 69FE089F1B84E51500C81ABC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 69FE08A61B84E51500C81ABC;
+			remoteInfo = "Educatia Student";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		69FE08A71B84E51500C81ABC /* Educatia Student.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Educatia Student.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		69FE08AB1B84E51500C81ABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69FE08AC1B84E51500C81ABC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		69FE08AE1B84E51500C81ABC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		69FE08AF1B84E51500C81ABC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		69FE08B11B84E51500C81ABC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		69FE08B21B84E51500C81ABC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		69FE08B51B84E51500C81ABC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		69FE08B71B84E51500C81ABC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		69FE08BA1B84E51500C81ABC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		69FE08C01B84E51500C81ABC /* Educatia StudentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Educatia StudentTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		69FE08C51B84E51500C81ABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69FE08C61B84E51500C81ABC /* Educatia_StudentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Educatia_StudentTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		69FE08A41B84E51500C81ABC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		69FE08BD1B84E51500C81ABC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		69FE089E1B84E51500C81ABC = {
+			isa = PBXGroup;
+			children = (
+				69FE08A91B84E51500C81ABC /* Educatia Student */,
+				69FE08C31B84E51500C81ABC /* Educatia StudentTests */,
+				69FE08A81B84E51500C81ABC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		69FE08A81B84E51500C81ABC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				69FE08A71B84E51500C81ABC /* Educatia Student.app */,
+				69FE08C01B84E51500C81ABC /* Educatia StudentTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		69FE08A91B84E51500C81ABC /* Educatia Student */ = {
+			isa = PBXGroup;
+			children = (
+				69FE08AE1B84E51500C81ABC /* AppDelegate.h */,
+				69FE08AF1B84E51500C81ABC /* AppDelegate.m */,
+				69FE08B11B84E51500C81ABC /* ViewController.h */,
+				69FE08B21B84E51500C81ABC /* ViewController.m */,
+				69FE08B41B84E51500C81ABC /* Main.storyboard */,
+				69FE08B71B84E51500C81ABC /* Images.xcassets */,
+				69FE08B91B84E51500C81ABC /* LaunchScreen.xib */,
+				69FE08AA1B84E51500C81ABC /* Supporting Files */,
+			);
+			path = "Educatia Student";
+			sourceTree = "<group>";
+		};
+		69FE08AA1B84E51500C81ABC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				69FE08AB1B84E51500C81ABC /* Info.plist */,
+				69FE08AC1B84E51500C81ABC /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		69FE08C31B84E51500C81ABC /* Educatia StudentTests */ = {
+			isa = PBXGroup;
+			children = (
+				69FE08C61B84E51500C81ABC /* Educatia_StudentTests.m */,
+				69FE08C41B84E51500C81ABC /* Supporting Files */,
+			);
+			path = "Educatia StudentTests";
+			sourceTree = "<group>";
+		};
+		69FE08C41B84E51500C81ABC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				69FE08C51B84E51500C81ABC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		69FE08A61B84E51500C81ABC /* Educatia Student */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 69FE08CA1B84E51500C81ABC /* Build configuration list for PBXNativeTarget "Educatia Student" */;
+			buildPhases = (
+				69FE08A31B84E51500C81ABC /* Sources */,
+				69FE08A41B84E51500C81ABC /* Frameworks */,
+				69FE08A51B84E51500C81ABC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Educatia Student";
+			productName = "Educatia Student";
+			productReference = 69FE08A71B84E51500C81ABC /* Educatia Student.app */;
+			productType = "com.apple.product-type.application";
+		};
+		69FE08BF1B84E51500C81ABC /* Educatia StudentTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 69FE08CD1B84E51500C81ABC /* Build configuration list for PBXNativeTarget "Educatia StudentTests" */;
+			buildPhases = (
+				69FE08BC1B84E51500C81ABC /* Sources */,
+				69FE08BD1B84E51500C81ABC /* Frameworks */,
+				69FE08BE1B84E51500C81ABC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				69FE08C21B84E51500C81ABC /* PBXTargetDependency */,
+			);
+			name = "Educatia StudentTests";
+			productName = "Educatia StudentTests";
+			productReference = 69FE08C01B84E51500C81ABC /* Educatia StudentTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		69FE089F1B84E51500C81ABC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "Bluewave Solutions";
+				TargetAttributes = {
+					69FE08A61B84E51500C81ABC = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					69FE08BF1B84E51500C81ABC = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 69FE08A61B84E51500C81ABC;
+					};
+				};
+			};
+			buildConfigurationList = 69FE08A21B84E51500C81ABC /* Build configuration list for PBXProject "Educatia Student" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 69FE089E1B84E51500C81ABC;
+			productRefGroup = 69FE08A81B84E51500C81ABC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				69FE08A61B84E51500C81ABC /* Educatia Student */,
+				69FE08BF1B84E51500C81ABC /* Educatia StudentTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		69FE08A51B84E51500C81ABC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69FE08B61B84E51500C81ABC /* Main.storyboard in Resources */,
+				69FE08BB1B84E51500C81ABC /* LaunchScreen.xib in Resources */,
+				69FE08B81B84E51500C81ABC /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		69FE08BE1B84E51500C81ABC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		69FE08A31B84E51500C81ABC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69FE08B31B84E51500C81ABC /* ViewController.m in Sources */,
+				69FE08B01B84E51500C81ABC /* AppDelegate.m in Sources */,
+				69FE08AD1B84E51500C81ABC /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		69FE08BC1B84E51500C81ABC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69FE08C71B84E51500C81ABC /* Educatia_StudentTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		69FE08C21B84E51500C81ABC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 69FE08A61B84E51500C81ABC /* Educatia Student */;
+			targetProxy = 69FE08C11B84E51500C81ABC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		69FE08B41B84E51500C81ABC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				69FE08B51B84E51500C81ABC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		69FE08B91B84E51500C81ABC /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				69FE08BA1B84E51500C81ABC /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		69FE08C81B84E51500C81ABC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		69FE08C91B84E51500C81ABC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		69FE08CB1B84E51500C81ABC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Educatia Student/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		69FE08CC1B84E51500C81ABC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Educatia Student/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		69FE08CE1B84E51500C81ABC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Educatia StudentTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Educatia Student.app/Educatia Student";
+			};
+			name = Debug;
+		};
+		69FE08CF1B84E51500C81ABC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Educatia StudentTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Educatia Student.app/Educatia Student";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		69FE08A21B84E51500C81ABC /* Build configuration list for PBXProject "Educatia Student" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				69FE08C81B84E51500C81ABC /* Debug */,
+				69FE08C91B84E51500C81ABC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		69FE08CA1B84E51500C81ABC /* Build configuration list for PBXNativeTarget "Educatia Student" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				69FE08CB1B84E51500C81ABC /* Debug */,
+				69FE08CC1B84E51500C81ABC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		69FE08CD1B84E51500C81ABC /* Build configuration list for PBXNativeTarget "Educatia StudentTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				69FE08CE1B84E51500C81ABC /* Debug */,
+				69FE08CF1B84E51500C81ABC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 69FE089F1B84E51500C81ABC /* Project object */;
+}
