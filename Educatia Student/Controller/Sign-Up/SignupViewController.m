@@ -7,6 +7,7 @@
 //
 
 #import "SignupViewController.h"
+#import <Parse/Parse.h>
 
 @interface SignupViewController () <UITextFieldDelegate>
 
@@ -50,8 +51,10 @@
             self.usernameString     = self.usernameTextField.text;
             self.passwordString     = self.passwordTexrField.text;
             self.phoneString        = self.phoneTextField.text;
-            self.addressString      = self.addressTextField.text;
             self.emailString        = self.emailTextField.text;
+            
+            //Parse Implementation
+            [self parseSavingData];
         }else{
             [self stopActivityIndicator];
             [[[UIAlertView alloc] initWithTitle:@"Education Student" message:@"Kindly entre the same password!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
@@ -84,7 +87,31 @@
     if (self.firstNameTextField.text.length < 4){
          NSLog(@"Check is Okay");
     }else {
-        self.firstNameTextField.text = self.firstNameString;
+        //self.firstNameTextField.text = self.firstNameString;
     }
+}
+
+#pragma mark - ParseSavingData
+
+- (void)parseSavingData {
+    PFUser *user = [PFUser user];
+    user.username = self.usernameString;
+    user.email = self.emailString;
+    user.password = self.passwordString;
+    
+    // other fields can be set just like with PFObject
+    user[@"Phone"] = self.phoneString;
+    user[@"FirstName"] = self.firstNameString;
+    user[@"LastName"] = self.lastNameString;
+    
+    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {   // Hooray! Let them use the app now.
+            [self stopActivityIndicator];
+            [[[UIAlertView alloc] initWithTitle:@"Education Student" message:@"Well Done.Have a nice time with our app" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+        } else {   NSString *errorString = [error userInfo][@"error"];   // Show the errorString somewhere and let the user try again.
+            [self stopActivityIndicator];
+            [[[UIAlertView alloc] initWithTitle:@"Education Student" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+        }
+    }];
 }
 @end
