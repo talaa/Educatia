@@ -11,6 +11,8 @@
 		0453AEEB1B9861FB00CD3A53 /* SubjectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0453AEE01B9861FB00CD3A53 /* SubjectsViewController.m */; };
 		0453AEEC1B9861FB00CD3A53 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0453AEE81B9861FB00CD3A53 /* LaunchScreen.xib */; };
 		0453AEED1B9861FB00CD3A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0453AEE91B9861FB00CD3A53 /* Main.storyboard */; };
+		0453AEF11B98647E00CD3A53 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0453AEF01B98647E00CD3A53 /* LoginViewController.m */; };
+		0453AEF31B98655C00CD3A53 /* welcome_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0453AEF21B98655C00CD3A53 /* welcome_background@2x.png */; };
 		693E691C1B876BD800009A84 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693E69151B876BD800009A84 /* Bolts.framework */; };
 		693E691D1B876BD800009A84 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693E69161B876BD800009A84 /* Parse.framework */; };
 		693E691E1B876BD800009A84 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693E69171B876BD800009A84 /* ParseCrashReporting.framework */; };
@@ -30,7 +32,6 @@
 		693E69381B876C8B00009A84 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 693E69371B876C8B00009A84 /* libsqlite3.dylib */; };
 		69FE08AD1B84E51500C81ABC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08AC1B84E51500C81ABC /* main.m */; };
 		69FE08B01B84E51500C81ABC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08AF1B84E51500C81ABC /* AppDelegate.m */; };
-		69FE08B31B84E51500C81ABC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08B21B84E51500C81ABC /* ViewController.m */; };
 		69FE08B81B84E51500C81ABC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69FE08B71B84E51500C81ABC /* Images.xcassets */; };
 		69FE08C71B84E51500C81ABC /* Educatia_StudentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08C61B84E51500C81ABC /* Educatia_StudentTests.m */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,9 @@
 		0453AEE01B9861FB00CD3A53 /* SubjectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectsViewController.m; sourceTree = "<group>"; };
 		0453AEE81B9861FB00CD3A53 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		0453AEE91B9861FB00CD3A53 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		0453AEEF1B98647E00CD3A53 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		0453AEF01B98647E00CD3A53 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		0453AEF21B98655C00CD3A53 /* welcome_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome_background@2x.png"; sourceTree = "<group>"; };
 		693E69151B876BD800009A84 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		693E69161B876BD800009A84 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		693E69171B876BD800009A84 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -75,8 +79,6 @@
 		69FE08AC1B84E51500C81ABC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		69FE08AE1B84E51500C81ABC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		69FE08AF1B84E51500C81ABC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		69FE08B11B84E51500C81ABC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		69FE08B21B84E51500C81ABC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		69FE08B71B84E51500C81ABC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		69FE08C01B84E51500C81ABC /* Educatia StudentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Educatia StudentTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69FE08C51B84E51500C81ABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		0453AEDA1B9861FB00CD3A53 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0453AEEE1B98646F00CD3A53 /* Log-In */,
 				0453AEDB1B9861FB00CD3A53 /* Sign-Up */,
 				0453AEDE1B9861FB00CD3A53 /* Subjects */,
 			);
@@ -173,6 +176,7 @@
 		0453AEE41B9861FB00CD3A53 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0453AEF21B98655C00CD3A53 /* welcome_background@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -198,6 +202,15 @@
 				0453AEE91B9861FB00CD3A53 /* Main.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		0453AEEE1B98646F00CD3A53 /* Log-In */ = {
+			isa = PBXGroup;
+			children = (
+				0453AEEF1B98647E00CD3A53 /* LoginViewController.h */,
+				0453AEF01B98647E00CD3A53 /* LoginViewController.m */,
+			);
+			path = "Log-In";
 			sourceTree = "<group>";
 		};
 		693E69141B876BD800009A84 /* parse-library-1-3 */ = {
@@ -261,8 +274,6 @@
 				0453AEE71B9861FB00CD3A53 /* View */,
 				69FE08AE1B84E51500C81ABC /* AppDelegate.h */,
 				69FE08AF1B84E51500C81ABC /* AppDelegate.m */,
-				69FE08B11B84E51500C81ABC /* ViewController.h */,
-				69FE08B21B84E51500C81ABC /* ViewController.m */,
 				69FE08B71B84E51500C81ABC /* Images.xcassets */,
 				69FE08AA1B84E51500C81ABC /* Supporting Files */,
 			);
@@ -376,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0453AEED1B9861FB00CD3A53 /* Main.storyboard in Resources */,
+				0453AEF31B98655C00CD3A53 /* welcome_background@2x.png in Resources */,
 				0453AEEC1B9861FB00CD3A53 /* LaunchScreen.xib in Resources */,
 				69FE08B81B84E51500C81ABC /* Images.xcassets in Resources */,
 			);
@@ -395,11 +407,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69FE08B31B84E51500C81ABC /* ViewController.m in Sources */,
 				0453AEEB1B9861FB00CD3A53 /* SubjectsViewController.m in Sources */,
 				69FE08B01B84E51500C81ABC /* AppDelegate.m in Sources */,
 				0453AEEA1B9861FB00CD3A53 /* SignupViewController.m in Sources */,
 				69FE08AD1B84E51500C81ABC /* main.m in Sources */,
+				0453AEF11B98647E00CD3A53 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

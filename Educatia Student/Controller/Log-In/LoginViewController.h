@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  LoginViewController.h
 //  Educatia Student
 //
-//  Created by Tamer Alaa on 8/19/15.
+//  Created by MAC on 9/3/15.
 //  Copyright (c) 2015 Bluewave Solutions. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface LoginViewController : UIViewController
 
 @end
-
