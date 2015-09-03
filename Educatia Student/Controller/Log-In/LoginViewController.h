@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class LoginViewController;
+@protocol LoginViewControllerDelegate <NSObject>
+- (void)loginViewControllerDidLogin:(LoginViewController *)controller;
+@end
+
 @interface LoginViewController : UIViewController
 
+@property (weak, nonatomic) id<LoginViewControllerDelegate> delegate;
+
+-(IBAction)signupPress:(id)sender;
 @end

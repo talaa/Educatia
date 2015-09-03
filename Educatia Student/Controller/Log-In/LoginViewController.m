@@ -7,12 +7,13 @@
 //
 
 #import "LoginViewController.h"
+#import "SignupViewController.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () <SignupViewControllerDelegate>
 
 @end
 
-@implementation LoginViewController
+@implementation LoginViewController 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,6 +25,27 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(IBAction)signupPress:(id)sender{
+    [self presentSignUpViewController];
+}
+
+#pragma mark NewUserViewController
+
+- (void)presentSignUpViewController {
+//    SignupViewController *viewController = [[SignupViewController alloc] init];
+//   // viewController.delegate = self;
+//    [self presentViewController:viewController animated:YES completion:nil];
+    NSString * storyboardName = @"Main";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+    SignupViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"SignupViewController"];
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+#pragma mark Delegate
+
+- (void)newUserViewControllerDidSignup:(SignupViewController *)controller {
+    
+}
 /*
 #pragma mark - Navigation
 
