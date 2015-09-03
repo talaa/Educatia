@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0453AEEA1B9861FB00CD3A53 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0453AEDD1B9861FB00CD3A53 /* SignupViewController.m */; };
+		0453AEEB1B9861FB00CD3A53 /* SubjectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0453AEE01B9861FB00CD3A53 /* SubjectsViewController.m */; };
+		0453AEEC1B9861FB00CD3A53 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0453AEE81B9861FB00CD3A53 /* LaunchScreen.xib */; };
+		0453AEED1B9861FB00CD3A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0453AEE91B9861FB00CD3A53 /* Main.storyboard */; };
 		693E691C1B876BD800009A84 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693E69151B876BD800009A84 /* Bolts.framework */; };
 		693E691D1B876BD800009A84 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693E69161B876BD800009A84 /* Parse.framework */; };
 		693E691E1B876BD800009A84 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693E69171B876BD800009A84 /* ParseCrashReporting.framework */; };
@@ -24,14 +28,10 @@
 		693E69321B876C5C00009A84 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693E69311B876C5C00009A84 /* Security.framework */; };
 		693E69361B876C7800009A84 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 693E69351B876C7800009A84 /* libz.dylib */; };
 		693E69381B876C8B00009A84 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 693E69371B876C8B00009A84 /* libsqlite3.dylib */; };
-		693E693C1B876E7A00009A84 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 693E693B1B876E7A00009A84 /* SignupViewController.m */; };
-		693E693F1B8773A300009A84 /* SubjectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 693E693E1B8773A300009A84 /* SubjectsViewController.m */; };
 		69FE08AD1B84E51500C81ABC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08AC1B84E51500C81ABC /* main.m */; };
 		69FE08B01B84E51500C81ABC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08AF1B84E51500C81ABC /* AppDelegate.m */; };
 		69FE08B31B84E51500C81ABC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08B21B84E51500C81ABC /* ViewController.m */; };
-		69FE08B61B84E51500C81ABC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69FE08B41B84E51500C81ABC /* Main.storyboard */; };
 		69FE08B81B84E51500C81ABC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69FE08B71B84E51500C81ABC /* Images.xcassets */; };
-		69FE08BB1B84E51500C81ABC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69FE08B91B84E51500C81ABC /* LaunchScreen.xib */; };
 		69FE08C71B84E51500C81ABC /* Educatia_StudentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08C61B84E51500C81ABC /* Educatia_StudentTests.m */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +46,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0453AEDC1B9861FB00CD3A53 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
+		0453AEDD1B9861FB00CD3A53 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		0453AEDF1B9861FB00CD3A53 /* SubjectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectsViewController.h; sourceTree = "<group>"; };
+		0453AEE01B9861FB00CD3A53 /* SubjectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectsViewController.m; sourceTree = "<group>"; };
+		0453AEE81B9861FB00CD3A53 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		0453AEE91B9861FB00CD3A53 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		693E69151B876BD800009A84 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		693E69161B876BD800009A84 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		693E69171B876BD800009A84 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -64,10 +70,6 @@
 		693E69331B876C6800009A84 /* libdyld.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libdyld.dylib; path = usr/lib/system/libdyld.dylib; sourceTree = SDKROOT; };
 		693E69351B876C7800009A84 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		693E69371B876C8B00009A84 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		693E693A1B876E7A00009A84 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
-		693E693B1B876E7A00009A84 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
-		693E693D1B8773A300009A84 /* SubjectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectsViewController.h; sourceTree = "<group>"; };
-		693E693E1B8773A300009A84 /* SubjectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectsViewController.m; sourceTree = "<group>"; };
 		69FE08A71B84E51500C81ABC /* Educatia Student.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Educatia Student.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69FE08AB1B84E51500C81ABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69FE08AC1B84E51500C81ABC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -75,9 +77,7 @@
 		69FE08AF1B84E51500C81ABC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		69FE08B11B84E51500C81ABC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		69FE08B21B84E51500C81ABC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		69FE08B51B84E51500C81ABC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		69FE08B71B84E51500C81ABC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		69FE08BA1B84E51500C81ABC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		69FE08C01B84E51500C81ABC /* Educatia StudentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Educatia StudentTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69FE08C51B84E51500C81ABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69FE08C61B84E51500C81ABC /* Educatia_StudentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Educatia_StudentTests.m; sourceTree = "<group>"; };
@@ -118,6 +118,88 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0453AEDA1B9861FB00CD3A53 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0453AEDB1B9861FB00CD3A53 /* Sign-Up */,
+				0453AEDE1B9861FB00CD3A53 /* Subjects */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0453AEDB1B9861FB00CD3A53 /* Sign-Up */ = {
+			isa = PBXGroup;
+			children = (
+				0453AEDC1B9861FB00CD3A53 /* SignupViewController.h */,
+				0453AEDD1B9861FB00CD3A53 /* SignupViewController.m */,
+			);
+			path = "Sign-Up";
+			sourceTree = "<group>";
+		};
+		0453AEDE1B9861FB00CD3A53 /* Subjects */ = {
+			isa = PBXGroup;
+			children = (
+				0453AEDF1B9861FB00CD3A53 /* SubjectsViewController.h */,
+				0453AEE01B9861FB00CD3A53 /* SubjectsViewController.m */,
+			);
+			path = Subjects;
+			sourceTree = "<group>";
+		};
+		0453AEE11B9861FB00CD3A53 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0453AEE21B9861FB00CD3A53 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0453AEE31B9861FB00CD3A53 /* Icons */,
+				0453AEE41B9861FB00CD3A53 /* Images */,
+				0453AEE51B9861FB00CD3A53 /* Libraries */,
+				0453AEE61B9861FB00CD3A53 /* SDK */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0453AEE31B9861FB00CD3A53 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+		0453AEE41B9861FB00CD3A53 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		0453AEE51B9861FB00CD3A53 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		0453AEE61B9861FB00CD3A53 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		0453AEE71B9861FB00CD3A53 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0453AEE81B9861FB00CD3A53 /* LaunchScreen.xib */,
+				0453AEE91B9861FB00CD3A53 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		693E69141B876BD800009A84 /* parse-library-1-3 */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,17 +255,15 @@
 		69FE08A91B84E51500C81ABC /* Educatia Student */ = {
 			isa = PBXGroup;
 			children = (
+				0453AEDA1B9861FB00CD3A53 /* Controller */,
+				0453AEE11B9861FB00CD3A53 /* Model */,
+				0453AEE21B9861FB00CD3A53 /* Resources */,
+				0453AEE71B9861FB00CD3A53 /* View */,
 				69FE08AE1B84E51500C81ABC /* AppDelegate.h */,
 				69FE08AF1B84E51500C81ABC /* AppDelegate.m */,
 				69FE08B11B84E51500C81ABC /* ViewController.h */,
 				69FE08B21B84E51500C81ABC /* ViewController.m */,
-				693E693A1B876E7A00009A84 /* SignupViewController.h */,
-				693E693B1B876E7A00009A84 /* SignupViewController.m */,
-				693E693D1B8773A300009A84 /* SubjectsViewController.h */,
-				693E693E1B8773A300009A84 /* SubjectsViewController.m */,
-				69FE08B41B84E51500C81ABC /* Main.storyboard */,
 				69FE08B71B84E51500C81ABC /* Images.xcassets */,
-				69FE08B91B84E51500C81ABC /* LaunchScreen.xib */,
 				69FE08AA1B84E51500C81ABC /* Supporting Files */,
 			);
 			path = "Educatia Student";
@@ -295,8 +375,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69FE08B61B84E51500C81ABC /* Main.storyboard in Resources */,
-				69FE08BB1B84E51500C81ABC /* LaunchScreen.xib in Resources */,
+				0453AEED1B9861FB00CD3A53 /* Main.storyboard in Resources */,
+				0453AEEC1B9861FB00CD3A53 /* LaunchScreen.xib in Resources */,
 				69FE08B81B84E51500C81ABC /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,9 +396,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				69FE08B31B84E51500C81ABC /* ViewController.m in Sources */,
-				693E693F1B8773A300009A84 /* SubjectsViewController.m in Sources */,
+				0453AEEB1B9861FB00CD3A53 /* SubjectsViewController.m in Sources */,
 				69FE08B01B84E51500C81ABC /* AppDelegate.m in Sources */,
-				693E693C1B876E7A00009A84 /* SignupViewController.m in Sources */,
+				0453AEEA1B9861FB00CD3A53 /* SignupViewController.m in Sources */,
 				69FE08AD1B84E51500C81ABC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,25 +420,6 @@
 			targetProxy = 69FE08C11B84E51500C81ABC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		69FE08B41B84E51500C81ABC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				69FE08B51B84E51500C81ABC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		69FE08B91B84E51500C81ABC /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				69FE08BA1B84E51500C81ABC /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		69FE08C81B84E51500C81ABC /* Debug */ = {

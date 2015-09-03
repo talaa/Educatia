@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>536DC013-B633-4566-967D-CEF5DD520D01</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Educatia Student</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>645EC04D91E00C5D7E3CD369DA1EC0CF135353FF</key>
+		<string>https://github.com/talaa/Educatia</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Educatia Student.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>645EC04D91E00C5D7E3CD369DA1EC0CF135353FF</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/talaa/Educatia</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>645EC04D91E00C5D7E3CD369DA1EC0CF135353FF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>645EC04D91E00C5D7E3CD369DA1EC0CF135353FF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Educatia</string>
+		</dict>
+	</array>
+</dict>
+</plist>
