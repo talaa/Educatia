@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>536DC013-B633-4566-967D-CEF5DD520D01</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Educatia Student</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>645EC04D91E00C5D7E3CD369DA1EC0CF135353FF</key>
 		<string>https://github.com/talaa/Educatia</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Educatia Student.xcodeproj/project.xcworkspace</string>
+	<string>Educatia Student.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>645EC04D91E00C5D7E3CD369DA1EC0CF135353FF</key>
