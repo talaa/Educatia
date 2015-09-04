@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		044A724D1B98AA6F003AA981 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044A724C1B98AA6F003AA981 /* Parse.framework */; };
-		044A724F1B98AA93003AA981 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044A724E1B98AA93003AA981 /* Bolts.framework */; };
+		044F39D91B99DE6C006457BA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044F39D71B99DE6C006457BA /* Bolts.framework */; };
+		044F39DA1B99DE6C006457BA /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044F39D81B99DE6C006457BA /* Parse.framework */; };
 		0453AEEB1B9861FB00CD3A53 /* SubjectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0453AEE01B9861FB00CD3A53 /* SubjectsViewController.m */; };
 		0453AEEC1B9861FB00CD3A53 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0453AEE81B9861FB00CD3A53 /* LaunchScreen.xib */; };
 		0453AEED1B9861FB00CD3A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0453AEE91B9861FB00CD3A53 /* Main.storyboard */; };
@@ -42,8 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		044A724C1B98AA6F003AA981 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		044A724E1B98AA93003AA981 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		044F39D71B99DE6C006457BA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		044F39D81B99DE6C006457BA /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		0453AEDF1B9861FB00CD3A53 /* SubjectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectsViewController.h; sourceTree = "<group>"; };
 		0453AEE01B9861FB00CD3A53 /* SubjectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectsViewController.m; sourceTree = "<group>"; };
 		0453AEE81B9861FB00CD3A53 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
@@ -83,14 +83,14 @@
 				693E69381B876C8B00009A84 /* libsqlite3.dylib in Frameworks */,
 				693E69361B876C7800009A84 /* libz.dylib in Frameworks */,
 				693E69321B876C5C00009A84 /* Security.framework in Frameworks */,
-				044A724F1B98AA93003AA981 /* Bolts.framework in Frameworks */,
 				693E69301B876C4D00009A84 /* StoreKit.framework in Frameworks */,
 				693E692E1B876C4500009A84 /* SystemConfiguration.framework in Frameworks */,
 				693E692A1B876C2900009A84 /* CoreGraphics.framework in Frameworks */,
-				044A724D1B98AA6F003AA981 /* Parse.framework in Frameworks */,
 				693E692B1B876C2900009A84 /* CoreLocation.framework in Frameworks */,
 				693E692C1B876C2900009A84 /* QuartzCore.framework in Frameworks */,
+				044F39D91B99DE6C006457BA /* Bolts.framework in Frameworks */,
 				693E69261B876C0C00009A84 /* CFNetwork.framework in Frameworks */,
+				044F39DA1B99DE6C006457BA /* Parse.framework in Frameworks */,
 				693E69241B876C0000009A84 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,13 +105,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		044A724B1B98AA6F003AA981 /* parseSDK-1.8.2 */ = {
+		044F39D51B99DE6C006457BA /* SDK */ = {
 			isa = PBXGroup;
 			children = (
-				044A724E1B98AA93003AA981 /* Bolts.framework */,
-				044A724C1B98AA6F003AA981 /* Parse.framework */,
+				044F39D61B99DE6C006457BA /* parseSDK_1.8.2 */,
 			);
-			path = "parseSDK-1.8.2";
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		044F39D61B99DE6C006457BA /* parseSDK_1.8.2 */ = {
+			isa = PBXGroup;
+			children = (
+				044F39D71B99DE6C006457BA /* Bolts.framework */,
+				044F39D81B99DE6C006457BA /* Parse.framework */,
+			);
+			path = parseSDK_1.8.2;
 			sourceTree = "<group>";
 		};
 		0453AEDA1B9861FB00CD3A53 /* Controller */ = {
@@ -152,10 +160,10 @@
 		0453AEE21B9861FB00CD3A53 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				044F39D51B99DE6C006457BA /* SDK */,
 				0453AEE31B9861FB00CD3A53 /* Icons */,
 				0453AEE41B9861FB00CD3A53 /* Images */,
 				0453AEE51B9861FB00CD3A53 /* Libraries */,
-				0453AEE61B9861FB00CD3A53 /* SDK */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -180,14 +188,6 @@
 			children = (
 			);
 			path = Libraries;
-			sourceTree = "<group>";
-		};
-		0453AEE61B9861FB00CD3A53 /* SDK */ = {
-			isa = PBXGroup;
-			children = (
-				044A724B1B98AA6F003AA981 /* parseSDK-1.8.2 */,
-			);
-			path = SDK;
 			sourceTree = "<group>";
 		};
 		0453AEE71B9861FB00CD3A53 /* View */ = {
@@ -509,6 +509,8 @@
 					"Student/Resources/SDK/parse-sdk-1.8.2",
 					"$(PROJECT_DIR)/Educatia",
 					"Student/Resources/SDK/parseSDK-1.8.2",
+					"$(PROJECT_DIR)/Educatia",
+					Student/Resources/SDK/parseSDK_1.8.2,
 				);
 				INFOPLIST_FILE = "Educatia Student/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -534,6 +536,8 @@
 					"Student/Resources/SDK/parse-sdk-1.8.2",
 					"$(PROJECT_DIR)/Educatia",
 					"Student/Resources/SDK/parseSDK-1.8.2",
+					"$(PROJECT_DIR)/Educatia",
+					Student/Resources/SDK/parseSDK_1.8.2,
 				);
 				INFOPLIST_FILE = "Educatia Student/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
