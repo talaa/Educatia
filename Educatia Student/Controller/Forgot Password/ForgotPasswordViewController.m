@@ -19,6 +19,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //hidden CheckMark Image view
+    self.checkMarkImageView.hidden = YES;
+    
     //ActiviyIndicator Stop
     [self stopHiddenActivity];
     
@@ -55,6 +58,7 @@
     [self playShowActivity];
     if ([self validEmail:self.emailTextField.text] == YES){
         [self stopHiddenActivity];
+        self.checkMarkImageView.hidden = NO;
         [self.requestNewPasswordButton setEnabled:YES];
     }else{
         //[[[UIAlertView alloc] initWithTitle:@"Education Student" message:@"Kindly type a valid mail" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];

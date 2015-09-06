@@ -149,7 +149,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kre-Kv-M1U">
-                                <rect key="frame" x="276" y="633" width="228" height="60"/>
+                                <rect key="frame" x="276" y="682" width="228" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.12" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Ok, Submit">
@@ -163,13 +163,45 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="yfg-Jo-iqg">
                                 <rect key="frame" x="374" y="502" width="37" height="37"/>
                             </activityIndicatorView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gQz-Qj-Txd">
+                                <rect key="frame" x="16" y="495" width="265" height="49"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icone_BirthDay" translatesAutoresizingMaskIntoConstraints="NO" id="JYQ-80-Eg3">
+                                        <rect key="frame" x="8" y="10" width="30" height="30"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xXi-Hb-5X1">
+                                        <rect key="frame" x="227" y="10" width="30" height="30"/>
+                                        <state key="normal" image="Icon_Calender">
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="birthdateCalenderPressed:" destination="ilD-5H-Ssy" eventType="touchUpInside" id="37Z-13-r04"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="birth date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9nY-Lg-USE">
+                                        <rect key="frame" x="46" y="10" width="173" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="calibratedWhite"/>
+                            </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Xbv-GL-OvR">
+                                <rect key="frame" x="289" y="444" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_True" translatesAutoresizingMaskIntoConstraints="NO" id="qcp-Tq-m72">
+                                <rect key="frame" x="289" y="444" width="37" height="37"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="yfg-Jo-iqg" id="scA-mY-8L2"/>
+                        <outlet property="birthdateTextField" destination="9nY-Lg-USE" id="rb6-BH-Hxl"/>
                         <outlet property="confirmPasswordTextField" destination="m8X-QI-Utj" id="VZ4-Md-vzC"/>
+                        <outlet property="emailActivityIndicatorView" destination="Xbv-GL-OvR" id="zWr-zd-nZf"/>
+                        <outlet property="emailImageViewTrue" destination="qcp-Tq-m72" id="Aof-Jc-QK6"/>
                         <outlet property="emailTextField" destination="wfd-qB-LSi" id="pgG-xd-QeG"/>
                         <outlet property="firstNameTextField" destination="cys-nA-0uG" id="VcV-Y6-hYu"/>
                         <outlet property="lastNameTextField" destination="27s-Nb-KOT" id="ChS-zR-2Pe"/>
@@ -203,7 +235,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_Email" translatesAutoresizingMaskIntoConstraints="NO" id="Aiq-ah-A6l">
                                         <rect key="frame" x="8" y="10" width="30" height="30"/>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mdZ-zW-Afm">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="type your E-mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mdZ-zW-Afm">
                                         <rect key="frame" x="46" y="11" width="211" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
@@ -234,11 +266,15 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Gal-1O-Gk0">
                                 <rect key="frame" x="525" y="243" width="37" height="37"/>
                             </activityIndicatorView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_True" translatesAutoresizingMaskIntoConstraints="NO" id="0BZ-ju-UCO">
+                                <rect key="frame" x="525" y="243" width="37" height="37"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
+                        <outlet property="checkMarkImageView" destination="0BZ-ju-UCO" id="kvv-cf-Tno"/>
                         <outlet property="emailActivityIndicatorView" destination="Gal-1O-Gk0" id="2jV-O1-kwv"/>
                         <outlet property="emailTextField" destination="mdZ-zW-Afm" id="hiy-Qs-PdK"/>
                         <outlet property="requestNewPasswordButton" destination="YhU-7G-exc" id="eFK-rJ-8Bf"/>
@@ -675,13 +711,16 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Icon_Calender" width="50" height="50"/>
         <image name="Icon_Cancel" width="32" height="32"/>
         <image name="Icon_Email" width="25" height="25"/>
         <image name="Icon_ForgotPassword" width="50" height="50"/>
         <image name="Icon_LoginMark" width="19" height="19"/>
         <image name="Icon_Password" width="16" height="16"/>
         <image name="Icon_Phone" width="25" height="25"/>
+        <image name="Icon_True" width="16" height="16"/>
         <image name="Icon_Username" width="16" height="16"/>
+        <image name="Icone_BirthDay" width="32" height="32"/>
         <image name="Image_AddProfilPic" width="50" height="50"/>
         <image name="welcome_background.png" width="320" height="568"/>
     </resources>

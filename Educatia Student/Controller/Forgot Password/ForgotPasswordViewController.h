@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *emailActivityIndicatorView;
 @property (weak, nonatomic) IBOutlet UIButton *requestNewPasswordButton;
+@property (weak, nonatomic) IBOutlet UIImageView *checkMarkImageView;
 
 -(IBAction)dismissViewControllerPressed:(id)sender;
 -(IBAction)requestNewPasswordPressed:(id)sender;

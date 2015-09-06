@@ -16,6 +16,11 @@
 		0453AEF31B98655C00CD3A53 /* welcome_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0453AEF21B98655C00CD3A53 /* welcome_background@2x.png */; };
 		0453AEF61B9872C300CD3A53 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0453AEF51B9872C300CD3A53 /* SignupViewController.m */; };
 		04A2AB0B1B9C3BE6009B2C60 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2AB0A1B9C3BE6009B2C60 /* ForgotPasswordViewController.m */; };
+		04A2AB141B9C6BCD009B2C60 /* FlatDatePicker-Icon-Check.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A2AB101B9C6BCD009B2C60 /* FlatDatePicker-Icon-Check.png */; };
+		04A2AB151B9C6BCD009B2C60 /* FlatDatePicker-Icon-Check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A2AB111B9C6BCD009B2C60 /* FlatDatePicker-Icon-Check@2x.png */; };
+		04A2AB161B9C6BCD009B2C60 /* FlatDatePicker-Icon-Close.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A2AB121B9C6BCD009B2C60 /* FlatDatePicker-Icon-Close.png */; };
+		04A2AB171B9C6BCD009B2C60 /* FlatDatePicker-Icon-Close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A2AB131B9C6BCD009B2C60 /* FlatDatePicker-Icon-Close@2x.png */; };
+		04A2AB201B9C6CBD009B2C60 /* FlatDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2AB1F1B9C6CBD009B2C60 /* FlatDatePicker.m */; };
 		693E69241B876C0000009A84 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693E69231B876C0000009A84 /* AudioToolbox.framework */; };
 		693E69261B876C0C00009A84 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693E69251B876C0B00009A84 /* CFNetwork.framework */; };
 		693E692A1B876C2900009A84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693E69271B876C2900009A84 /* CoreGraphics.framework */; };
@@ -56,6 +61,12 @@
 		0453AEF51B9872C300CD3A53 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		04A2AB091B9C3BE6009B2C60 /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
 		04A2AB0A1B9C3BE6009B2C60 /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
+		04A2AB101B9C6BCD009B2C60 /* FlatDatePicker-Icon-Check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlatDatePicker-Icon-Check.png"; sourceTree = "<group>"; };
+		04A2AB111B9C6BCD009B2C60 /* FlatDatePicker-Icon-Check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlatDatePicker-Icon-Check@2x.png"; sourceTree = "<group>"; };
+		04A2AB121B9C6BCD009B2C60 /* FlatDatePicker-Icon-Close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlatDatePicker-Icon-Close.png"; sourceTree = "<group>"; };
+		04A2AB131B9C6BCD009B2C60 /* FlatDatePicker-Icon-Close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlatDatePicker-Icon-Close@2x.png"; sourceTree = "<group>"; };
+		04A2AB1E1B9C6CBD009B2C60 /* FlatDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatDatePicker.h; sourceTree = "<group>"; };
+		04A2AB1F1B9C6CBD009B2C60 /* FlatDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatDatePicker.m; sourceTree = "<group>"; };
 		693E69231B876C0000009A84 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		693E69251B876C0B00009A84 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		693E69271B876C2900009A84 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -164,10 +175,10 @@
 		0453AEE21B9861FB00CD3A53 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				04A2AB1C1B9C6CBD009B2C60 /* Libraries */,
 				044F39D51B99DE6C006457BA /* SDK */,
 				0453AEE31B9861FB00CD3A53 /* Icons */,
 				0453AEE41B9861FB00CD3A53 /* Images */,
-				0453AEE51B9861FB00CD3A53 /* Libraries */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -175,6 +186,10 @@
 		0453AEE31B9861FB00CD3A53 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				04A2AB101B9C6BCD009B2C60 /* FlatDatePicker-Icon-Check.png */,
+				04A2AB111B9C6BCD009B2C60 /* FlatDatePicker-Icon-Check@2x.png */,
+				04A2AB121B9C6BCD009B2C60 /* FlatDatePicker-Icon-Close.png */,
+				04A2AB131B9C6BCD009B2C60 /* FlatDatePicker-Icon-Close@2x.png */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -185,13 +200,6 @@
 				0453AEF21B98655C00CD3A53 /* welcome_background@2x.png */,
 			);
 			path = Images;
-			sourceTree = "<group>";
-		};
-		0453AEE51B9861FB00CD3A53 /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Libraries;
 			sourceTree = "<group>";
 		};
 		0453AEE71B9861FB00CD3A53 /* View */ = {
@@ -219,6 +227,23 @@
 				04A2AB0A1B9C3BE6009B2C60 /* ForgotPasswordViewController.m */,
 			);
 			path = "Forgot Password";
+			sourceTree = "<group>";
+		};
+		04A2AB1C1B9C6CBD009B2C60 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				04A2AB1D1B9C6CBD009B2C60 /* FlatDatePicker */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		04A2AB1D1B9C6CBD009B2C60 /* FlatDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				04A2AB1E1B9C6CBD009B2C60 /* FlatDatePicker.h */,
+				04A2AB1F1B9C6CBD009B2C60 /* FlatDatePicker.m */,
+			);
+			path = FlatDatePicker;
 			sourceTree = "<group>";
 		};
 		693E69391B876CA600009A84 /* Frameworks */ = {
@@ -382,8 +407,12 @@
 			files = (
 				0453AEED1B9861FB00CD3A53 /* Main.storyboard in Resources */,
 				0453AEF31B98655C00CD3A53 /* welcome_background@2x.png in Resources */,
+				04A2AB171B9C6BCD009B2C60 /* FlatDatePicker-Icon-Close@2x.png in Resources */,
+				04A2AB161B9C6BCD009B2C60 /* FlatDatePicker-Icon-Close.png in Resources */,
 				0453AEEC1B9861FB00CD3A53 /* LaunchScreen.xib in Resources */,
 				69FE08B81B84E51500C81ABC /* Images.xcassets in Resources */,
+				04A2AB151B9C6BCD009B2C60 /* FlatDatePicker-Icon-Check@2x.png in Resources */,
+				04A2AB141B9C6BCD009B2C60 /* FlatDatePicker-Icon-Check.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +435,7 @@
 				69FE08B01B84E51500C81ABC /* AppDelegate.m in Sources */,
 				69FE08AD1B84E51500C81ABC /* main.m in Sources */,
 				0453AEF11B98647E00CD3A53 /* LoginViewController.m in Sources */,
+				04A2AB201B9C6CBD009B2C60 /* FlatDatePicker.m in Sources */,
 				0453AEF61B9872C300CD3A53 /* SignupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
