@@ -8,6 +8,8 @@
 
 #import "LoginViewController.h"
 #import "SignupViewController.h"
+#import "ForgotPasswordViewController.h"
+#import <Parse/Parse.h>
 
 @interface LoginViewController () <SignupViewControllerDelegate>
 
@@ -32,9 +34,6 @@
 #pragma mark NewUserViewController
 
 - (void)presentSignUpViewController {
-//    SignupViewController *viewController = [[SignupViewController alloc] init];
-//   // viewController.delegate = self;
-//    [self presentViewController:viewController animated:YES completion:nil];
     NSString * storyboardName = @"Main";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
     SignupViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"SignupViewController"];
@@ -45,6 +44,37 @@
 
 - (void)newUserViewControllerDidSignup:(SignupViewController *)controller {
     
+}
+
+#pragma mark - Login Pressed Action
+
+- (IBAction)loginPressed:(id)sender {
+    if (self.usernameTextField.text.length > 0 && self.passwordTextField.text.length >0) {
+        [PFUser logInWithUsernameInBackground:self.usernameTextField.text  password:self.passwordTextField.text
+                                        block:^(PFUser *user, NSError *error) {
+                                            if (user) {
+                                                // Do stuff after successful login.
+                                                [[[UIAlertView alloc] initWithTitle:@"Education Student" message:@"Login Successful" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+                                            } else {
+                                                // The login failed. Check error to see why.
+                                                [[[UIAlertView alloc] initWithTitle:@"Education Student" message:@"username or password is not correct.Try again!!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+                                            }
+                                        }];
+
+    }else{
+        [[[UIAlertView alloc] initWithTitle:@"Education Student" message:@"Make sure that you have entred all fields" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+    }
+}
+
+# pragma mark - ForgotPassword Action
+
+- (IBAction)forgotPasswordPressed:(id)sender {
+    //ForgotPasswordViewController
+    NSString * storyboardName = @"Main";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+    ForgotPasswordViewController * forgotPasswordVC = [storyboard instantiateViewControllerWithIdentifier:@"ForgotPasswordViewController"];
+    [self presentViewController:forgotPasswordVC animated:YES completion:nil];
+
 }
 /*
 #pragma mark - Navigation

@@ -16,6 +16,10 @@
 @interface LoginViewController : UIViewController
 
 @property (weak, nonatomic) id<LoginViewControllerDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
--(IBAction)signupPress:(id)sender;
+- (IBAction)signupPress:(id)sender;
+- (IBAction)loginPressed:(id)sender;
+- (IBAction)forgotPasswordPressed:(id)sender;
 @end
