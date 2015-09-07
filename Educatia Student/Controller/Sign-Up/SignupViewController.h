@@ -13,8 +13,10 @@
 @protocol SignupViewControllerDelegate <NSObject>
 @end
 
-@interface SignupViewController : UIViewController <FlatDatePickerDelegate, UITextFieldDelegate>
+@interface SignupViewController : UIViewController <FlatDatePickerDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *picProfileImageView;
+@property (weak, nonatomic) IBOutlet UIButton *uploadPhotoButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property (nonatomic, weak) id<SignupViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
@@ -43,4 +45,6 @@
 -(IBAction)submitPressed:(id)sender;
 -(IBAction)dismissViewControllerPressed:(id)sender;
 -(IBAction)birthdateCalenderPressed:(id)sender;
+-(IBAction)uploadPhotoPressed:(id)sender;
+
 @end

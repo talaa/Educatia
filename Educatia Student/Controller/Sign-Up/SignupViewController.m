@@ -10,7 +10,7 @@
 #import <Parse/Parse.h>
 
 
-@interface SignupViewController () <UITextFieldDelegate>
+@interface SignupViewController () <UITextFieldDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate>
 
 @end
 
@@ -148,6 +148,10 @@
     user.email = self.emailString;
     user.password = self.passwordString;
     
+    //Save profile pic image
+    //NSData *imageData = UIImagePNGRepresentation(image);
+    //PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
+    
     // other fields can be set just like with PFObject
     user[@"Phone"]          = self.phoneString;
     user[@"FirstName"]      = self.firstNameString;
@@ -229,5 +233,51 @@
     [self.phoneTextField resignFirstResponder];
     [self.emailTextField resignFirstResponder];
     self.emailActivityIndicatorView.hidden = YES;
+}
+
+//UploadPhtot button pressed action
+-(IBAction)uploadPhotoPressed:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Take Photo" otherButtonTitles:@"Upload from photos", nil];
+    [actionSheet showInView:self.view];
+}
+
+#pragma mark - UIActionsheet delegete
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"Button Index %ld", (long)buttonIndex);
+    if (buttonIndex == 0){
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:picker animated:YES completion:NULL];
+    }else { //buttonIndex = 1
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            //your code
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.allowsEditing = YES;
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            [self presentViewController:picker animated:YES completion:NULL];
+        }];
+        
+    }
+}
+
+#pragma mark - UIImagePickerControllerDelegete
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.picProfileImageView.image = chosenImage;
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
 }
 @end
