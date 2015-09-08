@@ -13,7 +13,7 @@
 @protocol SignupViewControllerDelegate <NSObject>
 @end
 
-@interface SignupViewController : UIViewController <FlatDatePickerDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface SignupViewController : UIViewController <FlatDatePickerDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *picProfileImageView;
 @property (weak, nonatomic) IBOutlet UIButton *uploadPhotoButton;

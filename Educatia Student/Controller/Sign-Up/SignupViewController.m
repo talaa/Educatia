@@ -43,6 +43,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [self isPicProfileImageViewEmpty];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,6 +51,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (bool)isPicProfileImageViewEmpty {
+    //Check if picProfileImageView empty
+    UIImage *picture = [UIImage imageNamed:@"Image_AddProfilPic"];
+    if ([self.picProfileImageView.image isEqual:picture]){
+        //no image set
+        return YES;
+    }
+    else{
+        return NO;
+    }
+}
 /*
 #pragma mark - Navigation
 
@@ -91,6 +103,7 @@
 
 //BirthdateButton Pressed Action
 - (IBAction)birthdateCalenderPressed:(id)sender {
+    [self.birthdateTextField resignFirstResponder];
     static int count = 0;
     count ++;
     if(count % 2 != 0){
@@ -148,9 +161,15 @@
     user.email = self.emailString;
     user.password = self.passwordString;
     
-    //Save profile pic image
-    //NSData *imageData = UIImagePNGRepresentation(image);
-    //PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
+    //Save profile pic image if exist
+    if ([self isPicProfileImageViewEmpty] == YES) {
+        //don't save because there is no image is uploaded
+    }else { //user has uploaded an image then save it
+        NSString *userImageName = [self.usernameString stringByAppendingString:@"_image.png"];
+        NSData *imageData = UIImagePNGRepresentation(self.picProfileImageView.image);
+        PFFile *imageFile = [PFFile fileWithName:userImageName data:imageData];
+        user[@"profilePicture"] = imageFile;
+    }
     
     // other fields can be set just like with PFObject
     user[@"Phone"]          = self.phoneString;
@@ -158,11 +177,15 @@
     user[@"LastName"]       = self.lastNameString;
     user[@"DateofBirth"]    = self.birthdayString;
     
+    
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {   // Hooray! Let them use the app now.
             [self stopActivityIndicator];
-            [[[UIAlertView alloc] initWithTitle:@"Education Student" message:@"Well Done.Have a nice time with our app" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
-        } else {   NSString *errorString = [error userInfo][@"error"];   // Show the errorString somewhere and let the user try again.
+            UIAlertView *successfulAlertView = [[UIAlertView alloc] initWithTitle:@"Education Student" message:@"Well Done.Have a nice time with our app" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            successfulAlertView.tag = 100;
+            [successfulAlertView show];
+        } else {
+            NSString *errorString = [error userInfo][@"error"];   // Show the errorString somewhere and let the user try again.
             [self stopActivityIndicator];
             [[[UIAlertView alloc] initWithTitle:@"Education Student" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
         }
@@ -232,6 +255,7 @@
     [self.confirmPasswordTextField resignFirstResponder];
     [self.phoneTextField resignFirstResponder];
     [self.emailTextField resignFirstResponder];
+    [self.birthdateTextField resignFirstResponder];
     self.emailActivityIndicatorView.hidden = YES;
 }
 
@@ -268,16 +292,41 @@
 #pragma mark - UIImagePickerControllerDelegete
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    self.picProfileImageView.image = chosenImage;
-    
+    //Check if picture size is greater than 400K
+    NSData *imageData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((chosenImage),1.0)];
+    NSLog(@"Image size is %lu", (unsigned long)imageData.length);
+    if (imageData.length > 500000){
+        self.picProfileImageView.image = [UIImage imageNamed:@"Image_AddProfilPic"];
+        [[[UIAlertView alloc] initWithTitle:@"EducationStudent" message:@"Picture you have choosen is greater than 400K!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    }else {
+        //hide uploadProfileButton
+        self.uploadPhotoButton.hidden = YES;
+        
+        //picProfileImageView Layout
+        self.picProfileImageView.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.picProfileImageView.layer.borderWidth = 1.5f;
+        self.picProfileImageView.layer.cornerRadius = 7.0f;
+        self.picProfileImageView.layer.masksToBounds = YES;
+        self.picProfileImageView.image = chosenImage;
+    }
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
-    
+}
+
+#pragma mark - UIAlertViewDelegete
+
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    // Is this my Alert View?
+    if (alertView.tag == 100) {
+        if (buttonIndex == 0){
+            //Cancelled button has been pressed
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        }
+    }
 }
 @end
