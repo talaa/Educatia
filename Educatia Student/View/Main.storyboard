@@ -294,7 +294,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -384,6 +384,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1235" y="-490"/>
+        </scene>
+        <!--Tab Bar Holder View Controller-->
+        <scene sceneID="vtE-ct-Vy6">
+            <objects>
+                <viewController storyboardIdentifier="TabBarHolderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XuE-LF-dLb" customClass="TabBarHolderViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KE4-Sz-8O3"/>
+                        <viewControllerLayoutGuide type="bottom" id="7A6-Z7-QXE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bGv-Vv-atY">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome ya student" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iix-CK-yWe">
+                                <rect key="frame" x="357" y="501" width="156" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T6d-27-oM3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1235" y="734"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="N6S-cF-3H2">
@@ -618,7 +645,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zjU-j2-hbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-275" y="1192"/>
+            <point key="canvasLocation" x="-315" y="1710"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="hA7-UH-tC9">
@@ -644,7 +671,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZOY-Pw-Ugq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1235" y="506"/>
+            <point key="canvasLocation" x="5" y="1801"/>
         </scene>
         <!--Chat-->
         <scene sceneID="fLd-ny-KJW">
@@ -696,7 +723,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dhy-3Z-lHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1087" y="1171"/>
+            <point key="canvasLocation" x="-1103" y="1763"/>
         </scene>
         <!--Course Material-->
         <scene sceneID="HOO-ye-d4I">

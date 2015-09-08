@@ -29,6 +29,19 @@
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
+    //check if user had logged in on previous ////////////////////////////////////////
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *NewViewController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarHolderViewController"];
+    UIViewController *LoginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    
+    if([PFUser currentUser]){
+        [self.window setRootViewController:NewViewController];
+    }else {
+        [self.window setRootViewController:LoginViewController];
+    }
+    ////////////////////////////////////////////////
+
+    
     return YES;
 }
 
