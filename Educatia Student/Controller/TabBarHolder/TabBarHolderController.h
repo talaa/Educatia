@@ -1,5 +1,5 @@
 //
-//  TabBarHolderViewController.h
+//  TabBarHolderController.h
 //  Educatia Student
 //
 //  Created by Mena Bebawy on 9/8/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TabBarHolderViewController : UIViewController
+@interface TabBarHolderController : UITabBarController
 
 @end

@@ -55,6 +55,10 @@
                                             if (user) {
                                                 // Do stuff after successful login.
                                                 [[[UIAlertView alloc] initWithTitle:@"Education Student" message:@"Login Successful" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+                                                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                                UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"TabBarHolderController"];
+                                                
+                                                [self presentViewController:vc animated:YES completion:nil];
                                             } else {
                                                 // The login failed. Check error to see why.
                                                 [[[UIAlertView alloc] initWithTitle:@"Education Student" message:@"username or password is not correct.Try again!!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];

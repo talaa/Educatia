@@ -1,18 +1,18 @@
 //
-//  TabBarHolderViewController.m
+//  TabBarHolderController.m
 //  Educatia Student
 //
 //  Created by Mena Bebawy on 9/8/15.
 //  Copyright (c) 2015 Bluewave Solutions. All rights reserved.
 //
 
-#import "TabBarHolderViewController.h"
+#import "TabBarHolderController.h"
 
-@interface TabBarHolderViewController ()
+@interface TabBarHolderController ()
 
 @end
 
-@implementation TabBarHolderViewController
+@implementation TabBarHolderController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

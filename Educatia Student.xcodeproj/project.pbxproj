@@ -35,8 +35,20 @@
 		69FE08B01B84E51500C81ABC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08AF1B84E51500C81ABC /* AppDelegate.m */; };
 		69FE08B81B84E51500C81ABC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69FE08B71B84E51500C81ABC /* Images.xcassets */; };
 		69FE08C71B84E51500C81ABC /* Educatia_StudentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08C61B84E51500C81ABC /* Educatia_StudentTests.m */; };
-		F507E5BE1B9F0B260066283F /* VMTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F507E5BD1B9F0B260066283F /* VMTabBar.m */; };
-		F507E5C21B9F0BAF0066283F /* TabBarHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F507E5C11B9F0BAF0066283F /* TabBarHolderViewController.m */; };
+		F507E5CF1B9F15C00066283F /* icon_Expences.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5C31B9F15C00066283F /* icon_Expences.png */; };
+		F507E5D01B9F15C00066283F /* icon_Expences@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5C41B9F15C00066283F /* icon_Expences@2x.png */; };
+		F507E5D11B9F15C00066283F /* icon_Expences@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5C51B9F15C00066283F /* icon_Expences@3x.png */; };
+		F507E5D21B9F15C00066283F /* icon_History.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5C61B9F15C00066283F /* icon_History.png */; };
+		F507E5D31B9F15C00066283F /* icon_History@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5C71B9F15C00066283F /* icon_History@2x.png */; };
+		F507E5D41B9F15C00066283F /* icon_History@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5C81B9F15C00066283F /* icon_History@3x.png */; };
+		F507E5D51B9F15C00066283F /* icon_setting.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5C91B9F15C00066283F /* icon_setting.png */; };
+		F507E5D61B9F15C00066283F /* icon_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5CA1B9F15C00066283F /* icon_setting@2x.png */; };
+		F507E5D71B9F15C00066283F /* icon_setting@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5CB1B9F15C00066283F /* icon_setting@3x.png */; };
+		F507E5D81B9F15C00066283F /* icon_Summary.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5CC1B9F15C00066283F /* icon_Summary.png */; };
+		F507E5D91B9F15C00066283F /* icon_Summary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5CD1B9F15C00066283F /* icon_Summary@2x.png */; };
+		F507E5DA1B9F15C00066283F /* icon_Summary@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5CE1B9F15C00066283F /* icon_Summary@3x.png */; };
+		F507E5DE1B9F19120066283F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F507E5DD1B9F19120066283F /* ProfileViewController.m */; };
+		F507E5E21B9F41100066283F /* TabBarHolderController.m in Sources */ = {isa = PBXBuildFile; fileRef = F507E5E11B9F41100066283F /* TabBarHolderController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,10 +101,22 @@
 		69FE08C01B84E51500C81ABC /* Educatia StudentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Educatia StudentTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69FE08C51B84E51500C81ABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69FE08C61B84E51500C81ABC /* Educatia_StudentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Educatia_StudentTests.m; sourceTree = "<group>"; };
-		F507E5BC1B9F0B260066283F /* VMTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMTabBar.h; sourceTree = "<group>"; };
-		F507E5BD1B9F0B260066283F /* VMTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VMTabBar.m; sourceTree = "<group>"; };
-		F507E5C01B9F0BAF0066283F /* TabBarHolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarHolderViewController.h; sourceTree = "<group>"; };
-		F507E5C11B9F0BAF0066283F /* TabBarHolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarHolderViewController.m; sourceTree = "<group>"; };
+		F507E5C31B9F15C00066283F /* icon_Expences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_Expences.png; sourceTree = "<group>"; };
+		F507E5C41B9F15C00066283F /* icon_Expences@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_Expences@2x.png"; sourceTree = "<group>"; };
+		F507E5C51B9F15C00066283F /* icon_Expences@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_Expences@3x.png"; sourceTree = "<group>"; };
+		F507E5C61B9F15C00066283F /* icon_History.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_History.png; sourceTree = "<group>"; };
+		F507E5C71B9F15C00066283F /* icon_History@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_History@2x.png"; sourceTree = "<group>"; };
+		F507E5C81B9F15C00066283F /* icon_History@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_History@3x.png"; sourceTree = "<group>"; };
+		F507E5C91B9F15C00066283F /* icon_setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_setting.png; sourceTree = "<group>"; };
+		F507E5CA1B9F15C00066283F /* icon_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_setting@2x.png"; sourceTree = "<group>"; };
+		F507E5CB1B9F15C00066283F /* icon_setting@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_setting@3x.png"; sourceTree = "<group>"; };
+		F507E5CC1B9F15C00066283F /* icon_Summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_Summary.png; sourceTree = "<group>"; };
+		F507E5CD1B9F15C00066283F /* icon_Summary@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_Summary@2x.png"; sourceTree = "<group>"; };
+		F507E5CE1B9F15C00066283F /* icon_Summary@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_Summary@3x.png"; sourceTree = "<group>"; };
+		F507E5DC1B9F19120066283F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		F507E5DD1B9F19120066283F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		F507E5E01B9F41100066283F /* TabBarHolderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarHolderController.h; sourceTree = "<group>"; };
+		F507E5E11B9F41100066283F /* TabBarHolderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarHolderController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +169,8 @@
 		0453AEDA1B9861FB00CD3A53 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F507E5BF1B9F0B400066283F /* TabBarHolderViewController */,
+				F507E5DF1B9F40D90066283F /* TabBarHolder */,
+				F507E5DB1B9F18EA0066283F /* Profile */,
 				04A2AB081B9C3BD5009B2C60 /* Forgot Password */,
 				0453AEEE1B98646F00CD3A53 /* Log-In */,
 				0453AEDB1B9861FB00CD3A53 /* Sign-Up */,
@@ -204,6 +229,18 @@
 		0453AEE41B9861FB00CD3A53 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F507E5C31B9F15C00066283F /* icon_Expences.png */,
+				F507E5C41B9F15C00066283F /* icon_Expences@2x.png */,
+				F507E5C51B9F15C00066283F /* icon_Expences@3x.png */,
+				F507E5C61B9F15C00066283F /* icon_History.png */,
+				F507E5C71B9F15C00066283F /* icon_History@2x.png */,
+				F507E5C81B9F15C00066283F /* icon_History@3x.png */,
+				F507E5C91B9F15C00066283F /* icon_setting.png */,
+				F507E5CA1B9F15C00066283F /* icon_setting@2x.png */,
+				F507E5CB1B9F15C00066283F /* icon_setting@3x.png */,
+				F507E5CC1B9F15C00066283F /* icon_Summary.png */,
+				F507E5CD1B9F15C00066283F /* icon_Summary@2x.png */,
+				F507E5CE1B9F15C00066283F /* icon_Summary@3x.png */,
 				0453AEF21B98655C00CD3A53 /* welcome_background@2x.png */,
 			);
 			path = Images;
@@ -239,7 +276,6 @@
 		04A2AB1C1B9C6CBD009B2C60 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				F507E5BB1B9F0B260066283F /* VMTabBar */,
 				04A2AB1D1B9C6CBD009B2C60 /* FlatDatePicker */,
 			);
 			path = Libraries;
@@ -332,22 +368,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F507E5BB1B9F0B260066283F /* VMTabBar */ = {
+		F507E5DB1B9F18EA0066283F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				F507E5BC1B9F0B260066283F /* VMTabBar.h */,
-				F507E5BD1B9F0B260066283F /* VMTabBar.m */,
+				F507E5DC1B9F19120066283F /* ProfileViewController.h */,
+				F507E5DD1B9F19120066283F /* ProfileViewController.m */,
 			);
-			path = VMTabBar;
+			path = Profile;
 			sourceTree = "<group>";
 		};
-		F507E5BF1B9F0B400066283F /* TabBarHolderViewController */ = {
+		F507E5DF1B9F40D90066283F /* TabBarHolder */ = {
 			isa = PBXGroup;
 			children = (
-				F507E5C01B9F0BAF0066283F /* TabBarHolderViewController.h */,
-				F507E5C11B9F0BAF0066283F /* TabBarHolderViewController.m */,
+				F507E5E01B9F41100066283F /* TabBarHolderController.h */,
+				F507E5E11B9F41100066283F /* TabBarHolderController.m */,
 			);
-			path = TabBarHolderViewController;
+			path = TabBarHolder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -431,14 +467,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F507E5CF1B9F15C00066283F /* icon_Expences.png in Resources */,
+				F507E5D71B9F15C00066283F /* icon_setting@3x.png in Resources */,
+				F507E5D31B9F15C00066283F /* icon_History@2x.png in Resources */,
 				0453AEED1B9861FB00CD3A53 /* Main.storyboard in Resources */,
 				0453AEF31B98655C00CD3A53 /* welcome_background@2x.png in Resources */,
+				F507E5D51B9F15C00066283F /* icon_setting.png in Resources */,
 				04A2AB171B9C6BCD009B2C60 /* FlatDatePicker-Icon-Close@2x.png in Resources */,
+				F507E5D81B9F15C00066283F /* icon_Summary.png in Resources */,
+				F507E5D61B9F15C00066283F /* icon_setting@2x.png in Resources */,
 				04A2AB161B9C6BCD009B2C60 /* FlatDatePicker-Icon-Close.png in Resources */,
+				F507E5D21B9F15C00066283F /* icon_History.png in Resources */,
+				F507E5D41B9F15C00066283F /* icon_History@3x.png in Resources */,
+				F507E5D91B9F15C00066283F /* icon_Summary@2x.png in Resources */,
 				0453AEEC1B9861FB00CD3A53 /* LaunchScreen.xib in Resources */,
 				69FE08B81B84E51500C81ABC /* Images.xcassets in Resources */,
 				04A2AB151B9C6BCD009B2C60 /* FlatDatePicker-Icon-Check@2x.png in Resources */,
+				F507E5D01B9F15C00066283F /* icon_Expences@2x.png in Resources */,
+				F507E5D11B9F15C00066283F /* icon_Expences@3x.png in Resources */,
 				04A2AB141B9C6BCD009B2C60 /* FlatDatePicker-Icon-Check.png in Resources */,
+				F507E5DA1B9F15C00066283F /* icon_Summary@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,11 +507,11 @@
 				04A2AB0B1B9C3BE6009B2C60 /* ForgotPasswordViewController.m in Sources */,
 				0453AEEB1B9861FB00CD3A53 /* SubjectsViewController.m in Sources */,
 				69FE08B01B84E51500C81ABC /* AppDelegate.m in Sources */,
-				F507E5C21B9F0BAF0066283F /* TabBarHolderViewController.m in Sources */,
+				F507E5DE1B9F19120066283F /* ProfileViewController.m in Sources */,
 				69FE08AD1B84E51500C81ABC /* main.m in Sources */,
-				F507E5BE1B9F0B260066283F /* VMTabBar.m in Sources */,
 				0453AEF11B98647E00CD3A53 /* LoginViewController.m in Sources */,
 				04A2AB201B9C6CBD009B2C60 /* FlatDatePicker.m in Sources */,
+				F507E5E21B9F41100066283F /* TabBarHolderController.m in Sources */,
 				0453AEF61B9872C300CD3A53 /* SignupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

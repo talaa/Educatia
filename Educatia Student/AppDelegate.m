@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import "TabBarHolderController.h"
 
 @interface AppDelegate ()
 
@@ -29,14 +30,14 @@
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    //check if user had logged in on previous ////////////////////////////////////////
+    //check if user had logged in on previous //////////////////////////////////////
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *NewViewController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarHolderViewController"];
-    UIViewController *LoginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    
     if([PFUser currentUser]){
-        [self.window setRootViewController:NewViewController];
+        self.tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarHolderController"];
+        [self.window setRootViewController:self.tabBarController];
     }else {
+        
+        UIViewController *LoginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         [self.window setRootViewController:LoginViewController];
     }
     ////////////////////////////////////////////////
