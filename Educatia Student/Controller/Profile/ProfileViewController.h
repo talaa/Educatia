@@ -8,9 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProfileViewController : UIViewController
+@interface ProfileViewController : UIViewController <UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UIButton *changeProfilePictureButton;
+@property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *birthDateTextField;
+@property (weak, nonatomic) IBOutlet UIButton *calendarButton;
+@property (weak, nonatomic) IBOutlet UIButton *uploadPhotoButton;
+@property (weak, nonatomic) IBOutlet UIImageView *profilePictureImageView;
 
 
--(IBAction)logoutPressed:(id)sender;
+- (IBAction)logoutPressed:(id)sender;
+- (IBAction)calendarPressed:(id)sender;
+- (IBAction)editProfilePressed:(id)sender;
+- (IBAction)uploadPhotoPressed:(id)sender;
+- (IBAction)changeProfilePicturePressed:(id)sender;
 
 @end

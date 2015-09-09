@@ -11,7 +11,7 @@
 #import "ForgotPasswordViewController.h"
 #import <Parse/Parse.h>
 
-@interface LoginViewController () <SignupViewControllerDelegate>
+@interface LoginViewController () <SignupViewControllerDelegate,UIAlertViewDelegate>
 
 @end
 
@@ -20,6 +20,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    self.usernameTextField.text = @"";
+    self.passwordTextField.text = @"";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,10 +59,9 @@
                                         block:^(PFUser *user, NSError *error) {
                                             if (user) {
                                                 // Do stuff after successful login.
-                                                [[[UIAlertView alloc] initWithTitle:@"Education Student" message:@"Login Successful" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+                                                //Turned to Tabbar controller
                                                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                                 UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"TabBarHolderController"];
-                                                
                                                 [self presentViewController:vc animated:YES completion:nil];
                                             } else {
                                                 // The login failed. Check error to see why.
@@ -79,6 +83,18 @@
     ForgotPasswordViewController * forgotPasswordVC = [storyboard instantiateViewControllerWithIdentifier:@"ForgotPasswordViewController"];
     [self presentViewController:forgotPasswordVC animated:YES completion:nil];
 
+}
+
+#pragma mark - UIAlertViewDelegete
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+//    if (alertView.tag == 100){
+//        if (buttonIndex == 0) {
+//            
+//        }
+//    }
+    
+//
 }
 /*
 #pragma mark - Navigation

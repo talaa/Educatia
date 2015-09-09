@@ -46,6 +46,16 @@
     [self isPicProfileImageViewEmpty];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    self.firstNameTextField.text        = @"";
+    self.lastNameTextField.text         = @"";
+    self.usernameTextField.text         = @"";
+    self.passwordTexrField.text         = @"";
+    self.confirmPasswordTextField.text  = @"";
+    self.phoneTextField.text            = @"";
+    self.birthdateTextField.text        = @"";
+    self.emailTextField.text            = @"";
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -181,9 +191,9 @@
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {   // Hooray! Let them use the app now.
             [self stopActivityIndicator];
-            UIAlertView *successfulAlertView = [[UIAlertView alloc] initWithTitle:@"Education Student" message:@"Well Done.Have a nice time with our app" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            successfulAlertView.tag = 100;
-            [successfulAlertView show];
+            UIAlertView *successSignUpAlertView = [[UIAlertView alloc] initWithTitle:@"Education Student" message:@"Well Done.Have a nice time with our app" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            successSignUpAlertView.tag = 100;
+            [successSignUpAlertView show];
         } else {
             NSString *errorString = [error userInfo][@"error"];   // Show the errorString somewhere and let the user try again.
             [self stopActivityIndicator];
@@ -269,7 +279,7 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"Button Index %ld", (long)buttonIndex);
+    //NSLog(@"Button Index %ld", (long)buttonIndex);
     if (buttonIndex == 0){
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
@@ -295,7 +305,7 @@
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     //Check if picture size is greater than 400K
     NSData *imageData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((chosenImage),1.0)];
-    NSLog(@"Image size is %lu", (unsigned long)imageData.length);
+    //NSLog(@"Image size is %lu", (unsigned long)imageData.length);
     if (imageData.length > 500000){
         self.picProfileImageView.image = [UIImage imageNamed:@"Image_AddProfilPic"];
         [[[UIAlertView alloc] initWithTitle:@"EducationStudent" message:@"Picture you have choosen is greater than 400K!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
@@ -329,4 +339,6 @@
         }
     }
 }
+
+
 @end

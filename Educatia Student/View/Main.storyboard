@@ -479,7 +479,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_Username" translatesAutoresizingMaskIntoConstraints="NO" id="Ehh-Q6-FZm">
                                         <rect key="frame" x="8" y="10" width="30" height="30"/>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QuL-55-f8j">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QuL-55-f8j">
                                         <rect key="frame" x="46" y="11" width="211" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
@@ -493,7 +493,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_Email" translatesAutoresizingMaskIntoConstraints="NO" id="x24-kP-lw0">
                                         <rect key="frame" x="8" y="10" width="30" height="30"/>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hwh-si-eZM">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hwh-si-eZM">
                                         <rect key="frame" x="46" y="11" width="211" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
@@ -517,6 +517,7 @@
                                         </state>
                                         <connections>
                                             <action selector="birthdateCalenderPressed:" destination="ilD-5H-Ssy" eventType="touchUpInside" id="eo9-6h-Jr8"/>
+                                            <action selector="calendarPressed:" destination="dqN-yE-Uy9" eventType="touchUpInside" id="n4k-7H-F8N"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="birth date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fAJ-LF-ORW">
@@ -528,7 +529,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YaO-5q-hUj">
-                                <rect key="frame" x="220" y="484" width="160" height="40"/>
+                                <rect key="frame" x="220" y="565" width="160" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.20999999999999999" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Log out">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -539,18 +540,60 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vag-Hg-aaC">
-                                <rect key="frame" x="388" y="484" width="160" height="40"/>
+                                <rect key="frame" x="388" y="565" width="160" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Edite My Profile">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="editProfilePressed:" destination="dqN-yE-Uy9" eventType="touchUpInside" id="2xN-je-hWs"/>
+                                </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="295-id-976">
+                                <rect key="frame" x="536" y="160" width="95" height="25"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Upload Photo">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.047979797980000002" green="0.047979797980000002" blue="0.047979797980000002" alpha="0.23999999999999999" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="uploadPhotoPressed:" destination="dqN-yE-Uy9" eventType="touchUpInside" id="ju1-ic-muq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXt-8x-yBf">
+                                <rect key="frame" x="536" y="155" width="153" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Change Profile Picture">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeProfilePicturePressed:" destination="dqN-yE-Uy9" eventType="touchUpInside" id="XWX-PR-ZpD"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5Kq-tA-9Hi">
+                                <rect key="frame" x="374" y="502" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="Icon_Profile" id="17O-0t-5T7"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="5Kq-tA-9Hi" id="muT-l2-jrG"/>
+                        <outlet property="birthDateTextField" destination="fAJ-LF-ORW" id="AOD-73-755"/>
+                        <outlet property="calendarButton" destination="clp-gD-PU8" id="Vzy-NO-eEH"/>
+                        <outlet property="changeProfilePictureButton" destination="dXt-8x-yBf" id="fii-et-oDW"/>
+                        <outlet property="emailTextField" destination="hwh-si-eZM" id="A7g-iO-sJD"/>
+                        <outlet property="firstNameTextField" destination="A5x-FW-RyH" id="UJo-Av-jgK"/>
+                        <outlet property="lastNameTextField" destination="1KD-rF-fr9" id="Ley-7r-lQn"/>
+                        <outlet property="phoneTextField" destination="6pX-OO-cRc" id="4kt-xv-Pc5"/>
+                        <outlet property="profilePictureImageView" destination="1SS-EX-sMc" id="9TW-CZ-9lc"/>
+                        <outlet property="uploadPhotoButton" destination="295-id-976" id="AGe-iT-SIj"/>
+                        <outlet property="usernameTextField" destination="QuL-55-f8j" id="D3c-dD-tFA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCN-je-qpF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -608,7 +651,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m4Q-EZ-e5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2361" y="-496"/>
+            <point key="canvasLocation" x="1852" y="378"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="IxK-eK-CMm">
@@ -763,7 +806,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aqh-5E-6cd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1189" y="1091"/>
+            <point key="canvasLocation" x="1852" y="1253"/>
         </scene>
         <!--Assignment-->
         <scene sceneID="3fV-aX-gXb">
@@ -789,7 +832,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zjU-j2-hbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1597" y="1724"/>
+            <point key="canvasLocation" x="1852" y="2135"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="hA7-UH-tC9">
@@ -815,7 +858,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZOY-Pw-Ugq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="989" y="2203"/>
+            <point key="canvasLocation" x="823" y="2135"/>
         </scene>
         <!--Chat-->
         <scene sceneID="fLd-ny-KJW">
@@ -841,7 +884,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kob-oM-ehQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1125" y="1242"/>
+            <point key="canvasLocation" x="-95" y="2135"/>
         </scene>
         <!--News-->
         <scene sceneID="FYQ-kQ-FNE">
@@ -867,7 +910,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dhy-3Z-lHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1563" y="1522"/>
+            <point key="canvasLocation" x="2845" y="2135"/>
         </scene>
         <!--Course Material-->
         <scene sceneID="HOO-ye-d4I">
@@ -885,7 +928,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G58-aZ-k8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1547" y="952"/>
+            <point key="canvasLocation" x="3799" y="2135"/>
         </scene>
     </scenes>
     <resources>

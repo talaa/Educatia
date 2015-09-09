@@ -132,7 +132,7 @@
 #pragma mark Helpers
 
 - (NSInteger) yearOfDate:(NSDate*)date {
-	NSDateComponents *components = [[NSCalendar currentCalendar] components:(NSYearCalendarUnit| NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekCalendarUnit |  NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSWeekdayCalendarUnit | NSWeekdayOrdinalCalendarUnit) fromDate:date];
+	NSDateComponents *components = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear| NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekOfMonth |  NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond | NSCalendarUnitWeekday | NSCalendarUnitWeekdayOrdinal) fromDate:date];
 	return components.year;
 }
 
@@ -969,22 +969,22 @@
     
     NSMutableArray *years = [[NSMutableArray alloc] init];
 
-    int yearMin = kStartYear;
+    long yearMin = kStartYear;
     
-    int yearMax = 0;
+    long yearMax = 0;
     NSDateComponents* componentsMax = nil;
     
     if (self.maximumDate != nil) {
-        componentsMax = [self.calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:self.maximumDate];
+        componentsMax = [self.calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:self.maximumDate];
         yearMax = [componentsMax year];
     } else {
-        componentsMax = [self.calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:[NSDate date]];
+        componentsMax = [self.calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:[NSDate date]];
         yearMax = [componentsMax year];
     }
 
-    for (int i = yearMin; i <= yearMax; i++) {
+    for (long i = yearMin; i <= yearMax; i++) {
         
-        [years addObject:[NSString stringWithFormat:@"%d", i]];
+        [years addObject:[NSString stringWithFormat:@"%ld", i]];
     }
          
     return years;
@@ -1052,7 +1052,7 @@
 
     if (date == nil) date = [NSDate date];
     
-    NSRange daysRange = [self.calendar rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:date];
+    NSRange daysRange = [self.calendar rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:date];
     
     NSMutableArray *days = [[NSMutableArray alloc] init];
     
@@ -1432,12 +1432,12 @@
     
     if (date != nil) {
     
-        NSDateComponents* components = [self.calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit fromDate:date];
+        NSDateComponents* components = [self.calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitSecond fromDate:date];
        
-        _selectedDay = [components day];
-        _selectedMonth = [components month];
-        _selectedYear = [components year];
-        _selectedHour = [components hour];
+        _selectedDay    = [components day];
+        _selectedMonth  = [components month];
+        _selectedYear   = [components year];
+        _selectedHour   = [components hour];
         _selectedMinute = [components minute];
         _selectedSecond = [components second];
         
@@ -1505,7 +1505,7 @@
     // Time Mode :
     if (self.datePickerMode == FlatDatePickerModeTime) {
 
-        dateComponents = [self.calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:[NSDate date]];
+        dateComponents = [self.calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:[NSDate date]];
         [dateComponents setCalendar:self.calendar];
         [dateComponents setTimeZone:self.timeZone];
         [dateComponents setHour:hours];
@@ -1516,14 +1516,14 @@
     // Date and Time Mode :
     if (self.datePickerMode == FlatDatePickerModeDateAndTime) {
     
-        dateComponents = [self.calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:date];
+        dateComponents = [self.calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:date];
         [dateComponents setTimeZone:self.timeZone];
         [dateComponents setHour:hours];
         [dateComponents setMinute:minutes];
         [dateComponents setSecond:0];
     }
     
-    NSLog(@"date: %@ hours: %d, minutes: %d, seconds: %d dateComponents: %@, date: %@, calendar: %@", date, hours, minutes, seconds, dateComponents, dateComponents.date, self.calendar);
+    //NSLog(@"date: %@ hours: %d, minutes: %d, seconds: %d dateComponents: %@, date: %@, calendar: %@", date, hours, minutes, seconds, dateComponents, dateComponents.date, self.calendar);
     
     return [dateComponents date];
 }
