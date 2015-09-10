@@ -11,5 +11,6 @@
 @interface ManageLayerViewController : UITabBarController
 
 + (void)imageViewLayerProfilePicture:(UIImageView*)imageView;
++ (void)cellLayerSubjectsCollectionView:(UICollectionViewCell*)cell;
 
 @end

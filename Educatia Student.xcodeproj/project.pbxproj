@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		044F39ED1B99F270006457BA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044F39EB1B99F270006457BA /* Bolts.framework */; };
 		044F39EE1B99F270006457BA /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044F39EC1B99F270006457BA /* Parse.framework */; };
-		0453AEEB1B9861FB00CD3A53 /* SubjectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0453AEE01B9861FB00CD3A53 /* SubjectsViewController.m */; };
 		0453AEEC1B9861FB00CD3A53 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0453AEE81B9861FB00CD3A53 /* LaunchScreen.xib */; };
 		0453AEED1B9861FB00CD3A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0453AEE91B9861FB00CD3A53 /* Main.storyboard */; };
 		0453AEF11B98647E00CD3A53 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0453AEF01B98647E00CD3A53 /* LoginViewController.m */; };
@@ -36,6 +35,12 @@
 		69FE08B81B84E51500C81ABC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69FE08B71B84E51500C81ABC /* Images.xcassets */; };
 		69FE08C71B84E51500C81ABC /* Educatia_StudentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08C61B84E51500C81ABC /* Educatia_StudentTests.m */; };
 		F5055CC31BA18F3400BB6547 /* ManageLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CC21BA18F3400BB6547 /* ManageLayerViewController.m */; };
+		F5055CC61BA1B18700BB6547 /* SubjectsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CC51BA1B18700BB6547 /* SubjectsCollectionViewController.m */; };
+		F5055CC91BA1B1CA00BB6547 /* SubjectCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CC81BA1B1CA00BB6547 /* SubjectCollectionViewCell.m */; };
+		F5055CCB1BA1B37300BB6547 /* Math1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F5055CCA1BA1B37300BB6547 /* Math1.jpg */; };
+		F5055CD11BA1B5F400BB6547 /* GUITabPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CCE1BA1B5F400BB6547 /* GUITabPagerViewController.m */; };
+		F5055CD21BA1B5F400BB6547 /* GUITabScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CD01BA1B5F400BB6547 /* GUITabScrollView.m */; };
+		F5055CD61BA1B6AF00BB6547 /* TabBarPagerHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CD51BA1B6AF00BB6547 /* TabBarPagerHolderViewController.m */; };
 		F507E5CF1B9F15C00066283F /* icon_Expences.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5C31B9F15C00066283F /* icon_Expences.png */; };
 		F507E5D01B9F15C00066283F /* icon_Expences@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5C41B9F15C00066283F /* icon_Expences@2x.png */; };
 		F507E5D11B9F15C00066283F /* icon_Expences@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5C51B9F15C00066283F /* icon_Expences@3x.png */; };
@@ -65,8 +70,6 @@
 /* Begin PBXFileReference section */
 		044F39EB1B99F270006457BA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		044F39EC1B99F270006457BA /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		0453AEDF1B9861FB00CD3A53 /* SubjectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectsViewController.h; sourceTree = "<group>"; };
-		0453AEE01B9861FB00CD3A53 /* SubjectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectsViewController.m; sourceTree = "<group>"; };
 		0453AEE81B9861FB00CD3A53 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		0453AEE91B9861FB00CD3A53 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0453AEEF1B98647E00CD3A53 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -104,6 +107,17 @@
 		69FE08C61B84E51500C81ABC /* Educatia_StudentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Educatia_StudentTests.m; sourceTree = "<group>"; };
 		F5055CC11BA18F3400BB6547 /* ManageLayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageLayerViewController.h; sourceTree = "<group>"; };
 		F5055CC21BA18F3400BB6547 /* ManageLayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageLayerViewController.m; sourceTree = "<group>"; };
+		F5055CC41BA1B18700BB6547 /* SubjectsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectsCollectionViewController.h; sourceTree = "<group>"; };
+		F5055CC51BA1B18700BB6547 /* SubjectsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectsCollectionViewController.m; sourceTree = "<group>"; };
+		F5055CC71BA1B1CA00BB6547 /* SubjectCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectCollectionViewCell.h; sourceTree = "<group>"; };
+		F5055CC81BA1B1CA00BB6547 /* SubjectCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectCollectionViewCell.m; sourceTree = "<group>"; };
+		F5055CCA1BA1B37300BB6547 /* Math1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Math1.jpg; sourceTree = "<group>"; };
+		F5055CCD1BA1B5F400BB6547 /* GUITabPagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUITabPagerViewController.h; sourceTree = "<group>"; };
+		F5055CCE1BA1B5F400BB6547 /* GUITabPagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUITabPagerViewController.m; sourceTree = "<group>"; };
+		F5055CCF1BA1B5F400BB6547 /* GUITabScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUITabScrollView.h; sourceTree = "<group>"; };
+		F5055CD01BA1B5F400BB6547 /* GUITabScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUITabScrollView.m; sourceTree = "<group>"; };
+		F5055CD41BA1B6AF00BB6547 /* TabBarPagerHolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarPagerHolderViewController.h; sourceTree = "<group>"; };
+		F5055CD51BA1B6AF00BB6547 /* TabBarPagerHolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarPagerHolderViewController.m; sourceTree = "<group>"; };
 		F507E5C31B9F15C00066283F /* icon_Expences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_Expences.png; sourceTree = "<group>"; };
 		F507E5C41B9F15C00066283F /* icon_Expences@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_Expences@2x.png"; sourceTree = "<group>"; };
 		F507E5C51B9F15C00066283F /* icon_Expences@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_Expences@3x.png"; sourceTree = "<group>"; };
@@ -172,6 +186,7 @@
 		0453AEDA1B9861FB00CD3A53 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F5055CD31BA1B69900BB6547 /* TabBarPagerHolder */,
 				F5055CC01BA18F2400BB6547 /* ManageLayer */,
 				F507E5DF1B9F40D90066283F /* TabBarHolder */,
 				F507E5DB1B9F18EA0066283F /* Profile */,
@@ -195,8 +210,10 @@
 		0453AEDE1B9861FB00CD3A53 /* Subjects */ = {
 			isa = PBXGroup;
 			children = (
-				0453AEDF1B9861FB00CD3A53 /* SubjectsViewController.h */,
-				0453AEE01B9861FB00CD3A53 /* SubjectsViewController.m */,
+				F5055CC41BA1B18700BB6547 /* SubjectsCollectionViewController.h */,
+				F5055CC51BA1B18700BB6547 /* SubjectsCollectionViewController.m */,
+				F5055CC71BA1B1CA00BB6547 /* SubjectCollectionViewCell.h */,
+				F5055CC81BA1B1CA00BB6547 /* SubjectCollectionViewCell.m */,
 			);
 			path = Subjects;
 			sourceTree = "<group>";
@@ -233,6 +250,7 @@
 		0453AEE41B9861FB00CD3A53 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F5055CCA1BA1B37300BB6547 /* Math1.jpg */,
 				F507E5C31B9F15C00066283F /* icon_Expences.png */,
 				F507E5C41B9F15C00066283F /* icon_Expences@2x.png */,
 				F507E5C51B9F15C00066283F /* icon_Expences@3x.png */,
@@ -280,6 +298,7 @@
 		04A2AB1C1B9C6CBD009B2C60 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				F5055CCC1BA1B5F400BB6547 /* UITabBarPager */,
 				04A2AB1D1B9C6CBD009B2C60 /* FlatDatePicker */,
 			);
 			path = Libraries;
@@ -379,6 +398,26 @@
 				F5055CC21BA18F3400BB6547 /* ManageLayerViewController.m */,
 			);
 			path = ManageLayer;
+			sourceTree = "<group>";
+		};
+		F5055CCC1BA1B5F400BB6547 /* UITabBarPager */ = {
+			isa = PBXGroup;
+			children = (
+				F5055CCD1BA1B5F400BB6547 /* GUITabPagerViewController.h */,
+				F5055CCE1BA1B5F400BB6547 /* GUITabPagerViewController.m */,
+				F5055CCF1BA1B5F400BB6547 /* GUITabScrollView.h */,
+				F5055CD01BA1B5F400BB6547 /* GUITabScrollView.m */,
+			);
+			path = UITabBarPager;
+			sourceTree = "<group>";
+		};
+		F5055CD31BA1B69900BB6547 /* TabBarPagerHolder */ = {
+			isa = PBXGroup;
+			children = (
+				F5055CD41BA1B6AF00BB6547 /* TabBarPagerHolderViewController.h */,
+				F5055CD51BA1B6AF00BB6547 /* TabBarPagerHolderViewController.m */,
+			);
+			path = TabBarPagerHolder;
 			sourceTree = "<group>";
 		};
 		F507E5DB1B9F18EA0066283F /* Profile */ = {
@@ -490,6 +529,7 @@
 				F507E5D81B9F15C00066283F /* icon_Summary.png in Resources */,
 				F507E5D61B9F15C00066283F /* icon_setting@2x.png in Resources */,
 				04A2AB161B9C6BCD009B2C60 /* FlatDatePicker-Icon-Close.png in Resources */,
+				F5055CCB1BA1B37300BB6547 /* Math1.jpg in Resources */,
 				F507E5D21B9F15C00066283F /* icon_History.png in Resources */,
 				F507E5D41B9F15C00066283F /* icon_History@3x.png in Resources */,
 				F507E5D91B9F15C00066283F /* icon_Summary@2x.png in Resources */,
@@ -517,12 +557,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5055CD61BA1B6AF00BB6547 /* TabBarPagerHolderViewController.m in Sources */,
+				F5055CD11BA1B5F400BB6547 /* GUITabPagerViewController.m in Sources */,
 				04A2AB0B1B9C3BE6009B2C60 /* ForgotPasswordViewController.m in Sources */,
-				0453AEEB1B9861FB00CD3A53 /* SubjectsViewController.m in Sources */,
 				69FE08B01B84E51500C81ABC /* AppDelegate.m in Sources */,
+				F5055CC91BA1B1CA00BB6547 /* SubjectCollectionViewCell.m in Sources */,
 				F507E5DE1B9F19120066283F /* ProfileViewController.m in Sources */,
+				F5055CC61BA1B18700BB6547 /* SubjectsCollectionViewController.m in Sources */,
 				69FE08AD1B84E51500C81ABC /* main.m in Sources */,
 				0453AEF11B98647E00CD3A53 /* LoginViewController.m in Sources */,
+				F5055CD21BA1B5F400BB6547 /* GUITabScrollView.m in Sources */,
 				04A2AB201B9C6CBD009B2C60 /* FlatDatePicker.m in Sources */,
 				F507E5E21B9F41100066283F /* TabBarHolderController.m in Sources */,
 				0453AEF61B9872C300CD3A53 /* SignupViewController.m in Sources */,

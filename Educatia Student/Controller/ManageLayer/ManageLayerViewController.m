@@ -30,6 +30,18 @@
     imageView.layer.cornerRadius = 75.0f;
     imageView.layer.masksToBounds = YES;
 }
+
++ (void)cellLayerSubjectsCollectionView:(UICollectionViewCell*)cell {
+    cell.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    cell.layer.borderWidth = 0.5f;
+    cell.layer.contentsScale = [UIScreen mainScreen].scale;
+    cell.layer.shadowOpacity = 0.75f;
+    cell.layer.shadowRadius = 5.0f;
+    cell.layer.shadowOffset = CGSizeZero;
+    cell.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.bounds].CGPath;
+    cell.layer.cornerRadius = 7.0f;
+    cell.layer.masksToBounds = YES;
+}
 /*
 #pragma mark - Navigation
 

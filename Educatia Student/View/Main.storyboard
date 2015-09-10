@@ -398,6 +398,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="dqN-yE-Uy9" kind="relationship" relationship="viewControllers" id="de4-bu-vnN"/>
+                        <segue destination="z5F-ab-IBJ" kind="relationship" relationship="viewControllers" id="zMw-17-sPg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VX4-9k-nxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -859,6 +860,83 @@
             </objects>
             <point key="canvasLocation" x="823" y="2135"/>
         </scene>
+        <!--Subjects-->
+        <scene sceneID="Tgq-GE-TNu">
+            <objects>
+                <collectionViewController id="z5F-ab-IBJ" customClass="SubjectsCollectionViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="9bf-Yv-wps">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2ho-0K-S2R">
+                            <size key="itemSize" width="200" height="250"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SubjectCell" id="E3R-6G-WZg" customClass="SubjectCollectionViewCell">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Math1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="kSa-E8-h6X">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
+                                        </imageView>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7gq-Kb-Dyt">
+                                            <rect key="frame" x="0.0" y="195" width="200" height="47"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Math" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfk-VH-xFf">
+                                                    <rect key="frame" x="8" y="13" width="184" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="yN7-Xb-IrK" kind="modal" identifier="SubjectSegue" id="cPe-bN-br4"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="z5F-ab-IBJ" id="pBd-yK-Evh"/>
+                            <outlet property="delegate" destination="z5F-ab-IBJ" id="YOa-BR-qYB"/>
+                        </connections>
+                    </collectionView>
+                    <tabBarItem key="tabBarItem" title="Subjects" image="Icon_Subjects" id="8MZ-yK-5aZ"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Cl-7m-Ded" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-330" y="1976"/>
+        </scene>
+        <!--Tab Bar Pager Holder View Controller-->
+        <scene sceneID="E1A-T3-9eO">
+            <objects>
+                <viewController id="yN7-Xb-IrK" customClass="TabBarPagerHolderViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dic-gd-bBE"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lw7-jN-ppf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CTU-rz-UUG">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2AU-tJ-wPV"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0HE-g7-HwE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="691" y="1976"/>
+        </scene>
         <!--Chat-->
         <scene sceneID="fLd-ny-KJW">
             <objects>
@@ -883,7 +961,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kob-oM-ehQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-95" y="2135"/>
+            <point key="canvasLocation" x="811" y="2917"/>
         </scene>
         <!--News-->
         <scene sceneID="FYQ-kQ-FNE">
@@ -938,11 +1016,13 @@
         <image name="Icon_LoginMark" width="19" height="19"/>
         <image name="Icon_Password" width="16" height="16"/>
         <image name="Icon_Phone" width="25" height="25"/>
-        <image name="Icon_Profile" width="40" height="40"/>
+        <image name="Icon_Profile" width="32" height="32"/>
+        <image name="Icon_Subjects" width="32" height="32"/>
         <image name="Icon_True" width="16" height="16"/>
         <image name="Icon_Username" width="16" height="16"/>
         <image name="Icone_BirthDay" width="32" height="32"/>
         <image name="Image_AddProfilPic" width="50" height="50"/>
+        <image name="Math1.jpg" width="200" height="250"/>
         <image name="welcome_background.png" width="320" height="568"/>
     </resources>
 </document>
