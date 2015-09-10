@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FlatDatePicker.h"
 
-@interface ProfileViewController : UIViewController <UITextFieldDelegate>
+@interface ProfileViewController : UIViewController <UITextFieldDelegate,FlatDatePickerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIButton *changeProfilePictureButton;
@@ -21,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *calendarButton;
 @property (weak, nonatomic) IBOutlet UIButton *uploadPhotoButton;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePictureImageView;
-
+@property (nonatomic, strong) FlatDatePicker *flatDatePicker;
 
 - (IBAction)logoutPressed:(id)sender;
 - (IBAction)calendarPressed:(id)sender;

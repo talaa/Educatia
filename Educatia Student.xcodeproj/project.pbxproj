@@ -35,6 +35,7 @@
 		69FE08B01B84E51500C81ABC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08AF1B84E51500C81ABC /* AppDelegate.m */; };
 		69FE08B81B84E51500C81ABC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69FE08B71B84E51500C81ABC /* Images.xcassets */; };
 		69FE08C71B84E51500C81ABC /* Educatia_StudentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08C61B84E51500C81ABC /* Educatia_StudentTests.m */; };
+		F5055CC31BA18F3400BB6547 /* ManageLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CC21BA18F3400BB6547 /* ManageLayerViewController.m */; };
 		F507E5CF1B9F15C00066283F /* icon_Expences.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5C31B9F15C00066283F /* icon_Expences.png */; };
 		F507E5D01B9F15C00066283F /* icon_Expences@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5C41B9F15C00066283F /* icon_Expences@2x.png */; };
 		F507E5D11B9F15C00066283F /* icon_Expences@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5C51B9F15C00066283F /* icon_Expences@3x.png */; };
@@ -101,6 +102,8 @@
 		69FE08C01B84E51500C81ABC /* Educatia StudentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Educatia StudentTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69FE08C51B84E51500C81ABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69FE08C61B84E51500C81ABC /* Educatia_StudentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Educatia_StudentTests.m; sourceTree = "<group>"; };
+		F5055CC11BA18F3400BB6547 /* ManageLayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageLayerViewController.h; sourceTree = "<group>"; };
+		F5055CC21BA18F3400BB6547 /* ManageLayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageLayerViewController.m; sourceTree = "<group>"; };
 		F507E5C31B9F15C00066283F /* icon_Expences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_Expences.png; sourceTree = "<group>"; };
 		F507E5C41B9F15C00066283F /* icon_Expences@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_Expences@2x.png"; sourceTree = "<group>"; };
 		F507E5C51B9F15C00066283F /* icon_Expences@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_Expences@3x.png"; sourceTree = "<group>"; };
@@ -169,6 +172,7 @@
 		0453AEDA1B9861FB00CD3A53 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F5055CC01BA18F2400BB6547 /* ManageLayer */,
 				F507E5DF1B9F40D90066283F /* TabBarHolder */,
 				F507E5DB1B9F18EA0066283F /* Profile */,
 				04A2AB081B9C3BD5009B2C60 /* Forgot Password */,
@@ -368,6 +372,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F5055CC01BA18F2400BB6547 /* ManageLayer */ = {
+			isa = PBXGroup;
+			children = (
+				F5055CC11BA18F3400BB6547 /* ManageLayerViewController.h */,
+				F5055CC21BA18F3400BB6547 /* ManageLayerViewController.m */,
+			);
+			path = ManageLayer;
+			sourceTree = "<group>";
+		};
 		F507E5DB1B9F18EA0066283F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -513,6 +526,7 @@
 				04A2AB201B9C6CBD009B2C60 /* FlatDatePicker.m in Sources */,
 				F507E5E21B9F41100066283F /* TabBarHolderController.m in Sources */,
 				0453AEF61B9872C300CD3A53 /* SignupViewController.m in Sources */,
+				F5055CC31BA18F3400BB6547 /* ManageLayerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

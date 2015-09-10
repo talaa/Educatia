@@ -8,10 +8,14 @@
 #import <Parse/Parse.h>
 #import "ProfileViewController.h"
 #import "LoginViewController.h"
+#import "ManageLayerViewController.h"
+
 
 @interface ProfileViewController () <UIActionSheetDelegate, UIActionSheetDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     PFUser *user;
+    UIImage *defaultProfilePicture;
+    UIImage *currentProfileImage;
 }
 @end
 
@@ -21,16 +25,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //ProfilePicture Layout
-    self.profilePictureImageView.layer.borderColor      = [UIColor whiteColor].CGColor;
-    self.profilePictureImageView.layer.borderWidth      = 1.5f;
-    self.profilePictureImageView.layer.cornerRadius     = 7.0f;
-    self.profilePictureImageView.layer.masksToBounds    = YES;
+    //Init BirthDate
+    self.flatDatePicker = [[FlatDatePicker alloc] initWithParentView:self.view];
+    self.flatDatePicker.delegate = self;
+    self.flatDatePicker.title = @"Select your birthday";
+    
+    defaultProfilePicture = [UIImage imageNamed:@"Image_AddProfilPic"];
+    
     
     //Stop and hidden EditProfileActivityIndicator
     [self hideandStopActivity];
     
-    //PFUser Init
+    //PFUser Init && PFFile
     user = [PFUser currentUser];
     
     [self retrievingCurrentUserData];
@@ -52,35 +58,40 @@
 
 //retrieve user's data
 -(void)retrievingCurrentUserData {
+    [self showAndPlayActivity];
     self.usernameTextField.text = user.username;
     self.emailTextField.text = user.email;
-    NSLog(@"Object ID is :%@",user.objectId);
+    //NSLog(@"Object ID is :%@",user.objectId);
     self.firstNameTextField.text = user[@"FirstName"];
     self.lastNameTextField.text = user[@"LastName"];
     self.phoneTextField.text = user[@"Phone"];
     self.birthDateTextField.text = user[@"DateofBirth"];
     NSLog(@"Birth is %@", user[@"DateofBirth"]);
     
-    //retrieve user
+    //ProfilePicture Layer
+    [ManageLayerViewController imageViewLayerProfilePicture:self.profilePictureImageView];
+    
+    if (self.profilePictureImageView.image == nil){
+    //retrieve user image
+    
     PFFile *userImageFile = user[@"profilePicture"];
-    [self showAndPlayActivity];
-    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if (!error) {
-            
-            UIImage *image = [UIImage imageWithData:imageData];
-            self.profilePictureImageView.image = image;
-            if ([self.profilePictureImageView.image isEqual:image]){
-                self.uploadPhotoButton.hidden = YES;
-                self.changeProfilePictureButton.hidden = NO;
-                }
-                else{
-                    [self hideandStopActivity];
-                    self.uploadPhotoButton.hidden = NO;
-                    self.changeProfilePictureButton.hidden = YES;
-                }
-            }
+    //if condition if there is no user's image
+    if (userImageFile == nil){
+        self.profilePictureImageView.image = defaultProfilePicture;
+        [self showUploadButtonHidechangeProfileButton];
         [self hideandStopActivity];
-    }];
+    }else{
+        [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if (!error) {
+                UIImage *image = [UIImage imageWithData:imageData];
+                self.profilePictureImageView.image = image;
+                currentProfileImage = image;
+                [self showChangeProfileButtonHideUploadButton];
+                [self hideandStopActivity];
+            }
+        }];
+    }
+    }
 }
 
 //Logout Button Pressed Action
@@ -91,6 +102,16 @@
 }
 
 - (IBAction)calendarPressed:(id)sender {
+    [self.birthDateTextField resignFirstResponder];
+    static int count = 0;
+    count ++;
+    if(count % 2 != 0){
+        //show
+        [self.flatDatePicker show];
+    }else{
+        //hide
+        [self.flatDatePicker dismiss];
+    }
 }
 
 - (IBAction)editProfilePressed:(id)sender {
@@ -101,9 +122,15 @@
 }
 
 - (IBAction)uploadPhotoPressed:(id)sender {
+    [self actionSheetToUploadOrChangeProfilePicture];
 }
 
 - (IBAction)changeProfilePicturePressed:(id)sender {
+    [self actionSheetToUploadOrChangeProfilePicture];
+}
+
+// UIActionSheet to upload and change profile picture
+- (void)actionSheetToUploadOrChangeProfilePicture {
     UIActionSheet *changeProfilePictureActionsheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Take Photo" otherButtonTitles:@"Upload from photos", nil];
     changeProfilePictureActionsheet.tag = 300;
     [changeProfilePictureActionsheet showInView:self.view];
@@ -122,11 +149,23 @@
             [user setObject:self.phoneTextField.text forKey:@"Phone"];
             [user setObject:self.birthDateTextField.text forKey:@"DateofBirth"];
             
+            if (self.profilePictureImageView.image != defaultProfilePicture && self.profilePictureImageView.image != currentProfileImage){
+                NSData *imageData = UIImageJPEGRepresentation(self.profilePictureImageView.image, 1.0);
+                PFFile *imageFile = [PFFile fileWithName:[self.usernameTextField.text stringByAppendingString:@"_image.png"] data:imageData];
+                [imageFile saveInBackground];
+                [user setObject:imageFile forKey:@"profilePicture"];
+            }
             
             // Save
-            [user saveInBackground];
-            [self hideandStopActivity];
-            [self retrievingCurrentUserData];
+            [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (!error) {
+                    [self hideandStopActivity];
+                    [[[UIAlertView alloc]initWithTitle:@"EducationStudent" message:@"Your profile has been modified successfully" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+                }else{
+                    [self hideandStopActivity];
+                    [[[UIAlertView alloc]initWithTitle:@"EducationStudent" message:[error description] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+                }
+            }];
         }else { //Cancel button pressed
         }
     }
@@ -211,19 +250,13 @@
     //Check if picture size is greater than 400K
     NSData *imageData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((chosenImage),1.0)];
     //NSLog(@"Image size is %lu", (unsigned long)imageData.length);
-    if (imageData.length > 500000){
-        self.profilePictureImageView.image = [UIImage imageNamed:@"Image_AddProfilPic"];
+    if (imageData.length > 55500000){
+        self.profilePictureImageView.image = defaultProfilePicture;
         [[[UIAlertView alloc] initWithTitle:@"EducationStudent" message:@"Picture you have choosen is greater than 400K!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }else {
-        //hide uploadProfileButton
-        self.uploadPhotoButton.hidden = YES;
-        
-        //picProfileImageView Layout
-        self.profilePictureImageView.layer.borderColor = [UIColor whiteColor].CGColor;
-        self.profilePictureImageView.layer.borderWidth = 1.5f;
-        self.profilePictureImageView.layer.cornerRadius = 7.0f;
-        self.profilePictureImageView.layer.masksToBounds = YES;
         self.profilePictureImageView.image = chosenImage;
+        [ManageLayerViewController imageViewLayerProfilePicture:self.profilePictureImageView];
+        [self showChangeProfileButtonHideUploadButton];
     }
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
@@ -232,5 +265,51 @@
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
+
+#pragma mark - UploadButton and ChangeProfileButton behaviour
+
+- (void)showUploadButtonHidechangeProfileButton {
+    self.uploadPhotoButton.hidden           = NO;
+    self.changeProfilePictureButton.hidden  = YES;
+}
+
+- (void)showChangeProfileButtonHideUploadButton {
+    self.uploadPhotoButton.hidden           = YES;
+    self.changeProfilePictureButton.hidden  = NO;
+}
+
+#pragma mark - FlatDatePicker Delegate
+
+- (void)flatDatePicker:(FlatDatePicker*)datePicker dateDidChange:(NSDate*)date {
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setLocale:[NSLocale currentLocale]];
+    [dateFormatter setDateFormat:@"dd MMMM yyyy"];
+    NSString *value = [dateFormatter stringFromDate:date];
+    
+    self.birthDateTextField.text = value;
+}
+
+- (void)flatDatePicker:(FlatDatePicker*)datePicker didCancel:(UIButton*)sender {
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"FlatDatePicker" message:@"Did cancelled !" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    [alertView show];
+}
+
+- (void)flatDatePicker:(FlatDatePicker*)datePicker didValid:(UIButton*)sender date:(NSDate*)date {
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setLocale:[NSLocale currentLocale]];
+    [dateFormatter setDateFormat:@"dd MMMM yyyy"];
+    NSString *value = [dateFormatter stringFromDate:date];
+    
+    self.birthDateTextField.text = value;
+    
+    NSString *message = [NSString stringWithFormat:@"Did valid date : %@", value];
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"FlatDatePicker" message:message delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    [alertView show];
+}
+
 
 @end

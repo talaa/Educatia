@@ -462,7 +462,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yGl-Jp-FcA">
-                                <rect key="frame" x="536" y="198" width="210" height="49"/>
+                                <rect key="frame" x="542" y="231" width="210" height="49"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile Picture" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehu-Tz-Keh">
                                         <rect key="frame" x="4" y="14" width="202" height="21"/>
@@ -501,8 +501,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="calibratedWhite"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image_AddProfilPic" translatesAutoresizingMaskIntoConstraints="NO" id="1SS-EX-sMc">
-                                <rect key="frame" x="536" y="28" width="210" height="157"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1SS-EX-sMc">
+                                <rect key="frame" x="572" y="41" width="150" height="150"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Vc-NQ-oKt">
                                 <rect key="frame" x="10" y="312" width="265" height="49"/>
@@ -510,21 +510,20 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icone_BirthDay" translatesAutoresizingMaskIntoConstraints="NO" id="JGj-2V-XQC">
                                         <rect key="frame" x="8" y="10" width="30" height="30"/>
                                     </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="birth date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fAJ-LF-ORW">
+                                        <rect key="frame" x="46" y="10" width="173" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clp-gD-PU8">
                                         <rect key="frame" x="227" y="10" width="30" height="30"/>
                                         <state key="normal" image="Icon_Calender">
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="birthdateCalenderPressed:" destination="ilD-5H-Ssy" eventType="touchUpInside" id="eo9-6h-Jr8"/>
-                                            <action selector="calendarPressed:" destination="dqN-yE-Uy9" eventType="touchUpInside" id="n4k-7H-F8N"/>
+                                            <action selector="calendarPressed:" destination="dqN-yE-Uy9" eventType="touchUpInside" id="niN-C8-FSR"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="birth date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fAJ-LF-ORW">
-                                        <rect key="frame" x="46" y="10" width="173" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
-                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="calibratedWhite"/>
                             </view>
@@ -551,7 +550,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="295-id-976">
-                                <rect key="frame" x="536" y="160" width="95" height="25"/>
+                                <rect key="frame" x="600" y="195" width="95" height="25"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Upload Photo">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -561,8 +560,11 @@
                                     <action selector="uploadPhotoPressed:" destination="dqN-yE-Uy9" eventType="touchUpInside" id="ju1-ic-muq"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5Kq-tA-9Hi">
+                                <rect key="frame" x="374" y="502" width="37" height="37"/>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXt-8x-yBf">
-                                <rect key="frame" x="536" y="155" width="153" height="30"/>
+                                <rect key="frame" x="571" y="193" width="153" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Change Profile Picture">
@@ -573,9 +575,6 @@
                                     <action selector="changeProfilePicturePressed:" destination="dqN-yE-Uy9" eventType="touchUpInside" id="XWX-PR-ZpD"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5Kq-tA-9Hi">
-                                <rect key="frame" x="374" y="502" width="37" height="37"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -584,7 +583,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="5Kq-tA-9Hi" id="muT-l2-jrG"/>
                         <outlet property="birthDateTextField" destination="fAJ-LF-ORW" id="AOD-73-755"/>
-                        <outlet property="calendarButton" destination="clp-gD-PU8" id="Vzy-NO-eEH"/>
+                        <outlet property="calendarButton" destination="clp-gD-PU8" id="8kp-1m-Dps"/>
                         <outlet property="changeProfilePictureButton" destination="dXt-8x-yBf" id="fii-et-oDW"/>
                         <outlet property="emailTextField" destination="hwh-si-eZM" id="A7g-iO-sJD"/>
                         <outlet property="firstNameTextField" destination="A5x-FW-RyH" id="UJo-Av-jgK"/>
