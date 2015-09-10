@@ -8,7 +8,13 @@
 
 #import "TabBarPagerHolderViewController.h"
 
-@interface TabBarPagerHolderViewController ()<GUITabPagerDataSource, GUITabPagerDelegate>
+@interface TabBarPagerHolderViewController ()
+{
+    NSMutableArray *controllerArray;
+    NSArray *titlesArray;
+    NSArray *viewControllersArray;
+}
+
 
 @end
 
@@ -17,15 +23,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    titlesArray = @[@"Course Materials",@"News",@"Grades",@"Assignements",@"Chat",@"Students"];
+    viewControllersArray = @[@"CourseMaterialsViewController",
+                             @"NewsViewController",
+                             @"GradesViewController",
+                             @"AssignementsViewController",
+                             @"ChatViewController",
+                             @"StudentsViewController"];
     
-    //TabBarPager delgete
-    [self setDataSource:self];
-    [self setDelegate:self];
+    [self showTabsView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,63 +54,53 @@
 */
 
 #pragma mark - Tab Pager Data Source
-
 - (NSInteger)numberOfViewControllers {
-    return 5;
+    return 6;
 }
 
-- (UIViewController *)viewControllerForIndex:(NSInteger)index {
-    UIViewController *vc = [UIViewController new];
-    [[vc view] setBackgroundColor:[UIColor colorWithRed:arc4random_uniform(255) / 255.0f
-                                                  green:arc4random_uniform(255) / 255.0f
-                                                   blue:arc4random_uniform(255) / 255.0f alpha:1]];
-    return vc;
+#pragma mark - PagerMenu
+
+-(void)showTabsView{
+    controllerArray = [NSMutableArray array];
+    for (int i=0 ; i< 6 ; i++){
+        UIViewController *viewController =  [[self storyboard] instantiateViewControllerWithIdentifier:[viewControllersArray objectAtIndex:i]];
+        viewController.title = [titlesArray objectAtIndex:i];
+        [controllerArray addObject:viewController];
+    }
+    
+    NSDictionary *parameters = @{CAPSPageMenuOptionMenuItemSeparatorWidth: @(4.3),
+                                 CAPSPageMenuOptionScrollMenuBackgroundColor: [UIColor clearColor],
+                                 CAPSPageMenuOptionViewBackgroundColor: [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1],
+                                 CAPSPageMenuOptionBottomMenuHairlineColor: [UIColor colorWithRed:20.0/255.0 green:20.0/255.0 blue:20.0/255.0 alpha:1],
+                                 CAPSPageMenuOptionSelectionIndicatorColor:[UIColor colorWithRed:18.0/255.0 green:150.0/255.0 blue:225.0/255.0 alpha:1],
+                                 CAPSPageMenuOptionMenuMargin: @(20.0),
+                                 CAPSPageMenuOptionMenuHeight: @(40.0),
+                                 CAPSPageMenuOptionSelectedMenuItemLabelColor: [UIColor colorWithRed:18.0/255.0 green:150.0/255.0 blue:225.0/255.0 alpha:1],
+                                 CAPSPageMenuOptionUnselectedMenuItemLabelColor: [UIColor colorWithRed:119.0/255.0 green:119.0/255.0 blue:112.0/255.0 alpha:1],
+                                 CAPSPageMenuOptionMenuItemFont: [UIFont fontWithName:@"HelveticaNeue-Medium" size:14],
+                                 CAPSPageMenuOptionMenuItemSeparatorRoundEdges: @(YES),
+                                 CAPSPageMenuOptionCenterMenuItems: @(YES),
+                                 CAPSPageMenuOptionMenuItemSeparatorPercentageHeight: @(0.1)
+                                 };
+    
+    // Initialize page menu with controller array, frame, and optional parameters
+    _pagemenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray frame:CGRectMake(0.0, 60.0, self.view.frame.size.width, self.view.frame.size.height) options:parameters];
+    _pagemenu.delegate = self;
+    
+    [self.view addSubview:_pagemenu.view];
 }
 
-// Implement either viewForTabAtIndex: or titleForTabAtIndex:
-//- (UIView *)viewForTabAtIndex:(NSInteger)index {
-//  return <#UIView#>;
-//}
-
-- (NSString *)titleForTabAtIndex:(NSInteger)index {
-    return [NSString stringWithFormat:@"Tab #%ld", (long) index + 1];
+#pragma mark - PagerMenu delegete
+-(void)willMoveToPage:(UIViewController *)controller index:(NSInteger)index{
+    //NSLog(@" test");
+}
+-(void)didMoveToPage:(UIViewController *)viewController index:(NSInteger)index{
+    //NSLog(@"test 2");
 }
 
-- (CGFloat)tabHeight {
-    // Default: 44.0f
-    return 50.0f;
+//dismiss Button Action
+- (IBAction)dismissPressed:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-- (UIColor *)tabColor {
-    // Default: [UIColor orangeColor];
-    return [UIColor purpleColor];
-}
-
-- (UIColor *)tabBackgroundColor {
-    // Default: [UIColor colorWithWhite:0.95f alpha:1.0f];
-    return [UIColor lightTextColor];
-}
-
-- (UIFont *)titleFont {
-    // Default: [UIFont fontWithName:@"HelveticaNeue-Thin" size:20.0f];
-    return [UIFont fontWithName:@"HelveticaNeue-Bold" size:20.0f];
-}
-
-- (UIColor *)titleColor {
-    // Default: [UIColor blackColor];
-    return [UIColor colorWithRed:1.0f green:0.8f blue:0.0f alpha:1.0f];
-}
-
-#pragma mark - Tab Pager Delegate
-
-- (void)tabPager:(GUITabPagerViewController *)tabPager willTransitionToTabAtIndex:(NSInteger)index {
-    NSLog(@"Will transition from tab %ld to %ld", [self selectedIndex], (long)index);
-}
-
-- (void)tabPager:(GUITabPagerViewController *)tabPager didTransitionToTabAtIndex:(NSInteger)index {
-    NSLog(@"Did transition to tab %ld", (long)index);
-}
-
-
 
 @end

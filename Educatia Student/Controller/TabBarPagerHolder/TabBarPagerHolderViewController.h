@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GUITabPagerViewController.h"
+#import "CAPSPageMenu.h"
 
-@interface TabBarPagerHolderViewController : GUITabPagerViewController
+@interface TabBarPagerHolderViewController : UIViewController <CAPSPageMenuDelegate>
+
+@property (nonatomic) CAPSPageMenu *pagemenu;
+
+- (IBAction)dismissPressed:(id)sender;
 
 @end
