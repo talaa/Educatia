@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ReaderViewController.h"
 
-@interface CourseMaterialsViewController : UIViewController
+@interface CourseMaterialsViewController : UIViewController <ReaderViewControllerDelegate>
 
+- (IBAction)didClickOpenPDF:(id)sender;
 @end

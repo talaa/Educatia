@@ -7,6 +7,7 @@
 //
 
 #import "CourseMaterialsViewController.h"
+#import <Parse/Parse.h>
 
 @interface CourseMaterialsViewController ()
 
@@ -24,6 +25,39 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)didClickOpenPDF:(id)sender{
+    PFQuery *query = [PFQuery queryWithClassName:@"CourseMaterials"];
+    [query getObjectInBackgroundWithId:@"Tx9V8IEbaa" block:^(PFObject *materialFile, NSError *error) {
+        // Do something with the returned PFObject in the materialFile variable.
+        PFFile *pdfFile = materialFile[@"material"];
+        [pdfFile getDataInBackgroundWithBlock:^(NSData *pdfFileData, NSError *error) {
+            if (!error) {
+                
+                NSURL *myURL = [NSURL URLWithString:[pdfFile.url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+                NSString *string = [NSString stringWithContentsOfURL:myURL encoding:NSUTF8StringEncoding error:nil];
+                NSLog(@"UEL %@", pdfFile.url);
+                ReaderDocument *document = [ReaderDocument withDocumentFilePath:myURL password:nil];
+                if (document != nil)
+                {
+                    ReaderViewController *readerViewController = [[ReaderViewController alloc]initWithReaderDocument:document];
+                    readerViewController.delegate = self;
+                        
+                    readerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                    readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;
+                        
+                        //[self presentModalViewController:readerViewController animated:YES ];
+                        [self presentViewController:readerViewController animated:YES completion:nil];
+                    }
+
+            }}];
+        }];
+    
+   // NSString *file = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"pdf"];
+}
+
+- (void)dismissReaderViewController:(ReaderViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 /*
 #pragma mark - Navigation
 

@@ -82,7 +82,6 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
     ForgotPasswordViewController * forgotPasswordVC = [storyboard instantiateViewControllerWithIdentifier:@"ForgotPasswordViewController"];
     [self presentViewController:forgotPasswordVC animated:YES completion:nil];
-
 }
 
 #pragma mark - UIAlertViewDelegete
