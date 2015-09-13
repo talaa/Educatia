@@ -8,6 +8,7 @@
 
 #import "CourseMaterialsViewController.h"
 #import <Parse/Parse.h>
+#import "ThumbnailPDF.h"
 
 @interface CourseMaterialsViewController ()
 
@@ -18,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self loadAndStorePDFFile];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -26,46 +28,68 @@
 }
 
 - (IBAction)didClickOpenPDF:(id)sender{
+    ReaderDocument *document = [ReaderDocument withDocumentFilePath:_filePath password:nil];
+    if (document != nil)
+    {
+        ReaderViewController *readerViewController = [[ReaderViewController alloc]initWithReaderDocument:document];
+        readerViewController.delegate = self;
+        readerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;
+        
+        //[self presentModalViewController:readerViewController animated:YES ];
+        [self presentViewController:readerViewController animated:YES completion:nil];
+    }
+
+    // NSString *file = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"pdf"];
+}
+
+- (void)loadAndStorePDFFile {
+    [self showPlayLoadActivity];
     PFQuery *query = [PFQuery queryWithClassName:@"CourseMaterials"];
     [query getObjectInBackgroundWithId:@"Tx9V8IEbaa" block:^(PFObject *materialFile, NSError *error) {
         // Do something with the returned PFObject in the materialFile variable.
         PFFile *pdfFile = materialFile[@"material"];
         [pdfFile getDataInBackgroundWithBlock:^(NSData *pdfFileData, NSError *error) {
             if (!error) {
+                // Get the PDF Data from the url in a NSData Object
+                pdfFileData = [[NSData alloc] initWithContentsOfURL:[
+                                                                         NSURL URLWithString:pdfFile.url]];
                 
-                NSURL *myURL = [NSURL URLWithString:[pdfFile.url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-                NSString *string = [NSString stringWithContentsOfURL:myURL encoding:NSUTF8StringEncoding error:nil];
-                NSLog(@"UEL %@", pdfFile.url);
-                ReaderDocument *document = [ReaderDocument withDocumentFilePath:myURL password:nil];
-                if (document != nil)
-                {
-                    ReaderViewController *readerViewController = [[ReaderViewController alloc]initWithReaderDocument:document];
-                    readerViewController.delegate = self;
-                        
-                    readerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-                    readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;
-                        
-                        //[self presentModalViewController:readerViewController animated:YES ];
-                        [self presentViewController:readerViewController animated:YES completion:nil];
+                // Store the Data locally as PDF File
+                NSString *resourceDocPath = [[NSString alloc] initWithString:[
+                                                                              [[[NSBundle mainBundle] resourcePath] stringByDeletingLastPathComponent]
+                                                                              stringByAppendingPathComponent:@"Educatia Student.app/"
+                                                                              ]];
+               _filePath = [resourceDocPath
+                                      stringByAppendingPathComponent:@"myPDF.pdf"];
+                [pdfFileData writeToFile:_filePath atomically:YES];
+                
+                ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
+                [thumbPDF startWithCompletionHandler:pdfFileData andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
+                    if (finished) {
+                        _imageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
+                        [self stopHideLoadingActivity];
                     }
-
+                }];
             }}];
-        }];
-    
-   // NSString *file = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"pdf"];
+        [self stopHideLoadingActivity];
+    }];
 }
-
 - (void)dismissReaderViewController:(ReaderViewController *)viewController {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+#pragma mark - loadingPDFActivityIndicator behaviour
+
+- (void)stopHideLoadingActivity {
+    [self.loadingPDfActivityIndicator stopAnimating];
+    self.loadingPDfActivityIndicator.hidden = YES;
 }
-*/
+
+- (void)showPlayLoadActivity {
+    [self.loadingPDfActivityIndicator startAnimating ];
+    self.loadingPDfActivityIndicator.hidden = NO;
+}
 
 @end

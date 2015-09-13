@@ -60,6 +60,7 @@
 		F507E5DA1B9F15C00066283F /* icon_Summary@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5CE1B9F15C00066283F /* icon_Summary@3x.png */; };
 		F507E5DE1B9F19120066283F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F507E5DD1B9F19120066283F /* ProfileViewController.m */; };
 		F507E5E21B9F41100066283F /* TabBarHolderController.m in Sources */ = {isa = PBXBuildFile; fileRef = F507E5E11B9F41100066283F /* TabBarHolderController.m */; };
+		F50D6D4E1BA5B49300BF6309 /* ThumbnailPDF.m in Sources */ = {isa = PBXBuildFile; fileRef = F50D6D4D1BA5B49300BF6309 /* ThumbnailPDF.m */; };
 		F5F9CA1D1BA4434A008E1715 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F9CA1C1BA4434A008E1715 /* ImageIO.framework */; };
 		F5F9CA1F1BA44355008E1715 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F9CA1E1BA44355008E1715 /* MessageUI.framework */; };
 		F5F9CA491BA444EB008E1715 /* CGPDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F9CA221BA444EB008E1715 /* CGPDFDocument.m */; };
@@ -188,6 +189,8 @@
 		F507E5DD1B9F19120066283F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		F507E5E01B9F41100066283F /* TabBarHolderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarHolderController.h; sourceTree = "<group>"; };
 		F507E5E11B9F41100066283F /* TabBarHolderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarHolderController.m; sourceTree = "<group>"; };
+		F50D6D4C1BA5B49300BF6309 /* ThumbnailPDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbnailPDF.h; sourceTree = "<group>"; };
+		F50D6D4D1BA5B49300BF6309 /* ThumbnailPDF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbnailPDF.m; sourceTree = "<group>"; };
 		F5F9CA1C1BA4434A008E1715 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		F5F9CA1E1BA44355008E1715 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		F5F9CA211BA444EB008E1715 /* CGPDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPDFDocument.h; sourceTree = "<group>"; };
@@ -414,6 +417,7 @@
 		04A2AB1C1B9C6CBD009B2C60 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				F50D6D4B1BA5B49300BF6309 /* ThumbnailPDF */,
 				F5F9CA201BA444EB008E1715 /* PDFReader */,
 				F5055CD71BA1C00E00BB6547 /* PagerMenu */,
 				04A2AB1D1B9C6CBD009B2C60 /* FlatDatePicker */,
@@ -606,6 +610,15 @@
 				F507E5E11B9F41100066283F /* TabBarHolderController.m */,
 			);
 			path = TabBarHolder;
+			sourceTree = "<group>";
+		};
+		F50D6D4B1BA5B49300BF6309 /* ThumbnailPDF */ = {
+			isa = PBXGroup;
+			children = (
+				F50D6D4C1BA5B49300BF6309 /* ThumbnailPDF.h */,
+				F50D6D4D1BA5B49300BF6309 /* ThumbnailPDF.m */,
+			);
+			path = ThumbnailPDF;
 			sourceTree = "<group>";
 		};
 		F5F9CA201BA444EB008E1715 /* PDFReader */ = {
@@ -829,6 +842,7 @@
 				F5F9CA4C1BA444EB008E1715 /* ReaderContentTile.m in Sources */,
 				F5F9CA4E1BA444EB008E1715 /* ReaderDocument.m in Sources */,
 				F5F9CA4F1BA444EB008E1715 /* ReaderDocumentOutline.m in Sources */,
+				F50D6D4E1BA5B49300BF6309 /* ThumbnailPDF.m in Sources */,
 				F5F9CA561BA444EB008E1715 /* ReaderThumbRequest.m in Sources */,
 				F5055CF21BA1C3BA00BB6547 /* AssignementsViewController.m in Sources */,
 				F5055CC91BA1B1CA00BB6547 /* SubjectCollectionViewCell.m in Sources */,
