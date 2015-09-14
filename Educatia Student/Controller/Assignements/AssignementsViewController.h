@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AssignementsViewController : UIViewController
+@interface AssignementsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *assingementsTableView;
+
 
 @end

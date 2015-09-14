@@ -61,6 +61,7 @@
 		F507E5DE1B9F19120066283F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F507E5DD1B9F19120066283F /* ProfileViewController.m */; };
 		F507E5E21B9F41100066283F /* TabBarHolderController.m in Sources */ = {isa = PBXBuildFile; fileRef = F507E5E11B9F41100066283F /* TabBarHolderController.m */; };
 		F50D6D4E1BA5B49300BF6309 /* ThumbnailPDF.m in Sources */ = {isa = PBXBuildFile; fileRef = F50D6D4D1BA5B49300BF6309 /* ThumbnailPDF.m */; };
+		F50F7DF81BA6EB9400D06D30 /* AssignementTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F50F7DF71BA6EB9400D06D30 /* AssignementTableViewCell.m */; };
 		F5F9CA1D1BA4434A008E1715 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F9CA1C1BA4434A008E1715 /* ImageIO.framework */; };
 		F5F9CA1F1BA44355008E1715 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F9CA1E1BA44355008E1715 /* MessageUI.framework */; };
 		F5F9CA491BA444EB008E1715 /* CGPDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F9CA221BA444EB008E1715 /* CGPDFDocument.m */; };
@@ -191,6 +192,8 @@
 		F507E5E11B9F41100066283F /* TabBarHolderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarHolderController.m; sourceTree = "<group>"; };
 		F50D6D4C1BA5B49300BF6309 /* ThumbnailPDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbnailPDF.h; sourceTree = "<group>"; };
 		F50D6D4D1BA5B49300BF6309 /* ThumbnailPDF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbnailPDF.m; sourceTree = "<group>"; };
+		F50F7DF61BA6EB9400D06D30 /* AssignementTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignementTableViewCell.h; sourceTree = "<group>"; };
+		F50F7DF71BA6EB9400D06D30 /* AssignementTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignementTableViewCell.m; sourceTree = "<group>"; };
 		F5F9CA1C1BA4434A008E1715 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		F5F9CA1E1BA44355008E1715 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		F5F9CA211BA444EB008E1715 /* CGPDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPDFDocument.h; sourceTree = "<group>"; };
@@ -545,6 +548,8 @@
 			children = (
 				F5055CF01BA1C3BA00BB6547 /* AssignementsViewController.h */,
 				F5055CF11BA1C3BA00BB6547 /* AssignementsViewController.m */,
+				F50F7DF61BA6EB9400D06D30 /* AssignementTableViewCell.h */,
+				F50F7DF71BA6EB9400D06D30 /* AssignementTableViewCell.m */,
 			);
 			path = Assignements;
 			sourceTree = "<group>";
@@ -755,6 +760,11 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				es,
+				fr,
+				it,
+				"zh-Hans",
 			);
 			mainGroup = 69FE089E1B84E51500C81ABC;
 			productRefGroup = 69FE08A81B84E51500C81ABC /* Products */;
@@ -840,6 +850,7 @@
 				F5F9CA521BA444EB008E1715 /* ReaderThumbCache.m in Sources */,
 				F5055CDA1BA1C00E00BB6547 /* CAPSPageMenu.m in Sources */,
 				F5F9CA4C1BA444EB008E1715 /* ReaderContentTile.m in Sources */,
+				F50F7DF81BA6EB9400D06D30 /* AssignementTableViewCell.m in Sources */,
 				F5F9CA4E1BA444EB008E1715 /* ReaderDocument.m in Sources */,
 				F5F9CA4F1BA444EB008E1715 /* ReaderDocumentOutline.m in Sources */,
 				F50D6D4E1BA5B49300BF6309 /* ThumbnailPDF.m in Sources */,
@@ -976,12 +987,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/**",
+					"$(PROJECT_DIR)/Educatia",
+					"Student/Resources/SDK/LayerSDK-8_4",
+					"$(PROJECT_DIR)/Educatia",
+					Student/Resources/SDK/C2CallSDK,
+				);
 				INFOPLIST_FILE = "Educatia Student/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
+					"$(PROJECT_DIR)/Educatia",
+					"Student/Resources/SDK/LayerSDK-8_4/Libraries",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
@@ -993,12 +1012,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/**",
+					"$(PROJECT_DIR)/Educatia",
+					"Student/Resources/SDK/LayerSDK-8_4",
+					"$(PROJECT_DIR)/Educatia",
+					Student/Resources/SDK/C2CallSDK,
+				);
 				INFOPLIST_FILE = "Educatia Student/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
+					"$(PROJECT_DIR)/Educatia",
+					"Student/Resources/SDK/LayerSDK-8_4/Libraries",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
