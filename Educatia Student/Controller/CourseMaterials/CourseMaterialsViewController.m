@@ -9,6 +9,7 @@
 #import "CourseMaterialsViewController.h"
 #import <Parse/Parse.h>
 #import "ThumbnailPDF.h"
+#import "TabBarPagerHolderViewController.h"
 
 @interface CourseMaterialsViewController ()
 
@@ -20,6 +21,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self loadAndStorePDFFile];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,9 +42,10 @@
         readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;
         
         //[self presentModalViewController:readerViewController animated:YES ];
+        
         [self presentViewController:readerViewController animated:YES completion:nil];
     }
-
+    
     // NSString *file = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"pdf"];
 }
 
@@ -53,15 +59,15 @@
             if (!error) {
                 // Get the PDF Data from the url in a NSData Object
                 pdfFileData = [[NSData alloc] initWithContentsOfURL:[
-                                                                         NSURL URLWithString:pdfFile.url]];
+                                                                     NSURL URLWithString:pdfFile.url]];
                 
                 // Store the Data locally as PDF File
                 NSString *resourceDocPath = [[NSString alloc] initWithString:[
                                                                               [[[NSBundle mainBundle] resourcePath] stringByDeletingLastPathComponent]
                                                                               stringByAppendingPathComponent:@"Educatia Student.app/"
                                                                               ]];
-               _filePath = [resourceDocPath
-                                      stringByAppendingPathComponent:@"myPDF.pdf"];
+                _filePath = [resourceDocPath
+                             stringByAppendingPathComponent:@"myPDF.pdf"];
                 [pdfFileData writeToFile:_filePath atomically:YES];
                 
                 ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
@@ -72,11 +78,10 @@
                     }
                 }];
             }}];
-        [self stopHideLoadingActivity];
     }];
 }
 - (void)dismissReaderViewController:(ReaderViewController *)viewController {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 

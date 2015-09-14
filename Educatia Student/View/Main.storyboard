@@ -837,7 +837,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="yN7-Xb-IrK" kind="modal" identifier="SubjectSegue" id="cPe-bN-br4"/>
+                                    <segue destination="BC3-uj-f0a" kind="modal" identifier="SubjectSegue" id="tbF-tV-E4p"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -853,10 +853,33 @@
             </objects>
             <point key="canvasLocation" x="-330" y="1976"/>
         </scene>
-        <!--Tab Bar Pager Holder View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="wOo-JG-gCG">
+            <objects>
+                <navigationController id="BC3-uj-f0a" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="LTi-8J-K0x"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qGT-bi-JI4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="yN7-Xb-IrK" kind="relationship" relationship="rootViewController" id="Gox-wE-6Zy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RcN-vI-Sbh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="608" y="1976"/>
+        </scene>
+        <!--Math-->
         <scene sceneID="E1A-T3-9eO">
             <objects>
-                <viewController id="yN7-Xb-IrK" customClass="TabBarPagerHolderViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TabBarPagerHolderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yN7-Xb-IrK" customClass="TabBarPagerHolderViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dic-gd-bBE"/>
                         <viewControllerLayoutGuide type="bottom" id="Lw7-jN-ppf"/>
@@ -870,19 +893,22 @@
                                 <state key="normal" title="Diss" image="Icon_Cancel_Black">
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="dismissPressed:" destination="yN7-Xb-IrK" eventType="touchUpInside" id="R6I-6x-Mfp"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="2AU-tJ-wPV"/>
+                    <navigationItem key="navigationItem" title="Math" id="2AU-tJ-wPV">
+                        <barButtonItem key="leftBarButtonItem" image="Icon_Cancel" id="sjE-ce-WFE">
+                            <connections>
+                                <action selector="dismissPressed:" destination="yN7-Xb-IrK" id="QB7-Bk-Bj8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0HE-g7-HwE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="691" y="1976"/>
+            <point key="canvasLocation" x="1833" y="1976"/>
         </scene>
         <!--Students View Controller-->
         <scene sceneID="jCZ-pm-dNh">
@@ -909,7 +935,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e01-Fd-ry8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1530" y="1976"/>
+            <point key="canvasLocation" x="-1218" y="3332"/>
         </scene>
         <!--Course Materials View Controller-->
         <scene sceneID="BVB-EQ-j5b">

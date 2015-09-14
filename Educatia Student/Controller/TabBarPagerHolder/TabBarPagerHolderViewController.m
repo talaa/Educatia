@@ -100,7 +100,7 @@
 
 //dismiss Button Action
 - (IBAction)dismissPressed:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
