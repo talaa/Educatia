@@ -66,7 +66,7 @@
     self.lastNameTextField.text = user[@"LastName"];
     self.phoneTextField.text = user[@"Phone"];
     self.birthDateTextField.text = user[@"DateofBirth"];
-    NSLog(@"Birth is %@", user[@"DateofBirth"]);
+    //NSLog(@"Birth is %@", user[@"DateofBirth"]);
     
     //ProfilePicture Layer
     [ManageLayerViewController imageViewLayerProfilePicture:self.profilePictureImageView];
@@ -141,7 +141,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     //RequestEditingProfileActionSheet
     if (actionSheet.tag == 200) {
-        NSLog(@"Button Index %ld", (long)buttonIndex);
+        //NSLog(@"Button Index %ld", (long)buttonIndex);
         if (buttonIndex == 0){ //press OK button
             [self showAndPlayActivity];
             [user setObject:self.firstNameTextField.text forKey:@"FirstName"];

@@ -5,7 +5,8 @@
 //  Created by Mena Bebawy on 9/10/15.
 //  Copyright (c) 2015 Bluewave Solutions. All rights reserved.
 //
-
+#import "RNActivityView.h"
+#import "UIView+RNActivityView.h"
 #import "AssignementsViewController.h"
 #import "AssignementTableViewCell.h"
 #import <Parse/Parse.h>
@@ -27,6 +28,11 @@ typedef void (^CompletionHandler)(BOOL);
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //Loading Activity
+    [self.view showActivityViewWithLabel:@"Loading Assignments"];
+    [self myProgressTask];
+    
     [self loadAssignementObjects];
 }
 
@@ -39,40 +45,52 @@ typedef void (^CompletionHandler)(BOOL);
 }
 
 - (void)loadAssignementObjects {
-    //[self showPlayLoadActivity];
     PFQuery *query = [PFQuery queryWithClassName:@"Assignement"];
     [query whereKey:@"Subject" equalTo:@"Math"];
-    NSArray *objects = [query findObjects];
-    _teacherMArray          = [[NSMutableArray alloc] init];
-    _maxScoreMArray         = [[NSMutableArray alloc] init];
-    _deadLineMArray         = [[NSMutableArray alloc] init];
-    _pdfPathMArray          = [[NSMutableArray alloc] init];
-    _pdfFileDataMArray      = [[NSMutableArray alloc] init];
-    
-    // The find succeeded.
-    NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
-    // Do something with the found objects
-    for (PFObject *object in objects) {
-        [self.teacherMArray addObject:object[@"Teacher"]];
-        [self.maxScoreMArray addObject:[NSString stringWithFormat:@"%@",object[@"MaximumScore"]]];
-        //convert date to string
-        NSString *deadLineString = [self convertDateToString:object[@"Dead_line_date"]];
-        [self.deadLineMArray addObject:deadLineString];
-        //get pdf file
-        PFFile *pdfFile = object[@"File"];
-        NSData *pdfData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:pdfFile.url]];
-        //Ad to MData
-        [_pdfFileDataMArray addObject:pdfData];
-        // Store the Data locally as PDF File
-        NSString *resourceDocPath = [[NSString alloc] initWithString:[
-                                                                      [[[NSBundle mainBundle] resourcePath] stringByDeletingLastPathComponent]
-                                                                      stringByAppendingPathComponent:@"Educatia Student.app/"
-                                                                      ]];
-        NSString *fileName = [object.objectId stringByAppendingString:@".pdf"];
-        NSString *filePath = [resourceDocPath stringByAppendingPathComponent:fileName];
-        [pdfData writeToFile:filePath atomically:YES];
-        [_pdfPathMArray addObject:filePath];
-    }
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            //init NSMutableArray
+            _teacherMArray          = [[NSMutableArray alloc] init];
+            _maxScoreMArray         = [[NSMutableArray alloc] init];
+            _deadLineMArray         = [[NSMutableArray alloc] init];
+            _pdfPathMArray          = [[NSMutableArray alloc] init];
+            _pdfFileDataMArray      = [[NSMutableArray alloc] init];
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
+            // Do something with the found objects
+            for (PFObject *object in objects) {
+                NSLog(@"%@", object.objectId);
+                [self.teacherMArray addObject:object[@"Teacher"]];
+                [self.maxScoreMArray addObject:[NSString stringWithFormat:@"%@",object[@"MaximumScore"]]];
+                //convert date to string
+                NSString *deadLineString = [self convertDateToString:object[@"Dead_line_date"]];
+                [self.deadLineMArray addObject:deadLineString];
+                //get pdf file
+                PFFile *pdfFile = object[@"File"];
+                NSData *pdfData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:pdfFile.url]];
+                //Ad to MData
+                [_pdfFileDataMArray addObject:pdfData];
+                // Store the Data locally as PDF File
+                NSString *resourceDocPath = [[NSString alloc] initWithString:[
+                                                                              [[[NSBundle mainBundle] resourcePath] stringByDeletingLastPathComponent]
+                                                                              stringByAppendingPathComponent:@"Educatia Student.app/"
+                                                                              ]];
+                NSString *fileName = [object.objectId stringByAppendingString:@".pdf"];
+                NSString *filePath = [resourceDocPath stringByAppendingPathComponent:fileName];
+                [pdfData writeToFile:filePath atomically:YES];
+                [_pdfPathMArray addObject:filePath];
+                
+                //Reload Table View
+                [self.assingementsTableView reloadData];
+                
+                //Hide Loading activity
+                [self.view hideActivityView];
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 #pragma mark - Table view data source
@@ -108,7 +126,6 @@ typedef void (^CompletionHandler)(BOOL);
             cell.assignementImageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
         }
     }];
-    
     return cell;
 }
 
@@ -139,6 +156,16 @@ typedef void (^CompletionHandler)(BOOL);
 
 - (void)dismissReaderViewController:(ReaderViewController *)viewController {
     [self dismissViewControllerAnimated:NO completion:nil];
+}
+
+- (void)myProgressTask {
+    // This just increases the progress indicator in a loop
+    float progress = 0.0f;
+    while (progress < 1.0f) {
+        progress += 0.01f;
+        self.navigationController.view.rn_activityView.progress = progress;
+        //usleep(50000);
+    }
 }
 
 /*
@@ -176,7 +203,7 @@ typedef void (^CompletionHandler)(BOOL);
  */
 
 
- #pragma mark - Navigation
+// #pragma mark - Navigation
  /*
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

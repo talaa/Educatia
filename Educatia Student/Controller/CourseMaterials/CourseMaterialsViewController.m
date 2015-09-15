@@ -25,7 +25,6 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    NSLog(@"Ay 7aga");
 }
 
 - (void)didReceiveMemoryWarning {
