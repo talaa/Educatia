@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ReaderViewController.h"
+typedef void (^CompletionHandler)(BOOL);
 
 @interface AssignementsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

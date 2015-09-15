@@ -640,7 +640,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="BC3-uj-f0a" kind="modal" identifier="SubjectSegue" id="tbF-tV-E4p"/>
+                                    <segue destination="3UN-2n-iXH" kind="modal" id="6lO-Zl-pjn"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -657,12 +657,11 @@
             <point key="canvasLocation" x="-330" y="1976"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="wOo-JG-gCG">
+        <scene sceneID="cHh-JN-Y1W">
             <objects>
-                <navigationController id="BC3-uj-f0a" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="LTi-8J-K0x"/>
+                <navigationController id="3UN-2n-iXH" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qGT-bi-JI4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xNO-0h-orh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -672,12 +671,12 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="yN7-Xb-IrK" kind="relationship" relationship="rootViewController" id="Gox-wE-6Zy"/>
+                        <segue destination="yN7-Xb-IrK" kind="relationship" relationship="rootViewController" id="2CH-a8-Jak"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RcN-vI-Sbh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y6T-j7-BYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="608" y="1976"/>
+            <point key="canvasLocation" x="592" y="1976"/>
         </scene>
         <!--Math-->
         <scene sceneID="E1A-T3-9eO">
@@ -701,9 +700,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Math" id="2AU-tJ-wPV">
-                        <barButtonItem key="leftBarButtonItem" image="Icon_Cancel" id="sjE-ce-WFE">
+                        <barButtonItem key="leftBarButtonItem" image="Icon_Cancel" id="u4g-Z1-SPv">
                             <connections>
-                                <action selector="dismissPressed:" destination="yN7-Xb-IrK" id="QB7-Bk-Bj8"/>
+                                <action selector="dismissPressed:" destination="yN7-Xb-IrK" id="vIi-y1-pW9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -711,7 +710,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0HE-g7-HwE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1833" y="1976"/>
+            <point key="canvasLocation" x="1499" y="1976"/>
         </scene>
         <!--Students View Controller-->
         <scene sceneID="jCZ-pm-dNh">
@@ -779,7 +778,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nRF-Ot-gDU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1833" y="3259"/>
+            <point key="canvasLocation" x="2457" y="1976"/>
         </scene>
         <!--News View Controller-->
         <scene sceneID="FXb-wM-yig">
@@ -806,7 +805,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i0w-LQ-IYB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2720" y="3259"/>
+            <point key="canvasLocation" x="3494" y="1969"/>
         </scene>
         <!--Grades View Controller-->
         <scene sceneID="pFe-EQ-Stf">
@@ -833,7 +832,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M3F-C2-Ubb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3605" y="3259"/>
+            <point key="canvasLocation" x="4379" y="1969"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="3WJ-on-bCk">
@@ -860,7 +859,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wHU-F9-hZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5520" y="3259"/>
+            <point key="canvasLocation" x="6294" y="1969"/>
         </scene>
         <!--Assignements View Controller-->
         <scene sceneID="CHm-jp-rwK">
@@ -966,7 +965,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hEZ-iR-L4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4524" y="3259"/>
+            <point key="canvasLocation" x="5298" y="1969"/>
         </scene>
     </scenes>
     <resources>

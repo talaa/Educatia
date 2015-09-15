@@ -10,12 +10,16 @@
 #import "AssignementTableViewCell.h"
 #import <Parse/Parse.h>
 #import "ManageLayerViewController.h"
+#import "ThumbnailPDF.h"
+#import "ReaderViewController.h"
+typedef void (^CompletionHandler)(BOOL);
 
-@interface AssignementsViewController ()
+@interface AssignementsViewController () <ReaderViewControllerDelegate>
 @property (strong, nonatomic) NSMutableArray *teacherMArray;
 @property (strong, nonatomic) NSMutableArray *maxScoreMArray;
 @property (strong, nonatomic) NSMutableArray *deadLineMArray;
 @property (strong, nonatomic) NSMutableArray *pdfPathMArray;
+@property (strong, nonatomic) NSMutableArray *pdfFileDataMArray;
 @end
 
 @implementation AssignementsViewController
@@ -39,10 +43,11 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Assignement"];
     [query whereKey:@"Subject" equalTo:@"Math"];
     NSArray *objects = [query findObjects];
-    _teacherMArray  = [[NSMutableArray alloc] init];
-    _maxScoreMArray = [[NSMutableArray alloc] init];
-    _deadLineMArray = [[NSMutableArray alloc] init];
-    _pdfPathMArray  = [[NSMutableArray alloc] init];
+    _teacherMArray          = [[NSMutableArray alloc] init];
+    _maxScoreMArray         = [[NSMutableArray alloc] init];
+    _deadLineMArray         = [[NSMutableArray alloc] init];
+    _pdfPathMArray          = [[NSMutableArray alloc] init];
+    _pdfFileDataMArray      = [[NSMutableArray alloc] init];
     
     // The find succeeded.
     NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
@@ -56,6 +61,8 @@
         //get pdf file
         PFFile *pdfFile = object[@"File"];
         NSData *pdfData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:pdfFile.url]];
+        //Ad to MData
+        [_pdfFileDataMArray addObject:pdfData];
         // Store the Data locally as PDF File
         NSString *resourceDocPath = [[NSString alloc] initWithString:[
                                                                       [[[NSBundle mainBundle] resourcePath] stringByDeletingLastPathComponent]
@@ -67,39 +74,6 @@
         [_pdfPathMArray addObject:filePath];
     }
 }
-
-
-//PFQuery *query = [PFQuery queryWithClassName:@"Assignement"];
-/*
- [query getObjectInBackgroundWithId:@"Tx9V8IEbaa" block:^(PFObject *materialFile, NSError *error) {
- // Do something with the returned PFObject in the materialFile variable.
- PFFile *pdfFile = materialFile[@"material"];
- [pdfFile getDataInBackgroundWithBlock:^(NSData *pdfFileData, NSError *error) {
- if (!error) {
- // Get the PDF Data from the url in a NSData Object
- pdfFileData = [[NSData alloc] initWithContentsOfURL:[
- NSURL URLWithString:pdfFile.url]];
- 
- // Store the Data locally as PDF File
- NSString *resourceDocPath = [[NSString alloc] initWithString:[
- [[[NSBundle mainBundle] resourcePath] stringByDeletingLastPathComponent]
- stringByAppendingPathComponent:@"Educatia Student.app/"
- ]];
- _filePath = [resourceDocPath
- stringByAppendingPathComponent:@"myPDF.pdf"];
- [pdfFileData writeToFile:_filePath atomically:YES];
- 
- ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
- [thumbPDF startWithCompletionHandler:pdfFileData andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
- if (finished) {
- _imageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
- [self stopHideLoadingActivity];
- }
- }];
- }}];
- }];
- */
-
 
 #pragma mark - Table view data source
 
@@ -126,6 +100,15 @@
     cell.maxScoreLabel.text     = [self.maxScoreMArray objectAtIndex:indexPath.row];
     cell.deadLineLabel.text     = [self.deadLineMArray objectAtIndex:indexPath.row];
     
+    //Thumbnail
+    ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
+    [thumbPDF startWithCompletionHandler:[_pdfFileDataMArray objectAtIndex:indexPath.row] andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
+        if (finished) {
+            [ManageLayerViewController imageViewCellAssignment:cell.assignementImageView];
+            cell.assignementImageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
+        }
+    }];
+    
     return cell;
 }
 
@@ -135,6 +118,27 @@
     NSString *dateString = [dateFormatter stringFromDate:date];
     NSLog(@"The Date: %@", dateString);
     return dateString;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ReaderDocument *document = [ReaderDocument withDocumentFilePath:[_pdfPathMArray objectAtIndex:indexPath.row] password:nil];
+    if (document != nil)
+    {
+        ReaderViewController *readerViewController = [[ReaderViewController alloc]initWithReaderDocument:document];
+        readerViewController.delegate = self;
+        readerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        readerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        
+        //[self presentModalViewController:readerViewController animated:YES ];
+        [self presentViewController:readerViewController animated:YES completion:nil];
+    }
+}
+
+#pragma mark - ReaderDocumentDelegete
+
+- (void)dismissReaderViewController:(ReaderViewController *)viewController {
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 /*
@@ -171,25 +175,14 @@
  }
  */
 
-/*
+
  #pragma mark - Navigation
- 
+ /*
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
- }
- */
-
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+}
+*/
 
 @end

@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "ThumbnailPDF.h"
 #import "TabBarPagerHolderViewController.h"
+#import "ManageLayerViewController.h"
 
 @interface CourseMaterialsViewController ()
 
@@ -24,7 +25,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    
+    NSLog(@"Ay 7aga");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,10 +40,11 @@
         ReaderViewController *readerViewController = [[ReaderViewController alloc]initWithReaderDocument:document];
         readerViewController.delegate = self;
         readerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;
+        readerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
         
         //[self presentModalViewController:readerViewController animated:YES ];
-        
+        //[self.navigationController presentViewController:readerViewController animated:YES completion:nil];
+        //[self.view.window.rootViewController presentViewController:readerViewController animated:YES completion:nil];
         [self presentViewController:readerViewController animated:YES completion:nil];
     }
     
@@ -73,6 +75,7 @@
                 ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
                 [thumbPDF startWithCompletionHandler:pdfFileData andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
                     if (finished) {
+                        [ManageLayerViewController imageViewCellAssignment:_imageView];
                         _imageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
                         [self stopHideLoadingActivity];
                     }
@@ -81,7 +84,7 @@
     }];
 }
 - (void)dismissReaderViewController:(ReaderViewController *)viewController {
-    [self dismissViewControllerAnimated:NO completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
