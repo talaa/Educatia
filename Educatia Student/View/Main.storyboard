@@ -903,6 +903,33 @@
             </objects>
             <point key="canvasLocation" x="6294" y="1969"/>
         </scene>
+        <!--Chat Table View Controller-->
+        <scene sceneID="KyB-z8-uck">
+            <objects>
+                <tableViewController id="Vw7-0w-Vai" customClass="ChatTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="jVJ-aK-erh">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bLD-7q-1Gs">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bLD-7q-1Gs" id="xL9-71-AFe">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Vw7-0w-Vai" id="VfB-vm-4eR"/>
+                            <outlet property="delegate" destination="Vw7-0w-Vai" id="lTw-oJ-fr7"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gVZ-Bh-Og6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6294" y="3116"/>
+        </scene>
         <!--Assignements View Controller-->
         <scene sceneID="CHm-jp-rwK">
             <objects>

@@ -7,6 +7,7 @@
 //
 
 #import "ChatViewController.h"
+#import "ChatTableViewController.h"
 
 @interface ChatViewController () <UIScrollViewDelegate, UITextFieldDelegate>
 
@@ -17,20 +18,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    // For dismissing keyboard
+    
+    // For dismissing keyboard  /////////////////////////
     [self.view addGestureRecognizer:
      [[UITapGestureRecognizer alloc] initWithTarget:self
                                              action:@selector(hideKeyboard:)]];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
                                                  name:UIKeyboardWillShowNotification
                                                object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillBeHidden:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    /////////////////////////////////////////////////
+    ChatTableViewController *chatTVC = [[ChatTableViewController alloc] init];
+    [self addChildViewController:chatTVC];
+    [self.view addSubview:chatTVC.view];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
