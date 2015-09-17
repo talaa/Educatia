@@ -10,4 +10,9 @@
 
 @interface ChatViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *textPostTextField;
+@property (weak, nonatomic) IBOutlet UIView *writeTextAndPostView;
+
+- (IBAction)postPressed:(id)sender;
+
 @end

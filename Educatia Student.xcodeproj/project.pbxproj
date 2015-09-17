@@ -64,6 +64,8 @@
 		F50F7DF81BA6EB9400D06D30 /* AssignementTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F50F7DF71BA6EB9400D06D30 /* AssignementTableViewCell.m */; };
 		F512D7011BA83FE500F3E252 /* RNActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = F512D6FE1BA83FE500F3E252 /* RNActivityView.m */; };
 		F512D7021BA83FE500F3E252 /* UIView+RNActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = F512D7001BA83FE500F3E252 /* UIView+RNActivityView.m */; };
+		F51746B11BAAE940003B026A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51746B01BAAE940003B026A /* MobileCoreServices.framework */; };
+		F51746B61BAAEF29003B026A /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51746B51BAAEF28003B026A /* ParseUI.framework */; };
 		F5F9CA1D1BA4434A008E1715 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F9CA1C1BA4434A008E1715 /* ImageIO.framework */; };
 		F5F9CA1F1BA44355008E1715 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F9CA1E1BA44355008E1715 /* MessageUI.framework */; };
 		F5F9CA491BA444EB008E1715 /* CGPDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F9CA221BA444EB008E1715 /* CGPDFDocument.m */; };
@@ -200,6 +202,10 @@
 		F512D6FE1BA83FE500F3E252 /* RNActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNActivityView.m; sourceTree = "<group>"; };
 		F512D6FF1BA83FE500F3E252 /* UIView+RNActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RNActivityView.h"; sourceTree = "<group>"; };
 		F512D7001BA83FE500F3E252 /* UIView+RNActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RNActivityView.m"; sourceTree = "<group>"; };
+		F517469E1BAAAFC7003B026A /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		F51746A01BAAAFCF003B026A /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		F51746B01BAAE940003B026A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		F51746B51BAAEF28003B026A /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		F5F9CA1C1BA4434A008E1715 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		F5F9CA1E1BA44355008E1715 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		F5F9CA211BA444EB008E1715 /* CGPDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPDFDocument.h; sourceTree = "<group>"; };
@@ -266,18 +272,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F51746B11BAAE940003B026A /* MobileCoreServices.framework in Frameworks */,
+				693E692E1B876C4500009A84 /* SystemConfiguration.framework in Frameworks */,
+				693E69321B876C5C00009A84 /* Security.framework in Frameworks */,
+				693E69261B876C0C00009A84 /* CFNetwork.framework in Frameworks */,
 				F5F9CA1F1BA44355008E1715 /* MessageUI.framework in Frameworks */,
 				F5F9CA1D1BA4434A008E1715 /* ImageIO.framework in Frameworks */,
+				F51746B61BAAEF29003B026A /* ParseUI.framework in Frameworks */,
 				693E692C1B876C2900009A84 /* QuartzCore.framework in Frameworks */,
 				693E69381B876C8B00009A84 /* libsqlite3.dylib in Frameworks */,
 				693E69361B876C7800009A84 /* libz.dylib in Frameworks */,
-				693E69321B876C5C00009A84 /* Security.framework in Frameworks */,
 				693E69301B876C4D00009A84 /* StoreKit.framework in Frameworks */,
-				693E692E1B876C4500009A84 /* SystemConfiguration.framework in Frameworks */,
 				693E692A1B876C2900009A84 /* CoreGraphics.framework in Frameworks */,
 				693E692B1B876C2900009A84 /* CoreLocation.framework in Frameworks */,
 				044F39ED1B99F270006457BA /* Bolts.framework in Frameworks */,
-				693E69261B876C0C00009A84 /* CFNetwork.framework in Frameworks */,
 				044F39EE1B99F270006457BA /* Parse.framework in Frameworks */,
 				693E69241B876C0000009A84 /* AudioToolbox.framework in Frameworks */,
 			);
@@ -304,6 +312,7 @@
 		044F39EA1B99F270006457BA /* parseSDK */ = {
 			isa = PBXGroup;
 			children = (
+				F51746B51BAAEF28003B026A /* ParseUI.framework */,
 				044F39EB1B99F270006457BA /* Bolts.framework */,
 				044F39EC1B99F270006457BA /* Parse.framework */,
 			);
@@ -447,6 +456,9 @@
 		693E69391B876CA600009A84 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F51746B01BAAE940003B026A /* MobileCoreServices.framework */,
+				F51746A01BAAAFCF003B026A /* libc++.dylib */,
+				F517469E1BAAAFC7003B026A /* libicucore.dylib */,
 				F5F9CA1E1BA44355008E1715 /* MessageUI.framework */,
 				F5F9CA1C1BA4434A008E1715 /* ImageIO.framework */,
 				693E69371B876C8B00009A84 /* libsqlite3.dylib */,
@@ -1013,6 +1025,10 @@
 					"Student/Resources/SDK/LayerSDK-8_4",
 					"$(PROJECT_DIR)/Educatia",
 					Student/Resources/SDK/C2CallSDK,
+					"$(PROJECT_DIR)/Educatia",
+					Student/Resources/SDK/FirebaseSDK,
+					"$(PROJECT_DIR)/Educatia",
+					Student/Resources/SDK/parseSDK,
 				);
 				INFOPLIST_FILE = "Educatia Student/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1038,6 +1054,10 @@
 					"Student/Resources/SDK/LayerSDK-8_4",
 					"$(PROJECT_DIR)/Educatia",
 					Student/Resources/SDK/C2CallSDK,
+					"$(PROJECT_DIR)/Educatia",
+					Student/Resources/SDK/FirebaseSDK,
+					"$(PROJECT_DIR)/Educatia",
+					Student/Resources/SDK/parseSDK,
 				);
 				INFOPLIST_FILE = "Educatia Student/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

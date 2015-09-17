@@ -8,7 +8,7 @@
 
 #import "ChatViewController.h"
 
-@interface ChatViewController ()
+@interface ChatViewController () <UIScrollViewDelegate, UITextFieldDelegate>
 
 @end
 
@@ -17,6 +17,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    // For dismissing keyboard
+    [self.view addGestureRecognizer:
+     [[UITapGestureRecognizer alloc] initWithTarget:self
+                                             action:@selector(hideKeyboard:)]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,6 +41,63 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)postPressed:(id)sender {
+}
+
+#pragma mark -
+#pragma mark Keyboard
+
+- (IBAction)hideKeyboard:(id)sender {
+    [self.view endEditing:YES];
+}
+
+- (void)keyboardWillShow:(NSNotification*)notification
+{
+    [self moveControls:notification up:YES];
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)notification
+{
+    [self moveControls:notification up:NO];
+}
+
+- (void)moveControls:(NSNotification*)notification up:(BOOL)up
+{
+    NSDictionary* userInfo = [notification userInfo];
+    CGRect newFrame = [self getNewControlsFrame:userInfo up:up];
+    
+    [self animateControls:userInfo withFrame:newFrame];
+}
+
+- (CGRect)getNewControlsFrame:(NSDictionary*)userInfo up:(BOOL)up
+{
+    CGRect kbFrame = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    kbFrame = [self.view convertRect:kbFrame fromView:nil];
+    
+    CGRect newFrame = self.view.frame;
+    newFrame.origin.y += kbFrame.size.height * (up ? -1 : 1);
+    
+    return newFrame;
+}
+
+- (void)animateControls:(NSDictionary*)userInfo withFrame:(CGRect)newFrame
+{
+    NSTimeInterval duration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    UIViewAnimationCurve animationCurve = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    
+    [UIView animateWithDuration:duration
+                          delay:0
+                        options:animationOptionsWithCurve(animationCurve)
+                     animations:^{
+                         self.view.frame = newFrame;
+                     }
+                     completion:^(BOOL finished){}];
+}
+
+static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCurve curve)
+{
+    return (UIViewAnimationOptions)curve << 16;
+}
 /*
 #pragma mark - Navigation
 

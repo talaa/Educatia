@@ -27,12 +27,17 @@
     [Parse setApplicationId:@"QwpOpbUbYHM0QWVUZtckgf7cffElebexiimTCLCV"
                   clientKey:@"PV1x5enMX9B6QlPHX7sn2AjED18XfTSMPZGBzgdp"];
     
-    // [Optional] Track statistics around application opens.
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    
     //check if user had logged in on previous //////////////////////////////////////
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    if([PFUser currentUser]){
+    PFUser *user = [PFUser currentUser];
+    if(user){
+        //Chatting
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if (![defaults stringForKey:@"chatName"]) {
+            // first time it's run, create a userDefault
+            [defaults setObject:user.username forKey:@"chatName"];
+            [defaults synchronize];
+        }
         self.tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarHolderController"];
         [self.window setRootViewController:self.tabBarController];
     }else {
@@ -41,7 +46,11 @@
         [self.window setRootViewController:LoginViewController];
     }
     ////////////////////////////////////////////////
+    
+    
 
+    // [Optional] Track statistics around application opens.
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     return YES;
 }
