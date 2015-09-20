@@ -25,8 +25,8 @@
     if (self) { // This table displays items in the Todo class
         self.parseClassName = @"Posts";
         self.pullToRefreshEnabled = YES;
-        self.paginationEnabled = YES;
-        self.objectsPerPage = 25;
+        self.paginationEnabled = NO;
+        //self.objectsPerPage = 25;
     }
     return self;
 }
@@ -70,8 +70,10 @@
     self.view.layer.backgroundColor      = [UIColor clearColor].CGColor;
     self.tableView.layer.backgroundColor = [UIColor clearColor].CGColor;
     self.tableView.separatorColor        = [UIColor clearColor];
+    [self loadObjects];
     [self.tableView reloadData];
 }
+
 /*
 - (void)viewDidLoad {
     [super viewDidLoad];

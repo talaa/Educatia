@@ -8,8 +8,12 @@
 
 #import "ChatViewController.h"
 #import "ChatTableViewController.h"
+#import <Parse/Parse.h>
 
 @interface ChatViewController () <UIScrollViewDelegate, UITextFieldDelegate>
+{
+    ChatTableViewController *chatTVC;
+}
 
 @end
 
@@ -18,24 +22,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-//    
-//    ChatTableViewController* chatTVC = (ChatTableViewController*)[storyboard instantiateInitialViewController];
-    
-    ChatTableViewController *chatTVC = (ChatTableViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ChatTableViewController"];
+
+    // Presentting ChatTableViewController TableView on chattingTableViewControllerView
+    chatTVC = (ChatTableViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ChatTableViewController"];
     chatTVC = [[ChatTableViewController alloc] init];
     [self addChildViewController:chatTVC];
     [self chatTableViewControllerView];
-//    self.chatTableViewControllerView.layer.backgroundColor =  [UIColor clearColor].CGColor;
-//    chatTVC.view.layer.backgroundColor = [UIColor clearColor].CGColor;
-//    chatTVC.tableView.layer.backgroundColor = [UIColor clearColor].CGColor;
     [self.chatTableViewControllerView addSubview:chatTVC.view];
     chatTVC.view.frame = self.chatTableViewControllerView.bounds;
     
-//    ChatTableViewController *chatTVC = [[ChatTableViewController alloc] init];
-//    [self addChildViewController:chatTVC];
-//    [self.chatTableViewControllerView setAutoresizesSubviews:NO];
-//    [self.chatTableViewControllerView addSubview:chatTVC.tableView];
     
     // For dismissing keyboard  /////////////////////////
     [self.view addGestureRecognizer:
@@ -61,6 +56,23 @@
 }
 
 - (IBAction)postPressed:(id)sender {
+    if (self.textPostTextField.text.length > 0) {
+        [self hideKeyboard:self];
+        PFObject *postObject = [PFObject objectWithClassName:@"Posts"];
+        postObject[@"post"] = self.textPostTextField.text;
+        postObject[@"username"] = [PFUser currentUser].username;
+        [postObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                // The object has been saved.
+                self.textPostTextField.text = @"";
+                NSLog(@"Messgae Saved");
+                [chatTVC viewDidAppear:YES];
+            } else {
+                // There was a problem, check error.description
+                [[[UIAlertView alloc] initWithTitle:@"Education Student" message:@"An error has been happened" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+            }
+        }];
+    }
 }
 
 #pragma mark -
