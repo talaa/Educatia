@@ -40,7 +40,7 @@
 //        query.cachePolicy = kPFCachePolicyCacheThenNetwork;
 //    }
     
-    [query orderByDescending:@"createdAt"];
+    [query orderByAscending:@"createdAt"];
     
     return query;
 }
@@ -66,7 +66,8 @@
     return cell;
 }
 
-- (void)viewDidAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     self.view.layer.backgroundColor      = [UIColor clearColor].CGColor;
     self.tableView.layer.backgroundColor = [UIColor clearColor].CGColor;
     self.tableView.separatorColor        = [UIColor clearColor];
@@ -74,6 +75,14 @@
     [self.tableView reloadData];
 }
 
+//-(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if([indexPath row] == ((NSIndexPath*)[[tableView indexPathsForVisibleRows] lastObject]).row){
+//        //end of loading
+//        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+//        //for example [activityIndicator stopAnimating];
+//    }
+//}
 /*
 - (void)viewDidLoad {
     [super viewDidLoad];
