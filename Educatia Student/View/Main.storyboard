@@ -880,21 +880,34 @@
                                     <constraint firstAttribute="width" constant="736" id="tYp-rC-2B3"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eAA-sQ-Qm9">
+                                <rect key="frame" x="16" y="28" width="736" height="811"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="736" id="C3U-i6-6q8"/>
+                                    <constraint firstAttribute="height" constant="811" id="bg8-a7-CEp"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8nu-bZ-7BP" firstAttribute="leading" secondItem="A6Q-Wx-t7I" secondAttribute="leading" id="8a2-IF-iY5"/>
+                            <constraint firstItem="eAA-sQ-Qm9" firstAttribute="top" secondItem="5Fg-Oy-g4P" secondAttribute="bottom" constant="8" id="CrS-Og-x6E"/>
+                            <constraint firstAttribute="trailing" secondItem="eAA-sQ-Qm9" secondAttribute="trailing" constant="16" id="DlH-8R-SfJ"/>
                             <constraint firstAttribute="trailing" secondItem="8nu-bZ-7BP" secondAttribute="trailing" id="JfD-7f-9xi"/>
                             <constraint firstItem="8nu-bZ-7BP" firstAttribute="top" secondItem="A6Q-Wx-t7I" secondAttribute="top" id="PN1-7r-j7d"/>
                             <constraint firstItem="xTW-4g-MsW" firstAttribute="top" secondItem="3ZU-Pe-sb8" secondAttribute="bottom" constant="104" id="U3M-pv-8Af"/>
+                            <constraint firstItem="eAA-sQ-Qm9" firstAttribute="leading" secondItem="A6Q-Wx-t7I" secondAttribute="leading" constant="16" id="UOi-N6-8n2"/>
                             <constraint firstItem="xTW-4g-MsW" firstAttribute="top" secondItem="8nu-bZ-7BP" secondAttribute="bottom" id="VJb-d5-iUa"/>
                             <constraint firstAttribute="centerX" secondItem="3ZU-Pe-sb8" secondAttribute="centerX" id="Vkx-aS-N6C"/>
                             <constraint firstItem="3ZU-Pe-sb8" firstAttribute="leading" secondItem="A6Q-Wx-t7I" secondAttribute="leading" constant="16" id="Wly-fD-7rq"/>
                             <constraint firstAttribute="trailing" secondItem="3ZU-Pe-sb8" secondAttribute="trailing" constant="16" id="YKu-CM-A7e"/>
+                            <constraint firstItem="3ZU-Pe-sb8" firstAttribute="top" secondItem="eAA-sQ-Qm9" secondAttribute="bottom" constant="8" id="taR-Ma-ts7"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
+                        <outlet property="chatTableViewControllerView" destination="eAA-sQ-Qm9" id="MEz-eW-0rW"/>
                         <outlet property="textPostTextField" destination="obh-40-PiX" id="mfQ-b6-wDV"/>
                         <outlet property="writeTextAndPostView" destination="3ZU-Pe-sb8" id="NCs-5B-5o3"/>
                     </connections>
@@ -906,13 +919,14 @@
         <!--Chat Table View Controller-->
         <scene sceneID="KyB-z8-uck">
             <objects>
-                <tableViewController id="Vw7-0w-Vai" customClass="ChatTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="jVJ-aK-erh">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                <tableViewController storyboardIdentifier="ChatTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vw7-0w-Vai" customClass="ChatTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="103" sectionHeaderHeight="22" sectionFooterHeight="22" id="jVJ-aK-erh">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="811"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bLD-7q-1Gs">
+                            <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="103" id="bLD-7q-1Gs">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bLD-7q-1Gs" id="xL9-71-AFe">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -924,11 +938,12 @@
                             <outlet property="delegate" destination="Vw7-0w-Vai" id="lTw-oJ-fr7"/>
                         </connections>
                     </tableView>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="768" height="811"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gVZ-Bh-Og6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6294" y="3116"/>
+            <point key="canvasLocation" x="6294" y="3115.5"/>
         </scene>
         <!--Assignements View Controller-->
         <scene sceneID="CHm-jp-rwK">

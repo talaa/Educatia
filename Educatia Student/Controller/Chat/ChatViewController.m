@@ -18,6 +18,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+//    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+//    
+//    ChatTableViewController* chatTVC = (ChatTableViewController*)[storyboard instantiateInitialViewController];
+    
+    ChatTableViewController *chatTVC = (ChatTableViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ChatTableViewController"];
+    chatTVC = [[ChatTableViewController alloc] init];
+    [self addChildViewController:chatTVC];
+    [self chatTableViewControllerView];
+//    self.chatTableViewControllerView.layer.backgroundColor =  [UIColor clearColor].CGColor;
+//    chatTVC.view.layer.backgroundColor = [UIColor clearColor].CGColor;
+//    chatTVC.tableView.layer.backgroundColor = [UIColor clearColor].CGColor;
+    [self.chatTableViewControllerView addSubview:chatTVC.view];
+    chatTVC.view.frame = self.chatTableViewControllerView.bounds;
+    
+//    ChatTableViewController *chatTVC = [[ChatTableViewController alloc] init];
+//    [self addChildViewController:chatTVC];
+//    [self.chatTableViewControllerView setAutoresizesSubviews:NO];
+//    [self.chatTableViewControllerView addSubview:chatTVC.tableView];
     
     // For dismissing keyboard  /////////////////////////
     [self.view addGestureRecognizer:
@@ -32,10 +50,6 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
     /////////////////////////////////////////////////
-    ChatTableViewController *chatTVC = [[ChatTableViewController alloc] init];
-    [self addChildViewController:chatTVC];
-    [self.view addSubview:chatTVC.view];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {

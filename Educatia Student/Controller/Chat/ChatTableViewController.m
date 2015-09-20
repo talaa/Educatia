@@ -56,11 +56,21 @@
                                       reuseIdentifier:cellIdentifier];
     }
     
+    cell.layer.backgroundColor  = [UIColor clearColor].CGColor;
+    
     // Configure the cell to show todo item with a priority at the bottom
-    cell.textLabel.text = object[@"post"];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Priority: %@",  object[@"username"]];
+    cell.textLabel.text         = object[@"post"];
+    cell.textLabel.textColor    = [UIColor blueColor];
+    cell.detailTextLabel.text   = object[@"username"];
     
     return cell;
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    self.view.layer.backgroundColor      = [UIColor clearColor].CGColor;
+    self.tableView.layer.backgroundColor = [UIColor clearColor].CGColor;
+    self.tableView.separatorColor        = [UIColor clearColor];
+    [self.tableView reloadData];
 }
 /*
 - (void)viewDidLoad {
@@ -92,7 +102,7 @@
     return 0;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
