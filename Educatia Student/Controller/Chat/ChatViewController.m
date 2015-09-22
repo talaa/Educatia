@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    
     // Presentting ChatTableViewController TableView on chattingTableViewControllerView
     chatTVC = (ChatTableViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ChatTableViewController"];
     chatTVC = [[ChatTableViewController alloc] init];
@@ -45,6 +45,9 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
     /////////////////////////////////////////////////
+    
+    //Notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:@"NewMessage" object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -58,15 +61,22 @@
 - (IBAction)postPressed:(id)sender {
     if (self.textPostTextField.text.length > 0) {
         [self hideKeyboard:self];
-        PFObject *postObject = [PFObject objectWithClassName:@"Posts"];
-        postObject[@"post"] = self.textPostTextField.text;
+        PFObject *postObject    = [PFObject objectWithClassName:@"Posts"];
+        postObject[@"post"]     = self.textPostTextField.text;
         postObject[@"username"] = [PFUser currentUser].username;
+        postObject[@"sentTo"]   = @"Students";
+        
         [postObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
                 // The object has been saved.
                 self.textPostTextField.text = @"";
                 NSLog(@"Messgae Saved");
                 [chatTVC viewDidAppear:YES];
+                // Send a notification to all devices subscribed to the "Students" channel.
+                PFPush *push = [[PFPush alloc] init];
+                [push setChannel:@"Students"];
+                [push setMessage:self.textPostTextField.text];
+                [push sendPushInBackground];
             } else {
                 // There was a problem, check error.description
                 [[[UIAlertView alloc] initWithTitle:@"Education Student" message:@"An error has been happened" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
@@ -128,6 +138,15 @@
 static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCurve curve)
 {
     return (UIViewAnimationOptions)curve << 16;
+}
+
+#pragma mark - RecieveNotificationDelegete
+
+- (void)receiveNotification:(NSNotification *) notification {
+    
+    if ([[notification name] isEqualToString:@"NewMessage"]) {
+        [chatTVC viewDidAppear:YES];
+    }
 }
 /*
 #pragma mark - Navigation

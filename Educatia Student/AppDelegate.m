@@ -16,6 +16,20 @@
 
 @implementation AppDelegate
 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    //send a notification to NSNotificationCenter:
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"NewMessage" object:self];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Store the deviceToken in the current Installation and save it to Parse
+    // Add devices ti Students chanal
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation addUniqueObject:@"Students" forKey:@"channels"];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -27,17 +41,23 @@
     [Parse setApplicationId:@"QwpOpbUbYHM0QWVUZtckgf7cffElebexiimTCLCV"
                   clientKey:@"PV1x5enMX9B6QlPHX7sn2AjED18XfTSMPZGBzgdp"];
     
+    //Parse Push Notifications
+    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes  categories:nil];
+    [application registerUserNotificationSettings:settings];
+    [application registerForRemoteNotifications];
+    
     //check if user had logged in on previous //////////////////////////////////////
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     PFUser *user = [PFUser currentUser];
     if(user){
         //Chatting
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        if (![defaults stringForKey:@"chatName"]) {
-            // first time it's run, create a userDefault
-            [defaults setObject:user.username forKey:@"chatName"];
-            [defaults synchronize];
-        }
+//        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//        if (![defaults stringForKey:@"chatName"]) {
+//            // first time it's run, create a userDefault
+//            [defaults setObject:user.username forKey:@"chatName"];
+//            [defaults synchronize];
+//        }
         self.tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarHolderController"];
         [self.window setRootViewController:self.tabBarController];
     }else {
