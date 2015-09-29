@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "ReaderViewController.h"
+#import "TGRImageViewController.h"
+#import "TGRImageZoomAnimationController.h"
 
 typedef void (^CompletionHandler)(BOOL);
 
-@interface AssignementsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface AssignementsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *assingementsTableView;
 

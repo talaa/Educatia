@@ -49,12 +49,14 @@ typedef void (^CompletionHandler)(BOOL);
     [query whereKey:@"Subject" equalTo:@"Math"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
+            
             //init NSMutableArray
             _teacherMArray          = [[NSMutableArray alloc] init];
             _maxScoreMArray         = [[NSMutableArray alloc] init];
             _deadLineMArray         = [[NSMutableArray alloc] init];
             _pdfPathMArray          = [[NSMutableArray alloc] init];
             _pdfFileDataMArray      = [[NSMutableArray alloc] init];
+            
             // The find succeeded.
             NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
             // Do something with the found objects
@@ -65,9 +67,12 @@ typedef void (^CompletionHandler)(BOOL);
                 //convert date to string
                 NSString *deadLineString = [self convertDateToString:object[@"Dead_line_date"]];
                 [self.deadLineMArray addObject:deadLineString];
+                
                 //get pdf file
                 PFFile *pdfFile = object[@"File"];
                 NSData *pdfData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:pdfFile.url]];
+                NSLog(@"URL is %@", pdfFile.url);
+                
                 //Ad to MData
                 [_pdfFileDataMArray addObject:pdfData];
                 // Store the Data locally as PDF File
@@ -118,6 +123,10 @@ typedef void (^CompletionHandler)(BOOL);
     cell.maxScoreLabel.text     = [self.maxScoreMArray objectAtIndex:indexPath.row];
     cell.deadLineLabel.text     = [self.deadLineMArray objectAtIndex:indexPath.row];
     
+    //Cell button
+    cell.submitButton.tag = indexPath.row;
+    [cell.submitButton addTarget:self action:@selector(submitButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
     //Thumbnail
     ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
     [thumbPDF startWithCompletionHandler:[_pdfFileDataMArray objectAtIndex:indexPath.row] andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
@@ -126,6 +135,11 @@ typedef void (^CompletionHandler)(BOOL);
             cell.assignementImageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
         }
     }];
+    
+    //Cell Assignment Imge
+    cell.assignmentButton.tag = indexPath.row;
+    [cell.assignmentButton addTarget:self action:@selector(assignmentButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
 }
 
@@ -137,6 +151,7 @@ typedef void (^CompletionHandler)(BOOL);
     return dateString;
 }
 
+/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ReaderDocument *document = [ReaderDocument withDocumentFilePath:[_pdfPathMArray objectAtIndex:indexPath.row] password:nil];
@@ -151,6 +166,8 @@ typedef void (^CompletionHandler)(BOOL);
         [self presentViewController:readerViewController animated:YES completion:nil];
     }
 }
+*/
+
 
 #pragma mark - ReaderDocumentDelegete
 
@@ -168,10 +185,61 @@ typedef void (^CompletionHandler)(BOOL);
     }
 }
 
+#pragma mark - CellSubmitButtonClicked
+
+- (void)submitButtonPressed:(id)sender
+{
+    NSIndexPath *indexPath = [self.assingementsTableView indexPathForCell:(UITableViewCell *)
+                              [[sender superview] superview]];
+    NSLog(@"The row id is %ld",  (long)indexPath.row);
+}
+
+#pragma mark - CellAssignmentButtonClicked
+
+- (void)assignmentButtonPressed:(id)sender
+{
+    NSIndexPath *indexPath = [self.assingementsTableView indexPathForCell:(AssignementTableViewCell *)[[sender superview] superview]];
+    NSLog(@"The row id is %ld",  (long)indexPath.row);
+    
+    ReaderDocument *document = [ReaderDocument withDocumentFilePath:[_pdfPathMArray objectAtIndex:indexPath.row] password:nil];
+    if (document != nil)
+    {
+        ReaderViewController *readerViewController = [[ReaderViewController alloc]initWithReaderDocument:document];
+        readerViewController.delegate = self;
+        readerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        readerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self presentViewController:readerViewController animated:YES completion:nil];
+    }else {
+        TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImage:[UIImage imageWithData:[_pdfFileDataMArray objectAtIndex:indexPath.row]]];
+        // Don't forget to set ourselves as the transition delegate
+        viewController.transitioningDelegate = self;
+        viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        viewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self presentViewController:viewController animated:YES completion:nil];
+    }
+}
+
 /*
- // Override to support conditional editing of the table view.
+#pragma mark - UIViewControllerTransitioningDelegate methods
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    if ([presented isKindOfClass:TGRImageViewController.class]) {
+        return [[TGRImageZoomAnimationController alloc] initWithReferenceImageView:self.imageButton.imageView];
+    }
+    return nil;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    if ([dismissed isKindOfClass:TGRImageViewController.class]) {
+        return [[TGRImageZoomAnimationController alloc] initWithReferenceImageView:self.imageButton.imageView];
+    }
+    return nil;
+}
+*/
+/*
+  Override to support conditional editing of the table view.
  - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the specified item to be editable.
+  Return NO if you do not want the specified item to be editable.
  return YES;
  }
  */

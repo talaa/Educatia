@@ -67,6 +67,10 @@
 		F51746BD1BAB28AE003B026A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51746BA1BAB28AE003B026A /* Bolts.framework */; };
 		F51746BE1BAB28AE003B026A /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51746BB1BAB28AE003B026A /* Parse.framework */; };
 		F51746BF1BAB28AE003B026A /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51746BC1BAB28AE003B026A /* ParseUI.framework */; };
+		F54A98101BBACC540073CF58 /* TGRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54A980A1BBACC540073CF58 /* TGRImageViewController.m */; };
+		F54A98111BBACC540073CF58 /* TGRImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54A980B1BBACC540073CF58 /* TGRImageViewController.xib */; };
+		F54A98121BBACC540073CF58 /* TGRImageZoomAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54A980D1BBACC540073CF58 /* TGRImageZoomAnimationController.m */; };
+		F54A98131BBACC540073CF58 /* UIImage+AspectFit.m in Sources */ = {isa = PBXBuildFile; fileRef = F54A980F1BBACC540073CF58 /* UIImage+AspectFit.m */; };
 		F5F9CA1D1BA4434A008E1715 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F9CA1C1BA4434A008E1715 /* ImageIO.framework */; };
 		F5F9CA1F1BA44355008E1715 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F9CA1E1BA44355008E1715 /* MessageUI.framework */; };
 		F5F9CA491BA444EB008E1715 /* CGPDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F9CA221BA444EB008E1715 /* CGPDFDocument.m */; };
@@ -209,6 +213,13 @@
 		F51746BA1BAB28AE003B026A /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		F51746BB1BAB28AE003B026A /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		F51746BC1BAB28AE003B026A /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		F54A98091BBACC540073CF58 /* TGRImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGRImageViewController.h; sourceTree = "<group>"; };
+		F54A980A1BBACC540073CF58 /* TGRImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGRImageViewController.m; sourceTree = "<group>"; };
+		F54A980B1BBACC540073CF58 /* TGRImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TGRImageViewController.xib; sourceTree = "<group>"; };
+		F54A980C1BBACC540073CF58 /* TGRImageZoomAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGRImageZoomAnimationController.h; sourceTree = "<group>"; };
+		F54A980D1BBACC540073CF58 /* TGRImageZoomAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGRImageZoomAnimationController.m; sourceTree = "<group>"; };
+		F54A980E1BBACC540073CF58 /* UIImage+AspectFit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AspectFit.h"; sourceTree = "<group>"; };
+		F54A980F1BBACC540073CF58 /* UIImage+AspectFit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AspectFit.m"; sourceTree = "<group>"; };
 		F5F9CA1C1BA4434A008E1715 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		F5F9CA1E1BA44355008E1715 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		F5F9CA211BA444EB008E1715 /* CGPDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPDFDocument.h; sourceTree = "<group>"; };
@@ -438,6 +449,7 @@
 		04A2AB1C1B9C6CBD009B2C60 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				F54A98081BBACC540073CF58 /* Vertigo */,
 				F512D6FC1BA83FE500F3E252 /* RNActivityView */,
 				F50D6D4B1BA5B49300BF6309 /* ThumbnailPDF */,
 				F5F9CA201BA444EB008E1715 /* PDFReader */,
@@ -661,6 +673,20 @@
 			path = RNActivityView;
 			sourceTree = "<group>";
 		};
+		F54A98081BBACC540073CF58 /* Vertigo */ = {
+			isa = PBXGroup;
+			children = (
+				F54A98091BBACC540073CF58 /* TGRImageViewController.h */,
+				F54A980A1BBACC540073CF58 /* TGRImageViewController.m */,
+				F54A980B1BBACC540073CF58 /* TGRImageViewController.xib */,
+				F54A980C1BBACC540073CF58 /* TGRImageZoomAnimationController.h */,
+				F54A980D1BBACC540073CF58 /* TGRImageZoomAnimationController.m */,
+				F54A980E1BBACC540073CF58 /* UIImage+AspectFit.h */,
+				F54A980F1BBACC540073CF58 /* UIImage+AspectFit.m */,
+			);
+			path = Vertigo;
+			sourceTree = "<group>";
+		};
 		F5F9CA201BA444EB008E1715 /* PDFReader */ = {
 			isa = PBXGroup;
 			children = (
@@ -818,6 +844,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5F9CA5E1BA447BB008E1715 /* test.pdf in Resources */,
+				F54A98111BBACC540073CF58 /* TGRImageViewController.xib in Resources */,
 				F507E5CF1B9F15C00066283F /* icon_Expences.png in Resources */,
 				F5F9CA731BA449D3008E1715 /* Reader-Button-N@2x.png in Resources */,
 				F507E5D71B9F15C00066283F /* icon_setting@3x.png in Resources */,
@@ -893,6 +920,7 @@
 				F5055CF21BA1C3BA00BB6547 /* AssignementsViewController.m in Sources */,
 				F5055CC91BA1B1CA00BB6547 /* SubjectCollectionViewCell.m in Sources */,
 				F5055CEC1BA1C39C00BB6547 /* CourseMaterialsViewController.m in Sources */,
+				F54A98131BBACC540073CF58 /* UIImage+AspectFit.m in Sources */,
 				F5F9CA4B1BA444EB008E1715 /* ReaderContentPage.m in Sources */,
 				F5F9CA511BA444EB008E1715 /* ReaderMainToolbar.m in Sources */,
 				F507E5DE1B9F19120066283F /* ProfileViewController.m in Sources */,
@@ -905,8 +933,10 @@
 				69FE08AD1B84E51500C81ABC /* main.m in Sources */,
 				0453AEF11B98647E00CD3A53 /* LoginViewController.m in Sources */,
 				F512D7021BA83FE500F3E252 /* UIView+RNActivityView.m in Sources */,
+				F54A98121BBACC540073CF58 /* TGRImageZoomAnimationController.m in Sources */,
 				F5F9CA501BA444EB008E1715 /* ReaderMainPagebar.m in Sources */,
 				F5F9CA5B1BA444EB008E1715 /* ThumbsViewController.m in Sources */,
+				F54A98101BBACC540073CF58 /* TGRImageViewController.m in Sources */,
 				F51746B91BAB236C003B026A /* ChatTableViewController.m in Sources */,
 				04A2AB201B9C6CBD009B2C60 /* FlatDatePicker.m in Sources */,
 				F5F9CA5A1BA444EB008E1715 /* ThumbsMainToolbar.m in Sources */,

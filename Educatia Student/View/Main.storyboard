@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -1007,23 +1007,49 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fe1-gj-PbC">
+                                                    <rect key="frame" x="681" y="61" width="49" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="49" id="OnV-TK-cLj"/>
+                                                        <constraint firstAttribute="height" constant="30" id="h7X-hN-LYi"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Submit">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2xl-0h-uzs">
+                                                    <rect key="frame" x="205" y="8" width="120" height="136"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="136" id="0rZ-qJ-tvH"/>
+                                                        <constraint firstAttribute="width" constant="120" id="w1G-9r-7h7"/>
+                                                    </constraints>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="dhJ-sH-br7" firstAttribute="top" secondItem="Hwn-Zp-KLH" secondAttribute="top" constant="8" id="0qA-6H-nVO"/>
                                                 <constraint firstItem="reR-U6-1Yl" firstAttribute="leading" secondItem="Hwn-Zp-KLH" secondAttribute="leading" constant="205" id="H0c-iW-7Om"/>
                                                 <constraint firstItem="reR-U6-1Yl" firstAttribute="top" secondItem="Hwn-Zp-KLH" secondAttribute="top" constant="6" id="IWT-Pq-bNl"/>
                                                 <constraint firstItem="AKQ-E6-zY3" firstAttribute="top" secondItem="o8z-1c-U4n" secondAttribute="bottom" constant="37" id="L7G-QG-uIE"/>
+                                                <constraint firstAttribute="trailing" secondItem="fe1-gj-PbC" secondAttribute="trailing" constant="5" id="Lkt-9K-MHr"/>
                                                 <constraint firstItem="o8z-1c-U4n" firstAttribute="leading" secondItem="reR-U6-1Yl" secondAttribute="trailing" constant="22" id="Nxj-iQ-I21"/>
                                                 <constraint firstItem="dhJ-sH-br7" firstAttribute="leading" secondItem="reR-U6-1Yl" secondAttribute="trailing" constant="22" id="PFz-XE-omt"/>
+                                                <constraint firstItem="fe1-gj-PbC" firstAttribute="top" secondItem="Hwn-Zp-KLH" secondAttribute="top" constant="61" id="T7M-HQ-nM2"/>
                                                 <constraint firstItem="o8z-1c-U4n" firstAttribute="top" secondItem="dhJ-sH-br7" secondAttribute="bottom" constant="36" id="bQC-dm-GH7"/>
                                                 <constraint firstItem="AKQ-E6-zY3" firstAttribute="leading" secondItem="reR-U6-1Yl" secondAttribute="trailing" constant="22" id="cLh-i8-GOz"/>
+                                                <constraint firstItem="2xl-0h-uzs" firstAttribute="leading" secondItem="Hwn-Zp-KLH" secondAttribute="leading" constant="205" id="hJx-Jj-z0r"/>
                                                 <constraint firstAttribute="bottom" secondItem="AKQ-E6-zY3" secondAttribute="bottom" constant="8" id="jEh-DG-uTu"/>
+                                                <constraint firstItem="2xl-0h-uzs" firstAttribute="top" secondItem="Hwn-Zp-KLH" secondAttribute="top" constant="8" id="yt9-e4-qCU"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="assignementImageView" destination="reR-U6-1Yl" id="ZI1-TH-Bue"/>
+                                            <outlet property="assignmentButton" destination="2xl-0h-uzs" id="5Ap-sc-uR2"/>
                                             <outlet property="deadLineLabel" destination="o8z-1c-U4n" id="9E0-EJ-UFG"/>
                                             <outlet property="maxScoreLabel" destination="AKQ-E6-zY3" id="avq-ok-7vg"/>
+                                            <outlet property="submitButton" destination="fe1-gj-PbC" id="h4P-k9-ZOT"/>
                                             <outlet property="teacherNameLabel" destination="dhJ-sH-br7" id="4UV-ko-NZc"/>
                                         </connections>
                                     </tableViewCell>

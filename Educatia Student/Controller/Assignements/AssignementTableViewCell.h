@@ -14,5 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *deadLineLabel;
 @property (weak, nonatomic) IBOutlet UILabel *maxScoreLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *assignementImageView;
+@property (weak, nonatomic) IBOutlet UIButton *submitButton;
+@property (weak, nonatomic) IBOutlet UIButton *assignmentButton;
 
 @end
