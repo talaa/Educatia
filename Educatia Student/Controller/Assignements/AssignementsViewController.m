@@ -15,12 +15,15 @@
 #import "ReaderViewController.h"
 typedef void (^CompletionHandler)(BOOL);
 
-@interface AssignementsViewController () <ReaderViewControllerDelegate>
+@interface AssignementsViewController () <ReaderViewControllerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
+
 @property (strong, nonatomic) NSMutableArray *teacherMArray;
 @property (strong, nonatomic) NSMutableArray *maxScoreMArray;
 @property (strong, nonatomic) NSMutableArray *deadLineMArray;
 @property (strong, nonatomic) NSMutableArray *pdfPathMArray;
 @property (strong, nonatomic) NSMutableArray *pdfFileDataMArray;
+@property (strong, nonatomic) NSMutableArray *assignmentIDMArray;
+@property (strong, nonatomic) NSString *subjectName;
 @end
 
 @implementation AssignementsViewController
@@ -28,7 +31,7 @@ typedef void (^CompletionHandler)(BOOL);
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    _subjectName = @"Math";
     //Loading Activity
     [self.view showActivityViewWithLabel:@"Loading Assignments"];
     [self myProgressTask];
@@ -51,6 +54,7 @@ typedef void (^CompletionHandler)(BOOL);
         if (!error) {
             
             //init NSMutableArray
+            _assignmentIDMArray     = [[NSMutableArray alloc] init];
             _teacherMArray          = [[NSMutableArray alloc] init];
             _maxScoreMArray         = [[NSMutableArray alloc] init];
             _deadLineMArray         = [[NSMutableArray alloc] init];
@@ -62,6 +66,7 @@ typedef void (^CompletionHandler)(BOOL);
             // Do something with the found objects
             for (PFObject *object in objects) {
                 NSLog(@"%@", object.objectId);
+                [self.assignmentIDMArray addObject:object.objectId];
                 [self.teacherMArray addObject:object[@"Teacher"]];
                 [self.maxScoreMArray addObject:[NSString stringWithFormat:@"%@",object[@"MaximumScore"]]];
                 //convert date to string
@@ -187,11 +192,21 @@ typedef void (^CompletionHandler)(BOOL);
 
 #pragma mark - CellSubmitButtonClicked
 
-- (void)submitButtonPressed:(id)sender
+- (void)submitButtonPressed:(UIButton*)button
 {
     NSIndexPath *indexPath = [self.assingementsTableView indexPathForCell:(UITableViewCell *)
-                              [[sender superview] superview]];
-    NSLog(@"The row id is %ld",  (long)indexPath.row);
+                              [[button superview] superview]];
+    AssignementTableViewCell *cell = [self.assingementsTableView cellForRowAtIndexPath:indexPath];
+    //NSLog(@"The row id is %ld",  (long)button.tag);
+    
+    //ActionView take photo or upload exist one
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Submit your file"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:@"Cancel"
+                                                    otherButtonTitles:@"Take a photo", @"Upload a file",nil];
+    //Actionsheet for IPad
+    [actionSheet showFromRect:cell.submitButton.frame inView:cell animated:YES];
 }
 
 #pragma mark - CellAssignmentButtonClicked
@@ -199,8 +214,7 @@ typedef void (^CompletionHandler)(BOOL);
 - (void)assignmentButtonPressed:(id)sender
 {
     NSIndexPath *indexPath = [self.assingementsTableView indexPathForCell:(AssignementTableViewCell *)[[sender superview] superview]];
-    NSLog(@"The row id is %ld",  (long)indexPath.row);
-    
+    //NSLog(@"The row id is %ld",  (long)indexPath.row);
     ReaderDocument *document = [ReaderDocument withDocumentFilePath:[_pdfPathMArray objectAtIndex:indexPath.row] password:nil];
     if (document != nil)
     {
@@ -217,6 +231,86 @@ typedef void (^CompletionHandler)(BOOL);
         viewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
         [self presentViewController:viewController animated:YES completion:nil];
     }
+}
+
+#pragma mark - UIActionsheet delegete
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"Button Index %ld", (long)buttonIndex);
+    if (buttonIndex == 0){ // Cancel button
+        // No thing to do
+    }
+    
+    if (buttonIndex == 1) { // Take a Photo
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:picker animated:YES completion:NULL];
+    }
+    
+    if (buttonIndex == 2) { // Upload a File
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            //your code
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.allowsEditing = YES;
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            picker.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+            [self presentViewController:picker animated:YES completion:NULL];
+        }];
+    }
+}
+
+#pragma mark - UIImagePickerControllerDelegete
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    //Check if picture size is greater than 400K
+    NSData *imageData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((chosenImage),1.0)];
+    //NSLog(@"Image size is %lu", (unsigned long)imageData.length);
+    if (imageData.length > 500000){
+        //self.picProfileImageView.image = [UIImage imageNamed:@"Image_AddProfilPic"];
+        [[[UIAlertView alloc] initWithTitle:@"EducationStudent" message:@"Picture you have choosen is greater than 400K!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    }else {
+        //Submit student file
+        [self uploadsubmissionFile];
+    }
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+// Upload Submission file and fill Submission class data
+- (void)uploadsubmissionFile {
+    PFUser *user = [PFUser currentUser];
+    NSString *firstName = user[@"FirstName"];
+    NSString *lastName  = user[@"LastName"];
+    
+    //Submission class object
+    PFObject *submissionObject = [PFObject objectWithClassName:@"Submission"];
+    
+    //Save student data
+    submissionObject[@"studentID"] = user.objectId;
+    submissionObject[@"studentUserName"] = user.username;
+    submissionObject[@"studentName"] = [[firstName stringByAppendingString:@" "] stringByAppendingString:lastName];
+    
+    //save Assignment data
+    submissionObject[@"assignmentID"] = [_assignmentIDMArray objectAtIndex:1];
+    
+    [submissionObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            // The object has been saved.
+        } else {
+            // There was a problem, check error.description
+        }
+    }];
+
 }
 
 /*
