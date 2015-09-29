@@ -4,11 +4,13 @@
 //
 //  Created by Mena Bebawy on 9/10/15.
 //  Copyright (c) 2015 Bluewave Solutions. All rights reserved.
-//
+
 
 #import "ChatViewController.h"
 #import "ChatTableViewController.h"
 #import <Parse/Parse.h>
+#import "RNActivityView.h"
+#import "UIView+RNActivityView.h"
 
 @interface ChatViewController () <UIScrollViewDelegate, UITextFieldDelegate>
 {
@@ -17,40 +19,54 @@
 
 @end
 
+#define chatBOOL NO
+
 @implementation ChatViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // Presentting ChatTableViewController TableView on chattingTableViewControllerView
-    chatTVC = (ChatTableViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ChatTableViewController"];
-    chatTVC = [[ChatTableViewController alloc] init];
-    [self addChildViewController:chatTVC];
-    [self chatTableViewControllerView];
-    [self.chatTableViewControllerView addSubview:chatTVC.view];
-    chatTVC.view.frame = self.chatTableViewControllerView.bounds;
-    
-    
-    // For dismissing keyboard  /////////////////////////
-    [self.view addGestureRecognizer:
-     [[UITapGestureRecognizer alloc] initWithTarget:self
-                                             action:@selector(hideKeyboard:)]];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillBeHidden:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
-    /////////////////////////////////////////////////
-    
-    //Notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:@"NewMessage" object:nil];
+    if (chatBOOL == NO){
+        
+    } else {
+        // Presentting ChatTableViewController TableView on chattingTableViewControllerView
+        chatTVC = (ChatTableViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"ChatTableViewController"];
+        chatTVC = [[ChatTableViewController alloc] init];
+        [self addChildViewController:chatTVC];
+        [self chatTableViewControllerView];
+        [self.chatTableViewControllerView addSubview:chatTVC.view];
+        chatTVC.view.frame = self.chatTableViewControllerView.bounds;
+        
+        
+        // For dismissing keyboard  /////////////////////////
+        [self.view addGestureRecognizer:
+         [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                 action:@selector(hideKeyboard:)]];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillShow:)
+                                                     name:UIKeyboardWillShowNotification
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillBeHidden:)
+                                                     name:UIKeyboardWillHideNotification
+                                                   object:nil];
+        /////////////////////////////////////////////////
+        
+        //Notifications
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:@"NewMessage" object:nil];
+        
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    if (chatBOOL == NO){
+        //Loading Activity
+        
+        [self myProgressTask];
+    }else{
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -148,14 +164,21 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
         [chatTVC viewDidAppear:YES];
     }
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - Progress
+
+- (void)myProgressTask {
+    [self.view showActivityViewWithLabel:@"Coming Soon on next version"];
 }
-*/
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
