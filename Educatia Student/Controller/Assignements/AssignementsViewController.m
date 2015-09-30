@@ -65,10 +65,10 @@ typedef void (^CompletionHandler)(BOOL);
             _assignmentFileDataMArray      = [[NSMutableArray alloc] init];
             
             // The find succeeded.
-            NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
+            //NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
             // Do something with the found objects
             for (PFObject *object in objects) {
-                NSLog(@"%@", object.objectId);
+                //NSLog(@"%@", object.objectId);
                 [self.assignmentIDMArray addObject:object.objectId];
                 [self.teacherMArray addObject:object[@"Teacher"]];
                 [self.maxScoreMArray addObject:[NSString stringWithFormat:@"%@",object[@"MaximumScore"]]];
@@ -79,7 +79,7 @@ typedef void (^CompletionHandler)(BOOL);
                 //get pdf file
                 PFFile *pdfFile = object[@"File"];
                 NSData *pdfData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:pdfFile.url]];
-                NSLog(@"URL is %@", pdfFile.url);
+                //NSLog(@"URL is %@", pdfFile.url);
                 
                 //Ad to MData
                 [_assignmentFileDataMArray addObject:pdfData];
@@ -101,7 +101,7 @@ typedef void (^CompletionHandler)(BOOL);
             }
         } else {
             // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
+            //NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
 }
@@ -155,7 +155,7 @@ typedef void (^CompletionHandler)(BOOL);
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd-MM-YYYY HH:mm:ss"];
     NSString *dateString = [dateFormatter stringFromDate:date];
-    NSLog(@"The Date: %@", dateString);
+    //NSLog(@"The Date: %@", dateString);
     return dateString;
 }
 
@@ -223,7 +223,7 @@ typedef void (^CompletionHandler)(BOOL);
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"Button Index %ld", (long)buttonIndex);
+    //NSLog(@"Button Index %ld", (long)buttonIndex);
     if (buttonIndex == 0){ // Cancel button
         // No thing to do
     }
@@ -313,11 +313,13 @@ typedef void (^CompletionHandler)(BOOL);
                     [self.view hideActivityViewWithAfterDelay:2];
                 } else {
                     // There was a problem, check error.description
-                    NSLog(@"Failed");
+                    //NSLog(@"Failed");
+                    [[[UIAlertView alloc] initWithTitle:@"Education Student" message:@"Something has gone error, try again!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
                 }
             }];
         }else {
-            NSLog(@"Failed");
+            //NSLog(@"Failed");
+            [[[UIAlertView alloc] initWithTitle:@"Education Student" message:@"Something has gone error, try again!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
         }
         // Handle success or failure here ...
     } progressBlock:^(int percentDone) {
