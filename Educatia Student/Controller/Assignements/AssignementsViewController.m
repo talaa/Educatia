@@ -20,10 +20,12 @@ typedef void (^CompletionHandler)(BOOL);
 @property (strong, nonatomic) NSMutableArray *teacherMArray;
 @property (strong, nonatomic) NSMutableArray *maxScoreMArray;
 @property (strong, nonatomic) NSMutableArray *deadLineMArray;
-@property (strong, nonatomic) NSMutableArray *pdfPathMArray;
-@property (strong, nonatomic) NSMutableArray *pdfFileDataMArray;
+@property (strong, nonatomic) NSMutableArray *assignmentFileLocalPathMArray;
+@property (strong, nonatomic) NSMutableArray *assignmentFileDataMArray;
 @property (strong, nonatomic) NSMutableArray *assignmentIDMArray;
 @property (strong, nonatomic) NSString *subjectName;
+@property (strong, nonatomic) NSString *assignmentID;
+
 @end
 
 @implementation AssignementsViewController
@@ -31,7 +33,7 @@ typedef void (^CompletionHandler)(BOOL);
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _subjectName = @"Math";
+    
     //Loading Activity
     [self.view showActivityViewWithLabel:@"Loading Assignments"];
     [self myProgressTask];
@@ -40,6 +42,7 @@ typedef void (^CompletionHandler)(BOOL);
 }
 
 - (void) viewDidAppear:(BOOL)animated {
+    _subjectName = @"Math";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,8 +61,8 @@ typedef void (^CompletionHandler)(BOOL);
             _teacherMArray          = [[NSMutableArray alloc] init];
             _maxScoreMArray         = [[NSMutableArray alloc] init];
             _deadLineMArray         = [[NSMutableArray alloc] init];
-            _pdfPathMArray          = [[NSMutableArray alloc] init];
-            _pdfFileDataMArray      = [[NSMutableArray alloc] init];
+            _assignmentFileLocalPathMArray          = [[NSMutableArray alloc] init];
+            _assignmentFileDataMArray      = [[NSMutableArray alloc] init];
             
             // The find succeeded.
             NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
@@ -79,7 +82,7 @@ typedef void (^CompletionHandler)(BOOL);
                 NSLog(@"URL is %@", pdfFile.url);
                 
                 //Ad to MData
-                [_pdfFileDataMArray addObject:pdfData];
+                [_assignmentFileDataMArray addObject:pdfData];
                 // Store the Data locally as PDF File
                 NSString *resourceDocPath = [[NSString alloc] initWithString:[
                                                                               [[[NSBundle mainBundle] resourcePath] stringByDeletingLastPathComponent]
@@ -88,7 +91,7 @@ typedef void (^CompletionHandler)(BOOL);
                 NSString *fileName = [object.objectId stringByAppendingString:@".pdf"];
                 NSString *filePath = [resourceDocPath stringByAppendingPathComponent:fileName];
                 [pdfData writeToFile:filePath atomically:YES];
-                [_pdfPathMArray addObject:filePath];
+                [_assignmentFileLocalPathMArray addObject:filePath];
                 
                 //Reload Table View
                 [self.assingementsTableView reloadData];
@@ -134,7 +137,7 @@ typedef void (^CompletionHandler)(BOOL);
     
     //Thumbnail
     ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
-    [thumbPDF startWithCompletionHandler:[_pdfFileDataMArray objectAtIndex:indexPath.row] andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
+    [thumbPDF startWithCompletionHandler:[_assignmentFileDataMArray objectAtIndex:indexPath.row] andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
         if (finished) {
             [ManageLayerViewController imageViewCellAssignment:cell.assignementImageView];
             cell.assignementImageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
@@ -156,22 +159,12 @@ typedef void (^CompletionHandler)(BOOL);
     return dateString;
 }
 
-/*
+// To get selected assignemnt object ID
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ReaderDocument *document = [ReaderDocument withDocumentFilePath:[_pdfPathMArray objectAtIndex:indexPath.row] password:nil];
-    if (document != nil)
-    {
-        ReaderViewController *readerViewController = [[ReaderViewController alloc]initWithReaderDocument:document];
-        readerViewController.delegate = self;
-        readerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        readerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-        
-        //[self presentModalViewController:readerViewController animated:YES ];
-        [self presentViewController:readerViewController animated:YES completion:nil];
-    }
+    _assignmentID = [_assignmentIDMArray objectAtIndex:indexPath.row];
 }
-*/
+
 
 
 #pragma mark - ReaderDocumentDelegete
@@ -180,24 +173,17 @@ typedef void (^CompletionHandler)(BOOL);
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 
-- (void)myProgressTask {
-    // This just increases the progress indicator in a loop
-    float progress = 0.0f;
-    while (progress < 1.0f) {
-        progress += 0.01f;
-        self.navigationController.view.rn_activityView.progress = progress;
-        //usleep(50000);
-    }
-}
-
 #pragma mark - CellSubmitButtonClicked
 
-- (void)submitButtonPressed:(UIButton*)button
+- (void)submitButtonPressed:(id)sender
 {
-    NSIndexPath *indexPath = [self.assingementsTableView indexPathForCell:(UITableViewCell *)
-                              [[button superview] superview]];
+    UIButton *senderButton = (UIButton *)sender;
+    //NSLog(@"current Row=%ld",(long)senderButton.tag);
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:senderButton.tag inSection:0];
     AssignementTableViewCell *cell = [self.assingementsTableView cellForRowAtIndexPath:indexPath];
-    //NSLog(@"The row id is %ld",  (long)button.tag);
+    
+    //Get AssignmentID by snderButton.tag
+    _assignmentID = [_assignmentIDMArray objectAtIndex:senderButton.tag];
     
     //ActionView take photo or upload exist one
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Submit your file"
@@ -215,7 +201,7 @@ typedef void (^CompletionHandler)(BOOL);
 {
     NSIndexPath *indexPath = [self.assingementsTableView indexPathForCell:(AssignementTableViewCell *)[[sender superview] superview]];
     //NSLog(@"The row id is %ld",  (long)indexPath.row);
-    ReaderDocument *document = [ReaderDocument withDocumentFilePath:[_pdfPathMArray objectAtIndex:indexPath.row] password:nil];
+    ReaderDocument *document = [ReaderDocument withDocumentFilePath:[_assignmentFileLocalPathMArray objectAtIndex:indexPath.row] password:nil];
     if (document != nil)
     {
         ReaderViewController *readerViewController = [[ReaderViewController alloc]initWithReaderDocument:document];
@@ -224,7 +210,7 @@ typedef void (^CompletionHandler)(BOOL);
         readerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
         [self presentViewController:readerViewController animated:YES completion:nil];
     }else {
-        TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImage:[UIImage imageWithData:[_pdfFileDataMArray objectAtIndex:indexPath.row]]];
+        TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImage:[UIImage imageWithData:[_assignmentFileDataMArray objectAtIndex:indexPath.row]]];
         // Don't forget to set ourselves as the transition delegate
         viewController.transitioningDelegate = self;
         viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -269,14 +255,14 @@ typedef void (^CompletionHandler)(BOOL);
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     //Check if picture size is greater than 400K
-    NSData *imageData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((chosenImage),1.0)];
+    NSData *imageData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((chosenImage),0.5)];
     //NSLog(@"Image size is %lu", (unsigned long)imageData.length);
-    if (imageData.length > 500000){
+    if (imageData.length > 5000000000){
         //self.picProfileImageView.image = [UIImage imageNamed:@"Image_AddProfilPic"];
         [[[UIAlertView alloc] initWithTitle:@"EducationStudent" message:@"Picture you have choosen is greater than 400K!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }else {
         //Submit student file
-        [self uploadsubmissionFile];
+        [self uploadsubmissionFile:imageData];
     }
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
@@ -287,7 +273,11 @@ typedef void (^CompletionHandler)(BOOL);
 }
 
 // Upload Submission file and fill Submission class data
-- (void)uploadsubmissionFile {
+- (void)uploadsubmissionFile:(NSData*)imageData {
+    //NSActivity start
+    [self.view showActivityViewWithLabel:@"Uploading Your File...."];
+    [self myProgressTask];
+    
     PFUser *user = [PFUser currentUser];
     NSString *firstName = user[@"FirstName"];
     NSString *lastName  = user[@"LastName"];
@@ -301,17 +291,66 @@ typedef void (^CompletionHandler)(BOOL);
     submissionObject[@"studentName"] = [[firstName stringByAppendingString:@" "] stringByAppendingString:lastName];
     
     //save Assignment data
-    submissionObject[@"assignmentID"] = [_assignmentIDMArray objectAtIndex:1];
+    submissionObject[@"assignmentID"] = _assignmentID;
     
-    [submissionObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            // The object has been saved.
-        } else {
-            // There was a problem, check error.description
+    //save subject name
+    submissionObject[@"subjectName"] = _subjectName;
+    
+    //save assignment file
+    PFFile *imageFile = [PFFile fileWithName:[[user.objectId stringByAppendingString:_assignmentID] stringByAppendingString:@"_image.png"] data:imageData];
+    submissionObject[@"submissionFile"] = imageFile;
+    
+    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded){
+            //in case of save submission photo successfully, then save submission object
+            NSLog(@"Your photo upladed");
+            [self.view hideActivityView];
+            [submissionObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    // The object has been saved.
+                    NSLog(@"Successed........");
+                    [self.view showActivityViewWithLabel:@"Completed" image:[UIImage imageNamed:@"37x-Checkmark.png"]];
+                    [self.view hideActivityViewWithAfterDelay:2];
+                } else {
+                    // There was a problem, check error.description
+                    NSLog(@"Failed");
+                }
+            }];
+        }else {
+            NSLog(@"Failed");
         }
+        // Handle success or failure here ...
+    } progressBlock:^(int percentDone) {
+        // Update your progress spinner here. percentDone will be between 0 and 100.
+        // This just increases the progress indicator in a loop
     }];
+    
+    
 
 }
+
+#pragma mark - NSActivityView
+
+- (void)myProgressTask {
+    // This just increases the progress indicator in a loop
+    float progress = 0.0f;
+    while (progress < 1.0f) {
+        progress += 0.01f;
+        self.navigationController.view.rn_activityView.progress = progress;
+        //usleep(50000);
+    }
+}
+
+- (void)myProgressTaskUploadingSubmissionFile {
+    // This just increases the progress indicator in a loop
+    float progress = 0.0f;
+    while (progress < 1.0f) {
+        progress += 0.01f;
+        self.navigationController.view.rn_activityView.progress = progress;
+        //usleep(50000);
+    }
+}
+
 
 /*
 #pragma mark - UIViewControllerTransitioningDelegate methods
