@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import "TabBarHolderController.h"
+#import "NHNetworkTime.h"
 
 @interface AppDelegate ()
 
@@ -66,11 +67,14 @@
         [self.window setRootViewController:LoginViewController];
     }
     ////////////////////////////////////////////////
-    
-    
 
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    //synchronize time from server
+    [[NHNetworkClock sharedNetworkClock] syncWithComplete:^{
+        NSLog(@"huync - %s - Time synced %@", __PRETTY_FUNCTION__, [NSDate networkDate]);
+    }];
     
     return YES;
 }

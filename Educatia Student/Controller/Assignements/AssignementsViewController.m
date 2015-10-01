@@ -13,10 +13,14 @@
 #import "ManageLayerViewController.h"
 #import "ThumbnailPDF.h"
 #import "ReaderViewController.h"
+#import "NHNetworkTime.h"
+
 typedef void (^CompletionHandler)(BOOL);
 
 @interface AssignementsViewController () <ReaderViewControllerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
-
+{
+    NSDate *networkDate;
+}
 @property (strong, nonatomic) NSMutableArray *teacherMArray;
 @property (strong, nonatomic) NSMutableArray *maxScoreMArray;
 @property (strong, nonatomic) NSMutableArray *deadLineMArray;
@@ -43,6 +47,8 @@ typedef void (^CompletionHandler)(BOOL);
 
 - (void) viewDidAppear:(BOOL)animated {
     _subjectName = @"Math";
+    networkDate = [NSDate networkDate];
+     [self updateDate];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -353,7 +359,17 @@ typedef void (^CompletionHandler)(BOOL);
     }
 }
 
-
+#pragma mark - UpdateDate
+- (void)updateDate {
+    if([NHNetworkClock sharedNetworkClock].isSynchronized) {
+        NSLog(@"Time is SYNCHRONIZED");
+        NSLog(@"Network is:  %@",networkDate);
+        NSLog(@"Local is:  %@",[NSDate date]);
+    }
+    else {
+        NSLog(@"Time is NOT synchronized");
+    }
+}
 /*
 #pragma mark - UIViewControllerTransitioningDelegate methods
 

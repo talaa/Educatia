@@ -69,6 +69,15 @@
 		F51746BF1BAB28AE003B026A /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51746BC1BAB28AE003B026A /* ParseUI.framework */; };
 		F533BFB61BBC06B8008706A0 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = F533BFB41BBC06B8008706A0 /* 37x-Checkmark.png */; };
 		F533BFB71BBC06B8008706A0 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F533BFB51BBC06B8008706A0 /* 37x-Checkmark@2x.png */; };
+		F549D35D1BBD3127000A9E79 /* NHNetAssociation.m in Sources */ = {isa = PBXBuildFile; fileRef = F549D3561BBD3127000A9E79 /* NHNetAssociation.m */; };
+		F549D35E1BBD3127000A9E79 /* NHNetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = F549D3581BBD3127000A9E79 /* NHNetworkClock.m */; };
+		F549D35F1BBD3127000A9E79 /* NSDate+NetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = F549D35C1BBD3127000A9E79 /* NSDate+NetworkClock.m */; };
+		F549D36E1BBD3144000A9E79 /* README.markdown in Sources */ = {isa = PBXBuildFile; fileRef = F549D3611BBD3144000A9E79 /* README.markdown */; };
+		F549D36F1BBD3144000A9E79 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = F549D3661BBD3144000A9E79 /* GCDAsyncSocket.m */; };
+		F549D3701BBD3144000A9E79 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = F549D3681BBD3144000A9E79 /* GCDAsyncUdpSocket.m */; };
+		F549D3711BBD3144000A9E79 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = F549D36B1BBD3144000A9E79 /* AsyncSocket.m */; };
+		F549D3721BBD3144000A9E79 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = F549D36D1BBD3144000A9E79 /* AsyncUdpSocket.m */; };
+		F549D3781BBD3D3C000A9E79 /* ntp.hosts in Resources */ = {isa = PBXBuildFile; fileRef = F549D3771BBD3D3C000A9E79 /* ntp.hosts */; };
 		F54A98101BBACC540073CF58 /* TGRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54A980A1BBACC540073CF58 /* TGRImageViewController.m */; };
 		F54A98111BBACC540073CF58 /* TGRImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54A980B1BBACC540073CF58 /* TGRImageViewController.xib */; };
 		F54A98121BBACC540073CF58 /* TGRImageZoomAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54A980D1BBACC540073CF58 /* TGRImageZoomAnimationController.m */; };
@@ -217,6 +226,25 @@
 		F51746BC1BAB28AE003B026A /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		F533BFB41BBC06B8008706A0 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		F533BFB51BBC06B8008706A0 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
+		F549D3551BBD3127000A9E79 /* NHNetAssociation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHNetAssociation.h; sourceTree = "<group>"; };
+		F549D3561BBD3127000A9E79 /* NHNetAssociation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHNetAssociation.m; sourceTree = "<group>"; };
+		F549D3571BBD3127000A9E79 /* NHNetworkClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHNetworkClock.h; sourceTree = "<group>"; };
+		F549D3581BBD3127000A9E79 /* NHNetworkClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHNetworkClock.m; sourceTree = "<group>"; };
+		F549D3591BBD3127000A9E79 /* NHNetworkTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHNetworkTime.h; sourceTree = "<group>"; };
+		F549D35A1BBD3127000A9E79 /* NHNTLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHNTLog.h; sourceTree = "<group>"; };
+		F549D35B1BBD3127000A9E79 /* NSDate+NetworkClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NetworkClock.h"; sourceTree = "<group>"; };
+		F549D35C1BBD3127000A9E79 /* NSDate+NetworkClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NetworkClock.m"; sourceTree = "<group>"; };
+		F549D3611BBD3144000A9E79 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.markdown; sourceTree = "<group>"; };
+		F549D3631BBD3144000A9E79 /* CocoaAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaAsyncSocket.h; sourceTree = "<group>"; };
+		F549D3651BBD3144000A9E79 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		F549D3661BBD3144000A9E79 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		F549D3671BBD3144000A9E79 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		F549D3681BBD3144000A9E79 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		F549D36A1BBD3144000A9E79 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
+		F549D36B1BBD3144000A9E79 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		F549D36C1BBD3144000A9E79 /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
+		F549D36D1BBD3144000A9E79 /* AsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncUdpSocket.m; sourceTree = "<group>"; };
+		F549D3771BBD3D3C000A9E79 /* ntp.hosts */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ntp.hosts; sourceTree = "<group>"; };
 		F54A98091BBACC540073CF58 /* TGRImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGRImageViewController.h; sourceTree = "<group>"; };
 		F54A980A1BBACC540073CF58 /* TGRImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGRImageViewController.m; sourceTree = "<group>"; };
 		F54A980B1BBACC540073CF58 /* TGRImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TGRImageViewController.xib; sourceTree = "<group>"; };
@@ -455,6 +483,8 @@
 		04A2AB1C1B9C6CBD009B2C60 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				F549D3601BBD3144000A9E79 /* CocoaAsyncSocket */,
+				F549D3541BBD3127000A9E79 /* NHNetworkTime */,
 				F54A98081BBACC540073CF58 /* Vertigo */,
 				F512D6FC1BA83FE500F3E252 /* RNActivityView */,
 				F50D6D4B1BA5B49300BF6309 /* ThumbnailPDF */,
@@ -533,6 +563,7 @@
 		69FE08AA1B84E51500C81ABC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F549D3771BBD3D3C000A9E79 /* ntp.hosts */,
 				69FE08AB1B84E51500C81ABC /* Info.plist */,
 				69FE08AC1B84E51500C81ABC /* main.m */,
 			);
@@ -677,6 +708,62 @@
 				F512D7001BA83FE500F3E252 /* UIView+RNActivityView.m */,
 			);
 			path = RNActivityView;
+			sourceTree = "<group>";
+		};
+		F549D3541BBD3127000A9E79 /* NHNetworkTime */ = {
+			isa = PBXGroup;
+			children = (
+				F549D3551BBD3127000A9E79 /* NHNetAssociation.h */,
+				F549D3561BBD3127000A9E79 /* NHNetAssociation.m */,
+				F549D3571BBD3127000A9E79 /* NHNetworkClock.h */,
+				F549D3581BBD3127000A9E79 /* NHNetworkClock.m */,
+				F549D3591BBD3127000A9E79 /* NHNetworkTime.h */,
+				F549D35A1BBD3127000A9E79 /* NHNTLog.h */,
+				F549D35B1BBD3127000A9E79 /* NSDate+NetworkClock.h */,
+				F549D35C1BBD3127000A9E79 /* NSDate+NetworkClock.m */,
+			);
+			path = NHNetworkTime;
+			sourceTree = "<group>";
+		};
+		F549D3601BBD3144000A9E79 /* CocoaAsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				F549D3611BBD3144000A9E79 /* README.markdown */,
+				F549D3621BBD3144000A9E79 /* Source */,
+			);
+			path = CocoaAsyncSocket;
+			sourceTree = "<group>";
+		};
+		F549D3621BBD3144000A9E79 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				F549D3631BBD3144000A9E79 /* CocoaAsyncSocket.h */,
+				F549D3641BBD3144000A9E79 /* GCD */,
+				F549D3691BBD3144000A9E79 /* RunLoop */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		F549D3641BBD3144000A9E79 /* GCD */ = {
+			isa = PBXGroup;
+			children = (
+				F549D3651BBD3144000A9E79 /* GCDAsyncSocket.h */,
+				F549D3661BBD3144000A9E79 /* GCDAsyncSocket.m */,
+				F549D3671BBD3144000A9E79 /* GCDAsyncUdpSocket.h */,
+				F549D3681BBD3144000A9E79 /* GCDAsyncUdpSocket.m */,
+			);
+			path = GCD;
+			sourceTree = "<group>";
+		};
+		F549D3691BBD3144000A9E79 /* RunLoop */ = {
+			isa = PBXGroup;
+			children = (
+				F549D36A1BBD3144000A9E79 /* AsyncSocket.h */,
+				F549D36B1BBD3144000A9E79 /* AsyncSocket.m */,
+				F549D36C1BBD3144000A9E79 /* AsyncUdpSocket.h */,
+				F549D36D1BBD3144000A9E79 /* AsyncUdpSocket.m */,
+			);
+			path = RunLoop;
 			sourceTree = "<group>";
 		};
 		F54A98081BBACC540073CF58 /* Vertigo */ = {
@@ -879,6 +966,7 @@
 				F5F9CA701BA449D3008E1715 /* Reader-Button-H.png in Resources */,
 				F533BFB71BBC06B8008706A0 /* 37x-Checkmark@2x.png in Resources */,
 				F5F9CA721BA449D3008E1715 /* Reader-Button-N.png in Resources */,
+				F549D3781BBD3D3C000A9E79 /* ntp.hosts in Resources */,
 				F5F9CA791BA449D3008E1715 /* Reader-Mark-N@2x.png in Resources */,
 				F5F9CA741BA449D3008E1715 /* Reader-Email.png in Resources */,
 				04A2AB151B9C6BCD009B2C60 /* FlatDatePicker-Icon-Check@2x.png in Resources */,
@@ -910,6 +998,7 @@
 				F5F9CA571BA444EB008E1715 /* ReaderThumbsView.m in Sources */,
 				F5F9CA531BA444EB008E1715 /* ReaderThumbFetch.m in Sources */,
 				F5F9CA551BA444EB008E1715 /* ReaderThumbRender.m in Sources */,
+				F549D35E1BBD3127000A9E79 /* NHNetworkClock.m in Sources */,
 				F5F9CA591BA444EB008E1715 /* ReaderViewController.m in Sources */,
 				F5F9CA4A1BA444EB008E1715 /* ReaderConstants.m in Sources */,
 				F5055CD61BA1B6AF00BB6547 /* TabBarPagerHolderViewController.m in Sources */,
@@ -930,6 +1019,7 @@
 				F5055CEC1BA1C39C00BB6547 /* CourseMaterialsViewController.m in Sources */,
 				F54A98131BBACC540073CF58 /* UIImage+AspectFit.m in Sources */,
 				F5F9CA4B1BA444EB008E1715 /* ReaderContentPage.m in Sources */,
+				F549D35D1BBD3127000A9E79 /* NHNetAssociation.m in Sources */,
 				F5F9CA511BA444EB008E1715 /* ReaderMainToolbar.m in Sources */,
 				F507E5DE1B9F19120066283F /* ProfileViewController.m in Sources */,
 				F5055CE91BA1C38C00BB6547 /* GradesViewController.m in Sources */,
@@ -937,13 +1027,18 @@
 				F5055CEF1BA1C3AC00BB6547 /* ChatViewController.m in Sources */,
 				F5055CC61BA1B18700BB6547 /* SubjectsCollectionViewController.m in Sources */,
 				F5F9CA4D1BA444EB008E1715 /* ReaderContentView.m in Sources */,
+				F549D3701BBD3144000A9E79 /* GCDAsyncUdpSocket.m in Sources */,
+				F549D35F1BBD3127000A9E79 /* NSDate+NetworkClock.m in Sources */,
 				F512D7011BA83FE500F3E252 /* RNActivityView.m in Sources */,
 				69FE08AD1B84E51500C81ABC /* main.m in Sources */,
 				0453AEF11B98647E00CD3A53 /* LoginViewController.m in Sources */,
 				F512D7021BA83FE500F3E252 /* UIView+RNActivityView.m in Sources */,
 				F54A98121BBACC540073CF58 /* TGRImageZoomAnimationController.m in Sources */,
+				F549D3711BBD3144000A9E79 /* AsyncSocket.m in Sources */,
 				F5F9CA501BA444EB008E1715 /* ReaderMainPagebar.m in Sources */,
+				F549D3721BBD3144000A9E79 /* AsyncUdpSocket.m in Sources */,
 				F5F9CA5B1BA444EB008E1715 /* ThumbsViewController.m in Sources */,
+				F549D36F1BBD3144000A9E79 /* GCDAsyncSocket.m in Sources */,
 				F54A98101BBACC540073CF58 /* TGRImageViewController.m in Sources */,
 				F51746B91BAB236C003B026A /* ChatTableViewController.m in Sources */,
 				04A2AB201B9C6CBD009B2C60 /* FlatDatePicker.m in Sources */,
@@ -954,6 +1049,7 @@
 				0453AEF61B9872C300CD3A53 /* SignupViewController.m in Sources */,
 				F5055CC31BA18F3400BB6547 /* ManageLayerViewController.m in Sources */,
 				F5F9CA541BA444EB008E1715 /* ReaderThumbQueue.m in Sources */,
+				F549D36E1BBD3144000A9E79 /* README.markdown in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
