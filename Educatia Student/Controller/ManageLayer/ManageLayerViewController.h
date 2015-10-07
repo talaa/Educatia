@@ -13,5 +13,6 @@
 + (void)imageViewLayerProfilePicture:(UIImageView*)imageView;
 + (void)cellLayerSubjectsCollectionView:(UICollectionViewCell*)cell;
 + (void)imageViewCellAssignment:(UIImageView*)imageView;
++ (void)buttonLayerMainView:(UIButton*)button;
 
 @end

@@ -63,7 +63,7 @@
         [self.window setRootViewController:self.tabBarController];
     }else {
         
-        UIViewController *LoginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        UIViewController *LoginViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
         [self.window setRootViewController:LoginViewController];
     }
     ////////////////////////////////////////////////

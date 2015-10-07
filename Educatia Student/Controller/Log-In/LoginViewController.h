@@ -18,8 +18,11 @@
 @property (weak, nonatomic) id<LoginViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (strong, nonatomic) NSString *usernameTextFieldPlaceHolderString;
+@property (strong, nonatomic) NSString *passwordTextfieldPlaceHolderString;
 
 - (IBAction)signupPress:(id)sender;
 - (IBAction)loginPressed:(id)sender;
 - (IBAction)forgotPasswordPressed:(id)sender;
+- (IBAction)cancelPressed:(id)sender;
 @end

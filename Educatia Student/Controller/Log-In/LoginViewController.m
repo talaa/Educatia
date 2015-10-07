@@ -22,6 +22,13 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
+    
+    self.usernameTextField.placeholder = self.usernameTextFieldPlaceHolderString;
+    self.passwordTextField.placeholder = self.passwordTextfieldPlaceHolderString;
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     self.usernameTextField.text = @"";
     self.passwordTextField.text = @"";
@@ -82,6 +89,10 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
     ForgotPasswordViewController * forgotPasswordVC = [storyboard instantiateViewControllerWithIdentifier:@"ForgotPasswordViewController"];
     [self presentViewController:forgotPasswordVC animated:YES completion:nil];
+}
+
+- (IBAction)cancelPressed:(id)sender {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UIAlertViewDelegete

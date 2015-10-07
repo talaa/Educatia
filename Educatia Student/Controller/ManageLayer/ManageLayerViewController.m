@@ -49,6 +49,13 @@
     imageView.layer.cornerRadius    = 5.0f;
     imageView.layer.masksToBounds   = YES;
 }
+
++ (void)buttonLayerMainView:(UIButton*)button {
+    button.layer.borderWidth        = 2.0f;
+    button.layer.borderColor        = [UIColor whiteColor].CGColor;
+    button.layer.cornerRadius       = 5.0f;
+    button.layer.masksToBounds      = YES;
+}
 /*
 #pragma mark - Navigation
 

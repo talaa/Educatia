@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nkt-Gd-cbk">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -291,6 +291,76 @@
             </objects>
             <point key="canvasLocation" x="963" y="-490"/>
         </scene>
+        <!--Main View Controller-->
+        <scene sceneID="GYd-gJ-wGl">
+            <objects>
+                <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nkt-Gd-cbk" customClass="MainViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KaW-YP-y9T"/>
+                        <viewControllerLayoutGuide type="bottom" id="80B-h0-vZu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sVA-Ge-4ug">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="zX1-Oe-JiH">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2R0-GK-lex">
+                                <rect key="frame" x="399" y="687" width="250" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="4HT-sN-bGE"/>
+                                    <constraint firstAttribute="width" constant="250" id="b4c-Tm-Nyl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Student">
+                                    <color key="titleColor" red="0.95088592090000001" green="0.98737373740000001" blue="0.93437754839999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="studentButtonPressed:" destination="nkt-Gd-cbk" eventType="touchUpInside" id="5SL-OW-OIO"/>
+                                    <segue destination="BYZ-38-t0r" kind="modal" identifier="StudentSegue" id="iBw-Av-vmn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5a-4X-rXA">
+                                <rect key="frame" x="119" y="687" width="250" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="QPE-iE-aOu"/>
+                                    <constraint firstAttribute="height" constant="40" id="jXY-RD-SFR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Teacher">
+                                    <color key="titleColor" red="0.95088592090000001" green="0.98737373740000001" blue="0.93437754839999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="teacherButtonPressed:" destination="nkt-Gd-cbk" eventType="touchUpInside" id="P7T-7P-JSW"/>
+                                    <segue destination="BYZ-38-t0r" kind="modal" identifier="TeacherSegue" id="wbc-R8-bq5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="2R0-GK-lex" secondAttribute="trailing" constant="119" id="BXG-id-l7n"/>
+                            <constraint firstItem="80B-h0-vZu" firstAttribute="top" secondItem="o5a-4X-rXA" secondAttribute="bottom" constant="297" id="Ffv-N0-y9V"/>
+                            <constraint firstItem="zX1-Oe-JiH" firstAttribute="top" secondItem="sVA-Ge-4ug" secondAttribute="top" id="QzT-eB-aLK"/>
+                            <constraint firstItem="zX1-Oe-JiH" firstAttribute="leading" secondItem="sVA-Ge-4ug" secondAttribute="leading" id="R80-ml-Ylw"/>
+                            <constraint firstItem="80B-h0-vZu" firstAttribute="top" secondItem="zX1-Oe-JiH" secondAttribute="bottom" id="aNe-zx-B5K"/>
+                            <constraint firstItem="o5a-4X-rXA" firstAttribute="leading" secondItem="sVA-Ge-4ug" secondAttribute="leading" constant="119" id="bhd-JT-DJ9"/>
+                            <constraint firstAttribute="trailing" secondItem="zX1-Oe-JiH" secondAttribute="trailing" id="j9e-CK-XMv"/>
+                            <constraint firstItem="80B-h0-vZu" firstAttribute="top" secondItem="2R0-GK-lex" secondAttribute="bottom" constant="297" id="q4U-Oa-EOD"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="studentButton" destination="2R0-GK-lex" id="V6s-zC-oVr"/>
+                        <outlet property="teacherButton" destination="o5a-4X-rXA" id="rmJ-33-hEZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9VD-Iz-wtb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2158" y="-490"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -312,7 +382,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_Username" translatesAutoresizingMaskIntoConstraints="NO" id="BWd-NL-xz9">
                                         <rect key="frame" x="8" y="18" width="35" height="36"/>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Student Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hk4-Bc-byU">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hk4-Bc-byU">
                                         <rect key="frame" x="74" y="15" width="173" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -326,7 +396,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_Password" translatesAutoresizingMaskIntoConstraints="NO" id="3sm-xW-S4C">
                                         <rect key="frame" x="8" y="18" width="35" height="36"/>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Student Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qNW-2U-zIB">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qNW-2U-zIB">
                                         <rect key="frame" x="74" y="15" width="173" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -370,6 +440,15 @@
                                 </state>
                                 <connections>
                                     <action selector="forgotPasswordPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dKG-aN-rGs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ulh-DT-dKs">
+                                <rect key="frame" x="16" y="20" width="32" height="32"/>
+                                <state key="normal" image="Icon_Cancel">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zav-D8-Li3"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1096,4 +1175,7 @@
         <image name="Math1.jpg" width="200" height="250"/>
         <image name="welcome_background.png" width="320" height="568"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="wbc-R8-bq5"/>
+    </inferredMetricsTieBreakers>
 </document>
