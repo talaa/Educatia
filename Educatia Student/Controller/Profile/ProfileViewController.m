@@ -69,7 +69,7 @@
     //NSLog(@"Birth is %@", user[@"DateofBirth"]);
     
     //ProfilePicture Layer
-    [ManageLayerViewController imageViewLayerProfilePicture:self.profilePictureImageView];
+    [ManageLayerViewController imageViewLayerProfilePicture:self.profilePictureImageView Corner:75.0f];
     
     if (self.profilePictureImageView.image == nil){
     //retrieve user image
@@ -255,7 +255,7 @@
         [[[UIAlertView alloc] initWithTitle:@"EducationStudent" message:@"Picture you have choosen is greater than 400K!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }else {
         self.profilePictureImageView.image = chosenImage;
-        [ManageLayerViewController imageViewLayerProfilePicture:self.profilePictureImageView];
+        [ManageLayerViewController imageViewLayerProfilePicture:self.profilePictureImageView Corner:75.0f];
         [self showChangeProfileButtonHideUploadButton];
     }
     [picker dismissViewControllerAnimated:YES completion:NULL];

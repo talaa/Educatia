@@ -48,6 +48,7 @@
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
     
+    /*
     //check if user had logged in on previous //////////////////////////////////////
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     PFUser *user = [PFUser currentUser];
@@ -66,7 +67,7 @@
         UIViewController *LoginViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
         [self.window setRootViewController:LoginViewController];
     }
-    ////////////////////////////////////////////////
+    //////////////////////////////////////////////// */
 
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];

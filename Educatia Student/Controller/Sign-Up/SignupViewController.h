@@ -17,6 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *picProfileImageView;
 @property (weak, nonatomic) IBOutlet UIButton *uploadPhotoButton;
+@property (weak, nonatomic) IBOutlet UIButton *changePhotoButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property (nonatomic, weak) id<SignupViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
@@ -42,9 +43,12 @@
 @property (strong, nonatomic) IBOutlet NSString *addressString;
 @property (strong, nonatomic) IBOutlet NSString *birthdayString;
 
--(IBAction)submitPressed:(id)sender;
--(IBAction)dismissViewControllerPressed:(id)sender;
--(IBAction)birthdateCalenderPressed:(id)sender;
--(IBAction)uploadPhotoPressed:(id)sender;
+@property (nonatomic) int typeIndex;
+
+- (IBAction)submitPressed:(id)sender;
+- (IBAction)dismissViewControllerPressed:(id)sender;
+- (IBAction)birthdateCalenderPressed:(id)sender;
+- (IBAction)uploadPhotoPressed:(id)sender;
+- (IBAction)changePhotoPressed:(id)sender;
 
 @end

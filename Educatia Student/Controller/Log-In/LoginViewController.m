@@ -40,7 +40,7 @@
 }
 
 -(IBAction)signupPress:(id)sender{
-    [self presentSignUpViewController];
+    //[self presentSignUpViewController];
 }
 
 #pragma mark NewUserViewController
@@ -106,14 +106,24 @@
     
 //
 }
-/*
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"SignupSegue"]){
+        SignupViewController *signupVC = segue.destinationViewController;
+        if ([self.usernameTextFieldPlaceHolderString isEqualToString:@"Student Username"]){
+            signupVC.typeIndex = 1;
+        }else {
+            signupVC.typeIndex = 0;
+        }
+        
+    }
 }
-*/
+
 
 @end

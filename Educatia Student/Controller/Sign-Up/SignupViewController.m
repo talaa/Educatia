@@ -8,7 +8,7 @@
 
 #import "SignupViewController.h"
 #import <Parse/Parse.h>
-
+#import "ManageLayerViewController.h"
 
 @interface SignupViewController () <UITextFieldDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate>
 
@@ -19,6 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self isPicProfileImageViewEmpty];
+    [self defaultProfileImage];
     
     //Hide and stop ActivityIndicator --> Submit
     [self stopActivityIndicator];
@@ -43,7 +46,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self isPicProfileImageViewEmpty];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -63,7 +66,13 @@
 
 - (bool)isPicProfileImageViewEmpty {
     //Check if picProfileImageView empty
-    UIImage *picture = [UIImage imageNamed:@"Image_AddProfilPic"];
+    UIImage *picture;
+    if (_typeIndex == 1){
+        picture = [UIImage imageNamed:@"Image_StudentProfile"];
+    }else {
+        picture = [UIImage imageNamed:@"Image_TeacherProfile"];
+    }
+    
     if ([self.picProfileImageView.image isEqual:picture]){
         //no image set
         return YES;
@@ -72,15 +81,29 @@
         return NO;
     }
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)defaultProfileImage {
+    UIImage *picture;
+    if (_typeIndex == 1){
+        picture = [UIImage imageNamed:@"Image_StudentProfile"];
+    }else {
+        picture = [UIImage imageNamed:@"Image_TeacherProfile"];
+    }
+    [ManageLayerViewController imageViewLayerProfilePicture:self.picProfileImageView Corner:90.0f];
+    self.picProfileImageView.image = picture;
+    
+    //hide changePhoto and present UploadPhoto
+    [self hideChangeButton];
 }
-*/
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (IBAction)submitPressed:(id)sender {
     [self startActivityIndicator];
@@ -93,7 +116,7 @@
             self.passwordString     = self.passwordTexrField.text;
             self.phoneString        = self.phoneTextField.text;
             self.emailString        = self.emailTextField.text;
-            self.birthdayString       = self.birthdateTextField.text;
+            self.birthdayString     = self.birthdateTextField.text;
             
             //Parse Implementation
             [self parseSavingData];
@@ -187,6 +210,12 @@
     user[@"LastName"]       = self.lastNameString;
     user[@"DateofBirth"]    = self.birthdayString;
     
+    //check type if student or teacher
+    if (_typeIndex == 0) {
+        user[@"type"]        = @"Teacher";
+    }else {
+        user[@"type"]        = @"Student";
+    }
     
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {   // Hooray! Let them use the app now.
@@ -271,6 +300,14 @@
 
 //UploadPhtot button pressed action
 -(IBAction)uploadPhotoPressed:(id)sender {
+    [self actionsheetPresent];
+}
+
+- (IBAction)changePhotoPressed:(id)sender {
+    [self actionsheetPresent];
+}
+
+- (void)actionsheetPresent {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Take Photo" otherButtonTitles:@"Upload from photos", nil];
     [actionSheet showInView:self.view];
 }
@@ -303,23 +340,24 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    //Check if picture size is greater than 400K
-    NSData *imageData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((chosenImage),1.0)];
-    //NSLog(@"Image size is %lu", (unsigned long)imageData.length);
-    if (imageData.length > 500000){
-        self.picProfileImageView.image = [UIImage imageNamed:@"Image_AddProfilPic"];
-        [[[UIAlertView alloc] initWithTitle:@"EducationStudent" message:@"Picture you have choosen is greater than 400K!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-    }else {
-        //hide uploadProfileButton
-        self.uploadPhotoButton.hidden = YES;
-        
-        //picProfileImageView Layout
-        self.picProfileImageView.layer.borderColor = [UIColor whiteColor].CGColor;
-        self.picProfileImageView.layer.borderWidth = 1.5f;
-        self.picProfileImageView.layer.cornerRadius = 7.0f;
-        self.picProfileImageView.layer.masksToBounds = YES;
-        self.picProfileImageView.image = chosenImage;
-    }
+    
+    /*Check Image Size
+     //Check if picture size is greater than 400K
+     NSData *imageData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((chosenImage),0.5)];
+     NSLog(@"Image size is %lu", (unsigned long)imageData.length);
+     if (imageData.length > 500000){
+     self.picProfileImageView.image = [UIImage imageNamed:@"Image_AddProfilPic"];
+     [[[UIAlertView alloc] initWithTitle:@"EducationStudent" message:@"Picture you have choosen is greater than 400K!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+     }else {}
+     */
+    
+    //hide uploadProfileButton
+    [self hideUploadButton];
+    
+    //picProfileImageView Layout
+    [ManageLayerViewController imageViewLayerProfilePicture:self.picProfileImageView Corner:90.0f];
+    self.picProfileImageView.image = chosenImage;
+    
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -340,5 +378,17 @@
     }
 }
 
+
+#pragma mark - ChangeButton && UploadButton behaviour
+
+- (void)hideChangeButton {
+    self.changePhotoButton.hidden = YES;
+    self.uploadPhotoButton.hidden = NO;
+}
+
+- (void)hideUploadButton {
+    self.changePhotoButton.hidden = NO;
+    self.uploadPhotoButton.hidden = YES;
+}
 
 @end

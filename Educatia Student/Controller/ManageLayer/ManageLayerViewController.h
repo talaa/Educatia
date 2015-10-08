@@ -10,7 +10,7 @@
 
 @interface ManageLayerViewController : UITabBarController
 
-+ (void)imageViewLayerProfilePicture:(UIImageView*)imageView;
++ (void)imageViewLayerProfilePicture:(UIImageView*)imageView Corner:(float)cornerFloat;
 + (void)cellLayerSubjectsCollectionView:(UICollectionViewCell*)cell;
 + (void)imageViewCellAssignment:(UIImageView*)imageView;
 + (void)buttonLayerMainView:(UIButton*)button;

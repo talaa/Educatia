@@ -72,7 +72,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XgX-hR-cpW">
-                                <rect key="frame" x="542" y="266" width="210" height="49"/>
+                                <rect key="frame" x="542" y="311" width="210" height="49"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile Picture" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KS1-Vr-hTD">
                                         <rect key="frame" x="4" y="14" width="202" height="21"/>
@@ -139,8 +139,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="calibratedWhite"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image_AddProfilPic" translatesAutoresizingMaskIntoConstraints="NO" id="btW-Wj-Nyn">
-                                <rect key="frame" x="542" y="96" width="210" height="157"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="btW-Wj-Nyn">
+                                <rect key="frame" x="557" y="96" width="180" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="9a6-qE-AZP"/>
+                                    <constraint firstAttribute="height" constant="180" id="gKa-xd-iac"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kre-Kv-M1U">
                                 <rect key="frame" x="276" y="682" width="228" height="60"/>
@@ -187,7 +191,7 @@
                                 <rect key="frame" x="289" y="444" width="37" height="37"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmZ-w9-gLu">
-                                <rect key="frame" x="542" y="230" width="100" height="23"/>
+                                <rect key="frame" x="597" y="280" width="100" height="23"/>
                                 <color key="backgroundColor" red="0.047979797979798011" green="0.047979797979798011" blue="0.047979797979798011" alpha="0.23999999999999999" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <state key="normal" title="Upload photo">
@@ -198,13 +202,30 @@
                                     <action selector="uploadPhotoPressed:" destination="ilD-5H-Ssy" eventType="touchUpInside" id="h7M-ol-fmk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZoJ-cK-khj">
+                                <rect key="frame" x="597" y="280" width="100" height="23"/>
+                                <color key="backgroundColor" red="0.047979797980000002" green="0.047979797980000002" blue="0.047979797980000002" alpha="0.23999999999999999" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <state key="normal" title="Change photo">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changePhotoPressed:" destination="ilD-5H-Ssy" eventType="touchUpInside" id="SVM-ex-FyL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="btW-Wj-Nyn" secondAttribute="trailing" constant="31" id="ETC-Qb-R06"/>
+                            <constraint firstItem="btW-Wj-Nyn" firstAttribute="top" secondItem="gOf-Q1-Qcf" secondAttribute="bottom" constant="76" id="cnY-AJ-oMw"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="yfg-Jo-iqg" id="scA-mY-8L2"/>
                         <outlet property="birthdateTextField" destination="9nY-Lg-USE" id="rb6-BH-Hxl"/>
+                        <outlet property="changePhotoButton" destination="ZoJ-cK-khj" id="mtV-wE-4TS"/>
                         <outlet property="confirmPasswordTextField" destination="m8X-QI-Utj" id="VZ4-Md-vzC"/>
                         <outlet property="emailActivityIndicatorView" destination="Xbv-GL-OvR" id="zWr-zd-nZf"/>
                         <outlet property="emailImageViewTrue" destination="qcp-Tq-m72" id="Aof-Jc-QK6"/>
@@ -429,6 +450,7 @@
                                 </state>
                                 <connections>
                                     <action selector="signupPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DXo-L0-b3x"/>
+                                    <segue destination="ilD-5H-Ssy" kind="modal" identifier="SignupSegue" id="kZc-xH-756"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_ForgotPassword" translatesAutoresizingMaskIntoConstraints="NO" id="EcM-68-Wb8">
@@ -817,7 +839,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e01-Fd-ry8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1218" y="3332"/>
+            <point key="canvasLocation" x="7382" y="1969"/>
         </scene>
         <!--Course Materials View Controller-->
         <scene sceneID="BVB-EQ-j5b">
@@ -996,35 +1018,6 @@
             </objects>
             <point key="canvasLocation" x="6294" y="1969"/>
         </scene>
-        <!--Chat Table View Controller-->
-        <scene sceneID="KyB-z8-uck">
-            <objects>
-                <tableViewController storyboardIdentifier="ChatTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vw7-0w-Vai" customClass="ChatTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="103" sectionHeaderHeight="22" sectionFooterHeight="22" id="jVJ-aK-erh">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="811"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="103" id="bLD-7q-1Gs">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bLD-7q-1Gs" id="xL9-71-AFe">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Vw7-0w-Vai" id="VfB-vm-4eR"/>
-                            <outlet property="delegate" destination="Vw7-0w-Vai" id="lTw-oJ-fr7"/>
-                        </connections>
-                    </tableView>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="768" height="811"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gVZ-Bh-Og6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6294" y="3115.5"/>
-        </scene>
         <!--Assignements View Controller-->
         <scene sceneID="CHm-jp-rwK">
             <objects>
@@ -1202,7 +1195,6 @@
         <image name="Icon_True" width="16" height="16"/>
         <image name="Icon_Username" width="16" height="16"/>
         <image name="Icone_BirthDay" width="32" height="32"/>
-        <image name="Image_AddProfilPic" width="50" height="50"/>
         <image name="Math1.jpg" width="200" height="250"/>
         <image name="welcome_background.png" width="320" height="568"/>
     </resources>

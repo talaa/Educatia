@@ -24,10 +24,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-+ (void)imageViewLayerProfilePicture:(UIImageView*)imageView {
++ (void)imageViewLayerProfilePicture:(UIImageView*)imageView Corner:(float)cornerFloat {
     imageView.layer.borderColor     = [UIColor whiteColor].CGColor;
     imageView.layer.borderWidth     = 1.5f;
-    imageView.layer.cornerRadius    = 75.0f;
+    imageView.layer.cornerRadius    = cornerFloat;
     imageView.layer.masksToBounds   = YES;
 }
 
