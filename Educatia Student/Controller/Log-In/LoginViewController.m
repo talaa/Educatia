@@ -15,7 +15,7 @@
 
 @end
 
-@implementation LoginViewController 
+@implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -65,17 +65,23 @@
         [PFUser logInWithUsernameInBackground:self.usernameTextField.text  password:self.passwordTextField.text
                                         block:^(PFUser *user, NSError *error) {
                                             if (user) {
-                                                // Do stuff after successful login.
-                                                //Turned to Tabbar controller
+                                                NSString *tabBarName;
+                                                if ([user[@"type"] isEqualToString:@"Student"]) {
+                                                    //Student View
+                                                    tabBarName = @"StudentTabBarHolderController";
+                                                }else {
+                                                    //Teacher view
+                                                    tabBarName = @"TeacherTabBarViewController";
+                                                }
                                                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                                                UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"TabBarHolderController"];
+                                                UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:tabBarName];
                                                 [self presentViewController:vc animated:YES completion:nil];
                                             } else {
                                                 // The login failed. Check error to see why.
                                                 [[[UIAlertView alloc] initWithTitle:@"Education Student" message:@"username or password is not correct.Try again!!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
                                             }
                                         }];
-
+        
     }else{
         [[[UIAlertView alloc] initWithTitle:@"Education Student" message:@"Make sure that you have entred all fields" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
     }
@@ -98,13 +104,13 @@
 #pragma mark - UIAlertViewDelegete
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-//    if (alertView.tag == 100){
-//        if (buttonIndex == 0) {
-//            
-//        }
-//    }
+    //    if (alertView.tag == 100){
+    //        if (buttonIndex == 0) {
+    //
+    //        }
+    //    }
     
-//
+    //
 }
 
 

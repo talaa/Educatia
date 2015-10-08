@@ -60,7 +60,7 @@
 //            [defaults setObject:user.username forKey:@"chatName"];
 //            [defaults synchronize];
 //        }
-        self.tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarHolderController"];
+        self.tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"StudentTabBarHolderController"];
         [self.window setRootViewController:self.tabBarController];
     }else {
         

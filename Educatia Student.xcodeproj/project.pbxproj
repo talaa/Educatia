@@ -71,6 +71,7 @@
 		F533BFB71BBC06B8008706A0 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F533BFB51BBC06B8008706A0 /* 37x-Checkmark@2x.png */; };
 		F539D0121BC55DE500F05BDD /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F539D0111BC55DE500F05BDD /* MainViewController.m */; };
 		F539D0161BC5669400F05BDD /* CHTransitionAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F539D0151BC5669400F05BDD /* CHTransitionAnimationController.m */; };
+		F53FC8CD1BC68E2300C17C18 /* TeacherTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53FC8CC1BC68E2300C17C18 /* TeacherTabBarViewController.m */; };
 		F549D35D1BBD3127000A9E79 /* NHNetAssociation.m in Sources */ = {isa = PBXBuildFile; fileRef = F549D3561BBD3127000A9E79 /* NHNetAssociation.m */; };
 		F549D35E1BBD3127000A9E79 /* NHNetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = F549D3581BBD3127000A9E79 /* NHNetworkClock.m */; };
 		F549D35F1BBD3127000A9E79 /* NSDate+NetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = F549D35C1BBD3127000A9E79 /* NSDate+NetworkClock.m */; };
@@ -232,6 +233,8 @@
 		F539D0111BC55DE500F05BDD /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		F539D0141BC5669400F05BDD /* CHTransitionAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTransitionAnimationController.h; sourceTree = "<group>"; };
 		F539D0151BC5669400F05BDD /* CHTransitionAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTransitionAnimationController.m; sourceTree = "<group>"; };
+		F53FC8CB1BC68E2300C17C18 /* TeacherTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherTabBarViewController.h; sourceTree = "<group>"; };
+		F53FC8CC1BC68E2300C17C18 /* TeacherTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherTabBarViewController.m; sourceTree = "<group>"; };
 		F549D3551BBD3127000A9E79 /* NHNetAssociation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHNetAssociation.h; sourceTree = "<group>"; };
 		F549D3561BBD3127000A9E79 /* NHNetAssociation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHNetAssociation.m; sourceTree = "<group>"; };
 		F549D3571BBD3127000A9E79 /* NHNetworkClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHNetworkClock.h; sourceTree = "<group>"; };
@@ -374,6 +377,7 @@
 		0453AEDA1B9861FB00CD3A53 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F53FC8CA1BC68DBC00C17C18 /* TeacherTabBar */,
 				F539D00F1BC55DB700F05BDD /* Main */,
 				F5055CDB1BA1C36000BB6547 /* Assignements */,
 				F5055CDC1BA1C36000BB6547 /* Chat */,
@@ -736,6 +740,15 @@
 			path = Animations;
 			sourceTree = "<group>";
 		};
+		F53FC8CA1BC68DBC00C17C18 /* TeacherTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				F53FC8CB1BC68E2300C17C18 /* TeacherTabBarViewController.h */,
+				F53FC8CC1BC68E2300C17C18 /* TeacherTabBarViewController.m */,
+			);
+			path = TeacherTabBar;
+			sourceTree = "<group>";
+		};
 		F549D3541BBD3127000A9E79 /* NHNetworkTime */ = {
 			isa = PBXGroup;
 			children = (
@@ -1058,6 +1071,7 @@
 				F549D35F1BBD3127000A9E79 /* NSDate+NetworkClock.m in Sources */,
 				F512D7011BA83FE500F3E252 /* RNActivityView.m in Sources */,
 				69FE08AD1B84E51500C81ABC /* main.m in Sources */,
+				F53FC8CD1BC68E2300C17C18 /* TeacherTabBarViewController.m in Sources */,
 				0453AEF11B98647E00CD3A53 /* LoginViewController.m in Sources */,
 				F512D7021BA83FE500F3E252 /* UIView+RNActivityView.m in Sources */,
 				F539D0161BC5669400F05BDD /* CHTransitionAnimationController.m in Sources */,
