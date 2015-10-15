@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TechSubjectCollectionViewCell.h"
 
 @interface ManageLayerViewController : UITabBarController
 
@@ -14,5 +15,5 @@
 + (void)cellLayerSubjectsCollectionView:(UICollectionViewCell*)cell;
 + (void)imageViewCellAssignment:(UIImageView*)imageView;
 + (void)buttonLayerMainView:(UIButton*)button;
-
++ (void)cellLayerTechSubjectCollectionView:(TechSubjectCollectionViewCell*)cell;
 @end

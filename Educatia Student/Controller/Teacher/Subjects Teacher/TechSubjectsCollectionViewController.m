@@ -9,12 +9,16 @@
 #import "UIView+RNActivityView.h"
 #import "TechSubjectsCollectionViewController.h"
 #import <Parse/Parse.h>
+#import "TechSubjectCollectionViewCell.h" 
+#import "ManageLayerViewController.h"
 
 @interface TechSubjectsCollectionViewController ()
 
 @property (strong, nonatomic) NSString *teacherFirstName;
 @property (strong, nonatomic) NSString *teacherLastName;
 @property (strong, nonatomic) NSString *teacherFullName;
+@property (strong, nonatomic) NSString *teacherUserName;
+@property (strong, nonatomic) NSMutableArray *subjectsNameMArray;
 
 @end
 
@@ -32,6 +36,12 @@ static NSString * const reuseIdentifier = @"Cell";
     //[self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
+    [self getCurrentUserData];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
+    [self loadSubjects];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,20 +63,23 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     //#warning Incomplete method implementation -- Return the number of sections
-    return 0;
+    return [_subjectsNameMArray count]? 1:0;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     //#warning Incomplete method implementation -- Return the number of items in the section
-    return 0;
+    return [_subjectsNameMArray count]? [_subjectsNameMArray count]:0;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    TechSubjectCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     // Configure the cell
-    
+    if ([_subjectsNameMArray count]>0){
+        cell.subjectName.text = [_subjectsNameMArray objectAtIndex:indexPath.row];
+    }
+    [ManageLayerViewController cellLayerTechSubjectCollectionView:cell];
     return cell;
 }
 
@@ -118,36 +131,32 @@ static NSString * const reuseIdentifier = @"Cell";
                                                handler:^(UIAlertAction * action) {
                                                    //Do Some action here ---> OK
                                                    UITextField *subjectNameTextField = alertController.textFields.firstObject;
+                                                   
+                                                   //start ActivityIndicator
+                                                   [self activityLoadingwithLabel];
+                                                   
                                                    if (subjectNameTextField.text.length > 0) {
-                                                       
-                                                       //start ActivityIndicator
-                                                       
-
-                                                       //Save new subject object
-                                                       PFUser *user = [PFUser currentUser];
-                                                       self.teacherFirstName = user[@"FirstName"];
-                                                       self.teacherLastName = user[@"LastName"];
-                                                       self.teacherFullName = [[_teacherFirstName stringByAppendingString:@" "] stringByAppendingString:_teacherLastName];
-                                                       
                                                        PFObject *subject = [PFObject objectWithClassName:@"Subjects"];
                                                        
                                                        subject[@"subjectName"]   = subjectNameTextField.text;
-                                                       subject[@"teacherUserName"] = user.username;
+                                                       subject[@"teacherUserName"] = _teacherUserName;
                                                        subject[@"teacherFullName"] = _teacherFullName;
                                                        
                                                        [subject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                                                            //Stop ActivityIndicator
-                                                           
+                                                           [self activityStopLoading];
                                                            if (succeeded) {
                                                                // The object has been saved.
-                                                               [self.view showActivityViewWithLabel:@"Subject has been added" image:[UIImage imageNamed:@"37x-Checkmark.png"]];
-                                                               [self.view hideActivityViewWithAfterDelay:2];
+                                                               [self activityCompletedSuccessfully];
+                                                               //After add then reload collectionView
+                                                               [self viewDidAppear:YES];
                                                            } else {
                                                                // There was a problem, check error.description
-                                                               [self.view showActivityViewWithLabel:@"Error.Try again!" image:[UIImage imageNamed:@"32x-Closemark.png"]];
-                                                               [self.view hideActivityViewWithAfterDelay:2];
+                                                               [self activityError];
                                                            }
                                                        }];
+                                                   }else {
+                                                       [self activityError];
                                                    }
                                                }];
     UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive
@@ -165,5 +174,61 @@ static NSString * const reuseIdentifier = @"Cell";
     
     [self presentViewController:alertController animated:YES completion:nil];
 }
+
+/*
+ ShowActivity Methos
+ */
+
+- (void)activityCompletedSuccessfully {
+    [self.view showActivityViewWithLabel:@"Subject has been added" image:[UIImage imageNamed:@"37x-Checkmark.png"]];
+    [self.view hideActivityViewWithAfterDelay:2];
+}
+
+- (void)activityError {
+    [self.view showActivityViewWithLabel:@"Error,Try again!" image:[UIImage imageNamed:@"32x-Closemark.png"]];
+    [self.view hideActivityViewWithAfterDelay:2];
+}
+
+- (void)activityLoadingwithLabel {
+    [self.view showActivityViewWithLabel:@"Loading...."];
+}
+
+- (void)activityStopLoading {
+    [self.view hideActivityView];
+}
+
+/*
+ Load Objects from Parse
+ */
+
+- (void)loadSubjects {
+    [self activityLoadingwithLabel];
+    PFQuery *query = [PFQuery queryWithClassName:@"Subjects"];
+    [query whereKey:@"teacherUserName" equalTo:_teacherUserName];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // Retrieved scores successfully
+            _subjectsNameMArray = [[NSMutableArray alloc] init];
+            for (PFObject *object in objects){
+                [_subjectsNameMArray addObject:object[@"subjectName"]];
+            }
+            [self activityStopLoading];
+            [self.collectionView reloadData];
+        }
+    }];
+}
+
+/*
+ get current user data
+ */
+- (void)getCurrentUserData {
+    //Save new subject object
+    PFUser *user = [PFUser currentUser];
+    self.teacherUserName = user.username;
+    self.teacherFirstName = user[@"FirstName"];
+    self.teacherLastName = user[@"LastName"];
+    self.teacherFullName = [[_teacherFirstName stringByAppendingString:@" "] stringByAppendingString:_teacherLastName];
+}
+
 
 @end
