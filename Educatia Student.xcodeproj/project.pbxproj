@@ -72,6 +72,7 @@
 		F54A98111BBACC540073CF58 /* TGRImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54A980B1BBACC540073CF58 /* TGRImageViewController.xib */; };
 		F54A98121BBACC540073CF58 /* TGRImageZoomAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54A980D1BBACC540073CF58 /* TGRImageZoomAnimationController.m */; };
 		F54A98131BBACC540073CF58 /* UIImage+AspectFit.m in Sources */ = {isa = PBXBuildFile; fileRef = F54A980F1BBACC540073CF58 /* UIImage+AspectFit.m */; };
+		F56FBCD71BCFF87500ECDDA6 /* SubjectPagerHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F56FBCD61BCFF87500ECDDA6 /* SubjectPagerHolderViewController.m */; };
 		F5A972CA1BCFB7DC00C91D1A /* TeacherTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972C91BCFB7DC00C91D1A /* TeacherTabBarViewController.m */; };
 		F5A972EC1BCFB7EA00C91D1A /* AssignementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972CD1BCFB7EA00C91D1A /* AssignementsViewController.m */; };
 		F5A972ED1BCFB7EA00C91D1A /* AssignementTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972CF1BCFB7EA00C91D1A /* AssignementTableViewCell.m */; };
@@ -239,6 +240,8 @@
 		F54A980D1BBACC540073CF58 /* TGRImageZoomAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGRImageZoomAnimationController.m; sourceTree = "<group>"; };
 		F54A980E1BBACC540073CF58 /* UIImage+AspectFit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AspectFit.h"; sourceTree = "<group>"; };
 		F54A980F1BBACC540073CF58 /* UIImage+AspectFit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AspectFit.m"; sourceTree = "<group>"; };
+		F56FBCD51BCFF87500ECDDA6 /* SubjectPagerHolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectPagerHolderViewController.h; sourceTree = "<group>"; };
+		F56FBCD61BCFF87500ECDDA6 /* SubjectPagerHolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectPagerHolderViewController.m; sourceTree = "<group>"; };
 		F5A972C81BCFB7DC00C91D1A /* TeacherTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherTabBarViewController.h; sourceTree = "<group>"; };
 		F5A972C91BCFB7DC00C91D1A /* TeacherTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherTabBarViewController.m; sourceTree = "<group>"; };
 		F5A972CC1BCFB7EA00C91D1A /* AssignementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignementsViewController.h; sourceTree = "<group>"; };
@@ -727,6 +730,15 @@
 			path = Vertigo;
 			sourceTree = "<group>";
 		};
+		F56FBCD41BCFF84200ECDDA6 /* SubjectPagerHolder */ = {
+			isa = PBXGroup;
+			children = (
+				F56FBCD51BCFF87500ECDDA6 /* SubjectPagerHolderViewController.h */,
+				F56FBCD61BCFF87500ECDDA6 /* SubjectPagerHolderViewController.m */,
+			);
+			path = SubjectPagerHolder;
+			sourceTree = "<group>";
+		};
 		F5A972C51BCFB72400C91D1A /* Student */ = {
 			isa = PBXGroup;
 			children = (
@@ -746,6 +758,7 @@
 		F5A972C61BCFB72400C91D1A /* Teacher */ = {
 			isa = PBXGroup;
 			children = (
+				F56FBCD41BCFF84200ECDDA6 /* SubjectPagerHolder */,
 				F5A972F81BCFB92600C91D1A /* Subjects Teacher */,
 				F5A972C71BCFB7DC00C91D1A /* TeacherTabBar */,
 			);
@@ -1081,6 +1094,7 @@
 				F5F9CA551BA444EB008E1715 /* ReaderThumbRender.m in Sources */,
 				F549D35E1BBD3127000A9E79 /* NHNetworkClock.m in Sources */,
 				F5F9CA591BA444EB008E1715 /* ReaderViewController.m in Sources */,
+				F56FBCD71BCFF87500ECDDA6 /* SubjectPagerHolderViewController.m in Sources */,
 				F5F9CA4A1BA444EB008E1715 /* ReaderConstants.m in Sources */,
 				F5F9CA491BA444EB008E1715 /* CGPDFDocument.m in Sources */,
 				F5A972CA1BCFB7DC00C91D1A /* TeacherTabBarViewController.m in Sources */,

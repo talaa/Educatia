@@ -11,9 +11,11 @@
 #import <Parse/Parse.h>
 #import "TechSubjectCollectionViewCell.h" 
 #import "ManageLayerViewController.h"
+#import "SubjectPagerHolderViewController.h"
 
 @interface TechSubjectsCollectionViewController ()
 
+@property (strong, nonatomic) NSString *subjectName;
 @property (strong, nonatomic) NSString *teacherFirstName;
 @property (strong, nonatomic) NSString *teacherLastName;
 @property (strong, nonatomic) NSString *teacherFullName;
@@ -49,15 +51,23 @@ static NSString * const reuseIdentifier = @"Cell";
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
- }
- */
+     NSArray *indexPaths = [self.collectionView indexPathsForSelectedItems];
+     NSIndexPath *indexPath = [indexPaths objectAtIndex:0];
+     
+     if ([segue.identifier isEqualToString:@"SubjectSegue"]) {
+         UINavigationController *nav = [segue destinationViewController];
+         SubjectPagerHolderViewController *subHolderVC = (SubjectPagerHolderViewController *)nav.topViewController;
+         subHolderVC.subjectName = [_subjectsNameMArray objectAtIndex:indexPath.row];
+     }
+}
+
 
 #pragma mark <UICollectionViewDataSource>
 
@@ -84,6 +94,13 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 #pragma mark <UICollectionViewDelegate>
+
+/*
+- (void)collectionView:(UICollectionView *)collectionView SelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    _subjectName = [_subjectsNameMArray objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"SubjectSegue" sender:self];
+}
+*/
 
 /*
  // Uncomment this method to specify if the specified item should be highlighted during tracking

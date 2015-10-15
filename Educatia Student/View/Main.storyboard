@@ -783,6 +783,7 @@
                                 <connections>
                                     <outlet property="subjectImage" destination="WxX-Wf-JdP" id="k2w-qz-u9g"/>
                                     <outlet property="subjectName" destination="4Qx-g4-Spv" id="0Bf-0n-eMe"/>
+                                    <segue destination="n6a-u9-KYr" kind="modal" identifier="SubjectSegue" id="OQT-MN-fQW"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -803,6 +804,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b6L-t2-5Ar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-27" y="4698"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZUB-0z-Mek">
+            <objects>
+                <navigationController id="n6a-u9-KYr" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="qSv-Qs-Hdc"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kFi-Gv-Vzc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.95088592090000001" green="0.98737373740000001" blue="0.93437754839999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ifD-cU-AyH" kind="relationship" relationship="rootViewController" id="zOt-45-3es"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fGo-b3-zOz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1036" y="4698"/>
+        </scene>
+        <!--Subject Pager Holder View Controller-->
+        <scene sceneID="s51-SS-gXH">
+            <objects>
+                <viewController id="ifD-cU-AyH" customClass="SubjectPagerHolderViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7d5-Pa-Vai"/>
+                        <viewControllerLayoutGuide type="bottom" id="OOS-iG-Zb7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZfE-L6-wc1">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="R9e-PJ-Mew">
+                        <barButtonItem key="leftBarButtonItem" image="Icon_Cancel" id="CnM-Qm-t4i">
+                            <connections>
+                                <action selector="dismissPressed:" destination="ifD-cU-AyH" id="7Ax-4X-YCy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gus-55-SNp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2186" y="4698"/>
         </scene>
         <!--Subjects-->
         <scene sceneID="Tgq-GE-TNu">
