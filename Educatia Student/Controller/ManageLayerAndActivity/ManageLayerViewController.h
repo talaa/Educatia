@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "TechSubjectCollectionViewCell.h"
 
-@interface ManageLayerViewController : UITabBarController
+@interface ManageLayerViewController : UIViewController
 
 + (void)imageViewLayerProfilePicture:(UIImageView*)imageView Corner:(float)cornerFloat;
 + (void)cellLayerSubjectsCollectionView:(UICollectionViewCell*)cell;
 + (void)imageViewCellAssignment:(UIImageView*)imageView;
 + (void)buttonLayerMainView:(UIButton*)button;
 + (void)cellLayerTechSubjectCollectionView:(TechSubjectCollectionViewCell*)cell;
+
 @end

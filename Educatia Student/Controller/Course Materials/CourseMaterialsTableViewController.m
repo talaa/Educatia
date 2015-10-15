@@ -7,8 +7,10 @@
 //
 
 #import "CourseMaterialsTableViewController.h"
+#import "RNActivityView.h"
+#import "UIView+RNActivityView.h"
 
-@interface CourseMaterialsTableViewController ()
+@interface CourseMaterialsTableViewController () <UIDocumentPickerDelegate>
 
 @end
 
@@ -99,5 +101,118 @@
 
 - (IBAction)addNewMaterialPressed:(id)sender {
     NSLog(@"Pressed");
+    [self presentAlretController];
+}
+
+/*
+ AlertController to add new material
+ */
+- (void)presentAlretController {
+    UIAlertController * alertController=   [UIAlertController
+                                            alertControllerWithTitle:@"Add New Material"
+                                            message:@"Enter New Material Name"
+                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Add File" style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction * action) {
+                                                   //Do Some action here ---> OK
+                                                   UITextField *subjectNameTextField = alertController.textFields.firstObject;
+                                                   
+                                                   //start ActivityIndicator
+                                                   [self activityLoadingwithLabel];
+//
+                                                   if (subjectNameTextField.text.length > 0) {
+//                                                       UIDocumentPickerViewController *documentPicker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:@[@"public.image"] inMode:UIDocumentPickerModeImport];
+                                                
+                                                       
+                                                       [self showDocumentPickerInMode:UIDocumentPickerModeOpen];
+                                                    
+                                                       //[self showDocumentPickerInMode:UIDocumentPickerModeOpen];
+                                                       //PFObject *subject = [PFObject objectWithClassName:@"Subjects"];
+//
+//                                                       subject[@"subjectName"]   = subjectNameTextField.text;
+//                                                       subject[@"teacherUserName"] = _teacherUserName;
+//                                                       subject[@"teacherFullName"] = _teacherFullName;
+//                                                       
+//                                                       [subject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                                         //Stop ActivityIndicator
+                                                          [self activityStopLoading];
+//                                                           if (succeeded) {
+//                                                               // The object has been saved.
+//                                                               [self activityCompletedSuccessfully];
+//                                                               //After add then reload collectionView
+//                                                               [self viewDidAppear:YES];
+//                                                           } else {
+//                                                               // There was a problem, check error.description
+//                                                               [self activityError];
+//                                                           }
+//                                                       }];
+                                                   }else {
+                                                       [self activityError];
+                                                   }
+                                               }];
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive
+                                                   handler:^(UIAlertAction * action) {
+                                                       [alertController dismissViewControllerAnimated:YES completion:nil];
+                                                   }];
+    
+    
+    [alertController addAction:ok];
+    [alertController addAction:cancel];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField* textField) {
+        textField.placeholder = @"Material Name";
+    }];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+/*
+ ShowActivity Methos
+ */
+
+- (void)activityCompletedSuccessfully {
+    [self.view showActivityViewWithLabel:@"Subject has been added" image:[UIImage imageNamed:@"37x-Checkmark.png"]];
+    [self.view hideActivityViewWithAfterDelay:2];
+}
+
+- (void)activityError {
+    [self.view showActivityViewWithLabel:@"Error,Try again!" image:[UIImage imageNamed:@"32x-Closemark.png"]];
+    [self.view hideActivityViewWithAfterDelay:2];
+}
+
+- (void)activityLoadingwithLabel {
+    [self.view showActivityViewWithLabel:@"Loading...."];
+}
+
+- (void)activityStopLoading {
+    [self.view hideActivityView];
+}
+
+
+#pragma mark <DocumentPickerDelegate>
+
+- (void)showDocumentPickerInMode:(UIDocumentPickerMode)mode {
+    UIDocumentPickerViewController *documentPicker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:[self allowedUTIs] inMode:UIDocumentPickerModeImport];
+    documentPicker.delegate = self;
+    
+    [self presentViewController:documentPicker animated:YES completion:nil];
+}
+- (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url {
+    if (controller.documentPickerMode == UIDocumentPickerModeImport) {
+        NSString *alertMessage = [NSString stringWithFormat:@"Successfully imported %@", [url lastPathComponent]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertController *alertController = [UIAlertController
+                                                  alertControllerWithTitle:@"Import"
+                                                  message:alertMessage
+                                                  preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+            [self presentViewController:alertController animated:YES completion:nil];
+        });
+    }
+}
+
+- (NSArray*)allowedUTIs{
+    return @[@"kUTTypeContent",@"kUTTypeItem",@"public.audiovisual-content",@"public.movie",@"public.audiovisual-content",@"public.video",@"public.audio",@"public.text",@"public.data",@"public.zip-archive",@"com.pkware.zip-archive",@"public.composite-content",@"public.text"];
 }
 @end

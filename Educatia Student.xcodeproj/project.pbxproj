@@ -32,7 +32,6 @@
 		69FE08B01B84E51500C81ABC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08AF1B84E51500C81ABC /* AppDelegate.m */; };
 		69FE08B81B84E51500C81ABC /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69FE08B71B84E51500C81ABC /* images.xcassets */; };
 		69FE08C71B84E51500C81ABC /* Educatia_StudentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08C61B84E51500C81ABC /* Educatia_StudentTests.m */; };
-		F5055CC31BA18F3400BB6547 /* ManageLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CC21BA18F3400BB6547 /* ManageLayerViewController.m */; };
 		F5055CCB1BA1B37300BB6547 /* Math1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F5055CCA1BA1B37300BB6547 /* Math1.jpg */; };
 		F5055CDA1BA1C00E00BB6547 /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CD91BA1C00E00BB6547 /* CAPSPageMenu.m */; };
 		F507E5CF1B9F15C00066283F /* icon_Expences.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5C31B9F15C00066283F /* icon_Expences.png */; };
@@ -58,6 +57,8 @@
 		F533BFB61BBC06B8008706A0 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = F533BFB41BBC06B8008706A0 /* 37x-Checkmark.png */; };
 		F533BFB71BBC06B8008706A0 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F533BFB51BBC06B8008706A0 /* 37x-Checkmark@2x.png */; };
 		F53408391BD010B2000B545B /* CourseMaterialsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53408381BD010B2000B545B /* CourseMaterialsTableViewController.m */; };
+		F534083D1BD0156E000B545B /* ManageLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F534083C1BD0156E000B545B /* ManageLayerViewController.m */; };
+		F534083F1BD02F0E000B545B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F534083E1BD02F0E000B545B /* CloudKit.framework */; };
 		F539D0121BC55DE500F05BDD /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F539D0111BC55DE500F05BDD /* MainViewController.m */; };
 		F539D0161BC5669400F05BDD /* CHTransitionAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F539D0151BC5669400F05BDD /* CHTransitionAnimationController.m */; };
 		F549D35D1BBD3127000A9E79 /* NHNetAssociation.m in Sources */ = {isa = PBXBuildFile; fileRef = F549D3561BBD3127000A9E79 /* NHNetAssociation.m */; };
@@ -179,8 +180,6 @@
 		69FE08C01B84E51500C81ABC /* Educatia StudentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Educatia StudentTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69FE08C51B84E51500C81ABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69FE08C61B84E51500C81ABC /* Educatia_StudentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Educatia_StudentTests.m; sourceTree = "<group>"; };
-		F5055CC11BA18F3400BB6547 /* ManageLayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageLayerViewController.h; sourceTree = "<group>"; };
-		F5055CC21BA18F3400BB6547 /* ManageLayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageLayerViewController.m; sourceTree = "<group>"; };
 		F5055CCA1BA1B37300BB6547 /* Math1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Math1.jpg; sourceTree = "<group>"; };
 		F5055CD81BA1C00E00BB6547 /* CAPSPageMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPSPageMenu.h; sourceTree = "<group>"; };
 		F5055CD91BA1C00E00BB6547 /* CAPSPageMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAPSPageMenu.m; sourceTree = "<group>"; };
@@ -214,6 +213,9 @@
 		F533BFB51BBC06B8008706A0 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
 		F53408371BD010B2000B545B /* CourseMaterialsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseMaterialsTableViewController.h; sourceTree = "<group>"; };
 		F53408381BD010B2000B545B /* CourseMaterialsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseMaterialsTableViewController.m; sourceTree = "<group>"; };
+		F534083B1BD0156E000B545B /* ManageLayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageLayerViewController.h; sourceTree = "<group>"; };
+		F534083C1BD0156E000B545B /* ManageLayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageLayerViewController.m; sourceTree = "<group>"; };
+		F534083E1BD02F0E000B545B /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		F539D0101BC55DE500F05BDD /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		F539D0111BC55DE500F05BDD /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		F539D0141BC5669400F05BDD /* CHTransitionAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTransitionAnimationController.h; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				F51746BF1BAB28AE003B026A /* ParseUI.framework in Frameworks */,
 				F5F9CA1D1BA4434A008E1715 /* ImageIO.framework in Frameworks */,
 				693E692C1B876C2900009A84 /* QuartzCore.framework in Frameworks */,
+				F534083F1BD02F0E000B545B /* CloudKit.framework in Frameworks */,
 				693E69381B876C8B00009A84 /* libsqlite3.dylib in Frameworks */,
 				693E69361B876C7800009A84 /* libz.dylib in Frameworks */,
 				693E69301B876C4D00009A84 /* StoreKit.framework in Frameworks */,
@@ -397,11 +400,11 @@
 		0453AEDA1B9861FB00CD3A53 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F534083A1BD0156E000B545B /* ManageLayerAndActivity */,
 				F53408361BD0108D000B545B /* Course Materials */,
 				F5A972C51BCFB72400C91D1A /* Student */,
 				F5A972C61BCFB72400C91D1A /* Teacher */,
 				F539D00F1BC55DB700F05BDD /* Main */,
-				F5055CC01BA18F2400BB6547 /* ManageLayer */,
 				F507E5DB1B9F18EA0066283F /* Profile */,
 				04A2AB081B9C3BD5009B2C60 /* Forgot Password */,
 				0453AEEE1B98646F00CD3A53 /* Log-In */,
@@ -523,6 +526,7 @@
 		693E69391B876CA600009A84 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F534083E1BD02F0E000B545B /* CloudKit.framework */,
 				F51746B01BAAE940003B026A /* MobileCoreServices.framework */,
 				F51746A01BAAAFCF003B026A /* libc++.dylib */,
 				F517469E1BAAAFC7003B026A /* libicucore.dylib */,
@@ -604,15 +608,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F5055CC01BA18F2400BB6547 /* ManageLayer */ = {
-			isa = PBXGroup;
-			children = (
-				F5055CC11BA18F3400BB6547 /* ManageLayerViewController.h */,
-				F5055CC21BA18F3400BB6547 /* ManageLayerViewController.m */,
-			);
-			path = ManageLayer;
-			sourceTree = "<group>";
-		};
 		F5055CD71BA1C00E00BB6547 /* PagerMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -658,6 +653,15 @@
 				F53408381BD010B2000B545B /* CourseMaterialsTableViewController.m */,
 			);
 			path = "Course Materials";
+			sourceTree = "<group>";
+		};
+		F534083A1BD0156E000B545B /* ManageLayerAndActivity */ = {
+			isa = PBXGroup;
+			children = (
+				F534083B1BD0156E000B545B /* ManageLayerViewController.h */,
+				F534083C1BD0156E000B545B /* ManageLayerViewController.m */,
+			);
+			path = ManageLayerAndActivity;
 			sourceTree = "<group>";
 		};
 		F539D00F1BC55DB700F05BDD /* Main */ = {
@@ -1021,6 +1025,9 @@
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = 6VJ733SKX8;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -1139,6 +1146,7 @@
 				F5055CDA1BA1C00E00BB6547 /* CAPSPageMenu.m in Sources */,
 				F5F9CA4C1BA444EB008E1715 /* ReaderContentTile.m in Sources */,
 				F5F9CA4E1BA444EB008E1715 /* ReaderDocument.m in Sources */,
+				F534083D1BD0156E000B545B /* ManageLayerViewController.m in Sources */,
 				F5F9CA4F1BA444EB008E1715 /* ReaderDocumentOutline.m in Sources */,
 				F50D6D4E1BA5B49300BF6309 /* ThumbnailPDF.m in Sources */,
 				F5A972F71BCFB7EA00C91D1A /* TabBarPagerHolderViewController.m in Sources */,
@@ -1181,7 +1189,6 @@
 				04A2AB201B9C6CBD009B2C60 /* FlatDatePicker.m in Sources */,
 				F5F9CA5A1BA444EB008E1715 /* ThumbsMainToolbar.m in Sources */,
 				0453AEF61B9872C300CD3A53 /* SignupViewController.m in Sources */,
-				F5055CC31BA18F3400BB6547 /* ManageLayerViewController.m in Sources */,
 				F5F9CA541BA444EB008E1715 /* ReaderThumbQueue.m in Sources */,
 				F549D36E1BBD3144000A9E79 /* README.markdown in Sources */,
 				F5A972EC1BCFB7EA00C91D1A /* AssignementsViewController.m in Sources */,
