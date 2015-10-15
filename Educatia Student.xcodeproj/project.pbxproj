@@ -85,6 +85,10 @@
 		F5A972F51BCFB7EA00C91D1A /* SubjectsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972E51BCFB7EA00C91D1A /* SubjectsCollectionViewController.m */; };
 		F5A972F61BCFB7EA00C91D1A /* TabBarHolderController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972E81BCFB7EA00C91D1A /* TabBarHolderController.m */; };
 		F5A972F71BCFB7EA00C91D1A /* TabBarPagerHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972EB1BCFB7EA00C91D1A /* TabBarPagerHolderViewController.m */; };
+		F5A972FB1BCFB94700C91D1A /* TechSubjectsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972FA1BCFB94700C91D1A /* TechSubjectsCollectionViewController.m */; };
+		F5A972FE1BCFD1CB00C91D1A /* TechSubjectCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972FD1BCFD1CB00C91D1A /* TechSubjectCollectionViewCell.m */; };
+		F5A973011BCFD50E00C91D1A /* 32x-CloseMark.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A972FF1BCFD50E00C91D1A /* 32x-CloseMark.png */; };
+		F5A973021BCFD50E00C91D1A /* 32x-CloseMark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A973001BCFD50E00C91D1A /* 32x-CloseMark@2x.png */; };
 		F5F9CA1D1BA4434A008E1715 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F9CA1C1BA4434A008E1715 /* ImageIO.framework */; };
 		F5F9CA1F1BA44355008E1715 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F9CA1E1BA44355008E1715 /* MessageUI.framework */; };
 		F5F9CA491BA444EB008E1715 /* CGPDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F9CA221BA444EB008E1715 /* CGPDFDocument.m */; };
@@ -261,6 +265,12 @@
 		F5A972E81BCFB7EA00C91D1A /* TabBarHolderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarHolderController.m; sourceTree = "<group>"; };
 		F5A972EA1BCFB7EA00C91D1A /* TabBarPagerHolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarPagerHolderViewController.h; sourceTree = "<group>"; };
 		F5A972EB1BCFB7EA00C91D1A /* TabBarPagerHolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarPagerHolderViewController.m; sourceTree = "<group>"; };
+		F5A972F91BCFB94700C91D1A /* TechSubjectsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TechSubjectsCollectionViewController.h; sourceTree = "<group>"; };
+		F5A972FA1BCFB94700C91D1A /* TechSubjectsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TechSubjectsCollectionViewController.m; sourceTree = "<group>"; };
+		F5A972FC1BCFD1CB00C91D1A /* TechSubjectCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TechSubjectCollectionViewCell.h; sourceTree = "<group>"; };
+		F5A972FD1BCFD1CB00C91D1A /* TechSubjectCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TechSubjectCollectionViewCell.m; sourceTree = "<group>"; };
+		F5A972FF1BCFD50E00C91D1A /* 32x-CloseMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "32x-CloseMark.png"; sourceTree = "<group>"; };
+		F5A973001BCFD50E00C91D1A /* 32x-CloseMark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "32x-CloseMark@2x.png"; sourceTree = "<group>"; };
 		F5F9CA1C1BA4434A008E1715 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		F5F9CA1E1BA44355008E1715 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		F5F9CA211BA444EB008E1715 /* CGPDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPDFDocument.h; sourceTree = "<group>"; };
@@ -424,6 +434,8 @@
 		0453AEE41B9861FB00CD3A53 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F5A972FF1BCFD50E00C91D1A /* 32x-CloseMark.png */,
+				F5A973001BCFD50E00C91D1A /* 32x-CloseMark@2x.png */,
 				F533BFB41BBC06B8008706A0 /* 37x-Checkmark.png */,
 				F533BFB51BBC06B8008706A0 /* 37x-Checkmark@2x.png */,
 				F5F9CA5F1BA449D3008E1715 /* PDFReader */,
@@ -734,6 +746,7 @@
 		F5A972C61BCFB72400C91D1A /* Teacher */ = {
 			isa = PBXGroup;
 			children = (
+				F5A972F81BCFB92600C91D1A /* Subjects Teacher */,
 				F5A972C71BCFB7DC00C91D1A /* TeacherTabBar */,
 			);
 			path = Teacher;
@@ -833,6 +846,17 @@
 				F5A972EB1BCFB7EA00C91D1A /* TabBarPagerHolderViewController.m */,
 			);
 			path = TabBarPagerHolder;
+			sourceTree = "<group>";
+		};
+		F5A972F81BCFB92600C91D1A /* Subjects Teacher */ = {
+			isa = PBXGroup;
+			children = (
+				F5A972F91BCFB94700C91D1A /* TechSubjectsCollectionViewController.h */,
+				F5A972FA1BCFB94700C91D1A /* TechSubjectsCollectionViewController.m */,
+				F5A972FC1BCFD1CB00C91D1A /* TechSubjectCollectionViewCell.h */,
+				F5A972FD1BCFD1CB00C91D1A /* TechSubjectCollectionViewCell.m */,
+			);
+			path = "Subjects Teacher";
 			sourceTree = "<group>";
 		};
 		F5F9CA201BA444EB008E1715 /* PDFReader */ = {
@@ -1004,6 +1028,7 @@
 				F5F9CA7E1BA449D3008E1715 /* Reader-Thumbs.png in Resources */,
 				0453AEED1B9861FB00CD3A53 /* Main.storyboard in Resources */,
 				0453AEF31B98655C00CD3A53 /* welcome_background@2x.png in Resources */,
+				F5A973011BCFD50E00C91D1A /* 32x-CloseMark.png in Resources */,
 				F507E5D51B9F15C00066283F /* icon_setting.png in Resources */,
 				04A2AB171B9C6BCD009B2C60 /* FlatDatePicker-Icon-Close@2x.png in Resources */,
 				F507E5D81B9F15C00066283F /* icon_Summary.png in Resources */,
@@ -1018,6 +1043,7 @@
 				0453AEEC1B9861FB00CD3A53 /* LaunchScreen.xib in Resources */,
 				69FE08B81B84E51500C81ABC /* images.xcassets in Resources */,
 				F5F9CA781BA449D3008E1715 /* Reader-Mark-N.png in Resources */,
+				F5A973021BCFD50E00C91D1A /* 32x-CloseMark@2x.png in Resources */,
 				F5F9CA701BA449D3008E1715 /* Reader-Button-H.png in Resources */,
 				F533BFB71BBC06B8008706A0 /* 37x-Checkmark@2x.png in Resources */,
 				F5F9CA721BA449D3008E1715 /* Reader-Button-N.png in Resources */,
@@ -1083,9 +1109,11 @@
 				F5F9CA4D1BA444EB008E1715 /* ReaderContentView.m in Sources */,
 				F549D3701BBD3144000A9E79 /* GCDAsyncUdpSocket.m in Sources */,
 				F5A972F51BCFB7EA00C91D1A /* SubjectsCollectionViewController.m in Sources */,
+				F5A972FE1BCFD1CB00C91D1A /* TechSubjectCollectionViewCell.m in Sources */,
 				F549D35F1BBD3127000A9E79 /* NSDate+NetworkClock.m in Sources */,
 				F512D7011BA83FE500F3E252 /* RNActivityView.m in Sources */,
 				F5A972F61BCFB7EA00C91D1A /* TabBarHolderController.m in Sources */,
+				F5A972FB1BCFB94700C91D1A /* TechSubjectsCollectionViewController.m in Sources */,
 				69FE08AD1B84E51500C81ABC /* main.m in Sources */,
 				0453AEF11B98647E00CD3A53 /* LoginViewController.m in Sources */,
 				F5A972F41BCFB7EA00C91D1A /* SubjectCollectionViewCell.m in Sources */,
