@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CAPSPageMenu.h"
 
-@interface SubjectPagerHolderViewController : UIViewController
+@interface SubjectPagerHolderViewController : UIViewController <CAPSPageMenuDelegate>
 
+@property (nonatomic) CAPSPageMenu *pagemenu;
 @property (strong, nonatomic) NSString *subjectName;
+
 - (IBAction)dismissPressed:(id)sender;
 
 @end

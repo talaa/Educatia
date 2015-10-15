@@ -854,6 +854,71 @@
             </objects>
             <point key="canvasLocation" x="2186" y="4698"/>
         </scene>
+        <!--Subject Info View Controller-->
+        <scene sceneID="DiX-YT-ZAJ">
+            <objects>
+                <viewController storyboardIdentifier="SubjectInfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HYu-Hy-eCA" customClass="SubjectInfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bIH-iO-GgB"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ass-Cd-gDC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sjE-mT-NST">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JPd-qi-PEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3166" y="4698"/>
+        </scene>
+        <!--Course Materials Table View Controller-->
+        <scene sceneID="YGf-tS-cyE">
+            <objects>
+                <tableViewController storyboardIdentifier="CourseMaterialsTableViewController" id="aKk-q5-A9l" customClass="CourseMaterialsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="76" sectionHeaderHeight="22" sectionFooterHeight="22" id="GmG-nW-ajz">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="q1t-Un-FTc">
+                            <rect key="frame" x="0.0" y="98" width="768" height="67"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="weU-mQ-LwF">
+                                    <rect key="frame" x="290" y="19" width="188" height="30"/>
+                                    <state key="normal" title="+ Add New Material">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="addNewMaterialPressed:" destination="aKk-q5-A9l" eventType="touchUpInside" id="Thm-Gk-y8j"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="calibratedWhite"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="76" id="dLb-Qd-La3">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dLb-Qd-La3" id="WQx-7p-9fD">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="aKk-q5-A9l" id="gcZ-ma-Ukr"/>
+                            <outlet property="delegate" destination="aKk-q5-A9l" id="26R-2g-RxY"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="addNewMaterialButton" destination="weU-mQ-LwF" id="ntq-JE-vqh"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j4g-NA-gnr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4104" y="4698"/>
+        </scene>
         <!--Subjects-->
         <scene sceneID="Tgq-GE-TNu">
             <objects>
@@ -1352,6 +1417,6 @@
         <image name="welcome_background.png" width="320" height="568"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wbc-R8-bq5"/>
+        <segue reference="iBw-Av-vmn"/>
     </inferredMetricsTieBreakers>
 </document>
