@@ -33,17 +33,8 @@
 		69FE08B81B84E51500C81ABC /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69FE08B71B84E51500C81ABC /* images.xcassets */; };
 		69FE08C71B84E51500C81ABC /* Educatia_StudentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08C61B84E51500C81ABC /* Educatia_StudentTests.m */; };
 		F5055CC31BA18F3400BB6547 /* ManageLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CC21BA18F3400BB6547 /* ManageLayerViewController.m */; };
-		F5055CC61BA1B18700BB6547 /* SubjectsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CC51BA1B18700BB6547 /* SubjectsCollectionViewController.m */; };
-		F5055CC91BA1B1CA00BB6547 /* SubjectCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CC81BA1B1CA00BB6547 /* SubjectCollectionViewCell.m */; };
 		F5055CCB1BA1B37300BB6547 /* Math1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F5055CCA1BA1B37300BB6547 /* Math1.jpg */; };
-		F5055CD61BA1B6AF00BB6547 /* TabBarPagerHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CD51BA1B6AF00BB6547 /* TabBarPagerHolderViewController.m */; };
 		F5055CDA1BA1C00E00BB6547 /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CD91BA1C00E00BB6547 /* CAPSPageMenu.m */; };
-		F5055CE31BA1C37500BB6547 /* StudentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CE21BA1C37500BB6547 /* StudentsViewController.m */; };
-		F5055CE61BA1C38100BB6547 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CE51BA1C38100BB6547 /* NewsViewController.m */; };
-		F5055CE91BA1C38C00BB6547 /* GradesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CE81BA1C38C00BB6547 /* GradesViewController.m */; };
-		F5055CEC1BA1C39C00BB6547 /* CourseMaterialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CEB1BA1C39C00BB6547 /* CourseMaterialsViewController.m */; };
-		F5055CEF1BA1C3AC00BB6547 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CEE1BA1C3AC00BB6547 /* ChatViewController.m */; };
-		F5055CF21BA1C3BA00BB6547 /* AssignementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CF11BA1C3BA00BB6547 /* AssignementsViewController.m */; };
 		F507E5CF1B9F15C00066283F /* icon_Expences.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5C31B9F15C00066283F /* icon_Expences.png */; };
 		F507E5D01B9F15C00066283F /* icon_Expences@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5C41B9F15C00066283F /* icon_Expences@2x.png */; };
 		F507E5D11B9F15C00066283F /* icon_Expences@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5C51B9F15C00066283F /* icon_Expences@3x.png */; };
@@ -57,13 +48,10 @@
 		F507E5D91B9F15C00066283F /* icon_Summary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5CD1B9F15C00066283F /* icon_Summary@2x.png */; };
 		F507E5DA1B9F15C00066283F /* icon_Summary@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5CE1B9F15C00066283F /* icon_Summary@3x.png */; };
 		F507E5DE1B9F19120066283F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F507E5DD1B9F19120066283F /* ProfileViewController.m */; };
-		F507E5E21B9F41100066283F /* TabBarHolderController.m in Sources */ = {isa = PBXBuildFile; fileRef = F507E5E11B9F41100066283F /* TabBarHolderController.m */; };
 		F50D6D4E1BA5B49300BF6309 /* ThumbnailPDF.m in Sources */ = {isa = PBXBuildFile; fileRef = F50D6D4D1BA5B49300BF6309 /* ThumbnailPDF.m */; };
-		F50F7DF81BA6EB9400D06D30 /* AssignementTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F50F7DF71BA6EB9400D06D30 /* AssignementTableViewCell.m */; };
 		F512D7011BA83FE500F3E252 /* RNActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = F512D6FE1BA83FE500F3E252 /* RNActivityView.m */; };
 		F512D7021BA83FE500F3E252 /* UIView+RNActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = F512D7001BA83FE500F3E252 /* UIView+RNActivityView.m */; };
 		F51746B11BAAE940003B026A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51746B01BAAE940003B026A /* MobileCoreServices.framework */; };
-		F51746B91BAB236C003B026A /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51746B81BAB236C003B026A /* ChatTableViewController.m */; };
 		F51746BD1BAB28AE003B026A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51746BA1BAB28AE003B026A /* Bolts.framework */; };
 		F51746BE1BAB28AE003B026A /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51746BB1BAB28AE003B026A /* Parse.framework */; };
 		F51746BF1BAB28AE003B026A /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51746BC1BAB28AE003B026A /* ParseUI.framework */; };
@@ -71,7 +59,6 @@
 		F533BFB71BBC06B8008706A0 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F533BFB51BBC06B8008706A0 /* 37x-Checkmark@2x.png */; };
 		F539D0121BC55DE500F05BDD /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F539D0111BC55DE500F05BDD /* MainViewController.m */; };
 		F539D0161BC5669400F05BDD /* CHTransitionAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F539D0151BC5669400F05BDD /* CHTransitionAnimationController.m */; };
-		F53FC8CD1BC68E2300C17C18 /* TeacherTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53FC8CC1BC68E2300C17C18 /* TeacherTabBarViewController.m */; };
 		F549D35D1BBD3127000A9E79 /* NHNetAssociation.m in Sources */ = {isa = PBXBuildFile; fileRef = F549D3561BBD3127000A9E79 /* NHNetAssociation.m */; };
 		F549D35E1BBD3127000A9E79 /* NHNetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = F549D3581BBD3127000A9E79 /* NHNetworkClock.m */; };
 		F549D35F1BBD3127000A9E79 /* NSDate+NetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = F549D35C1BBD3127000A9E79 /* NSDate+NetworkClock.m */; };
@@ -85,6 +72,19 @@
 		F54A98111BBACC540073CF58 /* TGRImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54A980B1BBACC540073CF58 /* TGRImageViewController.xib */; };
 		F54A98121BBACC540073CF58 /* TGRImageZoomAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54A980D1BBACC540073CF58 /* TGRImageZoomAnimationController.m */; };
 		F54A98131BBACC540073CF58 /* UIImage+AspectFit.m in Sources */ = {isa = PBXBuildFile; fileRef = F54A980F1BBACC540073CF58 /* UIImage+AspectFit.m */; };
+		F5A972CA1BCFB7DC00C91D1A /* TeacherTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972C91BCFB7DC00C91D1A /* TeacherTabBarViewController.m */; };
+		F5A972EC1BCFB7EA00C91D1A /* AssignementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972CD1BCFB7EA00C91D1A /* AssignementsViewController.m */; };
+		F5A972ED1BCFB7EA00C91D1A /* AssignementTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972CF1BCFB7EA00C91D1A /* AssignementTableViewCell.m */; };
+		F5A972EE1BCFB7EA00C91D1A /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972D21BCFB7EA00C91D1A /* ChatTableViewController.m */; };
+		F5A972EF1BCFB7EA00C91D1A /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972D41BCFB7EA00C91D1A /* ChatViewController.m */; };
+		F5A972F01BCFB7EA00C91D1A /* CourseMaterialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972D71BCFB7EA00C91D1A /* CourseMaterialsViewController.m */; };
+		F5A972F11BCFB7EA00C91D1A /* GradesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972DA1BCFB7EA00C91D1A /* GradesViewController.m */; };
+		F5A972F21BCFB7EA00C91D1A /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972DD1BCFB7EA00C91D1A /* NewsViewController.m */; };
+		F5A972F31BCFB7EA00C91D1A /* StudentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972E01BCFB7EA00C91D1A /* StudentsViewController.m */; };
+		F5A972F41BCFB7EA00C91D1A /* SubjectCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972E31BCFB7EA00C91D1A /* SubjectCollectionViewCell.m */; };
+		F5A972F51BCFB7EA00C91D1A /* SubjectsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972E51BCFB7EA00C91D1A /* SubjectsCollectionViewController.m */; };
+		F5A972F61BCFB7EA00C91D1A /* TabBarHolderController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972E81BCFB7EA00C91D1A /* TabBarHolderController.m */; };
+		F5A972F71BCFB7EA00C91D1A /* TabBarPagerHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972EB1BCFB7EA00C91D1A /* TabBarPagerHolderViewController.m */; };
 		F5F9CA1D1BA4434A008E1715 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F9CA1C1BA4434A008E1715 /* ImageIO.framework */; };
 		F5F9CA1F1BA44355008E1715 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F9CA1E1BA44355008E1715 /* MessageUI.framework */; };
 		F5F9CA491BA444EB008E1715 /* CGPDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F9CA221BA444EB008E1715 /* CGPDFDocument.m */; };
@@ -174,27 +174,9 @@
 		69FE08C61B84E51500C81ABC /* Educatia_StudentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Educatia_StudentTests.m; sourceTree = "<group>"; };
 		F5055CC11BA18F3400BB6547 /* ManageLayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageLayerViewController.h; sourceTree = "<group>"; };
 		F5055CC21BA18F3400BB6547 /* ManageLayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageLayerViewController.m; sourceTree = "<group>"; };
-		F5055CC41BA1B18700BB6547 /* SubjectsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectsCollectionViewController.h; sourceTree = "<group>"; };
-		F5055CC51BA1B18700BB6547 /* SubjectsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectsCollectionViewController.m; sourceTree = "<group>"; };
-		F5055CC71BA1B1CA00BB6547 /* SubjectCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectCollectionViewCell.h; sourceTree = "<group>"; };
-		F5055CC81BA1B1CA00BB6547 /* SubjectCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectCollectionViewCell.m; sourceTree = "<group>"; };
 		F5055CCA1BA1B37300BB6547 /* Math1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Math1.jpg; sourceTree = "<group>"; };
-		F5055CD41BA1B6AF00BB6547 /* TabBarPagerHolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarPagerHolderViewController.h; sourceTree = "<group>"; };
-		F5055CD51BA1B6AF00BB6547 /* TabBarPagerHolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarPagerHolderViewController.m; sourceTree = "<group>"; };
 		F5055CD81BA1C00E00BB6547 /* CAPSPageMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPSPageMenu.h; sourceTree = "<group>"; };
 		F5055CD91BA1C00E00BB6547 /* CAPSPageMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAPSPageMenu.m; sourceTree = "<group>"; };
-		F5055CE11BA1C37500BB6547 /* StudentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentsViewController.h; sourceTree = "<group>"; };
-		F5055CE21BA1C37500BB6547 /* StudentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentsViewController.m; sourceTree = "<group>"; };
-		F5055CE41BA1C38100BB6547 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
-		F5055CE51BA1C38100BB6547 /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
-		F5055CE71BA1C38C00BB6547 /* GradesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradesViewController.h; sourceTree = "<group>"; };
-		F5055CE81BA1C38C00BB6547 /* GradesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradesViewController.m; sourceTree = "<group>"; };
-		F5055CEA1BA1C39C00BB6547 /* CourseMaterialsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseMaterialsViewController.h; sourceTree = "<group>"; };
-		F5055CEB1BA1C39C00BB6547 /* CourseMaterialsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseMaterialsViewController.m; sourceTree = "<group>"; };
-		F5055CED1BA1C3AC00BB6547 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
-		F5055CEE1BA1C3AC00BB6547 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
-		F5055CF01BA1C3BA00BB6547 /* AssignementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignementsViewController.h; sourceTree = "<group>"; };
-		F5055CF11BA1C3BA00BB6547 /* AssignementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignementsViewController.m; sourceTree = "<group>"; };
 		F507E5C31B9F15C00066283F /* icon_Expences.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_Expences.png; sourceTree = "<group>"; };
 		F507E5C41B9F15C00066283F /* icon_Expences@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_Expences@2x.png"; sourceTree = "<group>"; };
 		F507E5C51B9F15C00066283F /* icon_Expences@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_Expences@3x.png"; sourceTree = "<group>"; };
@@ -209,12 +191,8 @@
 		F507E5CE1B9F15C00066283F /* icon_Summary@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_Summary@3x.png"; sourceTree = "<group>"; };
 		F507E5DC1B9F19120066283F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		F507E5DD1B9F19120066283F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		F507E5E01B9F41100066283F /* TabBarHolderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarHolderController.h; sourceTree = "<group>"; };
-		F507E5E11B9F41100066283F /* TabBarHolderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarHolderController.m; sourceTree = "<group>"; };
 		F50D6D4C1BA5B49300BF6309 /* ThumbnailPDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbnailPDF.h; sourceTree = "<group>"; };
 		F50D6D4D1BA5B49300BF6309 /* ThumbnailPDF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbnailPDF.m; sourceTree = "<group>"; };
-		F50F7DF61BA6EB9400D06D30 /* AssignementTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignementTableViewCell.h; sourceTree = "<group>"; };
-		F50F7DF71BA6EB9400D06D30 /* AssignementTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignementTableViewCell.m; sourceTree = "<group>"; };
 		F512D6FD1BA83FE500F3E252 /* RNActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNActivityView.h; sourceTree = "<group>"; };
 		F512D6FE1BA83FE500F3E252 /* RNActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNActivityView.m; sourceTree = "<group>"; };
 		F512D6FF1BA83FE500F3E252 /* UIView+RNActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RNActivityView.h"; sourceTree = "<group>"; };
@@ -222,8 +200,6 @@
 		F517469E1BAAAFC7003B026A /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		F51746A01BAAAFCF003B026A /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		F51746B01BAAE940003B026A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		F51746B71BAB236C003B026A /* ChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewController.h; sourceTree = "<group>"; };
-		F51746B81BAB236C003B026A /* ChatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewController.m; sourceTree = "<group>"; };
 		F51746BA1BAB28AE003B026A /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		F51746BB1BAB28AE003B026A /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		F51746BC1BAB28AE003B026A /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
@@ -233,8 +209,6 @@
 		F539D0111BC55DE500F05BDD /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		F539D0141BC5669400F05BDD /* CHTransitionAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTransitionAnimationController.h; sourceTree = "<group>"; };
 		F539D0151BC5669400F05BDD /* CHTransitionAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTransitionAnimationController.m; sourceTree = "<group>"; };
-		F53FC8CB1BC68E2300C17C18 /* TeacherTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherTabBarViewController.h; sourceTree = "<group>"; };
-		F53FC8CC1BC68E2300C17C18 /* TeacherTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherTabBarViewController.m; sourceTree = "<group>"; };
 		F549D3551BBD3127000A9E79 /* NHNetAssociation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHNetAssociation.h; sourceTree = "<group>"; };
 		F549D3561BBD3127000A9E79 /* NHNetAssociation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHNetAssociation.m; sourceTree = "<group>"; };
 		F549D3571BBD3127000A9E79 /* NHNetworkClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHNetworkClock.h; sourceTree = "<group>"; };
@@ -261,6 +235,32 @@
 		F54A980D1BBACC540073CF58 /* TGRImageZoomAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGRImageZoomAnimationController.m; sourceTree = "<group>"; };
 		F54A980E1BBACC540073CF58 /* UIImage+AspectFit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AspectFit.h"; sourceTree = "<group>"; };
 		F54A980F1BBACC540073CF58 /* UIImage+AspectFit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AspectFit.m"; sourceTree = "<group>"; };
+		F5A972C81BCFB7DC00C91D1A /* TeacherTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherTabBarViewController.h; sourceTree = "<group>"; };
+		F5A972C91BCFB7DC00C91D1A /* TeacherTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherTabBarViewController.m; sourceTree = "<group>"; };
+		F5A972CC1BCFB7EA00C91D1A /* AssignementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignementsViewController.h; sourceTree = "<group>"; };
+		F5A972CD1BCFB7EA00C91D1A /* AssignementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignementsViewController.m; sourceTree = "<group>"; };
+		F5A972CE1BCFB7EA00C91D1A /* AssignementTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignementTableViewCell.h; sourceTree = "<group>"; };
+		F5A972CF1BCFB7EA00C91D1A /* AssignementTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignementTableViewCell.m; sourceTree = "<group>"; };
+		F5A972D11BCFB7EA00C91D1A /* ChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewController.h; sourceTree = "<group>"; };
+		F5A972D21BCFB7EA00C91D1A /* ChatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewController.m; sourceTree = "<group>"; };
+		F5A972D31BCFB7EA00C91D1A /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		F5A972D41BCFB7EA00C91D1A /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		F5A972D61BCFB7EA00C91D1A /* CourseMaterialsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseMaterialsViewController.h; sourceTree = "<group>"; };
+		F5A972D71BCFB7EA00C91D1A /* CourseMaterialsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseMaterialsViewController.m; sourceTree = "<group>"; };
+		F5A972D91BCFB7EA00C91D1A /* GradesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradesViewController.h; sourceTree = "<group>"; };
+		F5A972DA1BCFB7EA00C91D1A /* GradesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradesViewController.m; sourceTree = "<group>"; };
+		F5A972DC1BCFB7EA00C91D1A /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
+		F5A972DD1BCFB7EA00C91D1A /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		F5A972DF1BCFB7EA00C91D1A /* StudentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentsViewController.h; sourceTree = "<group>"; };
+		F5A972E01BCFB7EA00C91D1A /* StudentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentsViewController.m; sourceTree = "<group>"; };
+		F5A972E21BCFB7EA00C91D1A /* SubjectCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectCollectionViewCell.h; sourceTree = "<group>"; };
+		F5A972E31BCFB7EA00C91D1A /* SubjectCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectCollectionViewCell.m; sourceTree = "<group>"; };
+		F5A972E41BCFB7EA00C91D1A /* SubjectsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectsCollectionViewController.h; sourceTree = "<group>"; };
+		F5A972E51BCFB7EA00C91D1A /* SubjectsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectsCollectionViewController.m; sourceTree = "<group>"; };
+		F5A972E71BCFB7EA00C91D1A /* TabBarHolderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarHolderController.h; sourceTree = "<group>"; };
+		F5A972E81BCFB7EA00C91D1A /* TabBarHolderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarHolderController.m; sourceTree = "<group>"; };
+		F5A972EA1BCFB7EA00C91D1A /* TabBarPagerHolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarPagerHolderViewController.h; sourceTree = "<group>"; };
+		F5A972EB1BCFB7EA00C91D1A /* TabBarPagerHolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarPagerHolderViewController.m; sourceTree = "<group>"; };
 		F5F9CA1C1BA4434A008E1715 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		F5F9CA1E1BA44355008E1715 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		F5F9CA211BA444EB008E1715 /* CGPDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPDFDocument.h; sourceTree = "<group>"; };
@@ -377,22 +377,14 @@
 		0453AEDA1B9861FB00CD3A53 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F53FC8CA1BC68DBC00C17C18 /* TeacherTabBar */,
+				F5A972C51BCFB72400C91D1A /* Student */,
+				F5A972C61BCFB72400C91D1A /* Teacher */,
 				F539D00F1BC55DB700F05BDD /* Main */,
-				F5055CDB1BA1C36000BB6547 /* Assignements */,
-				F5055CDC1BA1C36000BB6547 /* Chat */,
-				F5055CDD1BA1C36000BB6547 /* CourseMaterials */,
-				F5055CDE1BA1C36000BB6547 /* Grades */,
-				F5055CDF1BA1C36000BB6547 /* News */,
-				F5055CE01BA1C36000BB6547 /* Students */,
-				F5055CD31BA1B69900BB6547 /* TabBarPagerHolder */,
 				F5055CC01BA18F2400BB6547 /* ManageLayer */,
-				F507E5DF1B9F40D90066283F /* TabBarHolder */,
 				F507E5DB1B9F18EA0066283F /* Profile */,
 				04A2AB081B9C3BD5009B2C60 /* Forgot Password */,
 				0453AEEE1B98646F00CD3A53 /* Log-In */,
 				0453AEDB1B9861FB00CD3A53 /* Sign-Up */,
-				0453AEDE1B9861FB00CD3A53 /* Subjects */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -404,17 +396,6 @@
 				0453AEF51B9872C300CD3A53 /* SignupViewController.m */,
 			);
 			path = "Sign-Up";
-			sourceTree = "<group>";
-		};
-		0453AEDE1B9861FB00CD3A53 /* Subjects */ = {
-			isa = PBXGroup;
-			children = (
-				F5055CC41BA1B18700BB6547 /* SubjectsCollectionViewController.h */,
-				F5055CC51BA1B18700BB6547 /* SubjectsCollectionViewController.m */,
-				F5055CC71BA1B1CA00BB6547 /* SubjectCollectionViewCell.h */,
-				F5055CC81BA1B1CA00BB6547 /* SubjectCollectionViewCell.m */,
-			);
-			path = Subjects;
 			sourceTree = "<group>";
 		};
 		0453AEE21B9861FB00CD3A53 /* Resources */ = {
@@ -608,15 +589,6 @@
 			path = ManageLayer;
 			sourceTree = "<group>";
 		};
-		F5055CD31BA1B69900BB6547 /* TabBarPagerHolder */ = {
-			isa = PBXGroup;
-			children = (
-				F5055CD41BA1B6AF00BB6547 /* TabBarPagerHolderViewController.h */,
-				F5055CD51BA1B6AF00BB6547 /* TabBarPagerHolderViewController.m */,
-			);
-			path = TabBarPagerHolder;
-			sourceTree = "<group>";
-		};
 		F5055CD71BA1C00E00BB6547 /* PagerMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -626,64 +598,6 @@
 			path = PagerMenu;
 			sourceTree = "<group>";
 		};
-		F5055CDB1BA1C36000BB6547 /* Assignements */ = {
-			isa = PBXGroup;
-			children = (
-				F5055CF01BA1C3BA00BB6547 /* AssignementsViewController.h */,
-				F5055CF11BA1C3BA00BB6547 /* AssignementsViewController.m */,
-				F50F7DF61BA6EB9400D06D30 /* AssignementTableViewCell.h */,
-				F50F7DF71BA6EB9400D06D30 /* AssignementTableViewCell.m */,
-			);
-			path = Assignements;
-			sourceTree = "<group>";
-		};
-		F5055CDC1BA1C36000BB6547 /* Chat */ = {
-			isa = PBXGroup;
-			children = (
-				F5055CED1BA1C3AC00BB6547 /* ChatViewController.h */,
-				F5055CEE1BA1C3AC00BB6547 /* ChatViewController.m */,
-				F51746B71BAB236C003B026A /* ChatTableViewController.h */,
-				F51746B81BAB236C003B026A /* ChatTableViewController.m */,
-			);
-			path = Chat;
-			sourceTree = "<group>";
-		};
-		F5055CDD1BA1C36000BB6547 /* CourseMaterials */ = {
-			isa = PBXGroup;
-			children = (
-				F5055CEA1BA1C39C00BB6547 /* CourseMaterialsViewController.h */,
-				F5055CEB1BA1C39C00BB6547 /* CourseMaterialsViewController.m */,
-			);
-			path = CourseMaterials;
-			sourceTree = "<group>";
-		};
-		F5055CDE1BA1C36000BB6547 /* Grades */ = {
-			isa = PBXGroup;
-			children = (
-				F5055CE71BA1C38C00BB6547 /* GradesViewController.h */,
-				F5055CE81BA1C38C00BB6547 /* GradesViewController.m */,
-			);
-			path = Grades;
-			sourceTree = "<group>";
-		};
-		F5055CDF1BA1C36000BB6547 /* News */ = {
-			isa = PBXGroup;
-			children = (
-				F5055CE41BA1C38100BB6547 /* NewsViewController.h */,
-				F5055CE51BA1C38100BB6547 /* NewsViewController.m */,
-			);
-			path = News;
-			sourceTree = "<group>";
-		};
-		F5055CE01BA1C36000BB6547 /* Students */ = {
-			isa = PBXGroup;
-			children = (
-				F5055CE11BA1C37500BB6547 /* StudentsViewController.h */,
-				F5055CE21BA1C37500BB6547 /* StudentsViewController.m */,
-			);
-			path = Students;
-			sourceTree = "<group>";
-		};
 		F507E5DB1B9F18EA0066283F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -691,15 +605,6 @@
 				F507E5DD1B9F19120066283F /* ProfileViewController.m */,
 			);
 			path = Profile;
-			sourceTree = "<group>";
-		};
-		F507E5DF1B9F40D90066283F /* TabBarHolder */ = {
-			isa = PBXGroup;
-			children = (
-				F507E5E01B9F41100066283F /* TabBarHolderController.h */,
-				F507E5E11B9F41100066283F /* TabBarHolderController.m */,
-			);
-			path = TabBarHolder;
 			sourceTree = "<group>";
 		};
 		F50D6D4B1BA5B49300BF6309 /* ThumbnailPDF */ = {
@@ -738,15 +643,6 @@
 				F539D0151BC5669400F05BDD /* CHTransitionAnimationController.m */,
 			);
 			path = Animations;
-			sourceTree = "<group>";
-		};
-		F53FC8CA1BC68DBC00C17C18 /* TeacherTabBar */ = {
-			isa = PBXGroup;
-			children = (
-				F53FC8CB1BC68E2300C17C18 /* TeacherTabBarViewController.h */,
-				F53FC8CC1BC68E2300C17C18 /* TeacherTabBarViewController.m */,
-			);
-			path = TeacherTabBar;
 			sourceTree = "<group>";
 		};
 		F549D3541BBD3127000A9E79 /* NHNetworkTime */ = {
@@ -817,6 +713,126 @@
 				F54A980F1BBACC540073CF58 /* UIImage+AspectFit.m */,
 			);
 			path = Vertigo;
+			sourceTree = "<group>";
+		};
+		F5A972C51BCFB72400C91D1A /* Student */ = {
+			isa = PBXGroup;
+			children = (
+				F5A972CB1BCFB7EA00C91D1A /* Assignements */,
+				F5A972D01BCFB7EA00C91D1A /* Chat */,
+				F5A972D51BCFB7EA00C91D1A /* CourseMaterials */,
+				F5A972D81BCFB7EA00C91D1A /* Grades */,
+				F5A972DB1BCFB7EA00C91D1A /* News */,
+				F5A972DE1BCFB7EA00C91D1A /* Students */,
+				F5A972E11BCFB7EA00C91D1A /* Subjects */,
+				F5A972E61BCFB7EA00C91D1A /* TabBarHolder */,
+				F5A972E91BCFB7EA00C91D1A /* TabBarPagerHolder */,
+			);
+			path = Student;
+			sourceTree = "<group>";
+		};
+		F5A972C61BCFB72400C91D1A /* Teacher */ = {
+			isa = PBXGroup;
+			children = (
+				F5A972C71BCFB7DC00C91D1A /* TeacherTabBar */,
+			);
+			path = Teacher;
+			sourceTree = "<group>";
+		};
+		F5A972C71BCFB7DC00C91D1A /* TeacherTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				F5A972C81BCFB7DC00C91D1A /* TeacherTabBarViewController.h */,
+				F5A972C91BCFB7DC00C91D1A /* TeacherTabBarViewController.m */,
+			);
+			path = TeacherTabBar;
+			sourceTree = "<group>";
+		};
+		F5A972CB1BCFB7EA00C91D1A /* Assignements */ = {
+			isa = PBXGroup;
+			children = (
+				F5A972CC1BCFB7EA00C91D1A /* AssignementsViewController.h */,
+				F5A972CD1BCFB7EA00C91D1A /* AssignementsViewController.m */,
+				F5A972CE1BCFB7EA00C91D1A /* AssignementTableViewCell.h */,
+				F5A972CF1BCFB7EA00C91D1A /* AssignementTableViewCell.m */,
+			);
+			path = Assignements;
+			sourceTree = "<group>";
+		};
+		F5A972D01BCFB7EA00C91D1A /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				F5A972D11BCFB7EA00C91D1A /* ChatTableViewController.h */,
+				F5A972D21BCFB7EA00C91D1A /* ChatTableViewController.m */,
+				F5A972D31BCFB7EA00C91D1A /* ChatViewController.h */,
+				F5A972D41BCFB7EA00C91D1A /* ChatViewController.m */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		F5A972D51BCFB7EA00C91D1A /* CourseMaterials */ = {
+			isa = PBXGroup;
+			children = (
+				F5A972D61BCFB7EA00C91D1A /* CourseMaterialsViewController.h */,
+				F5A972D71BCFB7EA00C91D1A /* CourseMaterialsViewController.m */,
+			);
+			path = CourseMaterials;
+			sourceTree = "<group>";
+		};
+		F5A972D81BCFB7EA00C91D1A /* Grades */ = {
+			isa = PBXGroup;
+			children = (
+				F5A972D91BCFB7EA00C91D1A /* GradesViewController.h */,
+				F5A972DA1BCFB7EA00C91D1A /* GradesViewController.m */,
+			);
+			path = Grades;
+			sourceTree = "<group>";
+		};
+		F5A972DB1BCFB7EA00C91D1A /* News */ = {
+			isa = PBXGroup;
+			children = (
+				F5A972DC1BCFB7EA00C91D1A /* NewsViewController.h */,
+				F5A972DD1BCFB7EA00C91D1A /* NewsViewController.m */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		F5A972DE1BCFB7EA00C91D1A /* Students */ = {
+			isa = PBXGroup;
+			children = (
+				F5A972DF1BCFB7EA00C91D1A /* StudentsViewController.h */,
+				F5A972E01BCFB7EA00C91D1A /* StudentsViewController.m */,
+			);
+			path = Students;
+			sourceTree = "<group>";
+		};
+		F5A972E11BCFB7EA00C91D1A /* Subjects */ = {
+			isa = PBXGroup;
+			children = (
+				F5A972E21BCFB7EA00C91D1A /* SubjectCollectionViewCell.h */,
+				F5A972E31BCFB7EA00C91D1A /* SubjectCollectionViewCell.m */,
+				F5A972E41BCFB7EA00C91D1A /* SubjectsCollectionViewController.h */,
+				F5A972E51BCFB7EA00C91D1A /* SubjectsCollectionViewController.m */,
+			);
+			path = Subjects;
+			sourceTree = "<group>";
+		};
+		F5A972E61BCFB7EA00C91D1A /* TabBarHolder */ = {
+			isa = PBXGroup;
+			children = (
+				F5A972E71BCFB7EA00C91D1A /* TabBarHolderController.h */,
+				F5A972E81BCFB7EA00C91D1A /* TabBarHolderController.m */,
+			);
+			path = TabBarHolder;
+			sourceTree = "<group>";
+		};
+		F5A972E91BCFB7EA00C91D1A /* TabBarPagerHolder */ = {
+			isa = PBXGroup;
+			children = (
+				F5A972EA1BCFB7EA00C91D1A /* TabBarPagerHolderViewController.h */,
+				F5A972EB1BCFB7EA00C91D1A /* TabBarPagerHolderViewController.m */,
+			);
+			path = TabBarPagerHolder;
 			sourceTree = "<group>";
 		};
 		F5F9CA201BA444EB008E1715 /* PDFReader */ = {
@@ -1040,8 +1056,8 @@
 				F549D35E1BBD3127000A9E79 /* NHNetworkClock.m in Sources */,
 				F5F9CA591BA444EB008E1715 /* ReaderViewController.m in Sources */,
 				F5F9CA4A1BA444EB008E1715 /* ReaderConstants.m in Sources */,
-				F5055CD61BA1B6AF00BB6547 /* TabBarPagerHolderViewController.m in Sources */,
 				F5F9CA491BA444EB008E1715 /* CGPDFDocument.m in Sources */,
+				F5A972CA1BCFB7DC00C91D1A /* TeacherTabBarViewController.m in Sources */,
 				04A2AB0B1B9C3BE6009B2C60 /* ForgotPasswordViewController.m in Sources */,
 				F5F9CA5C1BA444EB008E1715 /* UIXToolbarView.m in Sources */,
 				69FE08B01B84E51500C81ABC /* AppDelegate.m in Sources */,
@@ -1049,49 +1065,49 @@
 				F5F9CA521BA444EB008E1715 /* ReaderThumbCache.m in Sources */,
 				F5055CDA1BA1C00E00BB6547 /* CAPSPageMenu.m in Sources */,
 				F5F9CA4C1BA444EB008E1715 /* ReaderContentTile.m in Sources */,
-				F50F7DF81BA6EB9400D06D30 /* AssignementTableViewCell.m in Sources */,
 				F5F9CA4E1BA444EB008E1715 /* ReaderDocument.m in Sources */,
 				F5F9CA4F1BA444EB008E1715 /* ReaderDocumentOutline.m in Sources */,
 				F50D6D4E1BA5B49300BF6309 /* ThumbnailPDF.m in Sources */,
+				F5A972F71BCFB7EA00C91D1A /* TabBarPagerHolderViewController.m in Sources */,
+				F5A972F31BCFB7EA00C91D1A /* StudentsViewController.m in Sources */,
 				F5F9CA561BA444EB008E1715 /* ReaderThumbRequest.m in Sources */,
-				F5055CF21BA1C3BA00BB6547 /* AssignementsViewController.m in Sources */,
-				F5055CC91BA1B1CA00BB6547 /* SubjectCollectionViewCell.m in Sources */,
-				F5055CEC1BA1C39C00BB6547 /* CourseMaterialsViewController.m in Sources */,
 				F54A98131BBACC540073CF58 /* UIImage+AspectFit.m in Sources */,
 				F5F9CA4B1BA444EB008E1715 /* ReaderContentPage.m in Sources */,
 				F549D35D1BBD3127000A9E79 /* NHNetAssociation.m in Sources */,
+				F5A972F01BCFB7EA00C91D1A /* CourseMaterialsViewController.m in Sources */,
+				F5A972EF1BCFB7EA00C91D1A /* ChatViewController.m in Sources */,
+				F5A972ED1BCFB7EA00C91D1A /* AssignementTableViewCell.m in Sources */,
 				F5F9CA511BA444EB008E1715 /* ReaderMainToolbar.m in Sources */,
 				F507E5DE1B9F19120066283F /* ProfileViewController.m in Sources */,
-				F5055CE91BA1C38C00BB6547 /* GradesViewController.m in Sources */,
 				F5F9CA581BA444EB008E1715 /* ReaderThumbView.m in Sources */,
-				F5055CEF1BA1C3AC00BB6547 /* ChatViewController.m in Sources */,
-				F5055CC61BA1B18700BB6547 /* SubjectsCollectionViewController.m in Sources */,
 				F5F9CA4D1BA444EB008E1715 /* ReaderContentView.m in Sources */,
 				F549D3701BBD3144000A9E79 /* GCDAsyncUdpSocket.m in Sources */,
+				F5A972F51BCFB7EA00C91D1A /* SubjectsCollectionViewController.m in Sources */,
 				F549D35F1BBD3127000A9E79 /* NSDate+NetworkClock.m in Sources */,
 				F512D7011BA83FE500F3E252 /* RNActivityView.m in Sources */,
+				F5A972F61BCFB7EA00C91D1A /* TabBarHolderController.m in Sources */,
 				69FE08AD1B84E51500C81ABC /* main.m in Sources */,
-				F53FC8CD1BC68E2300C17C18 /* TeacherTabBarViewController.m in Sources */,
 				0453AEF11B98647E00CD3A53 /* LoginViewController.m in Sources */,
+				F5A972F41BCFB7EA00C91D1A /* SubjectCollectionViewCell.m in Sources */,
+				F5A972F11BCFB7EA00C91D1A /* GradesViewController.m in Sources */,
 				F512D7021BA83FE500F3E252 /* UIView+RNActivityView.m in Sources */,
+				F5A972EE1BCFB7EA00C91D1A /* ChatTableViewController.m in Sources */,
 				F539D0161BC5669400F05BDD /* CHTransitionAnimationController.m in Sources */,
 				F54A98121BBACC540073CF58 /* TGRImageZoomAnimationController.m in Sources */,
 				F549D3711BBD3144000A9E79 /* AsyncSocket.m in Sources */,
 				F5F9CA501BA444EB008E1715 /* ReaderMainPagebar.m in Sources */,
+				F5A972F21BCFB7EA00C91D1A /* NewsViewController.m in Sources */,
 				F549D3721BBD3144000A9E79 /* AsyncUdpSocket.m in Sources */,
 				F5F9CA5B1BA444EB008E1715 /* ThumbsViewController.m in Sources */,
 				F549D36F1BBD3144000A9E79 /* GCDAsyncSocket.m in Sources */,
 				F54A98101BBACC540073CF58 /* TGRImageViewController.m in Sources */,
-				F51746B91BAB236C003B026A /* ChatTableViewController.m in Sources */,
 				04A2AB201B9C6CBD009B2C60 /* FlatDatePicker.m in Sources */,
 				F5F9CA5A1BA444EB008E1715 /* ThumbsMainToolbar.m in Sources */,
-				F5055CE31BA1C37500BB6547 /* StudentsViewController.m in Sources */,
-				F507E5E21B9F41100066283F /* TabBarHolderController.m in Sources */,
-				F5055CE61BA1C38100BB6547 /* NewsViewController.m in Sources */,
 				0453AEF61B9872C300CD3A53 /* SignupViewController.m in Sources */,
 				F5055CC31BA18F3400BB6547 /* ManageLayerViewController.m in Sources */,
 				F5F9CA541BA444EB008E1715 /* ReaderThumbQueue.m in Sources */,
 				F549D36E1BBD3144000A9E79 /* README.markdown in Sources */,
+				F5A972EC1BCFB7EA00C91D1A /* AssignementsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1213,6 +1229,7 @@
 					Student/Resources/SDK/parseSDK,
 				);
 				INFOPLIST_FILE = "Educatia Student/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1242,6 +1259,7 @@
 					Student/Resources/SDK/parseSDK,
 				);
 				INFOPLIST_FILE = "Educatia Student/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
