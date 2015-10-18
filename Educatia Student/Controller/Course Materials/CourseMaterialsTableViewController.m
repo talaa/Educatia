@@ -198,9 +198,16 @@
     
     [self presentViewController:documentPicker animated:YES completion:nil];
 }
+
+/*
+ *
+ * Handle Incoming File
+ *
+ */
 - (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url {
     if (controller.documentPickerMode == UIDocumentPickerModeImport) {
         NSString *alertMessage = [NSString stringWithFormat:@"Successfully imported %@", [url lastPathComponent]];
+        NSLog(@"Path is %@", url);
         dispatch_async(dispatch_get_main_queue(), ^{
             UIAlertController *alertController = [UIAlertController
                                                   alertControllerWithTitle:@"Import"
@@ -211,6 +218,16 @@
         });
     }
 }
+
+/*
+ *
+ * Cancelled
+ *
+ */
+- (void)documentPickerWasCancelled:(UIDocumentPickerViewController *)controller {
+    NSLog(@"Cancelled");
+}
+
 
 - (NSArray*)allowedUTIs{
     return @[@"kUTTypeContent",@"kUTTypeItem",@"public.audiovisual-content",@"public.movie",@"public.audiovisual-content",@"public.video",@"public.audio",@"public.text",@"public.data",@"public.zip-archive",@"com.pkware.zip-archive",@"public.composite-content",@"public.text"];
