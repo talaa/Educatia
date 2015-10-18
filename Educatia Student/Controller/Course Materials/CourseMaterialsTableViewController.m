@@ -12,13 +12,23 @@
 #import "ManageLayerViewController.h"
 #import <Parse/Parse.h>
 #import "DataParsing.h"
+#import "CourseMaterialTableViewCell.h"
+#import "ThumbnailPDF.h"
 
 @interface CourseMaterialsTableViewController () <UIDocumentPickerDelegate>
+{
+    BOOL *isCurrentUserisTeacher;
+}
 @property (strong, nonatomic) NSString *currentUserFullName;
 @property (strong, nonatomic) NSString *currentUserObjectID;
 @property (strong, nonatomic) NSString *currentUserName;
 @property (strong, nonatomic) NSString *courseMaterialName;
 @property (strong, nonatomic) NSData *documentPickerselectedData;
+
+@property (strong, nonatomic) NSMutableArray *materislFileMArray;
+@property (strong, nonatomic) NSMutableArray *materialNameMArray;
+@property (strong, nonatomic) NSMutableArray *materialTeacherMArray;
+@property (strong, nonatomic) NSMutableArray *materialDataFileMArray;
 @end
 
 @implementation CourseMaterialsTableViewController
@@ -30,6 +40,21 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //load course materials objects
+    [self loadMaterialsObjects];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    if ([ManageLayerViewController isCurrentUserisTeacher] == YES){
+        //Is a Teacher
+        self.addNewMaterilView.hidden       = NO;
+        self.addNewMaterialButton.hidden    = NO;
+    }else{
+        //Is a Student
+        self.addNewMaterilView.hidden       = YES;
+        self.addNewMaterialButton.hidden    = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,24 +67,35 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     //#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return [_materialNameMArray count]? 1: 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [_materialNameMArray count]? [_materialNameMArray count]:0;
 }
 
-/*
- - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
- UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
- 
- // Configure the cell...
- 
- return cell;
- }
- */
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CourseMaterialTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    // Configure the cell...
+    cell.materialName.text = [_materialNameMArray objectAtIndex:indexPath.row];
+    cell.TeacherName.text  = [_materialTeacherMArray objectAtIndex:indexPath.row];
+    
+    //Thumbnail
+    ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
+    [thumbPDF startWithCompletionHandler:[_materialDataFileMArray objectAtIndex:indexPath.row] andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
+        if (finished) {
+            //             [ManageLayerViewController imageViewCellAssignment:cell.assignementImageView];
+            cell.materialImageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
+        }
+    }];
+    
+    return cell;
+}
+
 
 /*
  // Override to support conditional editing of the table view.
@@ -104,6 +140,55 @@
  // Pass the selected object to the new view controller.
  }
  */
+
+/*
+ load course materials objects
+ */
+- (void)loadMaterialsObjects {
+    [self activityLoadingwithLabel];
+    PFQuery *query = [PFQuery queryWithClassName:@"CourseMaterials"];
+    [query whereKey:@"cmSubjectName" equalTo:[ManageLayerViewController getDataParsingSubjectName]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            
+            //init NSMutableArray
+            _materialNameMArray     = [[NSMutableArray alloc] init];
+            _materialTeacherMArray  = [[NSMutableArray alloc] init];
+            _materislFileMArray     = [[NSMutableArray alloc] init];
+            _materialDataFileMArray = [[NSMutableArray alloc] init];
+            
+            // Do something with the found objects
+            for (PFObject *object in objects) {
+                //NSLog(@"%@", object.objectId);
+                [_materialNameMArray addObject:object[@"cmName"]];
+                [_materialTeacherMArray addObject:object[@"cmTeacherName"]];
+                
+                //get pdf file
+                PFFile *cmFile = object[@"cmFile"];
+                NSData *cmFileData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:cmFile.url]];
+                //
+                //Ad to MData
+                [_materialDataFileMArray addObject:cmFileData];
+                
+                // Store the Data locally as PDF File
+                //NSString *resourceDocPath = [[NSString alloc] initWithString:[
+                //                                                                              [[[NSBundle mainBundle] resourcePath] stringByDeletingLastPathComponent]
+                //                                                                              stringByAppendingPathComponent:@"Educatia Student.app/"
+                //                                                                              ]];
+                //                NSString *fileName = [object.objectId stringByAppendingString:@".pdf"];
+                //                NSString *filePath = [resourceDocPath stringByAppendingPathComponent:fileName];
+                //                [pdfData writeToFile:filePath atomically:YES];
+                //                [_assignmentFileLocalPathMArray addObject:filePath];
+                
+            }
+            [self activityStopLoading];
+            [self.tableView reloadData];
+        } else {
+            [self activityStopLoading];
+        }
+    }];
+}
+
 
 - (IBAction)addNewMaterialPressed:(id)sender {
     NSLog(@"Pressed");
@@ -199,23 +284,14 @@
         NSFileCoordinator *fileCoordinator = [[NSFileCoordinator alloc] init];
         NSError *error;
         [fileCoordinator coordinateReadingItemAtURL:url options:0 error:&error byAccessor:^(NSURL *newURL) {
-            NSLog(@"NEW URL is %@", newURL);
             NSData *data = [NSData dataWithContentsOfURL:newURL];
             [self saveOnParseURL:newURL AndData:data];
-            NSLog(@"error %@",error);
-            NSLog(@"data %@",data);
         }];
         [url stopAccessingSecurityScopedResource];
-        
-        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            NSLog(@"Saved on %@", url);
-//            [self saveOnParse:url];
-//        });
-        
+    }else{
+        //can't do import
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Can't import the file now, please try again!!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
     }
-    //can't do import
-    
 }
 
 /*
@@ -257,13 +333,13 @@
             coursMaterialObject[@"cmTeacherUsername"]   = self.currentUserName;
             
             //save Subject data
-            DataParsing *obj=[DataParsing getInstance];
-            coursMaterialObject[@"cmSubjectName"]       = obj.subjectName;
-            coursMaterialObject[@"cmSubjectID"]         = obj.subjectID;
+            coursMaterialObject[@"cmSubjectName"]       = [ManageLayerViewController getDataParsingSubjectName];
+            coursMaterialObject[@"cmSubjectID"]         = [ManageLayerViewController getDataParsingSubjectID];
             
             [coursMaterialObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
                     // The object has been saved.
+                    [self activityStopLoading];
                     NSString *alertMessage = alertMessage = [NSString stringWithFormat:@"Successfully imported %@", [pathURL lastPathComponent]];
                     UIAlertController *alertController = [UIAlertController
                                                           alertControllerWithTitle:@"Import"
@@ -271,6 +347,7 @@
                                                           preferredStyle:UIAlertControllerStyleAlert];
                     [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
                     [self presentViewController:alertController animated:YES completion:nil];
+                    [self loadMaterialsObjects];
                     [self.tableView reloadData];
                 } else {
                     // There was a problem, check error.description
@@ -286,9 +363,9 @@
                     [self activityStopLoading];
                 }
             }];
-
+            
         } else {
-            NSLog(@"Couldnt save file because %@", error);
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Sorry, can't import this file now.Please try it again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
         }
         
         
@@ -307,4 +384,6 @@
     self.currentUserObjectID = [ManageLayerViewController getCurrentUserID];
     self.currentUserName = [ManageLayerViewController getCurrentUserName];
 }
+
+
 @end

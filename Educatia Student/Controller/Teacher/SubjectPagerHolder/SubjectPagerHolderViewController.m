@@ -96,7 +96,7 @@
 #pragma mark - PagerMenu delegete
 
 -(void)willMoveToPage:(UIViewController *)controller index:(NSInteger)index{
-    NSLog(@"Moved to %ld", (long)index);
+    //NSLog(@"Moved to %ld", (long)index);
 }
 
 -(void)didMoveToPage:(UIViewController *)viewController index:(NSInteger)index{

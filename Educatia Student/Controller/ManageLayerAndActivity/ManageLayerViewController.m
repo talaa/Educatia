@@ -9,6 +9,7 @@
 #import "ManageLayerViewController.h"
 #import "RNActivityView.h"
 #import "UIView+RNActivityView.h"
+#import "DataParsing.h"
 
 @interface ManageLayerViewController ()
 
@@ -101,4 +102,29 @@
     return userFullName;
 }
 
++ (BOOL)isCurrentUserisTeacher {
+    PFUser *user = [self getCurrentUserObject];
+    if ([user[@"type"] isEqualToString:@"Teacher"]) {
+        return YES;
+    }else {
+        return NO;
+    }
+}
+
+/*
+ *
+ *
+ ****************** Current Subject Data *********************************
+ *
+ *
+ */
++ (NSString*)getDataParsingSubjectName{
+    DataParsing *obj=[DataParsing getInstance];
+    return obj.subjectName;
+}
+
++ (NSString*)getDataParsingSubjectID {
+    DataParsing *obj=[DataParsing getInstance];
+    return obj.subjectID;
+}
 @end
