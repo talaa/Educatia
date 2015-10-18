@@ -72,4 +72,33 @@
 }
 
 
+/*
+ *
+ *
+ ****************** Current User data ********************************* 
+ *
+ *
+ */
++ (PFUser*)getCurrentUserObject {
+    PFUser *user = [PFUser currentUser];
+    return user;
+}
+
++ (NSString *)getCurrentUserName {
+    PFUser *user = [self getCurrentUserObject];
+    return user.username;
+}
+
++ (NSString *)getCurrentUserID {
+    PFUser *user = [self getCurrentUserObject];
+    NSString *userID = user.objectId;
+    return userID;
+}
+
++ (NSString *)getCurrentFullName {
+    PFUser * user = [self getCurrentUserObject];
+    NSString *userFullName = [[user[@"FirstName"] stringByAppendingString:@" "] stringByAppendingString:user[@"LastName"]];
+    return userFullName;
+}
+
 @end

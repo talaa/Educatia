@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TechSubjectCollectionViewCell.h"
+#import <Parse/Parse.h>
 
 @interface ManageLayerViewController : UIViewController
 
@@ -16,5 +17,9 @@
 + (void)imageViewCellAssignment:(UIImageView*)imageView;
 + (void)buttonLayerMainView:(UIButton*)button;
 + (void)cellLayerTechSubjectCollectionView:(TechSubjectCollectionViewCell*)cell;
++ (PFUser*)getCurrentUserObject;
++ (NSString *)getCurrentUserName;
++ (NSString *)getCurrentUserID;
++ (NSString *)getCurrentFullName;
 
 @end

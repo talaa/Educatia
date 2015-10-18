@@ -61,6 +61,7 @@
 		F534083F1BD02F0E000B545B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F534083E1BD02F0E000B545B /* CloudKit.framework */; };
 		F539D0121BC55DE500F05BDD /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F539D0111BC55DE500F05BDD /* MainViewController.m */; };
 		F539D0161BC5669400F05BDD /* CHTransitionAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F539D0151BC5669400F05BDD /* CHTransitionAnimationController.m */; };
+		F545320E1BD3C9220062343B /* DataParsing.m in Sources */ = {isa = PBXBuildFile; fileRef = F545320D1BD3C9220062343B /* DataParsing.m */; };
 		F549D35D1BBD3127000A9E79 /* NHNetAssociation.m in Sources */ = {isa = PBXBuildFile; fileRef = F549D3561BBD3127000A9E79 /* NHNetAssociation.m */; };
 		F549D35E1BBD3127000A9E79 /* NHNetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = F549D3581BBD3127000A9E79 /* NHNetworkClock.m */; };
 		F549D35F1BBD3127000A9E79 /* NSDate+NetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = F549D35C1BBD3127000A9E79 /* NSDate+NetworkClock.m */; };
@@ -220,6 +221,8 @@
 		F539D0111BC55DE500F05BDD /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		F539D0141BC5669400F05BDD /* CHTransitionAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTransitionAnimationController.h; sourceTree = "<group>"; };
 		F539D0151BC5669400F05BDD /* CHTransitionAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTransitionAnimationController.m; sourceTree = "<group>"; };
+		F545320C1BD3C9220062343B /* DataParsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataParsing.h; sourceTree = "<group>"; };
+		F545320D1BD3C9220062343B /* DataParsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataParsing.m; sourceTree = "<group>"; };
 		F549D3551BBD3127000A9E79 /* NHNetAssociation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHNetAssociation.h; sourceTree = "<group>"; };
 		F549D3561BBD3127000A9E79 /* NHNetAssociation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHNetAssociation.m; sourceTree = "<group>"; };
 		F549D3571BBD3127000A9E79 /* NHNetworkClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHNetworkClock.h; sourceTree = "<group>"; };
@@ -545,12 +548,12 @@
 				693E69231B876C0000009A84 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		69FE089E1B84E51500C81ABC = {
 			isa = PBXGroup;
 			children = (
-				693E69391B876CA600009A84 /* Frameworks */,
 				69FE08A91B84E51500C81ABC /* Educatia Student */,
 				69FE08C31B84E51500C81ABC /* Educatia StudentTests */,
 				69FE08A81B84E51500C81ABC /* Products */,
@@ -569,6 +572,8 @@
 		69FE08A91B84E51500C81ABC /* Educatia Student */ = {
 			isa = PBXGroup;
 			children = (
+				F545320B1BD3C90F0062343B /* Model */,
+				693E69391B876CA600009A84 /* Frameworks */,
 				F56FBCDC1BD00D0600ECDDA6 /* Educatia Student.entitlements */,
 				0453AEDA1B9861FB00CD3A53 /* Controller */,
 				0453AEE21B9861FB00CD3A53 /* Resources */,
@@ -680,6 +685,15 @@
 				F539D0151BC5669400F05BDD /* CHTransitionAnimationController.m */,
 			);
 			path = Animations;
+			sourceTree = "<group>";
+		};
+		F545320B1BD3C90F0062343B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F545320C1BD3C9220062343B /* DataParsing.h */,
+				F545320D1BD3C9220062343B /* DataParsing.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F549D3541BBD3127000A9E79 /* NHNetworkTime */ = {
@@ -1183,6 +1197,7 @@
 				F5A972F21BCFB7EA00C91D1A /* NewsViewController.m in Sources */,
 				F549D3721BBD3144000A9E79 /* AsyncUdpSocket.m in Sources */,
 				F5F9CA5B1BA444EB008E1715 /* ThumbsViewController.m in Sources */,
+				F545320E1BD3C9220062343B /* DataParsing.m in Sources */,
 				F549D36F1BBD3144000A9E79 /* GCDAsyncSocket.m in Sources */,
 				F56FBCDB1BD005D300ECDDA6 /* SubjectInfoViewController.m in Sources */,
 				F54A98101BBACC540073CF58 /* TGRImageViewController.m in Sources */,

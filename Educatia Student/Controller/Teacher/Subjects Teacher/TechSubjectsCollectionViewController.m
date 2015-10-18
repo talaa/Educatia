@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSString *teacherFullName;
 @property (strong, nonatomic) NSString *teacherUserName;
 @property (strong, nonatomic) NSMutableArray *subjectsNameMArray;
+@property (strong, nonatomic) NSMutableArray *subjectsIDMArray;
 
 @end
 
@@ -64,7 +65,8 @@ static NSString * const reuseIdentifier = @"Cell";
      if ([segue.identifier isEqualToString:@"SubjectSegue"]) {
          UINavigationController *nav = [segue destinationViewController];
          SubjectPagerHolderViewController *subHolderVC = (SubjectPagerHolderViewController *)nav.topViewController;
-         subHolderVC.subjectName = [_subjectsNameMArray objectAtIndex:indexPath.row];
+         subHolderVC.subjectName    = [_subjectsNameMArray objectAtIndex:indexPath.row];
+         subHolderVC.subjectID      = [_subjectsIDMArray objectAtIndex:indexPath.row];
      }
 }
 
@@ -226,8 +228,10 @@ static NSString * const reuseIdentifier = @"Cell";
         if (!error) {
             // Retrieved scores successfully
             _subjectsNameMArray = [[NSMutableArray alloc] init];
+            _subjectsIDMArray   = [[NSMutableArray alloc] init];
             for (PFObject *object in objects){
                 [_subjectsNameMArray addObject:object[@"subjectName"]];
+                [_subjectsIDMArray addObject:object.objectId];
             }
             [self activityStopLoading];
             [self.collectionView reloadData];

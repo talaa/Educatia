@@ -7,6 +7,7 @@
 //
 
 #import "SubjectPagerHolderViewController.h"
+#import "DataParsing.h"
 
 @interface SubjectPagerHolderViewController ()
 {
@@ -17,11 +18,18 @@
 
 @end
 
+
 @implementation SubjectPagerHolderViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //Set SubjectName and SubjectIS
+    DataParsing *obj=[DataParsing getInstance];
+    obj.subjectName = self.subjectName;
+    obj.subjectID   = self.subjectID;
+    
     self.navigationItem.title = _subjectName;
     
     titlesArray = @[@"Course Materials",

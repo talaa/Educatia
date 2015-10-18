@@ -9,16 +9,22 @@
 #import "CourseMaterialsTableViewController.h"
 #import "RNActivityView.h"
 #import "UIView+RNActivityView.h"
+#import "ManageLayerViewController.h"
+#import <Parse/Parse.h>
+#import "DataParsing.h"
 
 @interface CourseMaterialsTableViewController () <UIDocumentPickerDelegate>
-
+@property (strong, nonatomic) NSString *currentUserFullName;
+@property (strong, nonatomic) NSString *currentUserObjectID;
+@property (strong, nonatomic) NSString *currentUserName;
+@property (strong, nonatomic) NSString *courseMaterialName;
+@property (strong, nonatomic) NSData *documentPickerselectedData;
 @end
 
 @implementation CourseMaterialsTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -46,58 +52,58 @@
 }
 
 /*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
+ - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+ UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+ 
+ // Configure the cell...
+ 
+ return cell;
+ }
+ */
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (IBAction)addNewMaterialPressed:(id)sender {
     NSLog(@"Pressed");
@@ -116,37 +122,15 @@
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Add File" style:UIAlertActionStyleDefault
                                                handler:^(UIAlertAction * action) {
                                                    //Do Some action here ---> OK
-                                                   UITextField *subjectNameTextField = alertController.textFields.firstObject;
+                                                   UITextField *courseMaterialName = alertController.textFields.firstObject;
                                                    
                                                    //start ActivityIndicator
                                                    [self activityLoadingwithLabel];
-//
-                                                   if (subjectNameTextField.text.length > 0) {
-//                                                       UIDocumentPickerViewController *documentPicker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:@[@"public.image"] inMode:UIDocumentPickerModeImport];
-                                                
-                                                       
+                                                   
+                                                   if (courseMaterialName.text.length > 4) {
+                                                       self.courseMaterialName = courseMaterialName.text;
                                                        [self showDocumentPickerInMode:UIDocumentPickerModeOpen];
-                                                    
-                                                       //[self showDocumentPickerInMode:UIDocumentPickerModeOpen];
-                                                       //PFObject *subject = [PFObject objectWithClassName:@"Subjects"];
-//
-//                                                       subject[@"subjectName"]   = subjectNameTextField.text;
-//                                                       subject[@"teacherUserName"] = _teacherUserName;
-//                                                       subject[@"teacherFullName"] = _teacherFullName;
-//                                                       
-//                                                       [subject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                                                         //Stop ActivityIndicator
-                                                          [self activityStopLoading];
-//                                                           if (succeeded) {
-//                                                               // The object has been saved.
-//                                                               [self activityCompletedSuccessfully];
-//                                                               //After add then reload collectionView
-//                                                               [self viewDidAppear:YES];
-//                                                           } else {
-//                                                               // There was a problem, check error.description
-//                                                               [self activityError];
-//                                                           }
-//                                                       }];
+                                                       
                                                    }else {
                                                        [self activityError];
                                                    }
@@ -206,17 +190,32 @@
  */
 - (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url {
     if (controller.documentPickerMode == UIDocumentPickerModeImport) {
-        NSString *alertMessage = [NSString stringWithFormat:@"Successfully imported %@", [url lastPathComponent]];
-        NSLog(@"Path is %@", url);
-        dispatch_async(dispatch_get_main_queue(), ^{
-            UIAlertController *alertController = [UIAlertController
-                                                  alertControllerWithTitle:@"Import"
-                                                  message:alertMessage
-                                                  preferredStyle:UIAlertControllerStyleAlert];
-            [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
-            [self presentViewController:alertController animated:YES completion:nil];
-        });
+        //Successful import
+        BOOL startAccessingWorked = [url startAccessingSecurityScopedResource];
+        NSURL *ubiquityURL = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
+        NSLog(@"ubiquityURL %@",ubiquityURL);
+        NSLog(@"start %d",startAccessingWorked);
+        
+        NSFileCoordinator *fileCoordinator = [[NSFileCoordinator alloc] init];
+        NSError *error;
+        [fileCoordinator coordinateReadingItemAtURL:url options:0 error:&error byAccessor:^(NSURL *newURL) {
+            NSLog(@"NEW URL is %@", newURL);
+            NSData *data = [NSData dataWithContentsOfURL:newURL];
+            [self saveOnParseURL:newURL AndData:data];
+            NSLog(@"error %@",error);
+            NSLog(@"data %@",data);
+        }];
+        [url stopAccessingSecurityScopedResource];
+        
+        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            NSLog(@"Saved on %@", url);
+//            [self saveOnParse:url];
+//        });
+        
     }
+    //can't do import
+    
 }
 
 /*
@@ -231,5 +230,81 @@
 
 - (NSArray*)allowedUTIs{
     return @[@"kUTTypeContent",@"kUTTypeItem",@"public.audiovisual-content",@"public.movie",@"public.audiovisual-content",@"public.video",@"public.audio",@"public.text",@"public.data",@"public.zip-archive",@"com.pkware.zip-archive",@"public.composite-content",@"public.text"];
+}
+
+
+/*
+ *
+ Saving the choisen file --> Course Materials table on Parse
+ *
+ */
+- (void)saveOnParseURL:(NSURL*)pathURL AndData:(NSData*)data {
+    //save file to upload to Course Material core
+    //NSString *path = [pathURL absoluteString];
+    //NSData *data = [[NSFileManager defaultManager] contentsAtPath:path];
+    PFFile *file = [PFFile fileWithName:[pathURL lastPathComponent] data:data];
+    [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        // Handle success or failure here ...
+        if (succeeded){
+            PFObject *coursMaterialObject = [PFObject objectWithClassName:@"CourseMaterials"];
+            coursMaterialObject[@"cmFile"]              = file;
+            coursMaterialObject[@"cmName"]              = self.courseMaterialName;
+            
+            //save CurrentUSer data
+            [self setCurrentUserData];
+            coursMaterialObject[@"cmTeacherName"]       = self.currentUserFullName;
+            coursMaterialObject[@"cmTeacherID"]         = self.currentUserObjectID;
+            coursMaterialObject[@"cmTeacherUsername"]   = self.currentUserName;
+            
+            //save Subject data
+            DataParsing *obj=[DataParsing getInstance];
+            coursMaterialObject[@"cmSubjectName"]       = obj.subjectName;
+            coursMaterialObject[@"cmSubjectID"]         = obj.subjectID;
+            
+            [coursMaterialObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    // The object has been saved.
+                    NSString *alertMessage = alertMessage = [NSString stringWithFormat:@"Successfully imported %@", [pathURL lastPathComponent]];
+                    UIAlertController *alertController = [UIAlertController
+                                                          alertControllerWithTitle:@"Import"
+                                                          message:alertMessage
+                                                          preferredStyle:UIAlertControllerStyleAlert];
+                    [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+                    [self presentViewController:alertController animated:YES completion:nil];
+                    [self.tableView reloadData];
+                } else {
+                    // There was a problem, check error.description
+                    // The object has been saved.
+                    NSLog(@"Error is %@", error);
+                    NSString *alertMessage = alertMessage = [NSString stringWithFormat:@"Ops,UnSuccessfully imported, %@", [pathURL lastPathComponent]];
+                    UIAlertController *alertController = [UIAlertController
+                                                          alertControllerWithTitle:@"Import Error"
+                                                          message:alertMessage
+                                                          preferredStyle:UIAlertControllerStyleAlert];
+                    [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+                    [self presentViewController:alertController animated:YES completion:nil];
+                    [self activityStopLoading];
+                }
+            }];
+
+        } else {
+            NSLog(@"Couldnt save file because %@", error);
+        }
+        
+        
+    } progressBlock:^(int percentDone) {
+        // Update your progress spinner here. percentDone will be between 0 and 100.
+    }];
+    
+    
+}
+
+/**
+ Set current User data on local NSString
+ **/
+- (void)setCurrentUserData {
+    self.currentUserFullName = [ManageLayerViewController getCurrentFullName];
+    self.currentUserObjectID = [ManageLayerViewController getCurrentUserID];
+    self.currentUserName = [ManageLayerViewController getCurrentUserName];
 }
 @end
