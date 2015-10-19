@@ -9,6 +9,7 @@
 #import "SubjectsCollectionViewController.h"
 #import "ManageLayerViewController.h"
 #import "TabBarPagerHolderViewController.h"
+#import "SubjectCollectionViewCell.h"
 
 @interface SubjectsCollectionViewController ()
 
@@ -62,10 +63,10 @@ static NSString * const reuseIdentifier = @"SubjectCell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    SubjectCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     // Configure the cell
-    [ManageLayerViewController cellLayerSubjectsCollectionView:cell];
+    [ManageLayerViewController subjectCollectionViewCellLayer:cell];
     
     return cell;
 }
@@ -101,4 +102,8 @@ static NSString * const reuseIdentifier = @"SubjectCell";
 }
 */
 
+- (IBAction)addNewSubject:(id)sender {
+}
+- (IBAction)addNewSubjectPressed:(id)sender {
+}
 @end

@@ -500,7 +500,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="dqN-yE-Uy9" kind="relationship" relationship="viewControllers" id="de4-bu-vnN"/>
-                        <segue destination="z5F-ab-IBJ" kind="relationship" relationship="viewControllers" id="zMw-17-sPg"/>
+                        <segue destination="lUb-Km-4Wn" kind="relationship" relationship="viewControllers" id="gtN-2p-ZXv"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VX4-9k-nxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -755,7 +755,7 @@
                             <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="uIC-oy-VUP" customClass="TechSubjectCollectionViewCell">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="uIC-oy-VUP" customClass="SubjectCollectionViewCell">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -781,8 +781,8 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <outlet property="subjectImage" destination="WxX-Wf-JdP" id="k2w-qz-u9g"/>
-                                    <outlet property="subjectName" destination="4Qx-g4-Spv" id="0Bf-0n-eMe"/>
+                                    <outlet property="subjectImageView" destination="WxX-Wf-JdP" id="wkd-Yf-SDe"/>
+                                    <outlet property="subjectNameLabel" destination="4Qx-g4-Spv" id="HKV-XK-kDZ"/>
                                     <segue destination="n6a-u9-KYr" kind="modal" identifier="SubjectSegue" id="OQT-MN-fQW"/>
                                 </connections>
                             </collectionViewCell>
@@ -954,6 +954,29 @@
             </objects>
             <point key="canvasLocation" x="4104" y="4698"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="HCK-pI-anP">
+            <objects>
+                <navigationController id="lUb-Km-4Wn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="b9G-Yg-YcP"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b5u-Le-oey">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="z5F-ab-IBJ" kind="relationship" relationship="rootViewController" id="iLm-WS-gvW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oWx-ZN-2Yd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-718" y="1969"/>
+        </scene>
         <!--Subjects-->
         <scene sceneID="Tgq-GE-TNu">
             <objects>
@@ -963,7 +986,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2ho-0K-S2R">
-                            <size key="itemSize" width="200" height="250"/>
+                            <size key="itemSize" width="200" height="200"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
@@ -973,16 +996,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Math1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="kSa-E8-h6X">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qtc-yg-hCe">
+                                            <rect key="frame" x="0.0" y="0.0" width="205" height="205"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7gq-Kb-Dyt">
-                                            <rect key="frame" x="0.0" y="195" width="200" height="47"/>
+                                            <rect key="frame" x="0.0" y="145" width="200" height="47"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Math" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfk-VH-xFf">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfk-VH-xFf">
                                                     <rect key="frame" x="8" y="13" width="184" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -994,7 +1017,10 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
+                                    <outlet property="subjectImageView" destination="qtc-yg-hCe" id="mmO-XR-heU"/>
+                                    <outlet property="subjectNameLabel" destination="yfk-VH-xFf" id="0eS-2w-uDv"/>
                                     <segue destination="3UN-2n-iXH" kind="modal" id="6lO-Zl-pjn"/>
                                 </connections>
                             </collectionViewCell>
@@ -1005,11 +1031,18 @@
                         </connections>
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="Subjects" image="Icon_Subjects" id="8MZ-yK-5aZ"/>
+                    <navigationItem key="navigationItem" title="Subjects" id="7Un-zj-PvM">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="HYO-4Z-l3t">
+                            <connections>
+                                <action selector="addNewSubjectPressed:" destination="z5F-ab-IBJ" id="qF6-Qx-NnW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Cl-7m-Ded" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-330" y="1976"/>
+            <point key="canvasLocation" x="318" y="1969"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cHh-JN-Y1W">
@@ -1031,9 +1064,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y6T-j7-BYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="592" y="1976"/>
+            <point key="canvasLocation" x="1280" y="1969"/>
         </scene>
-        <!--Math-->
+        <!--Tab Bar Pager Holder View Controller-->
         <scene sceneID="E1A-T3-9eO">
             <objects>
                 <viewController storyboardIdentifier="TabBarPagerHolderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yN7-Xb-IrK" customClass="TabBarPagerHolderViewController" sceneMemberID="viewController">
@@ -1054,7 +1087,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Math" id="2AU-tJ-wPV">
+                    <navigationItem key="navigationItem" id="2AU-tJ-wPV">
                         <barButtonItem key="leftBarButtonItem" image="Icon_Cancel" id="u4g-Z1-SPv">
                             <connections>
                                 <action selector="dismissPressed:" destination="yN7-Xb-IrK" id="vIi-y1-pW9"/>
@@ -1065,7 +1098,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0HE-g7-HwE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1499" y="1976"/>
+            <point key="canvasLocation" x="2365" y="1969"/>
         </scene>
         <!--Students View Controller-->
         <scene sceneID="jCZ-pm-dNh">
@@ -1092,7 +1125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e01-Fd-ry8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7382" y="1969"/>
+            <point key="canvasLocation" x="8158" y="1969"/>
         </scene>
         <!--Course Materials View Controller-->
         <scene sceneID="BVB-EQ-j5b">
@@ -1133,7 +1166,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nRF-Ot-gDU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2457" y="1976"/>
+            <point key="canvasLocation" x="3339" y="1969"/>
         </scene>
         <!--News View Controller-->
         <scene sceneID="FXb-wM-yig">
@@ -1160,7 +1193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i0w-LQ-IYB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3494" y="1969"/>
+            <point key="canvasLocation" x="4304" y="1969"/>
         </scene>
         <!--Grades View Controller-->
         <scene sceneID="pFe-EQ-Stf">
@@ -1187,7 +1220,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M3F-C2-Ubb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4379" y="1969"/>
+            <point key="canvasLocation" x="5267" y="1969"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="3WJ-on-bCk">
@@ -1269,7 +1302,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wHU-F9-hZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6294" y="1969"/>
+            <point key="canvasLocation" x="7224" y="1969"/>
         </scene>
         <!--Assignements View Controller-->
         <scene sceneID="CHm-jp-rwK">
@@ -1431,7 +1464,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hEZ-iR-L4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5298" y="1969"/>
+            <point key="canvasLocation" x="6184" y="1969"/>
         </scene>
     </scenes>
     <resources>
@@ -1448,7 +1481,6 @@
         <image name="Icon_True" width="16" height="16"/>
         <image name="Icon_Username" width="16" height="16"/>
         <image name="Icone_BirthDay" width="32" height="32"/>
-        <image name="Math1.jpg" width="200" height="250"/>
         <image name="welcome_background.png" width="320" height="568"/>
     </resources>
     <inferredMetricsTieBreakers>

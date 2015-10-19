@@ -9,7 +9,7 @@
 #import "UIView+RNActivityView.h"
 #import "TechSubjectsCollectionViewController.h"
 #import <Parse/Parse.h>
-#import "TechSubjectCollectionViewCell.h" 
+#import "SubjectCollectionViewCell.h"
 #import "ManageLayerViewController.h"
 #import "SubjectPagerHolderViewController.h"
 
@@ -85,13 +85,13 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    TechSubjectCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    SubjectCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     // Configure the cell
     if ([_subjectsNameMArray count]>0){
-        cell.subjectName.text = [_subjectsNameMArray objectAtIndex:indexPath.row];
+        cell.subjectNameLabel.text = [_subjectsNameMArray objectAtIndex:indexPath.row];
     }
-    [ManageLayerViewController cellLayerTechSubjectCollectionView:cell];
+    [ManageLayerViewController subjectCollectionViewCellLayer:cell];
     return cell;
 }
 

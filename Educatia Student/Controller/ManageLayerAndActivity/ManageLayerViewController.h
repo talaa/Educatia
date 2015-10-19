@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TechSubjectCollectionViewCell.h"
+#import "SubjectCollectionViewCell.h"
 #import <Parse/Parse.h>
 
 @interface ManageLayerViewController : UIViewController
@@ -16,7 +16,7 @@
 + (void)cellLayerSubjectsCollectionView:(UICollectionViewCell*)cell;
 + (void)imageViewCellAssignment:(UIImageView*)imageView;
 + (void)buttonLayerMainView:(UIButton*)button;
-+ (void)cellLayerTechSubjectCollectionView:(TechSubjectCollectionViewCell*)cell;
++ (void)subjectCollectionViewCellLayer:(SubjectCollectionViewCell*)cell;
 + (PFUser*)getCurrentUserObject;
 + (NSString *)getCurrentUserName;
 + (NSString *)getCurrentUserID;

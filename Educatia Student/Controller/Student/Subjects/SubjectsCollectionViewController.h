@@ -10,4 +10,6 @@
 
 @interface SubjectsCollectionViewController : UICollectionViewController
 
+- (IBAction)addNewSubjectPressed:(id)sender;
+
 @end

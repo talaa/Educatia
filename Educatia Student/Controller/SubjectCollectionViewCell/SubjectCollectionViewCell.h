@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SubjectCollectionViewCell : UICollectionViewCell
-
+@property (weak, nonatomic) IBOutlet UIImageView *subjectImageView;
+@property (weak, nonatomic) IBOutlet UILabel *subjectNameLabel;
 @end
