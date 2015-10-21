@@ -191,7 +191,6 @@
 
 
 - (IBAction)addNewMaterialPressed:(id)sender {
-    NSLog(@"Pressed");
     [self presentAlretController];
 }
 

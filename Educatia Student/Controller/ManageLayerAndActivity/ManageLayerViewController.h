@@ -24,4 +24,9 @@
 + (BOOL)isCurrentUserisTeacher;
 + (NSString*)getDataParsingSubjectName;
 + (NSString*)getDataParsingSubjectID;
++ (BOOL)getDataParsingIsCurrentTeacher;
++ (NSString *)getDataParsingCurrentuserID;
++ (NSString*)getDataParsingCurrentusername;
++ (NSString*)getDataParsingCurrentName;
+
 @end

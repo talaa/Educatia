@@ -11,6 +11,9 @@
 @interface DataParsing : NSObject
 @property (nonatomic , retain) NSString *subjectName;
 @property (nonatomic , retain) NSString *subjectID;
-
+@property (nonatomic , retain) NSString *currentUserusername;
+@property (nonatomic , retain) NSString *currentUseruserID;
+@property (nonatomic , retain) NSString *currentUserName;
+@property (assign) BOOL isCurrentTeacher;
 + (DataParsing*)getInstance;
 @end

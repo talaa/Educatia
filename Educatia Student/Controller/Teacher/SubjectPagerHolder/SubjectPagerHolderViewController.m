@@ -8,6 +8,7 @@
 
 #import "SubjectPagerHolderViewController.h"
 #import "DataParsing.h"
+#import "ManageLayerViewController.h"
 
 @interface SubjectPagerHolderViewController ()
 {
@@ -26,16 +27,20 @@
     // Do any additional setup after loading the view.
     
     //Set SubjectName and SubjectIS
-    DataParsing *obj=[DataParsing getInstance];
-    obj.subjectName = self.subjectName;
-    obj.subjectID   = self.subjectID;
+    DataParsing *obj        = [DataParsing getInstance];
+    obj.subjectName         = self.subjectName;
+    obj.subjectID           = self.subjectID;
+    obj.currentUserName     = [ManageLayerViewController getCurrentFullName];
+    obj.currentUseruserID   = [ManageLayerViewController getCurrentUserID];
+    obj.currentUserusername = [ManageLayerViewController getCurrentUserName];
+    obj.isCurrentTeacher    = [ManageLayerViewController isCurrentUserisTeacher];
     
     self.navigationItem.title = _subjectName;
     
-    titlesArray = @[@"Course Materials",
+    titlesArray = @[@"Course Materials",@"Assignments",
                     //@"News",@"Grades",@"Assignements",@"Chat",
                     @"Subject Info"];
-    viewControllersArray = @[@"CourseMaterialsTableViewController",
+    viewControllersArray = @[@"CourseMaterialsTableViewController",@"AssignmentsTableViewController",
                              //@"NewsViewController",@"GradesViewController",@"AssignementsViewController",@"ChatViewController",
                              @"SubjectInfoViewController"];
     
@@ -65,7 +70,7 @@
 
 -(void)showTabsView{
     controllerArray = [NSMutableArray array];
-    for (int i=0 ; i< 2 ; i++){
+    for (int i=0 ; i< [titlesArray count] ; i++){
         UIViewController *viewController =  [[self storyboard] instantiateViewControllerWithIdentifier:[viewControllersArray objectAtIndex:i]];
         viewController.title = [titlesArray objectAtIndex:i];
         [controllerArray addObject:viewController];

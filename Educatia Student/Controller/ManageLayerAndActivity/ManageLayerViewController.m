@@ -127,4 +127,25 @@
     DataParsing *obj=[DataParsing getInstance];
     return obj.subjectID;
 }
+
++ (BOOL)getDataParsingIsCurrentTeacher {
+    DataParsing *obj=[DataParsing getInstance];
+    return obj.isCurrentTeacher;
+}
+
++ (NSString *)getDataParsingCurrentuserID {
+    DataParsing *obj=[DataParsing getInstance];
+    return obj.currentUseruserID;
+}
+
++ (NSString*)getDataParsingCurrentusername {
+    DataParsing *obj=[DataParsing getInstance];
+    return obj.currentUserusername;
+}
+
++ (NSString*)getDataParsingCurrentName {
+    DataParsing *obj=[DataParsing getInstance];
+    return obj.currentUserName;
+}
+
 @end

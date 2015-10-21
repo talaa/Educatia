@@ -8,6 +8,7 @@
 
 #import "TabBarPagerHolderViewController.h"
 #import "DataParsing.h"
+#import "ManageLayerViewController.h"
 
 @interface TabBarPagerHolderViewController ()
 {
@@ -28,15 +29,19 @@
     self.navigationItem.title = self.subjectName;
     
     //Set SubjectName and SubjectIS
-    DataParsing *obj=[DataParsing getInstance];
-    obj.subjectName = self.subjectName;
-    obj.subjectID   = self.subjectID;
+    DataParsing *obj        = [DataParsing getInstance];
+    obj.subjectName         = self.subjectName;
+    obj.subjectID           = self.subjectID;
+    obj.currentUserName     = [ManageLayerViewController getCurrentFullName];
+    obj.currentUseruserID   = [ManageLayerViewController getCurrentUserID];
+    obj.currentUserusername = [ManageLayerViewController getCurrentUserName];
+    obj.isCurrentTeacher    = [ManageLayerViewController isCurrentUserisTeacher];
     
     titlesArray = @[@"Course Materials",@"News",@"Grades",@"Assignements",@"Chat",@"Students"];
-    viewControllersArray = @[@"CourseMaterialsViewController",
+    viewControllersArray = @[@"CourseMaterialsTableViewController",
                              @"NewsViewController",
                              @"GradesViewController",
-                             @"AssignementsViewController",
+                             @"AssignmentsTableViewController",
                              @"ChatViewController",
                              @"StudentsViewController"];
     

@@ -17,10 +17,12 @@
 
 typedef void (^CompletionHandler)(BOOL);
 
-@interface AssignementsViewController () <ReaderViewControllerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
+@interface AssignementsViewController () <ReaderViewControllerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate,UIDocumentPickerDelegate>
 {
     NSDate *networkDate;
+    BOOL isCurrentTeacher;
 }
+
 @property (strong, nonatomic) NSMutableArray *teacherMArray;
 @property (strong, nonatomic) NSMutableArray *maxScoreMArray;
 @property (strong, nonatomic) NSMutableArray *deadLineMArray;
@@ -40,15 +42,22 @@ typedef void (^CompletionHandler)(BOOL);
     
     //Loading Activity
     [self.view showActivityViewWithLabel:@"Loading Assignments"];
-    [self myProgressTask];
     
     [self loadAssignementObjects];
+    
+    //Is current user a teacher?
+    isCurrentTeacher = [ManageLayerViewController isCurrentUserisTeacher];
+    if (isCurrentTeacher){
+        self.addNewAssignmentView.hidden = NO;
+    }else {
+        self.addNewAssignmentView.hidden = YES;
+    }
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-    _subjectName = @"Math";
-    networkDate = [NSDate networkDate];
-     [self updateDate];
+    //networkDate = [NSDate networkDate];
+    //[self updateDate];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -117,13 +126,13 @@ typedef void (^CompletionHandler)(BOOL);
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     //#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return [_assignmentIDMArray count]? 1:0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return (self.teacherMArray.count)?(self.teacherMArray.count):0;
+    return [_assignmentIDMArray count]? [_assignmentIDMArray count]:0;
 }
 
 
@@ -137,22 +146,20 @@ typedef void (^CompletionHandler)(BOOL);
     cell.maxScoreLabel.text     = [self.maxScoreMArray objectAtIndex:indexPath.row];
     cell.deadLineLabel.text     = [self.deadLineMArray objectAtIndex:indexPath.row];
     
-    //Cell button
-    cell.submitButton.tag = indexPath.row;
-    [cell.submitButton addTarget:self action:@selector(submitButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        //[cell.submitButton addTarget:self action:@selector(submitButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    //Thumbnail
-    ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
-    [thumbPDF startWithCompletionHandler:[_assignmentFileDataMArray objectAtIndex:indexPath.row] andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
-        if (finished) {
-            [ManageLayerViewController imageViewCellAssignment:cell.assignementImageView];
-            cell.assignementImageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
-        }
-    }];
+//    //Thumbnail
+//    ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
+//    [thumbPDF startWithCompletionHandler:[_assignmentFileDataMArray objectAtIndex:indexPath.row] andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
+//        if (finished) {
+//            [ManageLayerViewController imageViewCellAssignment:cell.assignementImageView];
+//            cell.assignementImageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
+//        }
+//    }];
     
     //Cell Assignment Imge
-    cell.assignmentButton.tag = indexPath.row;
-    [cell.assignmentButton addTarget:self action:@selector(assignmentButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+//    cell.assignmentButton.tag = indexPath.row;
+//    [cell.assignmentButton addTarget:self action:@selector(assignmentButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
 }
@@ -198,7 +205,7 @@ typedef void (^CompletionHandler)(BOOL);
                                                destructiveButtonTitle:@"Cancel"
                                                     otherButtonTitles:@"Take a photo", @"Upload a file",nil];
     //Actionsheet for IPad
-    [actionSheet showFromRect:cell.submitButton.frame inView:cell animated:YES];
+    [actionSheet showFromRect:cell.submitSolutionButton.frame inView:cell animated:YES];
 }
 
 #pragma mark - CellAssignmentButtonClicked
@@ -282,7 +289,6 @@ typedef void (^CompletionHandler)(BOOL);
 - (void)uploadsubmissionFile:(NSData*)imageData {
     //NSActivity start
     [self.view showActivityViewWithLabel:@"Uploading Your File...."];
-    [self myProgressTask];
     
     PFUser *user = [PFUser currentUser];
     NSString *firstName = user[@"FirstName"];
@@ -335,28 +341,6 @@ typedef void (^CompletionHandler)(BOOL);
     
     
 
-}
-
-#pragma mark - NSActivityView
-
-- (void)myProgressTask {
-    // This just increases the progress indicator in a loop
-    float progress = 0.0f;
-    while (progress < 1.0f) {
-        progress += 0.01f;
-        self.navigationController.view.rn_activityView.progress = progress;
-        //usleep(50000);
-    }
-}
-
-- (void)myProgressTaskUploadingSubmissionFile {
-    // This just increases the progress indicator in a loop
-    float progress = 0.0f;
-    while (progress < 1.0f) {
-        progress += 0.01f;
-        self.navigationController.view.rn_activityView.progress = progress;
-        //usleep(50000);
-    }
 }
 
 #pragma mark - UpdateDate
@@ -430,5 +414,72 @@ typedef void (^CompletionHandler)(BOOL);
  // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)addNewAssignmentPressed:(id)sender {
+    [self presentAlretController];
+}
+
+/*
+ AlertController to add new material
+ */
+- (void)presentAlretController {
+    UIAlertController * alertController=   [UIAlertController
+                                            alertControllerWithTitle:@"Add New Material"
+                                            message:@"Enter New Material Name"
+                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Add File" style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction * action) {
+                                                   //Do Some action here ---> OK
+                                                   UITextField *courseMaterialName = alertController.textFields.firstObject;
+                                                   
+                                                   //start ActivityIndicator
+                                                   [self activityLoadingwithLabel];
+                                                   
+                                                   if (courseMaterialName.text.length > 4) {
+                                                       //self.courseMaterialName = courseMaterialName.text;
+                                                       //[self showDocumentPickerInMode:UIDocumentPickerModeOpen];
+                                                       
+                                                   }else {
+                                                       [self activityError];
+                                                   }
+                                               }];
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive
+                                                   handler:^(UIAlertAction * action) {
+                                                       [alertController dismissViewControllerAnimated:YES completion:nil];
+                                                   }];
+    
+    
+    [alertController addAction:ok];
+    [alertController addAction:cancel];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField* textField) {
+        textField.placeholder = @"Material Name";
+    }];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+/*
+ ShowActivity Methos
+ */
+
+- (void)activityCompletedSuccessfully {
+    [self.view showActivityViewWithLabel:@"Subject has been added" image:[UIImage imageNamed:@"37x-Checkmark.png"]];
+    [self.view hideActivityViewWithAfterDelay:2];
+}
+
+- (void)activityError {
+    [self.view showActivityViewWithLabel:@"Error,Try again!" image:[UIImage imageNamed:@"32x-Closemark.png"]];
+    [self.view hideActivityViewWithAfterDelay:2];
+}
+
+- (void)activityLoadingwithLabel {
+    [self.view showActivityViewWithLabel:@"Loading...."];
+}
+
+- (void)activityStopLoading {
+    [self.view hideActivityView];
+}
 
 @end

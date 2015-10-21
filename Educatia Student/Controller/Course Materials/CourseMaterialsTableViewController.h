@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface CourseMaterialsTableViewController : UITableViewController
+
 @property (weak, nonatomic) IBOutlet UIView *addNewMaterilView;
 @property (weak, nonatomic) IBOutlet UIButton *addNewMaterialButton;
+
 - (IBAction)addNewMaterialPressed:(id)sender;
-
-
 @end

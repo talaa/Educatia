@@ -16,6 +16,9 @@ typedef void (^CompletionHandler)(BOOL);
 @interface AssignementsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIViewControllerTransitioningDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *assingementsTableView;
+@property (weak, nonatomic) IBOutlet UIView *addNewAssignmentView;
+@property (weak, nonatomic) IBOutlet UIButton *addNewAssignementButton;
 
+- (IBAction)addNewAssignmentPressed:(id)sender;
 
 @end
