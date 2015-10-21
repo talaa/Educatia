@@ -39,7 +39,7 @@ static NSString * const reuseIdentifier = @"Cell";
     //[self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
-    [self getCurrentUserData];
+    [self setCurrentUserData];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -242,13 +242,10 @@ static NSString * const reuseIdentifier = @"Cell";
 /*
  get current user data
  */
-- (void)getCurrentUserData {
+- (void)setCurrentUserData {
     //Save new subject object
-    PFUser *user = [PFUser currentUser];
-    self.teacherUserName = user.username;
-    self.teacherFirstName = user[@"FirstName"];
-    self.teacherLastName = user[@"LastName"];
-    self.teacherFullName = [[_teacherFirstName stringByAppendingString:@" "] stringByAppendingString:_teacherLastName];
+    _teacherFullName = [ManageLayerViewController getCurrentFullName];
+    _teacherUserName = [ManageLayerViewController getCurrentUserName];
 }
 
 

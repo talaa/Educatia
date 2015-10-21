@@ -7,7 +7,7 @@
 //
 
 #import "TabBarPagerHolderViewController.h"
-
+#import "DataParsing.h"
 
 @interface TabBarPagerHolderViewController ()
 {
@@ -24,6 +24,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.navigationItem.title = self.subjectName;
+    
+    //Set SubjectName and SubjectIS
+    DataParsing *obj=[DataParsing getInstance];
+    obj.subjectName = self.subjectName;
+    obj.subjectID   = self.subjectID;
+    
     titlesArray = @[@"Course Materials",@"News",@"Grades",@"Assignements",@"Chat",@"Students"];
     viewControllersArray = @[@"CourseMaterialsViewController",
                              @"NewsViewController",

@@ -12,6 +12,8 @@
 @interface TabBarPagerHolderViewController : UIViewController <CAPSPageMenuDelegate>
 
 @property (nonatomic) CAPSPageMenu *pagemenu;
+@property (strong, nonatomic) NSString *subjectName;
+@property (strong, nonatomic) NSString *subjectID;
 
 - (IBAction)dismissPressed:(id)sender;
 

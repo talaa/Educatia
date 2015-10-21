@@ -1021,7 +1021,7 @@
                                 <connections>
                                     <outlet property="subjectImageView" destination="qtc-yg-hCe" id="mmO-XR-heU"/>
                                     <outlet property="subjectNameLabel" destination="yfk-VH-xFf" id="0eS-2w-uDv"/>
-                                    <segue destination="3UN-2n-iXH" kind="modal" id="6lO-Zl-pjn"/>
+                                    <segue destination="3UN-2n-iXH" kind="modal" identifier="SubjectSegue" id="6lO-Zl-pjn"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
