@@ -12,6 +12,7 @@
 #import "RNActivityView.h"
 #import "UIView+RNActivityView.h"
 #import "HSDatePickerViewController.h"
+#import "ThumbnailPDF.h"
 
 @interface AssignmentsTableViewController () <UIDocumentPickerDelegate,HSDatePickerViewControllerDelegate>
 
@@ -22,11 +23,12 @@
 @property (strong, nonatomic) NSMutableArray *assigTeacherMArray;
 @property (strong, nonatomic) NSMutableArray *assignMAXScoreMArray;
 @property (strong, nonatomic) NSMutableArray *assigDeadLineMArray;
+@property (strong, nonatomic) NSMutableArray *assignmentFileMArray;
 
 @property (strong, nonatomic) NSDate *deadLineDate;
 @property (strong, nonatomic) NSString *deadLineString;
 @property (strong, nonatomic) NSString *assignmentName;
-@property (strong, nonatomic) NSNumber *assignmentMaxScore;
+@property (strong, nonatomic) NSString *assignmentMaxScore;
 
 @end
 
@@ -47,6 +49,8 @@
     }else {
         self.addNewAssignmentView.hidden = YES;
     }
+    
+    [self loadAssignmentsObjects];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,6 +77,27 @@
     AssignementTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AssignmentCell" forIndexPath:indexPath];
     
     // Configure the cell...
+    cell.assignmentNameLabel.text   = [_assigNameMArray objectAtIndex:indexPath.row];
+    cell.teacherNameLabel.text      = [_assigTeacherMArray objectAtIndex:indexPath.row];
+    cell.deadLineLabel.text         = [self convertDateToString:[_assigDeadLineMArray objectAtIndex:indexPath.row]];
+    cell.maxScoreLabel.text         = [_assignMAXScoreMArray objectAtIndex:indexPath.row];
+    
+    // submit button
+    if ([ManageLayerViewController getDataParsingIsCurrentTeacher]){
+        cell.submitSolutionButton.hidden = YES;
+    }else{
+        cell.submitSolutionButton.hidden = NO;
+    }
+    
+    //Thumbnail
+    ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
+    [thumbPDF startWithCompletionHandler:[_assignmentFileMArray objectAtIndex:indexPath.row] andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
+        if (finished) {
+            //             [ManageLayerViewController imageViewCellAssignment:cell.assignementImageView];
+            cell.assignementImageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
+        }
+    }];
+    
     
     return cell;
 }
@@ -133,9 +158,12 @@
     UIAlertController * alertController =   [UIAlertController alertControllerWithTitle:@"Add New Assignment" message:@"Enter New Assignment Data\n1- Type assignment's name.\n2- Type assignment's maxmuim score.\n3- Select dead line date.\n4- Pick up assignment's file."preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *deadLine = [UIAlertAction actionWithTitle:[self deadLineButtonTitle] style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        UITextField *assignmentTextField     = alertController.textFields.firstObject;
-        _assignmentName = assignmentTextField.text;
-        self.assignmentMaxScore = alertController.textFields.lastObject;
+        UITextField *assignmentNameTextField        = alertController.textFields.firstObject;
+        _assignmentName                             = assignmentNameTextField.text;
+        
+        UITextField *assignmentMaxScoreTextfield    = alertController.textFields.lastObject;
+        _assignmentMaxScore                         = assignmentMaxScoreTextfield.text;
+        
         [alertController dismissViewControllerAnimated:YES completion:nil];
         HSDatePickerViewController *hsdpvc = [HSDatePickerViewController new];
         hsdpvc.delegate = self;
@@ -147,9 +175,13 @@
     
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Add File" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         //Do Some action here ---> OK
-        self.assignmentName     = alertController.textFields.firstObject;
-        self.assignmentMaxScore = alertController.textFields.lastObject;
-        if (self.assignmentName.length > 0 && self.assignmentMaxScore > 0 && self.deadLineDate != NULL) {
+        UITextField *assignmentNameTextfield        = alertController.textFields.firstObject;
+        self.assignmentName                         = assignmentNameTextfield.text;
+        
+        UITextField *assignmentMaxScoreTextField    = alertController.textFields.lastObject;
+        self.assignmentMaxScore                     = assignmentMaxScoreTextField.text;
+        
+        if (self.assignmentName.length > 1 && self.assignmentMaxScore.length > 1 && self.deadLineDate) {
             //start ActivityIndicator
             [self activityLoadingwithLabel];
             // self.courseMaterialName = courseMaterialName.text;
@@ -161,6 +193,7 @@
     }];
     
     UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
+        //flush properities
         self.assignmentName     = nil;
         self.assignmentMaxScore = nil;
         self.deadLineDate       = nil;
@@ -179,6 +212,7 @@
     [alertController addTextFieldWithConfigurationHandler:^(UITextField* textField) {
         textField.placeholder = @"Assignment Maxmuim Score";
         textField.keyboardType = UIKeyboardTypeNumberPad;
+        textField.text          = [self assignmentMaxScoreTextFieldText];
     }];
     
     [self presentViewController:alertController animated:YES completion:nil];
@@ -267,13 +301,20 @@
     [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         // Handle success or failure here ...
         if (succeeded){
-            PFObject *assignmentObject = [PFObject objectWithClassName:@"Assignments"];
-            assignmentObject[@"assignmentFile"]              = file;
+            PFObject *assignmentObject = [PFObject objectWithClassName:@"Assignement"];
+            assignmentObject[@"assignmentFile"]     = file;
+            assignmentObject[@"assignmentName"]     = self.assignmentName;
+            assignmentObject[@"assignmentMaxScore"] = self.assignmentMaxScore;
+            assignmentObject[@"assignmentDeadLine"] = self.deadLineDate;
             
-            //save CurrentUSer data
+            //save CurrentUSer Teacher data
+            assignmentObject[@"teacherID"]          = [ManageLayerViewController getDataParsingCurrentuserID];
+            assignmentObject[@"teacherUserName"]    = [ManageLayerViewController getDataParsingCurrentusername];
+            assignmentObject[@"teacherName"]        = [ManageLayerViewController getDataParsingCurrentName];
             
             //save Subject data
-            
+            assignmentObject[@"subjectID"]          = [ManageLayerViewController getDataParsingSubjectID];
+            assignmentObject[@"subjectName"]        = [ManageLayerViewController getDataParsingSubjectName];
             
             [assignmentObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
@@ -288,7 +329,7 @@
                     [self presentViewController:alertController animated:YES completion:nil];
                     
                     // refresh table view to present latest assignments
-                    //[self loadMaterialsObjects];
+                    [self loadAssignmentsObjects];
                     [self.tableView reloadData];
                 } else {
                     // There was a problem, check error.description
@@ -353,5 +394,84 @@
     }else{
         return @"";
     }
+}
+
+- (NSString*)assignmentMaxScoreTextFieldText {
+    if (![self.assignmentMaxScore isEqualToString:@""] && self.assignmentMaxScore != nil) {
+        return self.assignmentMaxScore;
+    }else {
+        return @"";
+    }
+}
+
+/*
+ *
+ ******** Load Assignment Objects *************
+ *
+ */
+- (void)loadAssignmentsObjects {
+    [self activityLoadingwithLabel];
+    PFQuery *query = [PFQuery queryWithClassName:@"Assignement"];
+    [query whereKey:@"subjectID" equalTo:[ManageLayerViewController getDataParsingSubjectID]];
+    if ([ManageLayerViewController isCurrentUserisTeacher]){
+        [query whereKey:@"teacherID" equalTo:[ManageLayerViewController getCurrentUserID]];
+    }
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            
+            //init NSMutableArray
+            _assigIDMArray          = [[NSMutableArray alloc]init];
+            _assigNameMArray        = [[NSMutableArray alloc]init];
+            _assigTeacherMArray     = [[NSMutableArray alloc]init];
+            _assignMAXScoreMArray   = [[NSMutableArray alloc]init];
+            _assigDeadLineMArray    = [[NSMutableArray alloc]init];
+            _assignmentFileMArray   = [[NSMutableArray alloc]init];
+            
+            // Do something with the found objects
+            for (PFObject *object in objects) {
+                //NSLog(@"%@", object.objectId);
+                [_assigIDMArray addObject:object.objectId];
+                [_assigNameMArray addObject:object[@"assignmentName"]];
+                [_assigTeacherMArray addObject:object[@"teacherName"]];
+                [_assignMAXScoreMArray addObject:object[@"assignmentMaxScore"]];
+                [_assigDeadLineMArray addObject:object[@"assignmentDeadLine"]];
+                
+                //get pdf file
+                PFFile *cmFile = object[@"assignmentFile"];
+                NSData *cmFileData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:cmFile.url]];
+                
+                //Ad to MData
+                [_assignmentFileMArray addObject:cmFileData];
+                
+                // Store the Data locally as PDF File
+                //NSString *resourceDocPath = [[NSString alloc] initWithString:[
+                //                                                                              [[[NSBundle mainBundle] resourcePath] stringByDeletingLastPathComponent]
+                //                                                                              stringByAppendingPathComponent:@"Educatia Student.app/"
+                //                                                                              ]];
+                //                NSString *fileName = [object.objectId stringByAppendingString:@".pdf"];
+                //                NSString *filePath = [resourceDocPath stringByAppendingPathComponent:fileName];
+                //                [pdfData writeToFile:filePath atomically:YES];
+                //                [_assignmentFileLocalPathMArray addObject:filePath];
+                
+            }
+            [self activityStopLoading];
+            [self.tableView reloadData];
+        } else {
+            [self activityStopLoading];
+        }
+    }];
+}
+
+/*
+ *
+ ********* Convert from NSDate to NSString *********************
+ *
+ */
+- (NSString*)convertDateToString:(NSDate*)date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd-MM-YYYY HH:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:date];
+    //NSLog(@"The Date: %@", dateString);
+    return dateString;
 }
 @end

@@ -379,9 +379,9 @@
  Set current User data on local NSString
  **/
 - (void)setCurrentUserData {
-    self.currentUserFullName = [ManageLayerViewController getCurrentFullName];
-    self.currentUserObjectID = [ManageLayerViewController getCurrentUserID];
-    self.currentUserName = [ManageLayerViewController getCurrentUserName];
+    self.currentUserFullName    = [ManageLayerViewController getDataParsingCurrentName];
+    self.currentUserObjectID    = [ManageLayerViewController getDataParsingCurrentuserID];
+    self.currentUserName        = [ManageLayerViewController getDataParsingCurrentusername];
 }
 
 
