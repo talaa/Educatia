@@ -12,5 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *addNewAssignmentView;
 @property (weak, nonatomic) IBOutlet UIButton *addNewAssignmentButton;
+
 - (IBAction)addNewAssignmentPressed:(id)sender;
 @end

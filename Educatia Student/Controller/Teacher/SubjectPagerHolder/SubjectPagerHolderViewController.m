@@ -37,10 +37,10 @@
     
     self.navigationItem.title = _subjectName;
     
-    titlesArray = @[@"Course Materials",@"Assignments",
+    titlesArray = @[@"Assignments",@"Course Materials",
                     //@"News",@"Grades",@"Assignements",@"Chat",
                     @"Subject Info"];
-    viewControllersArray = @[@"CourseMaterialsTableViewController",@"AssignmentsTableViewController",
+    viewControllersArray = @[@"AssignmentsTableViewController",@"CourseMaterialsTableViewController",
                              //@"NewsViewController",@"GradesViewController",@"AssignementsViewController",@"ChatViewController",
                              @"SubjectInfoViewController"];
     

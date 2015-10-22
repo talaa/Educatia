@@ -77,6 +77,8 @@
 		F54A98111BBACC540073CF58 /* TGRImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54A980B1BBACC540073CF58 /* TGRImageViewController.xib */; };
 		F54A98121BBACC540073CF58 /* TGRImageZoomAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54A980D1BBACC540073CF58 /* TGRImageZoomAnimationController.m */; };
 		F54A98131BBACC540073CF58 /* UIImage+AspectFit.m in Sources */ = {isa = PBXBuildFile; fileRef = F54A980F1BBACC540073CF58 /* UIImage+AspectFit.m */; };
+		F54E13451BD8FA1D00D84FCB /* HSDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54E13431BD8FA1D00D84FCB /* HSDatePickerViewController.m */; };
+		F54E13461BD8FA1D00D84FCB /* HSDatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54E13441BD8FA1D00D84FCB /* HSDatePickerViewController.xib */; };
 		F553220B1BD7BEA700E17FBF /* AssignementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55322081BD7BEA700E17FBF /* AssignementsViewController.m */; };
 		F553220C1BD7BEA700E17FBF /* AssignementTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F553220A1BD7BEA700E17FBF /* AssignementTableViewCell.m */; };
 		F553220F1BD7CD0700E17FBF /* AssignmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F553220E1BD7CD0700E17FBF /* AssignmentsTableViewController.m */; };
@@ -254,6 +256,9 @@
 		F54A980D1BBACC540073CF58 /* TGRImageZoomAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGRImageZoomAnimationController.m; sourceTree = "<group>"; };
 		F54A980E1BBACC540073CF58 /* UIImage+AspectFit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AspectFit.h"; sourceTree = "<group>"; };
 		F54A980F1BBACC540073CF58 /* UIImage+AspectFit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AspectFit.m"; sourceTree = "<group>"; };
+		F54E13421BD8FA1D00D84FCB /* HSDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSDatePickerViewController.h; sourceTree = "<group>"; };
+		F54E13431BD8FA1D00D84FCB /* HSDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSDatePickerViewController.m; sourceTree = "<group>"; };
+		F54E13441BD8FA1D00D84FCB /* HSDatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HSDatePickerViewController.xib; sourceTree = "<group>"; };
 		F55322071BD7BEA700E17FBF /* AssignementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignementsViewController.h; sourceTree = "<group>"; };
 		F55322081BD7BEA700E17FBF /* AssignementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignementsViewController.m; sourceTree = "<group>"; };
 		F55322091BD7BEA700E17FBF /* AssignementTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignementTableViewCell.h; sourceTree = "<group>"; };
@@ -509,6 +514,7 @@
 		04A2AB1C1B9C6CBD009B2C60 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				F54E13411BD8FA1D00D84FCB /* HSDatePickerViewController */,
 				F539D0131BC5669400F05BDD /* Animations */,
 				F549D3601BBD3144000A9E79 /* CocoaAsyncSocket */,
 				F549D3541BBD3127000A9E79 /* NHNetworkTime */,
@@ -780,6 +786,16 @@
 				F54A980F1BBACC540073CF58 /* UIImage+AspectFit.m */,
 			);
 			path = Vertigo;
+			sourceTree = "<group>";
+		};
+		F54E13411BD8FA1D00D84FCB /* HSDatePickerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F54E13421BD8FA1D00D84FCB /* HSDatePickerViewController.h */,
+				F54E13431BD8FA1D00D84FCB /* HSDatePickerViewController.m */,
+				F54E13441BD8FA1D00D84FCB /* HSDatePickerViewController.xib */,
+			);
+			path = HSDatePickerViewController;
 			sourceTree = "<group>";
 		};
 		F55322061BD7BEA700E17FBF /* Assignements */ = {
@@ -1134,6 +1150,7 @@
 				F507E5D01B9F15C00066283F /* icon_Expences@2x.png in Resources */,
 				F5F9CA7C1BA449D3008E1715 /* Reader-Print.png in Resources */,
 				F5F9CA711BA449D3008E1715 /* Reader-Button-H@2x.png in Resources */,
+				F54E13461BD8FA1D00D84FCB /* HSDatePickerViewController.xib in Resources */,
 				F5F9CA751BA449D3008E1715 /* Reader-Email@2x.png in Resources */,
 				F507E5D11B9F15C00066283F /* icon_Expences@3x.png in Resources */,
 				04A2AB141B9C6BCD009B2C60 /* FlatDatePicker-Icon-Check.png in Resources */,
@@ -1211,6 +1228,7 @@
 				F54532111BD3E5DF0062343B /* CourseMaterialTableViewCell.m in Sources */,
 				F549D3721BBD3144000A9E79 /* AsyncUdpSocket.m in Sources */,
 				F5F9CA5B1BA444EB008E1715 /* ThumbsViewController.m in Sources */,
+				F54E13451BD8FA1D00D84FCB /* HSDatePickerViewController.m in Sources */,
 				F553220C1BD7BEA700E17FBF /* AssignementTableViewCell.m in Sources */,
 				F545320E1BD3C9220062343B /* DataParsing.m in Sources */,
 				F549D36F1BBD3144000A9E79 /* GCDAsyncSocket.m in Sources */,
