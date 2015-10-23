@@ -51,9 +51,6 @@
 		F512D7011BA83FE500F3E252 /* RNActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = F512D6FE1BA83FE500F3E252 /* RNActivityView.m */; };
 		F512D7021BA83FE500F3E252 /* UIView+RNActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = F512D7001BA83FE500F3E252 /* UIView+RNActivityView.m */; };
 		F51746B11BAAE940003B026A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51746B01BAAE940003B026A /* MobileCoreServices.framework */; };
-		F51746BD1BAB28AE003B026A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51746BA1BAB28AE003B026A /* Bolts.framework */; };
-		F51746BE1BAB28AE003B026A /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51746BB1BAB28AE003B026A /* Parse.framework */; };
-		F51746BF1BAB28AE003B026A /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51746BC1BAB28AE003B026A /* ParseUI.framework */; };
 		F533BFB61BBC06B8008706A0 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = F533BFB41BBC06B8008706A0 /* 37x-Checkmark.png */; };
 		F533BFB71BBC06B8008706A0 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F533BFB51BBC06B8008706A0 /* 37x-Checkmark@2x.png */; };
 		F53408391BD010B2000B545B /* CourseMaterialsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53408381BD010B2000B545B /* CourseMaterialsTableViewController.m */; };
@@ -84,6 +81,9 @@
 		F553220F1BD7CD0700E17FBF /* AssignmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F553220E1BD7CD0700E17FBF /* AssignmentsTableViewController.m */; };
 		F56FBCD71BCFF87500ECDDA6 /* SubjectPagerHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F56FBCD61BCFF87500ECDDA6 /* SubjectPagerHolderViewController.m */; };
 		F56FBCDB1BD005D300ECDDA6 /* SubjectInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F56FBCDA1BD005D300ECDDA6 /* SubjectInfoViewController.m */; };
+		F589AC391BDA1C050085CB70 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F589AC361BDA1C050085CB70 /* Bolts.framework */; settings = {ASSET_TAGS = (); }; };
+		F589AC3A1BDA1C050085CB70 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F589AC371BDA1C050085CB70 /* Parse.framework */; settings = {ASSET_TAGS = (); }; };
+		F589AC3B1BDA1C050085CB70 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F589AC381BDA1C050085CB70 /* ParseUI.framework */; settings = {ASSET_TAGS = (); }; };
 		F5A972CA1BCFB7DC00C91D1A /* TeacherTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972C91BCFB7DC00C91D1A /* TeacherTabBarViewController.m */; };
 		F5A972EE1BCFB7EA00C91D1A /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972D21BCFB7EA00C91D1A /* ChatTableViewController.m */; };
 		F5A972EF1BCFB7EA00C91D1A /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972D41BCFB7EA00C91D1A /* ChatViewController.m */; };
@@ -210,9 +210,6 @@
 		F517469E1BAAAFC7003B026A /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		F51746A01BAAAFCF003B026A /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		F51746B01BAAE940003B026A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		F51746BA1BAB28AE003B026A /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		F51746BB1BAB28AE003B026A /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		F51746BC1BAB28AE003B026A /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		F533BFB41BBC06B8008706A0 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		F533BFB51BBC06B8008706A0 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
 		F53408371BD010B2000B545B /* CourseMaterialsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseMaterialsTableViewController.h; sourceTree = "<group>"; };
@@ -270,6 +267,9 @@
 		F56FBCD91BD005D300ECDDA6 /* SubjectInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectInfoViewController.h; sourceTree = "<group>"; };
 		F56FBCDA1BD005D300ECDDA6 /* SubjectInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectInfoViewController.m; sourceTree = "<group>"; };
 		F56FBCDC1BD00D0600ECDDA6 /* Educatia Student.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Educatia Student.entitlements"; sourceTree = "<group>"; };
+		F589AC361BDA1C050085CB70 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		F589AC371BDA1C050085CB70 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		F589AC381BDA1C050085CB70 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		F5A972C81BCFB7DC00C91D1A /* TeacherTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherTabBarViewController.h; sourceTree = "<group>"; };
 		F5A972C91BCFB7DC00C91D1A /* TeacherTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherTabBarViewController.m; sourceTree = "<group>"; };
 		F5A972D11BCFB7EA00C91D1A /* ChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewController.h; sourceTree = "<group>"; };
@@ -360,15 +360,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F589AC391BDA1C050085CB70 /* Bolts.framework in Frameworks */,
 				F534083F1BD02F0E000B545B /* CloudKit.framework in Frameworks */,
 				F51746B11BAAE940003B026A /* MobileCoreServices.framework in Frameworks */,
 				693E692E1B876C4500009A84 /* SystemConfiguration.framework in Frameworks */,
 				693E69321B876C5C00009A84 /* Security.framework in Frameworks */,
 				693E69261B876C0C00009A84 /* CFNetwork.framework in Frameworks */,
-				F51746BE1BAB28AE003B026A /* Parse.framework in Frameworks */,
+				F589AC3A1BDA1C050085CB70 /* Parse.framework in Frameworks */,
 				F5F9CA1F1BA44355008E1715 /* MessageUI.framework in Frameworks */,
-				F51746BF1BAB28AE003B026A /* ParseUI.framework in Frameworks */,
 				F5F9CA1D1BA4434A008E1715 /* ImageIO.framework in Frameworks */,
+				F589AC3B1BDA1C050085CB70 /* ParseUI.framework in Frameworks */,
 				693E692C1B876C2900009A84 /* QuartzCore.framework in Frameworks */,
 				693E69381B876C8B00009A84 /* libsqlite3.dylib in Frameworks */,
 				693E69361B876C7800009A84 /* libz.dylib in Frameworks */,
@@ -376,7 +377,6 @@
 				693E692A1B876C2900009A84 /* CoreGraphics.framework in Frameworks */,
 				693E692B1B876C2900009A84 /* CoreLocation.framework in Frameworks */,
 				693E69241B876C0000009A84 /* AudioToolbox.framework in Frameworks */,
-				F51746BD1BAB28AE003B026A /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,19 +393,9 @@
 		044F39D51B99DE6C006457BA /* SDK */ = {
 			isa = PBXGroup;
 			children = (
-				044F39EA1B99F270006457BA /* parseSDK */,
+				F589AC351BDA1C050085CB70 /* ParseSDK_1.9.0 */,
 			);
 			path = SDK;
-			sourceTree = "<group>";
-		};
-		044F39EA1B99F270006457BA /* parseSDK */ = {
-			isa = PBXGroup;
-			children = (
-				F51746BA1BAB28AE003B026A /* Bolts.framework */,
-				F51746BB1BAB28AE003B026A /* Parse.framework */,
-				F51746BC1BAB28AE003B026A /* ParseUI.framework */,
-			);
-			path = parseSDK;
 			sourceTree = "<group>";
 		};
 		0453AEDA1B9861FB00CD3A53 /* Controller */ = {
@@ -827,6 +817,16 @@
 				F56FBCDA1BD005D300ECDDA6 /* SubjectInfoViewController.m */,
 			);
 			path = SubjectInfo;
+			sourceTree = "<group>";
+		};
+		F589AC351BDA1C050085CB70 /* ParseSDK_1.9.0 */ = {
+			isa = PBXGroup;
+			children = (
+				F589AC361BDA1C050085CB70 /* Bolts.framework */,
+				F589AC371BDA1C050085CB70 /* Parse.framework */,
+				F589AC381BDA1C050085CB70 /* ParseUI.framework */,
+			);
+			path = ParseSDK_1.9.0;
 			sourceTree = "<group>";
 		};
 		F5A972C51BCFB72400C91D1A /* Student */ = {
@@ -1350,6 +1350,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Educatia Student/Educatia Student.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/**",
 					"$(PROJECT_DIR)/Educatia",
@@ -1360,9 +1361,11 @@
 					Student/Resources/SDK/FirebaseSDK,
 					"$(PROJECT_DIR)/Educatia",
 					Student/Resources/SDK/parseSDK,
+					"$(PROJECT_DIR)/Educatia",
+					Student/Resources/SDK/ParseSDK_1.9.0,
 				);
 				INFOPLIST_FILE = "Educatia Student/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1370,6 +1373,7 @@
 					"$(PROJECT_DIR)/Educatia",
 					"Student/Resources/SDK/LayerSDK-8_4/Libraries",
 				);
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
@@ -1383,6 +1387,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Educatia Student/Educatia Student.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/**",
 					"$(PROJECT_DIR)/Educatia",
@@ -1393,9 +1398,11 @@
 					Student/Resources/SDK/FirebaseSDK,
 					"$(PROJECT_DIR)/Educatia",
 					Student/Resources/SDK/parseSDK,
+					"$(PROJECT_DIR)/Educatia",
+					Student/Resources/SDK/ParseSDK_1.9.0,
 				);
 				INFOPLIST_FILE = "Educatia Student/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1403,6 +1410,7 @@
 					"$(PROJECT_DIR)/Educatia",
 					"Student/Resources/SDK/LayerSDK-8_4/Libraries",
 				);
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
