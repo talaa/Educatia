@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface AssignmentsTableViewController : UITableViewController
+#import "TGRImageViewController.h"
+#import "TGRImageZoomAnimationController.h"
+@interface AssignmentsTableViewController : UITableViewController <UIViewControllerTransitioningDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *addNewAssignmentView;
 @property (weak, nonatomic) IBOutlet UIButton *addNewAssignmentButton;

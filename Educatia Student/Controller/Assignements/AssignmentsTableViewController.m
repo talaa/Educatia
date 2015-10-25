@@ -12,9 +12,10 @@
 #import "RNActivityView.h"
 #import "UIView+RNActivityView.h"
 #import "HSDatePickerViewController.h"
+#import "ReaderViewController.h"
 #import "ThumbnailPDF.h"
 
-@interface AssignmentsTableViewController () <UIDocumentPickerDelegate,HSDatePickerViewControllerDelegate>
+@interface AssignmentsTableViewController () <UIDocumentPickerDelegate,HSDatePickerViewControllerDelegate,ReaderViewControllerDelegate>
 
 @property (strong, nonatomic) NSData *documentPickerselectedData;
 
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) NSMutableArray *assignMAXScoreMArray;
 @property (strong, nonatomic) NSMutableArray *assigDeadLineMArray;
 @property (strong, nonatomic) NSMutableArray *assignmentFileMArray;
+@property (strong, nonatomic) NSMutableArray *assignmentFilePathMArray;
 
 @property (strong, nonatomic) NSDate *deadLineDate;
 @property (strong, nonatomic) NSString *deadLineString;
@@ -88,6 +90,10 @@
     }else{
         cell.submitSolutionButton.hidden = NO;
     }
+    
+    //Cell Assignment View
+    cell.assignmentViewButton.tag = indexPath.row;
+    [cell.assignmentViewButton addTarget:self action:@selector(assignmentViewButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     //Thumbnail
     ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
@@ -420,12 +426,13 @@
         if (!error) {
             
             //init NSMutableArray
-            _assigIDMArray          = [[NSMutableArray alloc]init];
-            _assigNameMArray        = [[NSMutableArray alloc]init];
-            _assigTeacherMArray     = [[NSMutableArray alloc]init];
-            _assignMAXScoreMArray   = [[NSMutableArray alloc]init];
-            _assigDeadLineMArray    = [[NSMutableArray alloc]init];
-            _assignmentFileMArray   = [[NSMutableArray alloc]init];
+            _assigIDMArray              = [[NSMutableArray alloc]init];
+            _assigNameMArray            = [[NSMutableArray alloc]init];
+            _assigTeacherMArray         = [[NSMutableArray alloc]init];
+            _assignMAXScoreMArray       = [[NSMutableArray alloc]init];
+            _assigDeadLineMArray        = [[NSMutableArray alloc]init];
+            _assignmentFileMArray       = [[NSMutableArray alloc]init];
+            _assignmentFilePathMArray   = [[NSMutableArray alloc] init];
             
             // Do something with the found objects
             for (PFObject *object in objects) {
@@ -437,22 +444,32 @@
                 [_assigDeadLineMArray addObject:object[@"assignmentDeadLine"]];
                 
                 //get pdf file
-                PFFile *cmFile = object[@"assignmentFile"];
-                NSData *cmFileData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:cmFile.url]];
+                PFFile *assigFile = object[@"assignmentFile"];
+                NSData *assignFileData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:assigFile.url]];
                 
                 //Ad to MData
-                [_assignmentFileMArray addObject:cmFileData];
+                [_assignmentFileMArray addObject:assignFileData];
                 
                 // Store the Data locally as PDF File
-                //NSString *resourceDocPath = [[NSString alloc] initWithString:[
-                //                                                                              [[[NSBundle mainBundle] resourcePath] stringByDeletingLastPathComponent]
-                //                                                                              stringByAppendingPathComponent:@"Educatia Student.app/"
-                //                                                                              ]];
-                //                NSString *fileName = [object.objectId stringByAppendingString:@".pdf"];
-                //                NSString *filePath = [resourceDocPath stringByAppendingPathComponent:fileName];
-                //                [pdfData writeToFile:filePath atomically:YES];
-                //                [_assignmentFileLocalPathMArray addObject:filePath];
+//                NSString *resourceDocPath = [[NSString alloc] initWithString:[[[[NSBundle mainBundle] resourcePath] stringByDeletingLastPathComponent]stringByAppendingPathComponent:@"Documents"]];
+//                NSLog(@"Resource Doc Path is %@", resourceDocPath);
+//                
+//                NSString *fileName = [object.objectId stringByAppendingString:@".pdf"];
+//                NSLog(@"FileName is %@", fileName);
+//                
+//                NSString *filePath = [resourceDocPath stringByAppendingPathComponent:fileName];
+//                NSLog(@"FilePath is  %@", filePath);
                 
+                if ( assignFileData )
+                {
+                    NSArray       *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                    NSString  *documentsDirectory = [paths objectAtIndex:0];
+                    
+                    NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,[assigFile.url lastPathComponent]];
+                    [assignFileData writeToFile:filePath atomically:YES];
+                    [_assignmentFilePathMArray addObject:filePath];
+                    NSLog(@"Count is %ld", [_assignmentFilePathMArray count]);
+                }
             }
             [self activityStopLoading];
             [self.tableView reloadData];
@@ -474,4 +491,45 @@
     //NSLog(@"The Date: %@", dateString);
     return dateString;
 }
+
+/*
+ *
+ ******* Assignment View Button Pressed ************************
+ *
+ *
+ */
+
+#pragma mark - CellAssignmentButtonClicked
+
+- (void)assignmentViewButtonPressed:(id)sender
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(AssignementTableViewCell *)[[sender superview] superview]];
+    NSLog(@"The row id is %ld",  (long)indexPath.row);
+    ReaderDocument *document = [ReaderDocument withDocumentFilePath:[_assignmentFilePathMArray objectAtIndex:indexPath.row] password:nil];
+    if (document != nil)
+    {
+        ReaderViewController *readerViewController = [[ReaderViewController alloc]initWithReaderDocument:document];
+        readerViewController.delegate = self;
+        readerViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        readerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self presentViewController:readerViewController animated:YES completion:nil];
+    }else {
+        TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImage:[UIImage imageWithData:[_assignmentFileMArray objectAtIndex:indexPath.row]]];
+        // Don't forget to set ourselves as the transition delegate
+        viewController.transitioningDelegate = self;
+        viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        viewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self presentViewController:viewController animated:YES completion:nil];
+    }
+}
+
+/*
+ *
+ Dismiss Document Reader
+ *
+ */
+- (void)dismissReaderViewController:(ReaderViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end
