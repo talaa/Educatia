@@ -184,11 +184,13 @@
     //ChangeProfilePictureActionSheet
     if (actionSheet.tag == 300) {
         if (buttonIndex == 0){
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
             picker.delegate = self;
             picker.allowsEditing = YES;
             picker.sourceType = UIImagePickerControllerSourceTypeCamera;
             [self presentViewController:picker animated:YES completion:NULL];
+            }];
         }else { //buttonIndex = 1
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 //your code

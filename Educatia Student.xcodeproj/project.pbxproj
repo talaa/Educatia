@@ -76,7 +76,6 @@
 		F54A98131BBACC540073CF58 /* UIImage+AspectFit.m in Sources */ = {isa = PBXBuildFile; fileRef = F54A980F1BBACC540073CF58 /* UIImage+AspectFit.m */; };
 		F54E13451BD8FA1D00D84FCB /* HSDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54E13431BD8FA1D00D84FCB /* HSDatePickerViewController.m */; };
 		F54E13461BD8FA1D00D84FCB /* HSDatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54E13441BD8FA1D00D84FCB /* HSDatePickerViewController.xib */; };
-		F553220B1BD7BEA700E17FBF /* AssignementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55322081BD7BEA700E17FBF /* AssignementsViewController.m */; };
 		F553220C1BD7BEA700E17FBF /* AssignementTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F553220A1BD7BEA700E17FBF /* AssignementTableViewCell.m */; };
 		F553220F1BD7CD0700E17FBF /* AssignmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F553220E1BD7CD0700E17FBF /* AssignmentsTableViewController.m */; };
 		F56FBCD71BCFF87500ECDDA6 /* SubjectPagerHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F56FBCD61BCFF87500ECDDA6 /* SubjectPagerHolderViewController.m */; };
@@ -256,8 +255,6 @@
 		F54E13421BD8FA1D00D84FCB /* HSDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSDatePickerViewController.h; sourceTree = "<group>"; };
 		F54E13431BD8FA1D00D84FCB /* HSDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSDatePickerViewController.m; sourceTree = "<group>"; };
 		F54E13441BD8FA1D00D84FCB /* HSDatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HSDatePickerViewController.xib; sourceTree = "<group>"; };
-		F55322071BD7BEA700E17FBF /* AssignementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignementsViewController.h; sourceTree = "<group>"; };
-		F55322081BD7BEA700E17FBF /* AssignementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignementsViewController.m; sourceTree = "<group>"; };
 		F55322091BD7BEA700E17FBF /* AssignementTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignementTableViewCell.h; sourceTree = "<group>"; };
 		F553220A1BD7BEA700E17FBF /* AssignementTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignementTableViewCell.m; sourceTree = "<group>"; };
 		F553220D1BD7CD0700E17FBF /* AssignmentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentsTableViewController.h; sourceTree = "<group>"; };
@@ -791,8 +788,6 @@
 		F55322061BD7BEA700E17FBF /* Assignements */ = {
 			isa = PBXGroup;
 			children = (
-				F55322071BD7BEA700E17FBF /* AssignementsViewController.h */,
-				F55322081BD7BEA700E17FBF /* AssignementsViewController.m */,
 				F55322091BD7BEA700E17FBF /* AssignementTableViewCell.h */,
 				F553220A1BD7BEA700E17FBF /* AssignementTableViewCell.m */,
 				F553220D1BD7CD0700E17FBF /* AssignmentsTableViewController.h */,
@@ -1224,7 +1219,6 @@
 				F549D3711BBD3144000A9E79 /* AsyncSocket.m in Sources */,
 				F5F9CA501BA444EB008E1715 /* ReaderMainPagebar.m in Sources */,
 				F5A972F21BCFB7EA00C91D1A /* NewsViewController.m in Sources */,
-				F553220B1BD7BEA700E17FBF /* AssignementsViewController.m in Sources */,
 				F54532111BD3E5DF0062343B /* CourseMaterialTableViewCell.m in Sources */,
 				F549D3721BBD3144000A9E79 /* AsyncUdpSocket.m in Sources */,
 				F5F9CA5B1BA444EB008E1715 /* ThumbsViewController.m in Sources */,
