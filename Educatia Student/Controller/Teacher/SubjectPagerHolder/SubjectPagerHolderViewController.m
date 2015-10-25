@@ -30,10 +30,6 @@
     DataParsing *obj        = [DataParsing getInstance];
     obj.subjectName         = self.subjectName;
     obj.subjectID           = self.subjectID;
-    obj.currentUserName     = [ManageLayerViewController getCurrentFullName];
-    obj.currentUseruserID   = [ManageLayerViewController getCurrentUserID];
-    obj.currentUserusername = [ManageLayerViewController getCurrentUserName];
-    obj.isCurrentTeacher    = [ManageLayerViewController isCurrentUserisTeacher];
     
     self.navigationItem.title = _subjectName;
     

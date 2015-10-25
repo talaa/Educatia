@@ -244,8 +244,8 @@ static NSString * const reuseIdentifier = @"Cell";
  */
 - (void)setCurrentUserData {
     //Save new subject object
-    _teacherFullName = [ManageLayerViewController getCurrentFullName];
-    _teacherUserName = [ManageLayerViewController getCurrentUserName];
+    _teacherFullName = [ManageLayerViewController getDataParsingCurrentName];
+    _teacherUserName = [ManageLayerViewController getDataParsingCurrentusername];
 }
 
 

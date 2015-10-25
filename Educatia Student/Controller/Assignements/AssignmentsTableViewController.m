@@ -192,6 +192,7 @@
             [self activityLoadingwithLabel];
             // self.courseMaterialName = courseMaterialName.text;
             [self showDocumentPickerInMode:UIDocumentPickerModeOpen];
+            [self activityStopLoading];
             
         }else {
             [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Assignment name, max score and deadline must be typed first correnctly." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
@@ -230,7 +231,6 @@
 - (void)showDocumentPickerInMode:(UIDocumentPickerMode)mode {
     UIDocumentPickerViewController *documentPicker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:[self allowedUTIs] inMode:UIDocumentPickerModeImport];
     documentPicker.delegate = self;
-    
     [self presentViewController:documentPicker animated:YES completion:nil];
 }
 
@@ -257,6 +257,7 @@
     }else{
         //can't do import
         [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Can't import the file now, please try again!!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+        [self activityStopLoading];
     }
 }
 
@@ -372,13 +373,13 @@
 
 //optional
 - (void)hsDatePickerDidDismissWithQuitMethod:(HSDatePickerQuitMethod)method {
-    NSLog(@"Picker did dismiss with %lu", method);
+    NSLog(@"Picker did dismiss with %lu", (unsigned long)method);
     [self presentAlretController];
 }
 
 //optional
 - (void)hsDatePickerWillDismissWithQuitMethod:(HSDatePickerQuitMethod)method {
-    NSLog(@"Picker will dismiss with %lu", method);
+    NSLog(@"Picker will dismiss with %lu", (unsigned long)method);
 }
 
 /*
@@ -468,7 +469,7 @@
                     NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,[assigFile.url lastPathComponent]];
                     [assignFileData writeToFile:filePath atomically:YES];
                     [_assignmentFilePathMArray addObject:filePath];
-                    NSLog(@"Count is %ld", [_assignmentFilePathMArray count]);
+                    NSLog(@"Count is %ld", (unsigned long)[_assignmentFilePathMArray count]);
                 }
             }
             [self activityStopLoading];

@@ -10,6 +10,7 @@
 #import "SignupViewController.h"
 #import "ForgotPasswordViewController.h"
 #import <Parse/Parse.h>
+#import "ManageLayerViewController.h"
 
 @interface LoginViewController () <SignupViewControllerDelegate,UIAlertViewDelegate>
 
@@ -65,6 +66,9 @@
         [PFUser logInWithUsernameInBackground:self.usernameTextField.text  password:self.passwordTextField.text
                                         block:^(PFUser *user, NSError *error) {
                                             if (user) {
+                                                //set Data Parsing Object
+                                                [ManageLayerViewController setDataParsingCurrentUserObject];
+                                                
                                                 NSString *tabBarName;
                                                 if ([user[@"type"] isEqualToString:@"Student"]) {
                                                     //Student View

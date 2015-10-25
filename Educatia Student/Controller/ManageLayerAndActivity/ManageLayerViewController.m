@@ -118,6 +118,14 @@
  *
  *
  */
++ (void)setDataParsingCurrentUserObject{
+    DataParsing *obj=[DataParsing getInstance];
+    obj.currentUserName     = [self getCurrentFullName];
+    obj.currentUseruserID   = [self getCurrentUserID];
+    obj.currentUserusername = [self getCurrentUserName];
+    obj.isCurrentTeacher    = [self isCurrentUserisTeacher];
+}
+
 + (NSString*)getDataParsingSubjectName{
     DataParsing *obj=[DataParsing getInstance];
     return obj.subjectName;

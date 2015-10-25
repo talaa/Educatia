@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "TabBarHolderController.h"
 #import "NHNetworkTime.h"
+#import "ManageLayerViewController.h" 
 
 @interface AppDelegate ()
 
@@ -48,7 +49,7 @@
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
     
-    /*
+    
     //check if user had logged in on previous //////////////////////////////////////
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     PFUser *user = [PFUser currentUser];
@@ -60,7 +61,15 @@
 //            [defaults setObject:user.username forKey:@"chatName"];
 //            [defaults synchronize];
 //        }
-        self.tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"StudentTabBarHolderController"];
+        
+        // set Data Parsing Object
+        [ManageLayerViewController setDataParsingCurrentUserObject];
+        if ([ManageLayerViewController getDataParsingIsCurrentTeacher]){
+            self.tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"TeacherTabBarViewController"];
+        }else{
+            self.tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"StudentTabBarHolderController"];
+        }
+        
         [self.window setRootViewController:self.tabBarController];
     }else {
         

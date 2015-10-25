@@ -22,6 +22,7 @@
 + (NSString *)getCurrentUserID;
 + (NSString *)getCurrentFullName;
 + (BOOL)isCurrentUserisTeacher;
++ (void)setDataParsingCurrentUserObject;
 + (NSString*)getDataParsingSubjectName;
 + (NSString*)getDataParsingSubjectID;
 + (BOOL)getDataParsingIsCurrentTeacher;

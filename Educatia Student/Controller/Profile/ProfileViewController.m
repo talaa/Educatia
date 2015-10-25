@@ -175,6 +175,9 @@
         if (buttonIndex == 0){
             [PFUser logOut];
             [self.tabBarController dismissViewControllerAnimated:YES completion:nil];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            LoginViewController *login = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+            [self presentViewController:login animated:YES completion:nil];
             }
         }
     
