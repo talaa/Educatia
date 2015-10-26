@@ -41,11 +41,10 @@
     [super viewDidLoad];
     
     // load Materials Objects
+    
+    
     [self loadMaterialsObjects];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:YES];
+    
     if ([ManageLayerViewController isCurrentUserisTeacher] == YES){
         //Is a Teacher
         self.addNewMaterilView.hidden       = NO;
@@ -55,7 +54,12 @@
         self.addNewMaterilView.hidden       = YES;
         self.addNewMaterialButton.hidden    = YES;
     }
+
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -67,13 +71,13 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     //#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return [_materialNameMArray count]? 1: 0;
+    return [_materialFilePathMArray count]? 1: 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [_materialNameMArray count]? [_materialNameMArray count]:0;
+    return [_materialFilePathMArray count]? [_materialFilePathMArray count]:0;
 }
 
 
@@ -87,14 +91,18 @@
     //materialButton action
     cell.materialButton.tag = indexPath.row;
     [cell.materialButton addTarget:self action:@selector(materialButtonViewPressed:) forControlEvents:UIControlEventTouchUpInside];
-    //Thumbnail
-    ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
-    [thumbPDF startWithCompletionHandler:[_materialDataFileMArray objectAtIndex:indexPath.row] andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
-        if (finished) {
-            //             [ManageLayerViewController imageViewCellAssignment:cell.assignementImageView];
-            cell.materialImageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
-        }
-    }];
+    
+    if ([_materialFilePathMArray count] > 0) {
+        //Thumbnail
+        ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
+        [thumbPDF startWithCompletionHandler:[_materialDataFileMArray objectAtIndex:indexPath.row] andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
+            if (finished) {
+                //             [ManageLayerViewController imageViewCellAssignment:cell.assignementImageView];
+                cell.materialImageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
+            }
+        }];
+
+    }
     
     return cell;
 }
@@ -148,49 +156,59 @@
  load course materials objects
  */
 - (void)loadMaterialsObjects {
-    [self activityLoadingwithLabel];
-    PFQuery *query = [PFQuery queryWithClassName:@"CourseMaterials"];
-    [query whereKey:@"cmSubjectName" equalTo:[ManageLayerViewController getDataParsingSubjectName]];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            
-            //init NSMutableArray
-            _materialNameMArray     = [[NSMutableArray alloc] init];
-            _materialTeacherMArray  = [[NSMutableArray alloc] init];
-            _materislFileMArray     = [[NSMutableArray alloc] init];
-            _materialDataFileMArray = [[NSMutableArray alloc] init];
-            _materialFilePathMArray = [[NSMutableArray alloc] init];
-            
-            // Do something with the found objects
-            for (PFObject *object in objects) {
-                //NSLog(@"%@", object.objectId);
-                [_materialNameMArray addObject:object[@"cmName"]];
-                [_materialTeacherMArray addObject:object[@"cmTeacherName"]];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+       
+        PFQuery *query = [PFQuery queryWithClassName:@"CourseMaterials"];
+        [query whereKey:@"cmSubjectName" equalTo:[ManageLayerViewController getDataParsingSubjectName]];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                //init NSMutableArray
+                _materialNameMArray     = [[NSMutableArray alloc] init];
+                _materialTeacherMArray  = [[NSMutableArray alloc] init];
+                _materislFileMArray     = [[NSMutableArray alloc] init];
+                _materialDataFileMArray = [[NSMutableArray alloc] init];
+                _materialFilePathMArray = [[NSMutableArray alloc] init];
                 
-                //get pdf file
-                PFFile *cmFile = object[@"cmFile"];
-                NSData *cmFileData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:cmFile.url]];
-                
-                //Ad to MData
-                [_materialDataFileMArray addObject:cmFileData];
-                
-                //save file locally
-                if ( cmFileData )
-                {
-                    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-                    NSString *documentsDirectory = [paths objectAtIndex:0];
-                    NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,[cmFile.url lastPathComponent]];
-                    [cmFileData writeToFile:filePath atomically:YES];
-                    [_materialFilePathMArray addObject:filePath];
-                    NSLog(@"Count is %ld", (unsigned long)[_materialFilePathMArray count]);
+                // Do something with the found objects
+                for (PFObject *object in objects) {
+                    //NSLog(@"%@", object.objectId);
+                    [_materialNameMArray addObject:object[@"cmName"]];
+                    [_materialTeacherMArray addObject:object[@"cmTeacherName"]];
+                    
+                    //get pdf file
+                    PFFile *cmFile = object[@"cmFile"];
+                    NSData *cmFileData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:cmFile.url]];
+                    
+                    //Ad to MData
+                    [_materialDataFileMArray addObject:cmFileData];
+                    
+                    //save file locally
+                    if ( cmFileData )
+                    {
+                        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                        NSString *documentsDirectory = [paths objectAtIndex:0];
+                        NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,[cmFile.url lastPathComponent]];
+                        [cmFileData writeToFile:filePath atomically:YES];
+                        [_materialFilePathMArray addObject:filePath];
+                        NSLog(@"Count is %ld", (unsigned long)[_materialFilePathMArray count]);
+                    }
                 }
+                
+            }else {
+                // [self activityStopLoading];
             }
-            [self activityStopLoading];
+        }];
+        /////////////////////////////
+        // now send the result back to the main thread so we can do
+        // UIKit stuff
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // set the images on your UIImageViews here...
             [self.tableView reloadData];
-        } else {
-            [self activityStopLoading];
-        }
-    }];
+        });
+    });
+    //[self activityLoadingwithLabel];
+    
+    
 }
 
 

@@ -118,7 +118,6 @@
 		F5F9CA5A1BA444EB008E1715 /* ThumbsMainToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F9CA441BA444EB008E1715 /* ThumbsMainToolbar.m */; };
 		F5F9CA5B1BA444EB008E1715 /* ThumbsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F9CA461BA444EB008E1715 /* ThumbsViewController.m */; };
 		F5F9CA5C1BA444EB008E1715 /* UIXToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F9CA481BA444EB008E1715 /* UIXToolbarView.m */; };
-		F5F9CA5E1BA447BB008E1715 /* test.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F5F9CA5D1BA447BB008E1715 /* test.pdf */; };
 		F5F9CA701BA449D3008E1715 /* Reader-Button-H.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F9CA601BA449D3008E1715 /* Reader-Button-H.png */; };
 		F5F9CA711BA449D3008E1715 /* Reader-Button-H@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F9CA611BA449D3008E1715 /* Reader-Button-H@2x.png */; };
 		F5F9CA721BA449D3008E1715 /* Reader-Button-N.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F9CA621BA449D3008E1715 /* Reader-Button-N.png */; };
@@ -333,7 +332,6 @@
 		F5F9CA461BA444EB008E1715 /* ThumbsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbsViewController.m; sourceTree = "<group>"; };
 		F5F9CA471BA444EB008E1715 /* UIXToolbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIXToolbarView.h; sourceTree = "<group>"; };
 		F5F9CA481BA444EB008E1715 /* UIXToolbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIXToolbarView.m; sourceTree = "<group>"; };
-		F5F9CA5D1BA447BB008E1715 /* test.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = test.pdf; sourceTree = "<group>"; };
 		F5F9CA601BA449D3008E1715 /* Reader-Button-H.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Button-H.png"; sourceTree = "<group>"; };
 		F5F9CA611BA449D3008E1715 /* Reader-Button-H@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Button-H@2x.png"; sourceTree = "<group>"; };
 		F5F9CA621BA449D3008E1715 /* Reader-Button-N.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Button-N.png"; sourceTree = "<group>"; };
@@ -425,7 +423,6 @@
 		0453AEE21B9861FB00CD3A53 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F5F9CA5D1BA447BB008E1715 /* test.pdf */,
 				04A2AB1C1B9C6CBD009B2C60 /* Libraries */,
 				044F39D51B99DE6C006457BA /* SDK */,
 				0453AEE31B9861FB00CD3A53 /* Icons */,
@@ -1106,7 +1103,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5F9CA5E1BA447BB008E1715 /* test.pdf in Resources */,
 				F54A98111BBACC540073CF58 /* TGRImageViewController.xib in Resources */,
 				F507E5CF1B9F15C00066283F /* icon_Expences.png in Resources */,
 				F5F9CA731BA449D3008E1715 /* Reader-Button-N@2x.png in Resources */,

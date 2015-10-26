@@ -32,10 +32,6 @@
     
     defaultProfilePicture = [UIImage imageNamed:@"Image_AddProfilPic"];
     
-    
-    //Stop and hidden EditProfileActivityIndicator
-    [self hideandStopActivity];
-    
     //PFUser Init && PFFile
     user = [PFUser currentUser];
     
@@ -61,19 +57,17 @@
     [self showAndPlayActivity];
     self.usernameTextField.text = user.username;
     self.emailTextField.text = user.email;
-    //NSLog(@"Object ID is :%@",user.objectId);
+
     self.firstNameTextField.text = user[@"FirstName"];
     self.lastNameTextField.text = user[@"LastName"];
     self.phoneTextField.text = user[@"Phone"];
     self.birthDateTextField.text = user[@"DateofBirth"];
-    //NSLog(@"Birth is %@", user[@"DateofBirth"]);
     
     //ProfilePicture Layer
     [ManageLayerViewController imageViewLayerProfilePicture:self.profilePictureImageView Corner:75.0f];
     
     if (self.profilePictureImageView.image == nil){
     //retrieve user image
-    
     PFFile *userImageFile = user[@"profilePicture"];
     //if condition if there is no user's image
     if (userImageFile == nil){

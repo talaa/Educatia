@@ -71,7 +71,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XgX-hR-cpW">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XgX-hR-cpW">
                                 <rect key="frame" x="542" y="311" width="210" height="49"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile Picture" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KS1-Vr-hTD">
@@ -190,9 +190,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_True" translatesAutoresizingMaskIntoConstraints="NO" id="qcp-Tq-m72">
                                 <rect key="frame" x="289" y="444" width="37" height="37"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmZ-w9-gLu">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmZ-w9-gLu">
                                 <rect key="frame" x="597" y="280" width="100" height="23"/>
                                 <color key="backgroundColor" red="0.047979797979798011" green="0.047979797979798011" blue="0.047979797979798011" alpha="0.23999999999999999" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="XKD-AT-O9B"/>
+                                    <constraint firstAttribute="width" constant="100" id="efO-mh-o9U"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <state key="normal" title="Upload photo">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -202,9 +206,13 @@
                                     <action selector="uploadPhotoPressed:" destination="ilD-5H-Ssy" eventType="touchUpInside" id="h7M-ol-fmk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZoJ-cK-khj">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZoJ-cK-khj">
                                 <rect key="frame" x="597" y="280" width="100" height="23"/>
                                 <color key="backgroundColor" red="0.047979797980000002" green="0.047979797980000002" blue="0.047979797980000002" alpha="0.23999999999999999" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="4Cw-ch-MR4"/>
+                                    <constraint firstAttribute="height" constant="23" id="Dr1-qt-y18"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <state key="normal" title="Change photo">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -217,8 +225,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="XgX-hR-cpW" firstAttribute="top" secondItem="ZoJ-cK-khj" secondAttribute="bottom" constant="8" id="6tp-3d-0T7"/>
+                            <constraint firstAttribute="trailing" secondItem="ZoJ-cK-khj" secondAttribute="trailing" constant="71" id="BfV-5e-k5i"/>
                             <constraint firstAttribute="trailing" secondItem="btW-Wj-Nyn" secondAttribute="trailing" constant="31" id="ETC-Qb-R06"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XgX-hR-cpW" secondAttribute="trailing" constant="-4" id="ON8-yE-wwC"/>
+                            <constraint firstAttribute="trailing" secondItem="mmZ-w9-gLu" secondAttribute="trailing" constant="71" id="TOz-Qk-QJZ"/>
                             <constraint firstItem="btW-Wj-Nyn" firstAttribute="top" secondItem="gOf-Q1-Qcf" secondAttribute="bottom" constant="76" id="cnY-AJ-oMw"/>
+                            <constraint firstItem="GGg-u5-L7S" firstAttribute="top" secondItem="XgX-hR-cpW" secondAttribute="bottom" constant="664" id="hcY-mP-NUj"/>
+                            <constraint firstItem="XgX-hR-cpW" firstAttribute="top" secondItem="mmZ-w9-gLu" secondAttribute="bottom" constant="8" id="lZE-ii-mtp"/>
+                            <constraint firstItem="XgX-hR-cpW" firstAttribute="centerX" secondItem="ZoJ-cK-khj" secondAttribute="centerX" id="naf-VE-buc"/>
+                            <constraint firstItem="ZoJ-cK-khj" firstAttribute="top" secondItem="btW-Wj-Nyn" secondAttribute="bottom" constant="4" id="rc5-6G-AWc"/>
+                            <constraint firstItem="mmZ-w9-gLu" firstAttribute="top" secondItem="btW-Wj-Nyn" secondAttribute="bottom" constant="4" id="xvT-9f-oSY"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
@@ -670,7 +687,7 @@
                                 <rect key="frame" x="571" y="193" width="153" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Change Profile Picture">
+                                <state key="normal" title="Change Picture">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>

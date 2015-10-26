@@ -78,7 +78,7 @@
                                  CAPSPageMenuOptionBottomMenuHairlineColor: [UIColor colorWithRed:20.0/255.0 green:20.0/255.0 blue:20.0/255.0 alpha:1],
                                  CAPSPageMenuOptionSelectionIndicatorColor:[UIColor colorWithRed:18.0/255.0 green:150.0/255.0 blue:225.0/255.0 alpha:1],
                                  CAPSPageMenuOptionMenuMargin: @(20.0),
-                                 CAPSPageMenuOptionMenuHeight: @(40.0),
+                                 CAPSPageMenuOptionMenuHeight: @(45.0),
                                  CAPSPageMenuOptionSelectedMenuItemLabelColor: [UIColor colorWithRed:18.0/255.0 green:150.0/255.0 blue:225.0/255.0 alpha:1],
                                  CAPSPageMenuOptionUnselectedMenuItemLabelColor: [UIColor colorWithRed:119.0/255.0 green:119.0/255.0 blue:112.0/255.0 alpha:1],
                                  CAPSPageMenuOptionMenuItemFont: [UIFont fontWithName:@"HelveticaNeue-Medium" size:14],

@@ -46,13 +46,13 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     // if current is a Teacher, then present ADDNEWASSIGNMENT uiview
+    [self loadAssignmentsObjects];
+    
     if ([ManageLayerViewController getDataParsingIsCurrentTeacher]) {
         self.addNewAssignmentView.hidden = NO;
     }else {
         self.addNewAssignmentView.hidden = YES;
     }
-    
-    [self loadAssignmentsObjects];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,13 +65,13 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     //#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return [_assigIDMArray count]? 1:0;
+    return [_assignmentFilePathMArray count]? 1:0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [_assigIDMArray count]? [_assigIDMArray count]:0;
+    return [_assignmentFilePathMArray count]? [_assignmentFilePathMArray count]:0;
 }
 
 
@@ -95,14 +95,16 @@
     cell.assignmentViewButton.tag = indexPath.row;
     [cell.assignmentViewButton addTarget:self action:@selector(assignmentViewButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    //Thumbnail
-    ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
-    [thumbPDF startWithCompletionHandler:[_assignmentFileMArray objectAtIndex:indexPath.row] andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
-        if (finished) {
-            //             [ManageLayerViewController imageViewCellAssignment:cell.assignementImageView];
-            cell.assignementImageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
-        }
-    }];
+    if ([_assignmentFileMArray count] > 0){
+        //Thumbnail
+        ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
+        [thumbPDF startWithCompletionHandler:[_assignmentFileMArray objectAtIndex:indexPath.row] andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
+            if (finished) {
+                //             [ManageLayerViewController imageViewCellAssignment:cell.assignementImageView];
+                cell.assignementImageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
+            }
+        }];
+    }
     
     
     return cell;
@@ -429,57 +431,67 @@
  *
  */
 - (void)loadAssignmentsObjects {
-    [self activityLoadingwithLabel];
-    PFQuery *query = [PFQuery queryWithClassName:@"Assignement"];
-    [query whereKey:@"subjectID" equalTo:[ManageLayerViewController getDataParsingSubjectID]];
-    if ([ManageLayerViewController isCurrentUserisTeacher]){
-        [query whereKey:@"teacherID" equalTo:[ManageLayerViewController getCurrentUserID]];
-    }
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            
-            //init NSMutableArray
-            _assigIDMArray              = [[NSMutableArray alloc]init];
-            _assigNameMArray            = [[NSMutableArray alloc]init];
-            _assigTeacherMArray         = [[NSMutableArray alloc]init];
-            _assignMAXScoreMArray       = [[NSMutableArray alloc]init];
-            _assigDeadLineMArray        = [[NSMutableArray alloc]init];
-            _assignmentFileMArray       = [[NSMutableArray alloc]init];
-            _assignmentFilePathMArray   = [[NSMutableArray alloc] init];
-            
-            // Do something with the found objects
-            for (PFObject *object in objects) {
-                //NSLog(@"%@", object.objectId);
-                [_assigIDMArray addObject:object.objectId];
-                [_assigNameMArray addObject:object[@"assignmentName"]];
-                [_assigTeacherMArray addObject:object[@"teacherName"]];
-                [_assignMAXScoreMArray addObject:object[@"assignmentMaxScore"]];
-                [_assigDeadLineMArray addObject:object[@"assignmentDeadLine"]];
-                
-                //get pdf file
-                PFFile *assigFile = object[@"assignmentFile"];
-                NSData *assignFileData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:assigFile.url]];
-                
-                //Ad to MData
-                [_assignmentFileMArray addObject:assignFileData];
-                
-                if ( assignFileData )
-                {
-                    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-                    NSString *documentsDirectory = [paths objectAtIndex:0];
-                    
-                    NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,[assigFile.url lastPathComponent]];
-                    [assignFileData writeToFile:filePath atomically:YES];
-                    [_assignmentFilePathMArray addObject:filePath];
-                    NSLog(@"Count is %ld", (unsigned long)[_assignmentFilePathMArray count]);
-                }
-            }
-            [self activityStopLoading];
-            [self.tableView reloadData];
-        } else {
-            [self activityStopLoading];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"Assignement"];
+        [query whereKey:@"subjectID" equalTo:[ManageLayerViewController getDataParsingSubjectID]];
+        if ([ManageLayerViewController isCurrentUserisTeacher]){
+            [query whereKey:@"teacherID" equalTo:[ManageLayerViewController getCurrentUserID]];
         }
-    }];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                
+                //stuffs to do in background thread
+                //init NSMutableArray
+                _assigIDMArray              = [[NSMutableArray alloc]init];
+                _assigNameMArray            = [[NSMutableArray alloc]init];
+                _assigTeacherMArray         = [[NSMutableArray alloc]init];
+                _assignMAXScoreMArray       = [[NSMutableArray alloc]init];
+                _assigDeadLineMArray        = [[NSMutableArray alloc]init];
+                _assignmentFileMArray       = [[NSMutableArray alloc]init];
+                _assignmentFilePathMArray   = [[NSMutableArray alloc] init];
+                // Do something with the found objects
+                for (PFObject *object in objects) {
+                    //NSLog(@"%@", object.objectId);
+                    [_assigIDMArray addObject:object.objectId];
+                    [_assigNameMArray addObject:object[@"assignmentName"]];
+                    [_assigTeacherMArray addObject:object[@"teacherName"]];
+                    [_assignMAXScoreMArray addObject:object[@"assignmentMaxScore"]];
+                    [_assigDeadLineMArray addObject:object[@"assignmentDeadLine"]];
+                    
+                    PFFile *assigFile = object[@"assignmentFile"];
+                    NSData *assignFileData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:assigFile.url]];
+                    
+                    //Ad to MData
+                    [_assignmentFileMArray addObject:assignFileData];
+                    
+                    if ( assignFileData )
+                    {
+                        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                        NSString *documentsDirectory = [paths objectAtIndex:0];
+                        NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,[assigFile.url lastPathComponent]];
+                        [assignFileData writeToFile:filePath atomically:YES];
+                        [_assignmentFilePathMArray addObject:filePath];
+                        //NSLog(@"Count is %ld", (unsigned long)[_assignmentFilePathMArray count]);
+                    }
+                }
+                
+                
+            } else {
+               
+            }
+        }];
+
+        // now send the result back to the main thread so we can do
+        // UIKit stuff
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // set the images on your UIImageViews here...
+             [self.tableView reloadData];
+        });
+    });
+    //[self activityLoadingwithLabel];
+    
+    
 }
 
 /*
