@@ -63,31 +63,44 @@
 
 - (IBAction)loginPressed:(id)sender {
     if (self.usernameTextField.text.length > 0 && self.passwordTextField.text.length >0) {
-        [PFUser logInWithUsernameInBackground:self.usernameTextField.text  password:self.passwordTextField.text
-                                        block:^(PFUser *user, NSError *error) {
-                                            if (user) {
-                                                //set Data Parsing Object
-                                                [ManageLayerViewController setDataParsingCurrentUserObject];
-                                                
-                                                NSString *tabBarName;
-                                                if ([user[@"type"] isEqualToString:@"Student"]) {
-                                                    //Student View
-                                                    tabBarName = @"StudentTabBarHolderController";
-                                                }else {
-                                                    //Teacher view
-                                                    tabBarName = @"TeacherTabBarViewController";
-                                                }
-                                                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                                                UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:tabBarName];
-                                                [self presentViewController:vc animated:YES completion:nil];
-                                            } else {
-                                                // The login failed. Check error to see why.
-                                                [[[UIAlertView alloc] initWithTitle:@"Education Student" message:@"username or password is not correct.Try again!!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
-                                            }
-                                        }];
+        [PFUser logInWithUsernameInBackground:self.usernameTextField.text  password:self.passwordTextField.text block:^(PFUser *user, NSError *error) {
+            if (user) {
+                //set Data Parsing Object
+                [ManageLayerViewController setDataParsingCurrentUserObject];
+                
+                NSString *tabBarName;
+                if ([user[@"type"] isEqualToString:@"Student"]) {
+                    //Student View
+                    tabBarName = @"StudentTabBarHolderController";
+                }else {
+                    //Teacher view
+                    tabBarName = @"TeacherTabBarViewController";
+                }
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:tabBarName];
+                [self presentViewController:vc animated:YES completion:nil];
+            } else {
+                // The login failed. Check error to see why.
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Educatia Student" message:@"username or password is not correct.Try again!!" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }];
+                [alertController addAction:okAction];
+                [self presentViewController:alertController animated:YES completion:nil];
+            }
+        }];
         
     }else{
-        [[[UIAlertView alloc] initWithTitle:@"Education Student" message:@"Make sure that you have entred all fields" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Educatia Student" message:@"Make sure that you have entred all fields" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction
+                                   actionWithTitle:NSLocalizedString(@"OK", @"OK action")
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       [self dismissViewControllerAnimated:YES completion:nil];
+                                   }];
+        [alertController addAction:okAction];
+        [self presentViewController:alertController animated:YES completion:nil];
     }
 }
 

@@ -10,6 +10,7 @@
 
 @interface CourseMaterialTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *materialImageView;
+@property (weak, nonatomic) IBOutlet UIButton *materialButton;
 @property (weak, nonatomic) IBOutlet UILabel *materialName;
 @property (weak, nonatomic) IBOutlet UILabel *TeacherName;
 

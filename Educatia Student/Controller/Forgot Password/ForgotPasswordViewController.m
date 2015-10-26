@@ -44,10 +44,12 @@
 -(IBAction)requestNewPasswordPressed:(id)sender {
     [PFUser requestPasswordResetForEmailInBackground:self.emailTextField.text block:^(BOOL succeeded, NSError *error){
         if (error){
-            [[[UIAlertView alloc] initWithTitle:@"Education Student" message:error.localizedDescription delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Educatia Student" message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+            [self presentViewController:alertController animated:YES completion:nil];
         }else {
             NSString *message =@"Link to reset your password has been sent to your email";
-            [[[UIAlertView alloc] initWithTitle:@"Eduaction Student" message:message delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Educatia Student" message:message preferredStyle:UIAlertControllerStyleAlert];
+            [self presentViewController:alertController animated:YES completion:nil];
         }
     }];
 }

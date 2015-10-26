@@ -213,15 +213,6 @@
     }else{
         return NO;
     }
-    
-    //if([[self presentingViewController] presentedViewController] == self)
-        //return YES;
-    //if([[[self navigationController] presentingViewController] presentedViewController] == [self navigationController])
-        //return YES;
-    //if([[[self tabBarController] presentingViewController] isKindOfClass:[UITabBarController class]])
-        //return YES;
-    
-    //return NO;
 }
 
 #pragma mark - UITextFieldDelegete
@@ -257,7 +248,12 @@
     //NSLog(@"Image size is %lu", (unsigned long)imageData.length);
     if (imageData.length > 55500000){
         self.profilePictureImageView.image = defaultProfilePicture;
-        [[[UIAlertView alloc] initWithTitle:@"EducationStudent" message:@"Picture you have choosen is greater than 400K!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Educatia Student" message:@"Picture you have choosen is greater than 400K!" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alertController addAction:okAction];
+        [self presentViewController:alertController animated:YES completion:nil];
     }else {
         self.profilePictureImageView.image = chosenImage;
         [ManageLayerViewController imageViewLayerProfilePicture:self.profilePictureImageView Corner:75.0f];
@@ -296,9 +292,12 @@
 }
 
 - (void)flatDatePicker:(FlatDatePicker*)datePicker didCancel:(UIButton*)sender {
-    
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"FlatDatePicker" message:@"Did cancelled !" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    [alertView show];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"FlatDataPicker" message:@"Did cancelled" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)flatDatePicker:(FlatDatePicker*)datePicker didValid:(UIButton*)sender date:(NSDate*)date {
@@ -312,8 +311,12 @@
     
     NSString *message = [NSString stringWithFormat:@"Did valid date : %@", value];
     
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"FlatDatePicker" message:message delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    [alertView show];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"FlatDataPicker" message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 

@@ -13,9 +13,12 @@
 #import <Parse/Parse.h>
 #import "DataParsing.h"
 #import "CourseMaterialTableViewCell.h"
+#import "ReaderViewController.h"
 #import "ThumbnailPDF.h"
+#import "TGRImageViewController.h"
+#import "TGRImageZoomAnimationController.h"
 
-@interface CourseMaterialsTableViewController () <UIDocumentPickerDelegate>
+@interface CourseMaterialsTableViewController () <UIDocumentPickerDelegate,ReaderViewControllerDelegate,UIViewControllerTransitioningDelegate>
 {
     BOOL *isCurrentUserisTeacher;
 }
@@ -26,6 +29,7 @@
 @property (strong, nonatomic) NSData *documentPickerselectedData;
 
 @property (strong, nonatomic) NSMutableArray *materislFileMArray;
+@property (strong, nonatomic) NSMutableArray *materialFilePathMArray;
 @property (strong, nonatomic) NSMutableArray *materialNameMArray;
 @property (strong, nonatomic) NSMutableArray *materialTeacherMArray;
 @property (strong, nonatomic) NSMutableArray *materialDataFileMArray;
@@ -35,12 +39,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    //load course materials objects
+    // load Materials Objects
     [self loadMaterialsObjects];
 }
 
@@ -84,6 +84,9 @@
     cell.materialName.text = [_materialNameMArray objectAtIndex:indexPath.row];
     cell.TeacherName.text  = [_materialTeacherMArray objectAtIndex:indexPath.row];
     
+    //materialButton action
+    cell.materialButton.tag = indexPath.row;
+    [cell.materialButton addTarget:self action:@selector(materialButtonViewPressed:) forControlEvents:UIControlEventTouchUpInside];
     //Thumbnail
     ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
     [thumbPDF startWithCompletionHandler:[_materialDataFileMArray objectAtIndex:indexPath.row] andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
@@ -156,6 +159,7 @@
             _materialTeacherMArray  = [[NSMutableArray alloc] init];
             _materislFileMArray     = [[NSMutableArray alloc] init];
             _materialDataFileMArray = [[NSMutableArray alloc] init];
+            _materialFilePathMArray = [[NSMutableArray alloc] init];
             
             // Do something with the found objects
             for (PFObject *object in objects) {
@@ -166,20 +170,20 @@
                 //get pdf file
                 PFFile *cmFile = object[@"cmFile"];
                 NSData *cmFileData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:cmFile.url]];
-                //
+                
                 //Ad to MData
                 [_materialDataFileMArray addObject:cmFileData];
                 
-                // Store the Data locally as PDF File
-                //NSString *resourceDocPath = [[NSString alloc] initWithString:[
-                //                                                                              [[[NSBundle mainBundle] resourcePath] stringByDeletingLastPathComponent]
-                //                                                                              stringByAppendingPathComponent:@"Educatia Student.app/"
-                //                                                                              ]];
-                //                NSString *fileName = [object.objectId stringByAppendingString:@".pdf"];
-                //                NSString *filePath = [resourceDocPath stringByAppendingPathComponent:fileName];
-                //                [pdfData writeToFile:filePath atomically:YES];
-                //                [_assignmentFileLocalPathMArray addObject:filePath];
-                
+                //save file locally
+                if ( cmFileData )
+                {
+                    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                    NSString *documentsDirectory = [paths objectAtIndex:0];
+                    NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,[cmFile.url lastPathComponent]];
+                    [cmFileData writeToFile:filePath atomically:YES];
+                    [_materialFilePathMArray addObject:filePath];
+                    NSLog(@"Count is %ld", (unsigned long)[_materialFilePathMArray count]);
+                }
             }
             [self activityStopLoading];
             [self.tableView reloadData];
@@ -289,7 +293,12 @@
         [url stopAccessingSecurityScopedResource];
     }else{
         //can't do import
-        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Can't import the file now, please try again!!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+        UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Error" message:@"Can't import the file now, please try again!!" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alertcontroller addAction:okAction];
+        [self presentViewController:alertcontroller animated:YES completion:nil];
     }
 }
 
@@ -364,7 +373,15 @@
             }];
             
         } else {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Sorry, can't import this file now.Please try it again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+            UIAlertController *alertController = [UIAlertController
+                                                  alertControllerWithTitle:@"Error"
+                                                  message:@"Sorry, can't import this file now.Please try it again."
+                                                  preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
+            [alertController addAction:okAction];
+            [self presentViewController:alertController animated:YES completion:nil];
         }
         
         
@@ -383,6 +400,42 @@
     self.currentUserObjectID    = [ManageLayerViewController getDataParsingCurrentuserID];
     self.currentUserName        = [ManageLayerViewController getDataParsingCurrentusername];
 }
+
+
+#pragma mark - CellAssignmentButtonClicked
+
+- (void)materialButtonViewPressed:(id)sender
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(CourseMaterialTableViewCell *)[[sender superview] superview]];
+    NSLog(@"The row id is %ld",  (long)indexPath.row);
+    ReaderDocument *document = [ReaderDocument withDocumentFilePath:[_materialFilePathMArray objectAtIndex:indexPath.row] password:nil];
+    if (document != nil)
+    {
+        ReaderViewController *readerViewController = [[ReaderViewController alloc]initWithReaderDocument:document];
+        readerViewController.delegate = self;
+        readerViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        readerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self presentViewController:readerViewController animated:YES completion:nil];
+    }else {
+        TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImage:[UIImage imageWithData:[_materialDataFileMArray objectAtIndex:indexPath.row]]];
+        // Don't forget to set ourselves as the transition delegate
+        viewController.transitioningDelegate = self;
+        viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        viewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self presentViewController:viewController animated:YES completion:nil];
+    }
+}
+
+
+/*
+ *
+ Dismiss Document Reader
+ *
+ */
+- (void)dismissReaderViewController:(ReaderViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 
 @end

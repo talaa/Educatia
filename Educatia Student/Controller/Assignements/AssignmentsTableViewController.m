@@ -195,7 +195,9 @@
             [self activityStopLoading];
             
         }else {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Assignment name, max score and deadline must be typed first correnctly." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Assignment name, max score and deadline must be typed first correnctly." preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+            [self presentViewController:alertController animated:YES completion:nil];
         }
     }];
     
@@ -256,7 +258,12 @@
         [url stopAccessingSecurityScopedResource];
     }else{
         //can't do import
-        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Can't import the file now, please try again!!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Can't import the file now, please try again!!" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alertController addAction:ok];
+        [self presentViewController:alertController animated:YES completion:nil];
         [self activityStopLoading];
     }
 }
@@ -354,7 +361,12 @@
             }];
             
         } else {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Sorry, can't import this file now.Please try it again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Sorry, can't import this file now.Please try it again." preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
+            [alertController addAction:okAction];
+            [self presentViewController:alertController animated:YES completion:nil];
         }
     } progressBlock:^(int percentDone) {
         // Update your progress spinner here. percentDone will be between 0 and 100.
@@ -451,20 +463,10 @@
                 //Ad to MData
                 [_assignmentFileMArray addObject:assignFileData];
                 
-                // Store the Data locally as PDF File
-//                NSString *resourceDocPath = [[NSString alloc] initWithString:[[[[NSBundle mainBundle] resourcePath] stringByDeletingLastPathComponent]stringByAppendingPathComponent:@"Documents"]];
-//                NSLog(@"Resource Doc Path is %@", resourceDocPath);
-//                
-//                NSString *fileName = [object.objectId stringByAppendingString:@".pdf"];
-//                NSLog(@"FileName is %@", fileName);
-//                
-//                NSString *filePath = [resourceDocPath stringByAppendingPathComponent:fileName];
-//                NSLog(@"FilePath is  %@", filePath);
-                
                 if ( assignFileData )
                 {
-                    NSArray       *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-                    NSString  *documentsDirectory = [paths objectAtIndex:0];
+                    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                    NSString *documentsDirectory = [paths objectAtIndex:0];
                     
                     NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,[assigFile.url lastPathComponent]];
                     [assignFileData writeToFile:filePath atomically:YES];
