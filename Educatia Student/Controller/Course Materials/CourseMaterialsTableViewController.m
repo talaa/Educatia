@@ -17,10 +17,12 @@
 #import "ThumbnailPDF.h"
 #import "TGRImageViewController.h"
 #import "TGRImageZoomAnimationController.h"
+#import "CourseMaterialObject.h"
 
 @interface CourseMaterialsTableViewController () <UIDocumentPickerDelegate,ReaderViewControllerDelegate,UIViewControllerTransitioningDelegate>
 {
     BOOL *isCurrentUserisTeacher;
+    NSMutableArray* coursesMaterialArray;
 }
 @property (strong, nonatomic) NSString *currentUserFullName;
 @property (strong, nonatomic) NSString *currentUserObjectID;
@@ -28,23 +30,18 @@
 @property (strong, nonatomic) NSString *courseMaterialName;
 @property (strong, nonatomic) NSData *documentPickerselectedData;
 
-@property (strong, nonatomic) NSMutableArray *materislFileMArray;
-@property (strong, nonatomic) NSMutableArray *materialFilePathMArray;
-@property (strong, nonatomic) NSMutableArray *materialNameMArray;
-@property (strong, nonatomic) NSMutableArray *materialTeacherMArray;
-@property (strong, nonatomic) NSMutableArray *materialDataFileMArray;
+//@property (strong, nonatomic) NSMutableArray *materislFileMArray;
+//@property (strong, nonatomic) NSMutableArray *materialFilePathMArray;
+//@property (strong, nonatomic) NSMutableArray *materialNameMArray;
+//@property (strong, nonatomic) NSMutableArray *materialTeacherMArray;
+//@property (strong, nonatomic) NSMutableArray *materialDataFileMArray;
 @end
 
 @implementation CourseMaterialsTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // load Materials Objects
-    
-    
-    [self loadMaterialsObjects];
-    
+    coursesMaterialArray = [NSMutableArray new];
     if ([ManageLayerViewController isCurrentUserisTeacher] == YES){
         //Is a Teacher
         self.addNewMaterilView.hidden       = NO;
@@ -61,6 +58,10 @@
     [super viewWillAppear:YES];
     }
 
+- (void)viewDidAppear:(BOOL)animated {
+   // [self loadMaterialsObjects];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -71,13 +72,13 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     //#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return [_materialFilePathMArray count]? 1: 0;
+    return [coursesMaterialArray count]? 1: 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [_materialFilePathMArray count]? [_materialFilePathMArray count]:0;
+    return [coursesMaterialArray count]? [coursesMaterialArray count]:0;
 }
 
 
@@ -85,24 +86,29 @@
     CourseMaterialTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.materialName.text = [_materialNameMArray objectAtIndex:indexPath.row];
-    cell.TeacherName.text  = [_materialTeacherMArray objectAtIndex:indexPath.row];
+    CourseMaterialObject* course= [coursesMaterialArray objectAtIndex:indexPath.row];
+    
+    cell.materialName.text = course.name;
+    cell.TeacherName.text  = course.teacher;
     
     //materialButton action
     cell.materialButton.tag = indexPath.row;
     [cell.materialButton addTarget:self action:@selector(materialButtonViewPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    if ([_materialFilePathMArray count] > 0) {
-        //Thumbnail
-        ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
-        [thumbPDF startWithCompletionHandler:[_materialDataFileMArray objectAtIndex:indexPath.row] andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
-            if (finished) {
-                //             [ManageLayerViewController imageViewCellAssignment:cell.assignementImageView];
-                cell.materialImageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
-            }
-        }];
-
-    }
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
+//        if ([_materialDataFileMArray count] > 0) {
+//            //Thumbnail
+//            ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
+//            [thumbPDF startWithCompletionHandler:[_materialDataFileMArray objectAtIndex:indexPath.row] andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
+//                if (finished) {
+//                    //             [ManageLayerViewController imageViewCellAssignment:cell.assignementImageView];
+//                    cell.materialImageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
+//                }
+//            }];
+//            
+//        }
+//    });
+    
     
     return cell;
 }
@@ -152,63 +158,53 @@
  }
  */
 
+-(void)requestData{
+    [self loadMaterialsObjects];
+}
+
 /*
  load course materials objects
  */
 - (void)loadMaterialsObjects {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-       
         PFQuery *query = [PFQuery queryWithClassName:@"CourseMaterials"];
         [query whereKey:@"cmSubjectName" equalTo:[ManageLayerViewController getDataParsingSubjectName]];
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (!error) {
-                //init NSMutableArray
-                _materialNameMArray     = [[NSMutableArray alloc] init];
-                _materialTeacherMArray  = [[NSMutableArray alloc] init];
-                _materislFileMArray     = [[NSMutableArray alloc] init];
-                _materialDataFileMArray = [[NSMutableArray alloc] init];
-                _materialFilePathMArray = [[NSMutableArray alloc] init];
-                
+                NSLog(@"\nStart init nsmutablre arry Course nsmutabl Array\n");
+                [coursesMaterialArray removeAllObjects];
                 // Do something with the found objects
                 for (PFObject *object in objects) {
                     //NSLog(@"%@", object.objectId);
-                    [_materialNameMArray addObject:object[@"cmName"]];
-                    [_materialTeacherMArray addObject:object[@"cmTeacherName"]];
+//                    [_materialNameMArray addObject:object[@"cmName"]];
+//                    [_materialTeacherMArray addObject:object[@"cmTeacherName"]];
                     
                     //get pdf file
-                    PFFile *cmFile = object[@"cmFile"];
-                    NSData *cmFileData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:cmFile.url]];
+//                    PFFile *cmFile = object[@"cmFile"];
+//                    NSData *cmFileData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:cmFile.url]];
                     
                     //Ad to MData
-                    [_materialDataFileMArray addObject:cmFileData];
+                    [coursesMaterialArray addObject:[[CourseMaterialObject alloc] initWithObject:object]];
                     
                     //save file locally
-                    if ( cmFileData )
-                    {
-                        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-                        NSString *documentsDirectory = [paths objectAtIndex:0];
-                        NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,[cmFile.url lastPathComponent]];
-                        [cmFileData writeToFile:filePath atomically:YES];
-                        [_materialFilePathMArray addObject:filePath];
-                        NSLog(@"Count is %ld", (unsigned long)[_materialFilePathMArray count]);
-                    }
+//                    if ( cmFileData )
+//                    {
+//                        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//                        NSString *documentsDirectory = [paths objectAtIndex:0];
+//                        NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,[cmFile.url lastPathComponent]];
+//                        [cmFileData writeToFile:filePath atomically:YES];
+//                        [_materialFilePathMArray addObject:filePath];
+//                        NSLog(@"Count is %ld", (unsigned long)[_materialFilePathMArray count]);
+//                    }
                 }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+                
                 
             }else {
                 // [self activityStopLoading];
             }
         }];
-        /////////////////////////////
-        // now send the result back to the main thread so we can do
-        // UIKit stuff
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // set the images on your UIImageViews here...
-            [self.tableView reloadData];
-        });
-    });
-    //[self activityLoadingwithLabel];
-    
-    
 }
 
 
@@ -424,24 +420,24 @@
 
 - (void)materialButtonViewPressed:(id)sender
 {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:(CourseMaterialTableViewCell *)[[sender superview] superview]];
-    NSLog(@"The row id is %ld",  (long)indexPath.row);
-    ReaderDocument *document = [ReaderDocument withDocumentFilePath:[_materialFilePathMArray objectAtIndex:indexPath.row] password:nil];
-    if (document != nil)
-    {
-        ReaderViewController *readerViewController = [[ReaderViewController alloc]initWithReaderDocument:document];
-        readerViewController.delegate = self;
-        readerViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        readerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-        [self presentViewController:readerViewController animated:YES completion:nil];
-    }else {
-        TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImage:[UIImage imageWithData:[_materialDataFileMArray objectAtIndex:indexPath.row]]];
-        // Don't forget to set ourselves as the transition delegate
-        viewController.transitioningDelegate = self;
-        viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        viewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-        [self presentViewController:viewController animated:YES completion:nil];
-    }
+//    NSIndexPath *indexPath = [self.tableView indexPathForCell:(CourseMaterialTableViewCell *)[[sender superview] superview]];
+//    NSLog(@"The row id is %ld",  (long)indexPath.row);
+//    ReaderDocument *document = [ReaderDocument withDocumentFilePath:[_materialFilePathMArray objectAtIndex:indexPath.row] password:nil];
+//    if (document != nil)
+//    {
+//        ReaderViewController *readerViewController = [[ReaderViewController alloc]initWithReaderDocument:document];
+//        readerViewController.delegate = self;
+//        readerViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+//        readerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+//        [self presentViewController:readerViewController animated:YES completion:nil];
+//    }else {
+//        TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImage:[UIImage imageWithData:[_materialDataFileMArray objectAtIndex:indexPath.row]]];
+//        // Don't forget to set ourselves as the transition delegate
+//        viewController.transitioningDelegate = self;
+//        viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//        viewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+//        [self presentViewController:viewController animated:YES completion:nil];
+//    }
 }
 
 

@@ -80,6 +80,7 @@
 		F553220F1BD7CD0700E17FBF /* AssignmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F553220E1BD7CD0700E17FBF /* AssignmentsTableViewController.m */; };
 		F56FBCD71BCFF87500ECDDA6 /* SubjectPagerHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F56FBCD61BCFF87500ECDDA6 /* SubjectPagerHolderViewController.m */; };
 		F56FBCDB1BD005D300ECDDA6 /* SubjectInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F56FBCDA1BD005D300ECDDA6 /* SubjectInfoViewController.m */; };
+		F58055611BDFE483000C8B74 /* CourseMaterialObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F58055601BDFE483000C8B74 /* CourseMaterialObject.m */; settings = {ASSET_TAGS = (); }; };
 		F589AC391BDA1C050085CB70 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F589AC361BDA1C050085CB70 /* Bolts.framework */; settings = {ASSET_TAGS = (); }; };
 		F589AC3A1BDA1C050085CB70 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F589AC371BDA1C050085CB70 /* Parse.framework */; settings = {ASSET_TAGS = (); }; };
 		F589AC3B1BDA1C050085CB70 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F589AC381BDA1C050085CB70 /* ParseUI.framework */; settings = {ASSET_TAGS = (); }; };
@@ -263,6 +264,8 @@
 		F56FBCD91BD005D300ECDDA6 /* SubjectInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectInfoViewController.h; sourceTree = "<group>"; };
 		F56FBCDA1BD005D300ECDDA6 /* SubjectInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectInfoViewController.m; sourceTree = "<group>"; };
 		F56FBCDC1BD00D0600ECDDA6 /* Educatia Student.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Educatia Student.entitlements"; sourceTree = "<group>"; };
+		F580555F1BDFE483000C8B74 /* CourseMaterialObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseMaterialObject.h; sourceTree = "<group>"; };
+		F58055601BDFE483000C8B74 /* CourseMaterialObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseMaterialObject.m; sourceTree = "<group>"; };
 		F589AC361BDA1C050085CB70 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		F589AC371BDA1C050085CB70 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		F589AC381BDA1C050085CB70 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
@@ -698,6 +701,8 @@
 			children = (
 				F545320C1BD3C9220062343B /* DataParsing.h */,
 				F545320D1BD3C9220062343B /* DataParsing.m */,
+				F580555F1BDFE483000C8B74 /* CourseMaterialObject.h */,
+				F58055601BDFE483000C8B74 /* CourseMaterialObject.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1224,6 +1229,7 @@
 				F549D36F1BBD3144000A9E79 /* GCDAsyncSocket.m in Sources */,
 				F56FBCDB1BD005D300ECDDA6 /* SubjectInfoViewController.m in Sources */,
 				F54A98101BBACC540073CF58 /* TGRImageViewController.m in Sources */,
+				F58055611BDFE483000C8B74 /* CourseMaterialObject.m in Sources */,
 				04A2AB201B9C6CBD009B2C60 /* FlatDatePicker.m in Sources */,
 				F5F9CA5A1BA444EB008E1715 /* ThumbsMainToolbar.m in Sources */,
 				0453AEF61B9872C300CD3A53 /* SignupViewController.m in Sources */,

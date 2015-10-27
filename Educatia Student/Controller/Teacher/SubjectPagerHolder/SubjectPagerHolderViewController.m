@@ -9,6 +9,8 @@
 #import "SubjectPagerHolderViewController.h"
 #import "DataParsing.h"
 #import "ManageLayerViewController.h"
+#import "AssignmentsTableViewController.h"
+#import "CourseMaterialsTableViewController.h"
 
 @interface SubjectPagerHolderViewController ()
 {
@@ -59,6 +61,7 @@
 */
 
 - (IBAction)dismissPressed:(id)sender {
+    NSLog(@"\nDismiss \n");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -97,10 +100,27 @@
 #pragma mark - PagerMenu delegete
 
 -(void)willMoveToPage:(UIViewController *)controller index:(NSInteger)index{
-    //NSLog(@"Moved to %ld", (long)index);
 }
 
 -(void)didMoveToPage:(UIViewController *)viewController index:(NSInteger)index{
+    NSLog(@"Did Move to %ld", (long)index);
+    UIViewController* view;
+    switch (index) {
+        case 0:
+            view = (AssignmentsTableViewController*) [controllerArray objectAtIndex:index];
+                            [(AssignmentsTableViewController*)view requestData];
+            break;
+            
+        case 1:
+            view = (CourseMaterialsTableViewController*) [controllerArray objectAtIndex:index];
+            [(CourseMaterialsTableViewController*)view requestData];
+            break;
+            
+        default:
+            break;
+    }
+
 }
+
 
 @end

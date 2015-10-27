@@ -14,4 +14,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *addNewMaterialButton;
 
 - (IBAction)addNewMaterialPressed:(id)sender;
+-(void)requestData;
 @end

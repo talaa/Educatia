@@ -46,7 +46,14 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     // if current is a Teacher, then present ADDNEWASSIGNMENT uiview
-    [self loadAssignmentsObjects];
+//    callLoadAssignmentObject = dispatch_queue_create("com.BWS.Educatia-Student.CallLoadAssignments",DISPATCH_QUEUE_CONCURRENT);
+//    
+//    dispatch_async(callLoadAssignmentObject, ^{
+//        
+//        NSLog(@"\nCall Load Assignment method\n");
+//    });
+
+    
     
     if ([ManageLayerViewController getDataParsingIsCurrentTeacher]) {
         self.addNewAssignmentView.hidden = NO;
@@ -54,7 +61,9 @@
         self.addNewAssignmentView.hidden = YES;
     }
 }
-
+-(void)requestData{
+ [self loadAssignmentsObjects];   
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -65,13 +74,13 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     //#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return [_assignmentFilePathMArray count]? 1:0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [_assignmentFilePathMArray count]? [_assignmentFilePathMArray count]:0;
+    return [_assigIDMArray count]? [_assigIDMArray count]:0;
 }
 
 
@@ -95,16 +104,18 @@
     cell.assignmentViewButton.tag = indexPath.row;
     [cell.assignmentViewButton addTarget:self action:@selector(assignmentViewButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    if ([_assignmentFileMArray count] > 0){
-        //Thumbnail
-        ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
-        [thumbPDF startWithCompletionHandler:[_assignmentFileMArray objectAtIndex:indexPath.row] andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
-            if (finished) {
-                //             [ManageLayerViewController imageViewCellAssignment:cell.assignementImageView];
-                cell.assignementImageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
-            }
-        }];
-    }
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
+//        if ([_assignmentFilePathMArray count] > 0){
+//            //Thumbnail
+//            ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
+//            [thumbPDF startWithCompletionHandler:[_assignmentFileMArray objectAtIndex:indexPath.row] andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
+//                if (finished) {
+//                    //             [ManageLayerViewController imageViewCellAssignment:cell.assignementImageView];
+//                    cell.assignementImageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
+//                }
+//            }];
+//        }
+//    });
     
     
     return cell;
@@ -118,43 +129,6 @@
  return YES;
  }
  */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
 - (IBAction)addNewAssignmentPressed:(id)sender {
     [self presentAlretController];
 }
@@ -431,8 +405,6 @@
  *
  */
 - (void)loadAssignmentsObjects {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        
         PFQuery *query = [PFQuery queryWithClassName:@"Assignement"];
         [query whereKey:@"subjectID" equalTo:[ManageLayerViewController getDataParsingSubjectID]];
         if ([ManageLayerViewController isCurrentUserisTeacher]){
@@ -440,7 +412,7 @@
         }
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (!error) {
-                
+                NSLog(@"\nStart init nsmutable arry Assignment\n");
                 //stuffs to do in background thread
                 //init NSMutableArray
                 _assigIDMArray              = [[NSMutableArray alloc]init];
@@ -465,33 +437,24 @@
                     //Ad to MData
                     [_assignmentFileMArray addObject:assignFileData];
                     
-                    if ( assignFileData )
-                    {
-                        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-                        NSString *documentsDirectory = [paths objectAtIndex:0];
-                        NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,[assigFile.url lastPathComponent]];
-                        [assignFileData writeToFile:filePath atomically:YES];
-                        [_assignmentFilePathMArray addObject:filePath];
-                        //NSLog(@"Count is %ld", (unsigned long)[_assignmentFilePathMArray count]);
-                    }
+//                    if ( assignFileData )
+//                    {
+//                        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//                        NSString *documentsDirectory = [paths objectAtIndex:0];
+//                        NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,[assigFile.url lastPathComponent]];
+//                        [assignFileData writeToFile:filePath atomically:YES];
+//                        [_assignmentFilePathMArray addObject:filePath];
+//                        NSLog(@"\n Count is %lul", (unsigned long)[_assignmentFilePathMArray count]);
+//                    }
                 }
-                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                                    [self.tableView reloadData];
+                });
                 
             } else {
-               
+                
             }
         }];
-
-        // now send the result back to the main thread so we can do
-        // UIKit stuff
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // set the images on your UIImageViews here...
-             [self.tableView reloadData];
-        });
-    });
-    //[self activityLoadingwithLabel];
-    
-    
 }
 
 /*
