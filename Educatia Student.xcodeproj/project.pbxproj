@@ -80,6 +80,7 @@
 		F553220F1BD7CD0700E17FBF /* AssignmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F553220E1BD7CD0700E17FBF /* AssignmentsTableViewController.m */; };
 		F56A429D1BE0C7FA0066CEC1 /* AssignmentObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A429C1BE0C7FA0066CEC1 /* AssignmentObject.m */; settings = {ASSET_TAGS = (); }; };
 		F56A42A01BE0C8230066CEC1 /* UserObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A429F1BE0C8230066CEC1 /* UserObject.m */; settings = {ASSET_TAGS = (); }; };
+		F56A42A31BE0D8600066CEC1 /* SubjectObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A42A21BE0D8600066CEC1 /* SubjectObject.m */; settings = {ASSET_TAGS = (); }; };
 		F56FBCD71BCFF87500ECDDA6 /* SubjectPagerHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F56FBCD61BCFF87500ECDDA6 /* SubjectPagerHolderViewController.m */; };
 		F56FBCDB1BD005D300ECDDA6 /* SubjectInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F56FBCDA1BD005D300ECDDA6 /* SubjectInfoViewController.m */; };
 		F58055611BDFE483000C8B74 /* CourseMaterialObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F58055601BDFE483000C8B74 /* CourseMaterialObject.m */; settings = {ASSET_TAGS = (); }; };
@@ -265,6 +266,8 @@
 		F56A429C1BE0C7FA0066CEC1 /* AssignmentObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentObject.m; sourceTree = "<group>"; };
 		F56A429E1BE0C8230066CEC1 /* UserObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserObject.h; sourceTree = "<group>"; };
 		F56A429F1BE0C8230066CEC1 /* UserObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObject.m; sourceTree = "<group>"; };
+		F56A42A11BE0D8600066CEC1 /* SubjectObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectObject.h; sourceTree = "<group>"; };
+		F56A42A21BE0D8600066CEC1 /* SubjectObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectObject.m; sourceTree = "<group>"; };
 		F56FBCD51BCFF87500ECDDA6 /* SubjectPagerHolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectPagerHolderViewController.h; sourceTree = "<group>"; };
 		F56FBCD61BCFF87500ECDDA6 /* SubjectPagerHolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectPagerHolderViewController.m; sourceTree = "<group>"; };
 		F56FBCD91BD005D300ECDDA6 /* SubjectInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectInfoViewController.h; sourceTree = "<group>"; };
@@ -713,6 +716,8 @@
 				F56A429C1BE0C7FA0066CEC1 /* AssignmentObject.m */,
 				F56A429E1BE0C8230066CEC1 /* UserObject.h */,
 				F56A429F1BE0C8230066CEC1 /* UserObject.m */,
+				F56A42A11BE0D8600066CEC1 /* SubjectObject.h */,
+				F56A42A21BE0D8600066CEC1 /* SubjectObject.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1247,6 +1252,7 @@
 				0453AEF61B9872C300CD3A53 /* SignupViewController.m in Sources */,
 				F5F9CA541BA444EB008E1715 /* ReaderThumbQueue.m in Sources */,
 				F549D36E1BBD3144000A9E79 /* README.markdown in Sources */,
+				F56A42A31BE0D8600066CEC1 /* SubjectObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

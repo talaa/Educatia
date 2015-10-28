@@ -348,24 +348,25 @@
 
 - (void)materialButtonViewPressed:(id)sender
 {
-    //    NSIndexPath *indexPath = [self.tableView indexPathForCell:(CourseMaterialTableViewCell *)[[sender superview] superview]];
-    //    NSLog(@"The row id is %ld",  (long)indexPath.row);
-    //    ReaderDocument *document = [ReaderDocument withDocumentFilePath:[_materialFilePathMArray objectAtIndex:indexPath.row] password:nil];
-    //    if (document != nil)
-    //    {
-    //        ReaderViewController *readerViewController = [[ReaderViewController alloc]initWithReaderDocument:document];
-    //        readerViewController.delegate = self;
-    //        readerViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    //        readerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    //        [self presentViewController:readerViewController animated:YES completion:nil];
-    //    }else {
-    //        TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImage:[UIImage imageWithData:[_materialDataFileMArray objectAtIndex:indexPath.row]]];
-    //        // Don't forget to set ourselves as the transition delegate
-    //        viewController.transitioningDelegate = self;
-    //        viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    //        viewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    //        [self presentViewController:viewController animated:YES completion:nil];
-    //    }
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:(CourseMaterialTableViewCell *)[[sender superview] superview]];
+        NSLog(@"The row id is %ld",  (long)indexPath.row);
+    CourseMaterialObject *courseMaterialObject = [coursesMaterialArray objectAtIndex:indexPath.row];
+        ReaderDocument *document = [ReaderDocument withDocumentFilePath:courseMaterialObject.filePath password:nil];
+        if (document != nil)
+        {
+            ReaderViewController *readerViewController = [[ReaderViewController alloc]initWithReaderDocument:document];
+            readerViewController.delegate = self;
+            readerViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            readerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+            [self presentViewController:readerViewController animated:YES completion:nil];
+        }else {
+            TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImage:[UIImage imageWithData:courseMaterialObject.dataFile]];
+            // Don't forget to set ourselves as the transition delegate
+            viewController.transitioningDelegate = self;
+            viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            viewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
 }
 
 

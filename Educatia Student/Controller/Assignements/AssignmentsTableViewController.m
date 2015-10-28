@@ -432,24 +432,25 @@
 
 - (void)assignmentViewButtonPressed:(id)sender
 {
-    //    NSIndexPath *indexPath = [self.tableView indexPathForCell:(AssignementTableViewCell *)[[sender superview] superview]];
-    //    NSLog(@"The row id is %ld",  (long)indexPath.row);
-    //    ReaderDocument *document = [ReaderDocument withDocumentFilePath:[_assignmentFilePathMArray objectAtIndex:indexPath.row] password:nil];
-    //    if (document != nil)
-    //    {
-    //        ReaderViewController *readerViewController = [[ReaderViewController alloc]initWithReaderDocument:document];
-    //        readerViewController.delegate = self;
-    //        readerViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    //        readerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    //        [self presentViewController:readerViewController animated:YES completion:nil];
-    //    }else {
-    //        TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImage:[UIImage imageWithData:[_assignmentFileMArray objectAtIndex:indexPath.row]]];
-    //        // Don't forget to set ourselves as the transition delegate
-    //        viewController.transitioningDelegate = self;
-    //        viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    //        viewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    //        [self presentViewController:viewController animated:YES completion:nil];
-    //    }
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(AssignementTableViewCell *)[[sender superview] superview]];
+    NSLog(@"The row id is %ld",  (long)indexPath.row);
+    AssignmentObject *assigObject = [assignmentsMArray objectAtIndex:indexPath.row];
+    ReaderDocument *document = [ReaderDocument withDocumentFilePath:assigObject.assigFilePath password:nil];
+    if (document != nil)
+    {
+        ReaderViewController *readerViewController = [[ReaderViewController alloc]initWithReaderDocument:document];
+        readerViewController.delegate = self;
+        readerViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        readerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self presentViewController:readerViewController animated:YES completion:nil];
+    }else {
+        TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImage:[UIImage imageWithData:assigObject.assigFile]];
+        // Don't forget to set ourselves as the transition delegate
+        viewController.transitioningDelegate = self;
+        viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        viewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self presentViewController:viewController animated:YES completion:nil];
+    }
 }
 
 /*
