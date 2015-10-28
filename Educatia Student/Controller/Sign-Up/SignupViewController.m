@@ -110,23 +110,21 @@
     
     if (self.firstNameTextField.text.length >0 && self.lastNameTextField.text.length >0 && self.usernameTextField.text.length >0 && self.passwordTexrField.text.length >0 && self.confirmPasswordTextField.text.length >0 && self.phoneTextField.text.length >0 && self.emailTextField.text.length >0 && self.emailTextField.text.length >0 && self.birthdateTextField.text.length >0){
         if ([self.passwordTexrField.text compare:self.confirmPasswordTextField.text] == NSOrderedSame){
-            self.firstNameString    = self.firstNameTextField.text;
-            self.lastNameString     = self.lastNameTextField.text;
-            self.usernameString     = self.usernameTextField.text;
-            self.passwordString     = self.passwordTexrField.text;
-            self.phoneString        = self.phoneTextField.text;
-            self.emailString        = self.emailTextField.text;
             self.birthdayString     = self.birthdateTextField.text;
             
             //Parse Implementation
             [self parseSavingData];
         }else{
             [self stopActivityIndicator];
-            [[[UIAlertView alloc] initWithTitle:@"Education Student" message:@"Kindly entre the same password!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Educatia Student" message:@"Kindly entre the same password!" preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+            [self presentViewController:alertController animated:YES completion:nil];
         }
     }else{
         [self stopActivityIndicator];
-        [[[UIAlertView alloc]initWithTitle:@"Education Student" message:@"Kindly make sure type all mandatory data!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+        UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Educatia Student" message:@"Kindly make sure type all mandatory data!" preferredStyle:UIAlertControllerStyleAlert];
+        [alertcontroller addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:alertcontroller animated:YES completion:nil];
     }
 }
 
@@ -190,24 +188,24 @@
 
 - (void)parseSavingData {
     PFUser *user = [PFUser user];
-    user.username = self.usernameString;
-    user.email = self.emailString;
-    user.password = self.passwordString;
+    user.username = self.usernameTextField.text;
+    user.email = self.emailTextField.text;
+    user.password = self.passwordTexrField.text;
     
     //Save profile pic image if exist
     if ([self isPicProfileImageViewEmpty] == YES) {
         //don't save because there is no image is uploaded
     }else { //user has uploaded an image then save it
-        NSString *userImageName = [self.usernameString stringByAppendingString:@"_image.png"];
+        NSString *userImageName = [self.usernameTextField.text stringByAppendingString:@"_image.png"];
         NSData *imageData = UIImagePNGRepresentation(self.picProfileImageView.image);
         PFFile *imageFile = [PFFile fileWithName:userImageName data:imageData];
         user[@"profilePicture"] = imageFile;
     }
     
     // other fields can be set just like with PFObject
-    user[@"Phone"]          = self.phoneString;
-    user[@"FirstName"]      = self.firstNameString;
-    user[@"LastName"]       = self.lastNameString;
+    user[@"Phone"]          = self.phoneTextField.text;
+    user[@"FirstName"]      = self.firstNameTextField.text;
+    user[@"LastName"]       = self.lastNameTextField.text;
     user[@"DateofBirth"]    = self.birthdayString;
     
     //check type if student or teacher

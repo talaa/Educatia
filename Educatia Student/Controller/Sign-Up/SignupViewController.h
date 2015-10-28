@@ -9,17 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "FlatDatePicker.h"
 
-@class SignupViewController;
-@protocol SignupViewControllerDelegate <NSObject>
-@end
-
 @interface SignupViewController : UIViewController <FlatDatePickerDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *picProfileImageView;
 @property (weak, nonatomic) IBOutlet UIButton *uploadPhotoButton;
 @property (weak, nonatomic) IBOutlet UIButton *changePhotoButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
-@property (nonatomic, weak) id<SignupViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
@@ -33,14 +28,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *emailImageViewTrue;
 
 @property (nonatomic, strong) FlatDatePicker *flatDatePicker;
-@property (strong, nonatomic) IBOutlet NSString *firstNameString;
-@property (strong, nonatomic) IBOutlet NSString *lastNameString;
-@property (strong, nonatomic) IBOutlet NSString *usernameString;
-@property (strong, nonatomic) IBOutlet NSString *passwordString;
-@property (strong, nonatomic) IBOutlet NSString *confirmPasswordString;
-@property (strong, nonatomic) IBOutlet NSString *phoneString;
-@property (strong, nonatomic) IBOutlet NSString *emailString;
-@property (strong, nonatomic) IBOutlet NSString *addressString;
 @property (strong, nonatomic) IBOutlet NSString *birthdayString;
 
 @property (nonatomic) int typeIndex;

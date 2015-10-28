@@ -504,25 +504,20 @@
             </objects>
             <point key="canvasLocation" x="-1235" y="-490"/>
         </scene>
-        <!--Tab Bar Holder Controller-->
-        <scene sceneID="0qF-MX-Mnf">
+        <!--User Tab Bar Controller-->
+        <scene sceneID="LQB-re-l59">
             <objects>
-                <tabBarController storyboardIdentifier="StudentTabBarHolderController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AbE-KB-agi" customClass="TabBarHolderController" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
+                <tabBarController storyboardIdentifier="UserTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cMz-fF-GZt" customClass="UserTabBarController" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="Dpw-Yj-Get">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Iwn-pz-65m">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
-                    <connections>
-                        <segue destination="dqN-yE-Uy9" kind="relationship" relationship="viewControllers" id="de4-bu-vnN"/>
-                        <segue destination="lUb-Km-4Wn" kind="relationship" relationship="viewControllers" id="gtN-2p-ZXv"/>
-                    </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VX4-9k-nxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5iz-3i-kbE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1235" y="721"/>
+            <point key="canvasLocation" x="-1235" y="800"/>
         </scene>
         <!--Profile-->
         <scene sceneID="XOx-Db-hYM">
@@ -716,23 +711,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCN-je-qpF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1994" y="1976"/>
-        </scene>
-        <!--Teacher Tab Bar View Controller-->
-        <scene sceneID="Z2g-Cf-jgc">
-            <objects>
-                <tabBarController storyboardIdentifier="TeacherTabBarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ibd-PD-8Os" customClass="TeacherTabBarViewController" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="dRc-Nd-MKo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6ok-ht-Buh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1235" y="3350"/>
+            <point key="canvasLocation" x="-2158" y="1976"/>
         </scene>
         <!--subject-->
         <scene sceneID="Zeq-aL-F8Z">
@@ -929,7 +908,7 @@
                                                 <constraint firstAttribute="height" constant="21" id="sg7-kg-Aj1"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="USJ-rw-iqo">
@@ -956,7 +935,7 @@
                                                 <constraint firstAttribute="height" constant="21" id="jAy-zf-mkY"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0g-tz-HIV">
@@ -1022,7 +1001,7 @@
         <!--Item-->
         <scene sceneID="HCK-pI-anP">
             <objects>
-                <navigationController id="lUb-Km-4Wn" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SubjectsNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lUb-Km-4Wn" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="b9G-Yg-YcP"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="b5u-Le-oey">
@@ -1040,7 +1019,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oWx-ZN-2Yd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-718" y="1969"/>
+            <point key="canvasLocation" x="-167" y="1976"/>
         </scene>
         <!--Subjects-->
         <scene sceneID="Tgq-GE-TNu">
@@ -1107,7 +1086,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Cl-7m-Ded" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="318" y="1969"/>
+            <point key="canvasLocation" x="810" y="1976"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cHh-JN-Y1W">
@@ -1129,7 +1108,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y6T-j7-BYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1280" y="1969"/>
+            <point key="canvasLocation" x="1798" y="1976"/>
         </scene>
         <!--Tab Bar Pager Holder View Controller-->
         <scene sceneID="E1A-T3-9eO">
@@ -1163,7 +1142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0HE-g7-HwE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2365" y="1969"/>
+            <point key="canvasLocation" x="2683" y="1976"/>
         </scene>
         <!--Students View Controller-->
         <scene sceneID="jCZ-pm-dNh">
@@ -1374,7 +1353,7 @@
                                                 <constraint firstAttribute="height" constant="21" id="fLu-cD-23n"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Score:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aac-MK-txm">
@@ -1394,7 +1373,7 @@
                                                 <constraint firstAttribute="width" constant="130" id="JWP-Zw-mhe"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teacher:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPR-o0-MVo">
@@ -1434,7 +1413,7 @@
                                                 <constraint firstAttribute="width" constant="130" id="SaR-n8-3Tg"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dead line:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mco-TW-Qcw">
@@ -1462,7 +1441,7 @@
                                                 <constraint firstAttribute="width" constant="130" id="C9R-oD-S2Z"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>

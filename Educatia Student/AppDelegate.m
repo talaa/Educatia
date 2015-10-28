@@ -55,12 +55,12 @@
     PFUser *user = [PFUser currentUser];
     if(user){
         [ManageLayerViewController setDataParsingCurrentUserObject:user];
-        if ([ManageLayerViewController getDataParsingIsCurrentTeacher]){
-            self.tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"TeacherTabBarViewController"];
-        }else{
-            self.tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"StudentTabBarHolderController"];
-        }
-        
+//        if ([ManageLayerViewController getDataParsingIsCurrentTeacher]){
+//            self.tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"TeacherTabBarViewController"];
+//        }else{
+//            self.tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"StudentTabBarHolderController"];
+//        }
+        self.tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"UserTabBarController"];
         [self.window setRootViewController:self.tabBarController];
     }else {
         

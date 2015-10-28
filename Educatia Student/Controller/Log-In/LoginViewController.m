@@ -12,7 +12,7 @@
 #import <Parse/Parse.h>
 #import "ManageLayerViewController.h"
 
-@interface LoginViewController () <SignupViewControllerDelegate,UIAlertViewDelegate>
+@interface LoginViewController () <UIAlertViewDelegate>
 
 @end
 
@@ -44,14 +44,6 @@
     //[self presentSignUpViewController];
 }
 
-#pragma mark NewUserViewController
-
-- (void)presentSignUpViewController {
-    NSString * storyboardName = @"Main";
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-    SignupViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"SignupViewController"];
-    [self presentViewController:vc animated:YES completion:nil];
-}
 
 #pragma mark Delegate
 
@@ -67,17 +59,8 @@
             if (user) {
                 //set Data Parsing Object
                 [ManageLayerViewController setDataParsingCurrentUserObject:user];
-                
-                NSString *tabBarName;
-                if ([user[@"type"] isEqualToString:@"Student"]) {
-                    //Student View
-                    tabBarName = @"StudentTabBarHolderController";
-                }else {
-                    //Teacher view
-                    tabBarName = @"TeacherTabBarViewController";
-                }
                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:tabBarName];
+                UITabBarController *vc = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"UserTabBarController"];
                 [self presentViewController:vc animated:YES completion:nil];
             } else {
                 // The login failed. Check error to see why.
@@ -108,8 +91,7 @@
 
 - (IBAction)forgotPasswordPressed:(id)sender {
     //ForgotPasswordViewController
-    NSString * storyboardName = @"Main";
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     ForgotPasswordViewController * forgotPasswordVC = [storyboard instantiateViewControllerWithIdentifier:@"ForgotPasswordViewController"];
     [self presentViewController:forgotPasswordVC animated:YES completion:nil];
 }
@@ -121,13 +103,6 @@
 #pragma mark - UIAlertViewDelegete
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    //    if (alertView.tag == 100){
-    //        if (buttonIndex == 0) {
-    //
-    //        }
-    //    }
-    
-    //
 }
 
 
