@@ -14,7 +14,6 @@
 
 @property(strong,nonatomic) NSString* name;
 @property(strong,nonatomic) NSString* teacher;
-@property(strong,nonatomic) NSData* file;
 @property(strong,nonatomic) NSData* dataFile;
 @property(strong,nonatomic) NSString* filePath;
 

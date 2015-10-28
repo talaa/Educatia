@@ -17,6 +17,8 @@
     NSMutableArray *controllerArray;
     NSArray *titlesArray;
     NSArray *viewControllersArray;
+    bool isAssigmentFirstTime;
+    bool isCourseMaterialFirstTime;
 }
 
 @end
@@ -27,6 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    isAssigmentFirstTime = TRUE;
+    isCourseMaterialFirstTime = TRUE;
     
     //Set SubjectName and SubjectIS
     DataParsing *obj        = [DataParsing getInstance];
@@ -51,14 +55,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (IBAction)dismissPressed:(id)sender {
     NSLog(@"\nDismiss \n");
@@ -108,18 +112,26 @@
     switch (index) {
         case 0:
             view = (AssignmentsTableViewController*) [controllerArray objectAtIndex:index];
-                            [(AssignmentsTableViewController*)view requestData];
+            if (isAssigmentFirstTime){
+                [(AssignmentsTableViewController*)view requestData];
+                isAssigmentFirstTime = FALSE;
+            }
+            
             break;
             
         case 1:
             view = (CourseMaterialsTableViewController*) [controllerArray objectAtIndex:index];
-            [(CourseMaterialsTableViewController*)view requestData];
+            if (isCourseMaterialFirstTime){
+                [(CourseMaterialsTableViewController*)view requestData];
+                isCourseMaterialFirstTime = FALSE;
+            }
+            
             break;
             
         default:
             break;
     }
-
+    
 }
 
 

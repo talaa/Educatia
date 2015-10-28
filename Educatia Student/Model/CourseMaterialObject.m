@@ -21,14 +21,15 @@
     }
     return self;
 }
+
 -(void)SaveFilePath:(PFFile*)file{
     if (self.dataFile)
-                            {
-                                NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-                                NSString *documentsDirectory = [paths objectAtIndex:0];
-                                NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,[file.url lastPathComponent]];
-                                [self.dataFile writeToFile:filePath atomically:YES];
-                                self.filePath =filePath;
-                            }
+    {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,[file.url lastPathComponent]];
+        [self.dataFile writeToFile:filePath atomically:YES];
+        self.filePath =filePath;
+    }
 }
 @end

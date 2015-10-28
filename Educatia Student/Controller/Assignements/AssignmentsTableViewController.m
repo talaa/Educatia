@@ -14,18 +14,13 @@
 #import "HSDatePickerViewController.h"
 #import "ReaderViewController.h"
 #import "ThumbnailPDF.h"
+#import "AssignmentObject.h"
 
 @interface AssignmentsTableViewController () <UIDocumentPickerDelegate,HSDatePickerViewControllerDelegate,ReaderViewControllerDelegate>
-
+{
+    NSMutableArray *assignmentsMArray;
+}
 @property (strong, nonatomic) NSData *documentPickerselectedData;
-
-@property (strong, nonatomic) NSMutableArray *assigIDMArray;
-@property (strong, nonatomic) NSMutableArray *assigNameMArray;
-@property (strong, nonatomic) NSMutableArray *assigTeacherMArray;
-@property (strong, nonatomic) NSMutableArray *assignMAXScoreMArray;
-@property (strong, nonatomic) NSMutableArray *assigDeadLineMArray;
-@property (strong, nonatomic) NSMutableArray *assignmentFileMArray;
-@property (strong, nonatomic) NSMutableArray *assignmentFilePathMArray;
 
 @property (strong, nonatomic) NSDate *deadLineDate;
 @property (strong, nonatomic) NSString *deadLineString;
@@ -38,22 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    // if current is a Teacher, then present ADDNEWASSIGNMENT uiview
-//    callLoadAssignmentObject = dispatch_queue_create("com.BWS.Educatia-Student.CallLoadAssignments",DISPATCH_QUEUE_CONCURRENT);
-//    
-//    dispatch_async(callLoadAssignmentObject, ^{
-//        
-//        NSLog(@"\nCall Load Assignment method\n");
-//    });
-
-    
+    assignmentsMArray = [NSMutableArray new];
     
     if ([ManageLayerViewController getDataParsingIsCurrentTeacher]) {
         self.addNewAssignmentView.hidden = NO;
@@ -61,9 +41,11 @@
         self.addNewAssignmentView.hidden = YES;
     }
 }
+
 -(void)requestData{
- [self loadAssignmentsObjects];   
+    [self loadAssignmentsObjects];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -80,7 +62,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [_assigIDMArray count]? [_assigIDMArray count]:0;
+    return [assignmentsMArray count]? [assignmentsMArray count]:0;
 }
 
 
@@ -88,10 +70,11 @@
     AssignementTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AssignmentCell" forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.assignmentNameLabel.text   = [_assigNameMArray objectAtIndex:indexPath.row];
-    cell.teacherNameLabel.text      = [_assigTeacherMArray objectAtIndex:indexPath.row];
-    cell.deadLineLabel.text         = [self convertDateToString:[_assigDeadLineMArray objectAtIndex:indexPath.row]];
-    cell.maxScoreLabel.text         = [_assignMAXScoreMArray objectAtIndex:indexPath.row];
+    AssignmentObject *assigObject = [assignmentsMArray objectAtIndex:indexPath.row];
+    cell.assignmentNameLabel.text   = assigObject.assigName;
+    cell.teacherNameLabel.text      = assigObject.assigTeacherName;
+    cell.deadLineLabel.text         = [self convertDateToString:assigObject.assigDeadLine];
+    cell.maxScoreLabel.text         = assigObject.assigMaxScore;
     
     // submit button
     if ([ManageLayerViewController getDataParsingIsCurrentTeacher]){
@@ -104,18 +87,15 @@
     cell.assignmentViewButton.tag = indexPath.row;
     [cell.assignmentViewButton addTarget:self action:@selector(assignmentViewButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
-//        if ([_assignmentFilePathMArray count] > 0){
-//            //Thumbnail
-//            ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
-//            [thumbPDF startWithCompletionHandler:[_assignmentFileMArray objectAtIndex:indexPath.row] andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
-//                if (finished) {
-//                    //             [ManageLayerViewController imageViewCellAssignment:cell.assignementImageView];
-//                    cell.assignementImageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
-//                }
-//            }];
-//        }
-//    });
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
+        //Thumbnail
+        ThumbnailPDF *thumbPDF = [[ThumbnailPDF alloc] init];
+        [thumbPDF startWithCompletionHandler:assigObject.assigFile andSize:500 completion:^(ThumbnailPDF *ThumbnailPDF, BOOL finished) {
+            if (finished) {
+                cell.assignementImageView.image = [UIImage imageWithCGImage:ThumbnailPDF.myThumbnailImage];
+            }
+        }];
+    });
     
     
     return cell;
@@ -405,56 +385,27 @@
  *
  */
 - (void)loadAssignmentsObjects {
-        PFQuery *query = [PFQuery queryWithClassName:@"Assignement"];
-        [query whereKey:@"subjectID" equalTo:[ManageLayerViewController getDataParsingSubjectID]];
-        if ([ManageLayerViewController isCurrentUserisTeacher]){
-            [query whereKey:@"teacherID" equalTo:[ManageLayerViewController getCurrentUserID]];
-        }
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error) {
-                NSLog(@"\nStart init nsmutable arry Assignment\n");
-                //stuffs to do in background thread
-                //init NSMutableArray
-                _assigIDMArray              = [[NSMutableArray alloc]init];
-                _assigNameMArray            = [[NSMutableArray alloc]init];
-                _assigTeacherMArray         = [[NSMutableArray alloc]init];
-                _assignMAXScoreMArray       = [[NSMutableArray alloc]init];
-                _assigDeadLineMArray        = [[NSMutableArray alloc]init];
-                _assignmentFileMArray       = [[NSMutableArray alloc]init];
-                _assignmentFilePathMArray   = [[NSMutableArray alloc] init];
-                // Do something with the found objects
-                for (PFObject *object in objects) {
-                    //NSLog(@"%@", object.objectId);
-                    [_assigIDMArray addObject:object.objectId];
-                    [_assigNameMArray addObject:object[@"assignmentName"]];
-                    [_assigTeacherMArray addObject:object[@"teacherName"]];
-                    [_assignMAXScoreMArray addObject:object[@"assignmentMaxScore"]];
-                    [_assigDeadLineMArray addObject:object[@"assignmentDeadLine"]];
-                    
-                    PFFile *assigFile = object[@"assignmentFile"];
-                    NSData *assignFileData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:assigFile.url]];
-                    
-                    //Ad to MData
-                    [_assignmentFileMArray addObject:assignFileData];
-                    
-//                    if ( assignFileData )
-//                    {
-//                        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//                        NSString *documentsDirectory = [paths objectAtIndex:0];
-//                        NSString  *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,[assigFile.url lastPathComponent]];
-//                        [assignFileData writeToFile:filePath atomically:YES];
-//                        [_assignmentFilePathMArray addObject:filePath];
-//                        NSLog(@"\n Count is %lul", (unsigned long)[_assignmentFilePathMArray count]);
-//                    }
-                }
-                dispatch_async(dispatch_get_main_queue(), ^{
-                                    [self.tableView reloadData];
-                });
-                
-            } else {
-                
+    PFQuery *query = [PFQuery queryWithClassName:@"Assignement"];
+    [query whereKey:@"subjectID" equalTo:[ManageLayerViewController getDataParsingSubjectID]];
+    if ([ManageLayerViewController isCurrentUserisTeacher]){
+        [query whereKey:@"teacherID" equalTo:[ManageLayerViewController getCurrentUserID]];
+    }
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            NSLog(@"\nStart init nsmutable arry Assignment\n");
+            [assignmentsMArray removeAllObjects];
+            //stuffs to do in background thread
+            for (PFObject *object in objects) {
+                [assignmentsMArray addObject:[[AssignmentObject alloc] initWithObject:object]];
             }
-        }];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+            
+        } else {
+            
+        }
+    }];
 }
 
 /*
@@ -481,24 +432,24 @@
 
 - (void)assignmentViewButtonPressed:(id)sender
 {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:(AssignementTableViewCell *)[[sender superview] superview]];
-    NSLog(@"The row id is %ld",  (long)indexPath.row);
-    ReaderDocument *document = [ReaderDocument withDocumentFilePath:[_assignmentFilePathMArray objectAtIndex:indexPath.row] password:nil];
-    if (document != nil)
-    {
-        ReaderViewController *readerViewController = [[ReaderViewController alloc]initWithReaderDocument:document];
-        readerViewController.delegate = self;
-        readerViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        readerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-        [self presentViewController:readerViewController animated:YES completion:nil];
-    }else {
-        TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImage:[UIImage imageWithData:[_assignmentFileMArray objectAtIndex:indexPath.row]]];
-        // Don't forget to set ourselves as the transition delegate
-        viewController.transitioningDelegate = self;
-        viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        viewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-        [self presentViewController:viewController animated:YES completion:nil];
-    }
+    //    NSIndexPath *indexPath = [self.tableView indexPathForCell:(AssignementTableViewCell *)[[sender superview] superview]];
+    //    NSLog(@"The row id is %ld",  (long)indexPath.row);
+    //    ReaderDocument *document = [ReaderDocument withDocumentFilePath:[_assignmentFilePathMArray objectAtIndex:indexPath.row] password:nil];
+    //    if (document != nil)
+    //    {
+    //        ReaderViewController *readerViewController = [[ReaderViewController alloc]initWithReaderDocument:document];
+    //        readerViewController.delegate = self;
+    //        readerViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    //        readerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    //        [self presentViewController:readerViewController animated:YES completion:nil];
+    //    }else {
+    //        TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImage:[UIImage imageWithData:[_assignmentFileMArray objectAtIndex:indexPath.row]]];
+    //        // Don't forget to set ourselves as the transition delegate
+    //        viewController.transitioningDelegate = self;
+    //        viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    //        viewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    //        [self presentViewController:viewController animated:YES completion:nil];
+    //    }
 }
 
 /*
