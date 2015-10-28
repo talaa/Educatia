@@ -7,13 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
 @interface UserObject : NSObject
 
-@property (strong, nonatomic) NSString *userID;
-@property (strong, nonatomic) NSString *userFirstName;
-@property (strong, nonatomic) NSString *userLastName;
-@property (strong, nonatomic) NSString *userFullName;
-@property (strong, nonatomic) NSString *userUserNmae;
+@property (strong, nonatomic) NSString *objectID;
+@property (strong, nonatomic) NSString *firstName;
+@property (strong, nonatomic) NSString *lastName;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *userName;
+@property (strong, nonatomic) NSString *address;
+@property (strong, nonatomic) NSString *phone;
+@property (strong, nonatomic) NSString *email;
+@property (strong, nonatomic) NSDate *birthday;
+@property (strong, nonatomic) NSData *profPic;
+@property (strong, nonatomic) NSString *type;
+
+- (instancetype)initWithObject:(PFObject *)object;
 
 @end

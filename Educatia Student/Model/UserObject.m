@@ -10,4 +10,11 @@
 
 @implementation UserObject
 
+- (instancetype)initWithObject:(PFObject *)object{
+    self = [super self];
+    if (self) {
+        
+    }
+    return self;
+}
 @end
