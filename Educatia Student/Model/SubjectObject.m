@@ -10,4 +10,16 @@
 
 @implementation SubjectObject
 
+- (instancetype)initWithObject:(PFObject *)object{
+    self = [super self];
+    if (self){
+        self.name = object[@"subjectName"];
+        self.objectID = object.objectId;
+        self.teacherName = object[@""];
+        self.teacherUserName = object[@""];
+        PFFile *logoFile = object[@"subjectLogo"];
+        self.logo = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:logoFile.url]];
+    }
+    return self;
+}
 @end
