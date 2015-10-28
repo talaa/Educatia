@@ -109,27 +109,27 @@
 
 -(void)didMoveToPage:(UIViewController *)viewController index:(NSInteger)index{
     NSLog(@"Did Move to %ld", (long)index);
-    UIViewController* view;
-    switch (index) {
-        case 0:
-            view = (AssignmentsTableViewController*) [controllerArray objectAtIndex:index];
-            if (isAssigmentFirstTime){
-                [(AssignmentsTableViewController*)view requestData];
-                isAssigmentFirstTime = FALSE;
-            }
-            break;
-            
-        case 1:
-            view = (CourseMaterialsTableViewController*) [controllerArray objectAtIndex:index];
-            if (isCourseMaterialFirstTime){
-                [(CourseMaterialsTableViewController*)view requestData];
-                isCourseMaterialFirstTime = FALSE;
-            }
-            break;
-            
-        default:
-            break;
-    }
+//    UIViewController* view;
+//    switch (index) {
+//        case 0:
+//            view = (AssignmentsTableViewController*) [controllerArray objectAtIndex:index];
+//            if (isAssigmentFirstTime){
+//                [(AssignmentsTableViewController*)view requestData];
+//                isAssigmentFirstTime = FALSE;
+//            }
+//            break;
+//            
+//        case 1:
+//            view = (CourseMaterialsTableViewController*) [controllerArray objectAtIndex:index];
+//            if (isCourseMaterialFirstTime){
+//                [(CourseMaterialsTableViewController*)view requestData];
+//                isCourseMaterialFirstTime = FALSE;
+//            }
+//            break;
+//            
+//        default:
+//            break;
+//    }
     
 }
 

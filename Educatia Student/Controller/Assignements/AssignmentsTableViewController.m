@@ -18,8 +18,9 @@
 
 @interface AssignmentsTableViewController () <UIDocumentPickerDelegate,HSDatePickerViewControllerDelegate,ReaderViewControllerDelegate>
 {
-    NSMutableArray *assignmentsMArray;
-    NSOperationQueue* operationQueue;
+    NSMutableArray      *assignmentsMArray;
+    NSOperationQueue    *operationQueue;
+    NSOperationQueue    *mainQueue;
 }
 @property (strong, nonatomic) NSData *documentPickerselectedData;
 
@@ -34,14 +35,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    operationQueue = [[NSOperationQueue alloc] init];
-    assignmentsMArray = [NSMutableArray new];
+    operationQueue      = [[NSOperationQueue alloc] init];
+    mainQueue           = [NSOperationQueue mainQueue];
+    assignmentsMArray   = [NSMutableArray new];
     
     if ([ManageLayerViewController getDataParsingIsCurrentTeacher]) {
         self.addNewAssignmentView.hidden = NO;
     }else {
         self.addNewAssignmentView.hidden = YES;
     }
+    
+    [self loadAssignmentsObjects];
+}
+- (void)viewDidAppear:(BOOL)animated{
 }
 
 -(void)requestData{
@@ -395,15 +401,17 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             NSLog(@"\nStart init nsmutable arry Assignment\n");
-            [assignmentsMArray removeAllObjects];
+            
             [operationQueue addOperationWithBlock:^{
+                [assignmentsMArray removeAllObjects];
                 // Perform long-running tasks without blocking main thread
                 for (PFObject *object in objects) {
                     [assignmentsMArray addObject:[[AssignmentObject alloc] initWithObject:object]];
                 }
-                dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    // Main thread work (UI usually)
                     [self.tableView reloadData];
-                });
+                }];
             }];
 
             

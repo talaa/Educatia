@@ -49,14 +49,13 @@
         self.addNewMaterialButton.hidden    = YES;
     }
     
+    [self loadMaterialsObjects];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    // [self loadMaterialsObjects];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -121,16 +120,18 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             NSLog(@"\nStart init nsmutablre arry Course nsmutabl Array\n");
-            [coursesMaterialArray removeAllObjects];
+            
             // Do something with the found objects
             [operationQueue addOperationWithBlock:^{
+                [coursesMaterialArray removeAllObjects];
                 // Perform long-running tasks without blocking main thread
                 for (PFObject *object in objects) {
                     [coursesMaterialArray addObject:[[CourseMaterialObject alloc] initWithObject:object]];
                 }
-                dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    // Main thread work (UI usually)
                     [self.tableView reloadData];
-                });
+                }];
             }];
             
         }else {
