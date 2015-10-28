@@ -28,6 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     isAssigmentFirstTime = TRUE;
     isCourseMaterialFirstTime = TRUE;
@@ -116,7 +117,6 @@
                 [(AssignmentsTableViewController*)view requestData];
                 isAssigmentFirstTime = FALSE;
             }
-            
             break;
             
         case 1:
@@ -125,7 +125,6 @@
                 [(CourseMaterialsTableViewController*)view requestData];
                 isCourseMaterialFirstTime = FALSE;
             }
-            
             break;
             
         default:

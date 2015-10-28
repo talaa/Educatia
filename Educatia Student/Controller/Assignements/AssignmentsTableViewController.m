@@ -19,6 +19,7 @@
 @interface AssignmentsTableViewController () <UIDocumentPickerDelegate,HSDatePickerViewControllerDelegate,ReaderViewControllerDelegate>
 {
     NSMutableArray *assignmentsMArray;
+    NSOperationQueue* operationQueue;
 }
 @property (strong, nonatomic) NSData *documentPickerselectedData;
 
@@ -33,6 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    operationQueue = [[NSOperationQueue alloc] init];
     assignmentsMArray = [NSMutableArray new];
     
     if ([ManageLayerViewController getDataParsingIsCurrentTeacher]) {
@@ -394,13 +396,18 @@
         if (!error) {
             NSLog(@"\nStart init nsmutable arry Assignment\n");
             [assignmentsMArray removeAllObjects];
-            //stuffs to do in background thread
-            for (PFObject *object in objects) {
-                [assignmentsMArray addObject:[[AssignmentObject alloc] initWithObject:object]];
-            }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-            });
+            [operationQueue addOperationWithBlock:^{
+                // Perform long-running tasks without blocking main thread
+                for (PFObject *object in objects) {
+                    [assignmentsMArray addObject:[[AssignmentObject alloc] initWithObject:object]];
+                }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+            }];
+
+            
+            
             
         } else {
             

@@ -54,16 +54,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     PFUser *user = [PFUser currentUser];
     if(user){
-        //Chatting
-//        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//        if (![defaults stringForKey:@"chatName"]) {
-//            // first time it's run, create a userDefault
-//            [defaults setObject:user.username forKey:@"chatName"];
-//            [defaults synchronize];
-//        }
-        
-        // set Data Parsing Object
-        [ManageLayerViewController setDataParsingCurrentUserObject];
+        [ManageLayerViewController setDataParsingCurrentUserObject:user];
         if ([ManageLayerViewController getDataParsingIsCurrentTeacher]){
             self.tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"TeacherTabBarViewController"];
         }else{

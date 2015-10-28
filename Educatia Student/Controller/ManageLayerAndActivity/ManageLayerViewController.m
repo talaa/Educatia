@@ -118,12 +118,16 @@
  *
  *
  */
-+ (void)setDataParsingCurrentUserObject{
++ (void)setDataParsingCurrentUserObject:(PFUser*)user{
     DataParsing *obj=[DataParsing getInstance];
-    obj.currentUserName     = [self getCurrentFullName];
-    obj.currentUseruserID   = [self getCurrentUserID];
-    obj.currentUserusername = [self getCurrentUserName];
-    obj.isCurrentTeacher    = [self isCurrentUserisTeacher];
+    obj.currentUserName         = [[user[@"FirstName"] stringByAppendingString:@" "] stringByAppendingString:user[@"LastName"]];
+    obj.currentUseruserID       = user.objectId;
+    obj.currentUserusername     = user.username;
+    if ([user[@"type"] isEqualToString:@"Teacher"]) {
+        obj.isCurrentTeacher    = TRUE;
+    }else {
+        obj.isCurrentTeacher    = FALSE;
+    }
 }
 
 + (NSString*)getDataParsingSubjectName{

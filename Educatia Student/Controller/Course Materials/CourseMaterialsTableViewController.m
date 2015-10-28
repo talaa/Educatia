@@ -23,6 +23,7 @@
 {
     BOOL *isCurrentUserisTeacher;
     NSMutableArray* coursesMaterialArray;
+    NSOperationQueue* operationQueue;
 }
 @property (strong, nonatomic) NSString *currentUserFullName;
 @property (strong, nonatomic) NSString *currentUserObjectID;
@@ -36,6 +37,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    operationQueue = [[NSOperationQueue alloc] init];
     coursesMaterialArray = [NSMutableArray new];
     if ([ManageLayerViewController isCurrentUserisTeacher] == YES){
         //Is a Teacher
@@ -121,13 +123,15 @@
             NSLog(@"\nStart init nsmutablre arry Course nsmutabl Array\n");
             [coursesMaterialArray removeAllObjects];
             // Do something with the found objects
-            for (PFObject *object in objects) {
-                [coursesMaterialArray addObject:[[CourseMaterialObject alloc] initWithObject:object]];
-            }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-            });
-            
+            [operationQueue addOperationWithBlock:^{
+                // Perform long-running tasks without blocking main thread
+                for (PFObject *object in objects) {
+                    [coursesMaterialArray addObject:[[CourseMaterialObject alloc] initWithObject:object]];
+                }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+            }];
             
         }else {
             
@@ -348,25 +352,25 @@
 
 - (void)materialButtonViewPressed:(id)sender
 {
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:(CourseMaterialTableViewCell *)[[sender superview] superview]];
-        NSLog(@"The row id is %ld",  (long)indexPath.row);
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(CourseMaterialTableViewCell *)[[sender superview] superview]];
+    NSLog(@"The row id is %ld",  (long)indexPath.row);
     CourseMaterialObject *courseMaterialObject = [coursesMaterialArray objectAtIndex:indexPath.row];
-        ReaderDocument *document = [ReaderDocument withDocumentFilePath:courseMaterialObject.filePath password:nil];
-        if (document != nil)
-        {
-            ReaderViewController *readerViewController = [[ReaderViewController alloc]initWithReaderDocument:document];
-            readerViewController.delegate = self;
-            readerViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-            readerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-            [self presentViewController:readerViewController animated:YES completion:nil];
-        }else {
-            TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImage:[UIImage imageWithData:courseMaterialObject.dataFile]];
-            // Don't forget to set ourselves as the transition delegate
-            viewController.transitioningDelegate = self;
-            viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-            viewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-            [self presentViewController:viewController animated:YES completion:nil];
-        }
+    ReaderDocument *document = [ReaderDocument withDocumentFilePath:courseMaterialObject.filePath password:nil];
+    if (document != nil)
+    {
+        ReaderViewController *readerViewController = [[ReaderViewController alloc]initWithReaderDocument:document];
+        readerViewController.delegate = self;
+        readerViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        readerViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self presentViewController:readerViewController animated:YES completion:nil];
+    }else {
+        TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImage:[UIImage imageWithData:courseMaterialObject.dataFile]];
+        // Don't forget to set ourselves as the transition delegate
+        viewController.transitioningDelegate = self;
+        viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        viewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self presentViewController:viewController animated:YES completion:nil];
+    }
 }
 
 

@@ -66,7 +66,7 @@
         [PFUser logInWithUsernameInBackground:self.usernameTextField.text  password:self.passwordTextField.text block:^(PFUser *user, NSError *error) {
             if (user) {
                 //set Data Parsing Object
-                [ManageLayerViewController setDataParsingCurrentUserObject];
+                [ManageLayerViewController setDataParsingCurrentUserObject:user];
                 
                 NSString *tabBarName;
                 if ([user[@"type"] isEqualToString:@"Student"]) {

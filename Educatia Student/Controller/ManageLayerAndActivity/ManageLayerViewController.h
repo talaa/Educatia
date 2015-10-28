@@ -22,7 +22,7 @@
 + (NSString *)getCurrentUserID;
 + (NSString *)getCurrentFullName;
 + (BOOL)isCurrentUserisTeacher;
-+ (void)setDataParsingCurrentUserObject;
++ (void)setDataParsingCurrentUserObject:(PFUser*)user;
 + (NSString*)getDataParsingSubjectName;
 + (NSString*)getDataParsingSubjectID;
 + (BOOL)getDataParsingIsCurrentTeacher;
