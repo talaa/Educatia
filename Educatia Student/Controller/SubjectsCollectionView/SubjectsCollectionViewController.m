@@ -13,15 +13,21 @@
 #import "RNActivityView.h"
 #import "UIView+RNActivityView.h"
 #import <Parse/Parse.h>
+#import "SubjectObject.h"
+#import "StudentSubjects.h"
 
 @interface SubjectsCollectionViewController ()
+{
+    NSMutableArray *subjectsMArray;
+    NSMutableArray *studentSubjectsMArray;
+}
 
-@property (strong, nonatomic) NSString *subjectName;
-@property (strong, nonatomic) NSString *studentName;
-@property (strong, nonatomic) NSString *studentUsername;
-@property (strong, nonatomic) NSString *studentID;
-@property (strong, nonatomic) NSMutableArray *subjectsNameMArray;
-@property (strong, nonatomic) NSMutableArray *subjectsIDMArray;
+//@property (strong, nonatomic) NSString *subjectName;
+//@property (strong, nonatomic) NSString *studentName;
+//@property (strong, nonatomic) NSString *studentUsername;
+//@property (strong, nonatomic) NSString *studentID;
+//@property (strong, nonatomic) NSMutableArray *subjectsNameMArray;
+//@property (strong, nonatomic) NSMutableArray *subjectsIDMArray;
 
 @end
 
@@ -32,13 +38,8 @@ static NSString * const reuseIdentifier = @"SubjectCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Register cell classes
-    //[self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
-    // Do any additional setup after loading the view.
+    subjectsMArray          = [NSMutableArray new];
+    studentSubjectsMArray   = [NSMutableArray new];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -64,8 +65,9 @@ static NSString * const reuseIdentifier = @"SubjectCell";
     if ([segue.identifier isEqualToString:@"SubjectSegue"]) {
         UINavigationController *nav = [segue destinationViewController];
         TabBarPagerHolderViewController *subHolderVC = (TabBarPagerHolderViewController *)nav.topViewController;
-        subHolderVC.subjectName    = [_subjectsNameMArray objectAtIndex:indexPath.row];
-        subHolderVC.subjectID      = [_subjectsIDMArray objectAtIndex:indexPath.row];
+        SubjectObject *subjectObj = [subjectsMArray objectAtIndex:indexPath.row];
+        subHolderVC.subjectName    = subjectObj.name;
+        subHolderVC.subjectID      = subjectObj.objectID;
     }
     
 }
@@ -75,22 +77,22 @@ static NSString * const reuseIdentifier = @"SubjectCell";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     //#warning Incomplete method implementation -- Return the number of sections
-    return [_subjectsIDMArray count]? 1:0;
+    return [subjectsMArray count]? 1:0;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     //#warning Incomplete method implementation -- Return the number of items in the section
-    return [_subjectsIDMArray count]? [_subjectsIDMArray count]:0;
+    return [subjectsMArray count]? [subjectsMArray count]:0;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     SubjectCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     // Configure the cell
-    if ([_subjectsNameMArray count]>0){
-        cell.subjectNameLabel.text = [_subjectsNameMArray objectAtIndex:indexPath.row];
-    }
+    SubjectObject *subjectObj = [subjectsMArray objectAtIndex:indexPath.row];
+    cell.subjectNameLabel.text = subjectObj.name;
+    
     [ManageLayerViewController subjectCollectionViewCellLayer:cell];
     
     return cell;
@@ -132,67 +134,68 @@ static NSString * const reuseIdentifier = @"SubjectCell";
  */
 
 - (IBAction)addNewSubjectPressed:(id)sender {
-    [self presentAlretController];
+    //[self presentAlretController];
 }
 
 /*
  UIAlertController
  */
-- (void)presentAlretController {
-    UIAlertController * alertController=   [UIAlertController
-                                            alertControllerWithTitle:@"New Subject"
-                                            message:@"Enter Subject ID"
-                                            preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        //Do Some action here ---> OK
-        UITextField *subjectIDTextField = alertController.textFields.firstObject;
-        //start ActivityIndicator
-        //[self activityLoadingwithLabel];
-        
-        if (subjectIDTextField.text.length > 9) {
-            //search by SubjectID to get subjectName
-            PFQuery *query = [PFQuery queryWithClassName:@"Subjects"];
-            [query whereKey:@"objectId" equalTo:subjectIDTextField.text];
-            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                if (!error && ([objects count]>0)) {
-                    // The find succeeded.
-                    NSLog(@"Successfully retrieved scores.");
-                    // Do something with the found objects To get SubjectName
-                    for (PFObject *object in objects) {
-                        _subjectName = object[@"subjectName"];
-                    }
-                    //save StudentSubjects table by subject ID and subject Name
-                    [self saveStudentSubjectsbySubjectID:subjectIDTextField.text andSubjectName:_subjectName];
-                } else {
-                    // Log details of the failure
-                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Incorrect Subject ID.Try again." preferredStyle:UIAlertControllerStyleAlert];
-                    [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
-                    [self presentViewController:alertController animated:YES completion:nil];
-                }
-            }];
-        }else {
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Add New Subject" message:@"You have entered ID less than the correct one!" preferredStyle:UIAlertControllerStyleAlert];
-            [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
-            [self presentViewController:alertController animated:YES completion:nil];
-        }
-    }];
-    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive
-                                                   handler:^(UIAlertAction * action) {
-                                                       [alertController dismissViewControllerAnimated:YES completion:nil];
-                                                   }];
-    
-    
-    [alertController addAction:ok];
-    [alertController addAction:cancel];
-    
-    [alertController addTextFieldWithConfigurationHandler:^(UITextField* textField) {
-        textField.placeholder = @"Subject ID";
-    }];
-    
-    [self presentViewController:alertController animated:YES completion:nil];
-}
-
+/*
+ - (void)presentAlretController {
+ UIAlertController * alertController=   [UIAlertController
+ alertControllerWithTitle:@"New Subject"
+ message:@"Enter Subject ID"
+ preferredStyle:UIAlertControllerStyleAlert];
+ 
+ UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+ //Do Some action here ---> OK
+ UITextField *subjectIDTextField = alertController.textFields.firstObject;
+ //start ActivityIndicator
+ //[self activityLoadingwithLabel];
+ 
+ if (subjectIDTextField.text.length > 9) {
+ //search by SubjectID to get subjectName
+ PFQuery *query = [PFQuery queryWithClassName:@"Subjects"];
+ [query whereKey:@"objectId" equalTo:subjectIDTextField.text];
+ [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+ if (!error && ([objects count]>0)) {
+ // The find succeeded.
+ NSLog(@"Successfully retrieved scores.");
+ // Do something with the found objects To get SubjectName
+ for (PFObject *object in objects) {
+ _subjectName = object[@"subjectName"];
+ }
+ //save StudentSubjects table by subject ID and subject Name
+ [self saveStudentSubjectsbySubjectID:subjectIDTextField.text andSubjectName:_subjectName];
+ } else {
+ // Log details of the failure
+ UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Incorrect Subject ID.Try again." preferredStyle:UIAlertControllerStyleAlert];
+ [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+ [self presentViewController:alertController animated:YES completion:nil];
+ }
+ }];
+ }else {
+ UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Add New Subject" message:@"You have entered ID less than the correct one!" preferredStyle:UIAlertControllerStyleAlert];
+ [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+ [self presentViewController:alertController animated:YES completion:nil];
+ }
+ }];
+ UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive
+ handler:^(UIAlertAction * action) {
+ [alertController dismissViewControllerAnimated:YES completion:nil];
+ }];
+ 
+ 
+ [alertController addAction:ok];
+ [alertController addAction:cancel];
+ 
+ [alertController addTextFieldWithConfigurationHandler:^(UITextField* textField) {
+ textField.placeholder = @"Subject ID";
+ }];
+ 
+ [self presentViewController:alertController animated:YES completion:nil];
+ }
+ */
 /*
  ShowActivity Methos
  */
@@ -220,55 +223,87 @@ static NSString * const reuseIdentifier = @"SubjectCell";
  */
 
 - (void)saveStudentSubjectsbySubjectID:(NSString*)subjectID andSubjectName:(NSString*)subjectName {
-    PFObject *studentSubjectsObject = [PFObject objectWithClassName:@"StudentSubjects"];
-    studentSubjectsObject[@"subjectName"]       = subjectName;
-    studentSubjectsObject[@"subjectID"]         = subjectID;
-    //Get Student Data --> ID, Username and Full Name
-    [self setStudentData];
-    studentSubjectsObject[@"studentID"]         = _studentID;
-    studentSubjectsObject[@"studentUserName"]   = _studentUsername;
-    studentSubjectsObject[@"studentName"]       = _studentName;
-    //Save data
-    [studentSubjectsObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        UIAlertController *alertController;
-        if (succeeded) {
-            [self loadSubjects];
-            alertController = [UIAlertController alertControllerWithTitle:@"Add New Subject" message:@"Subject has been added sussuccefully." preferredStyle:UIAlertControllerStyleAlert];
-        } else {
-            alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Try again!!" preferredStyle:UIAlertControllerStyleAlert];
-        }
-        [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
-        [self presentViewController:alertController animated:YES completion:nil];
-    }];
+    /*
+     PFObject *studentSubjectsObject = [PFObject objectWithClassName:@"StudentSubjects"];
+     studentSubjectsObject[@"subjectName"]       = subjectName;
+     studentSubjectsObject[@"subjectID"]         = subjectID;
+     //Get Student Data --> ID, Username and Full Name
+     [self setStudentData];
+     studentSubjectsObject[@"studentID"]         = _studentID;
+     studentSubjectsObject[@"studentUserName"]   = _studentUsername;
+     studentSubjectsObject[@"studentName"]       = _studentName;
+     //Save data
+     [studentSubjectsObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+     UIAlertController *alertController;
+     if (succeeded) {
+     [self loadSubjects];
+     alertController = [UIAlertController alertControllerWithTitle:@"Add New Subject" message:@"Subject has been added sussuccefully." preferredStyle:UIAlertControllerStyleAlert];
+     } else {
+     alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Try again!!" preferredStyle:UIAlertControllerStyleAlert];
+     }
+     [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+     [self presentViewController:alertController animated:YES completion:nil];
+     }];
+     */
 }
 
 - (void)setStudentData {
-    _studentID          = [ManageLayerViewController getCurrentUserID];
-    _studentName        = [ManageLayerViewController getCurrentFullName];
-    _studentUsername    = [ManageLayerViewController getCurrentUserName];
+    //    _studentID          = [ManageLayerViewController getCurrentUserID];
+    //    _studentName        = [ManageLayerViewController getCurrentFullName];
+    //    _studentUsername    = [ManageLayerViewController getCurrentUserName];
 }
 
 /*
- Load Objects from Parse
+ *
+ *
+ **************Load Objects from Parse **************************
+ *
+ *
  */
-
 - (void)loadSubjects {
     [self activityLoadingwithLabel];
-    PFQuery *query = [PFQuery queryWithClassName:@"StudentSubjects"];
-    [self setStudentData];
-    [query whereKey:@"studentID" equalTo:_studentID];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            // Retrieved scores successfully
-            _subjectsNameMArray = [[NSMutableArray alloc] init];
-            _subjectsIDMArray   = [[NSMutableArray alloc] init];
-            for (PFObject *object in objects){
-                [_subjectsNameMArray addObject:object[@"subjectName"]];
-                [_subjectsIDMArray addObject:object[@"subjectID"]];
+    if ([ManageLayerViewController getDataParsingIsCurrentTeacher]){
+        //this is a teacher user
+        PFQuery *query = [PFQuery queryWithClassName:@"Subjects"];
+        [query whereKey:@"teacherUserName" equalTo:[ManageLayerViewController getDataParsingCurrentusername]];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                // Retrieved scores successfully
+                for (PFObject *object in objects){
+                    [subjectsMArray addObject:[[SubjectObject alloc] initWithObject:object]];
+                }
+                [self activityStopLoading];
+                [self.collectionView reloadData];
             }
-            [self activityStopLoading];
-            [self.collectionView reloadData];
-        }
-    }];
+        }];
+        
+    }else{
+        //this is a student user
+        PFQuery *query = [PFQuery queryWithClassName:@"StudentSubjects"];
+        [query whereKey:@"studentID" equalTo:[ManageLayerViewController getDataParsingCurrentuserID]];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *subObjects, NSError * error) {
+            if (!error){
+                for (PFObject *sObject in subObjects){
+                    [subjectsMArray addObject:[[SubjectObject alloc] initWithObject:sObject]];
+                }
+                [self activityStopLoading];
+                [self.collectionView reloadData];
+            }else{
+                [self activityStopLoading];
+            }
+            
+        }];
+
+//        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//            if (!error) {
+//                for (PFObject *object in objects){
+//                    [studentSubjectsMArray addObject:object[@"subjectID"]];
+//                }
+//                            }else{
+//                [self activityStopLoading];
+//            }
+//        }];
+        
+    }
 }
 @end

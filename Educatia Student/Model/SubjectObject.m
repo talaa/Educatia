@@ -15,8 +15,8 @@
     if (self){
         self.name = object[@"subjectName"];
         self.objectID = object.objectId;
-        self.teacherName = object[@""];
-        self.teacherUserName = object[@""];
+        self.teacherName = object[@"teacherFullName"];
+        self.teacherUserName = object[@"teacherUserName"];
         PFFile *logoFile = object[@"subjectLogo"];
         self.logo = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:logoFile.url]];
     }

@@ -11,12 +11,11 @@
 
 @interface SubjectObject : NSObject
 
-@property (strong, nonatomic) NSString *objectID;
-@property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSData *logo;
-@property (strong, nonatomic) NSString *teacherUserName;
-@property (strong, nonatomic) NSString *teacherName;
-
+@property (strong, nonatomic) NSString  *objectID;
+@property (strong, nonatomic) NSString  *name;
+@property (strong, nonatomic) NSData    *logo;
+@property (strong, nonatomic) NSString  *teacherUserName;
+@property (strong, nonatomic) NSString  *teacherName;
 
 - (instancetype)initWithObject:(PFObject *)object;
 
