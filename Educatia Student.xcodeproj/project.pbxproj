@@ -85,6 +85,10 @@
 		F56FBCDB1BD005D300ECDDA6 /* SubjectInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F56FBCDA1BD005D300ECDDA6 /* SubjectInfoViewController.m */; };
 		F5703B351BE22AC700703B73 /* StudentSubjects.m in Sources */ = {isa = PBXBuildFile; fileRef = F5703B341BE22AC700703B73 /* StudentSubjects.m */; settings = {ASSET_TAGS = (); }; };
 		F5703B391BE243FE00703B73 /* TabBarPagerHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5703B381BE243FE00703B73 /* TabBarPagerHolderViewController.m */; settings = {ASSET_TAGS = (); }; };
+		F5703B431BE270A300703B73 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5703B3C1BE270A300703B73 /* SVIndefiniteAnimatedView.m */; settings = {ASSET_TAGS = (); }; };
+		F5703B441BE270A300703B73 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5703B3E1BE270A300703B73 /* SVProgressHUD.bundle */; settings = {ASSET_TAGS = (); }; };
+		F5703B451BE270A300703B73 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F5703B401BE270A300703B73 /* SVProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
+		F5703B461BE270A300703B73 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F5703B421BE270A300703B73 /* SVRadialGradientLayer.m */; settings = {ASSET_TAGS = (); }; };
 		F58055611BDFE483000C8B74 /* CourseMaterialObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F58055601BDFE483000C8B74 /* CourseMaterialObject.m */; settings = {ASSET_TAGS = (); }; };
 		F589AC391BDA1C050085CB70 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F589AC361BDA1C050085CB70 /* Bolts.framework */; settings = {ASSET_TAGS = (); }; };
 		F589AC3A1BDA1C050085CB70 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F589AC371BDA1C050085CB70 /* Parse.framework */; settings = {ASSET_TAGS = (); }; };
@@ -274,6 +278,14 @@
 		F5703B341BE22AC700703B73 /* StudentSubjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentSubjects.m; sourceTree = "<group>"; };
 		F5703B371BE243FE00703B73 /* TabBarPagerHolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarPagerHolderViewController.h; sourceTree = "<group>"; };
 		F5703B381BE243FE00703B73 /* TabBarPagerHolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarPagerHolderViewController.m; sourceTree = "<group>"; };
+		F5703B3B1BE270A300703B73 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		F5703B3C1BE270A300703B73 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		F5703B3D1BE270A300703B73 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		F5703B3E1BE270A300703B73 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		F5703B3F1BE270A300703B73 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		F5703B401BE270A300703B73 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		F5703B411BE270A300703B73 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		F5703B421BE270A300703B73 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		F580555F1BDFE483000C8B74 /* CourseMaterialObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseMaterialObject.h; sourceTree = "<group>"; };
 		F58055601BDFE483000C8B74 /* CourseMaterialObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseMaterialObject.m; sourceTree = "<group>"; };
 		F589AC361BDA1C050085CB70 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -504,6 +516,7 @@
 		04A2AB1C1B9C6CBD009B2C60 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				F5703B3A1BE270A300703B73 /* SVProgressHUD */,
 				F54E13411BD8FA1D00D84FCB /* HSDatePickerViewController */,
 				F539D0131BC5669400F05BDD /* Animations */,
 				F549D3601BBD3144000A9E79 /* CocoaAsyncSocket */,
@@ -836,6 +849,21 @@
 			path = TabBarPagerHolder;
 			sourceTree = "<group>";
 		};
+		F5703B3A1BE270A300703B73 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				F5703B3B1BE270A300703B73 /* SVIndefiniteAnimatedView.h */,
+				F5703B3C1BE270A300703B73 /* SVIndefiniteAnimatedView.m */,
+				F5703B3D1BE270A300703B73 /* SVProgressHUD-Prefix.pch */,
+				F5703B3E1BE270A300703B73 /* SVProgressHUD.bundle */,
+				F5703B3F1BE270A300703B73 /* SVProgressHUD.h */,
+				F5703B401BE270A300703B73 /* SVProgressHUD.m */,
+				F5703B411BE270A300703B73 /* SVRadialGradientLayer.h */,
+				F5703B421BE270A300703B73 /* SVRadialGradientLayer.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		F589AC351BDA1C050085CB70 /* ParseSDK_1.9.0 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1086,6 +1114,7 @@
 				F5F9CA7A1BA449D3008E1715 /* Reader-Mark-Y.png in Resources */,
 				F5F9CA761BA449D3008E1715 /* Reader-Export.png in Resources */,
 				F5F9CA7E1BA449D3008E1715 /* Reader-Thumbs.png in Resources */,
+				F5703B441BE270A300703B73 /* SVProgressHUD.bundle in Resources */,
 				0453AEED1B9861FB00CD3A53 /* Main.storyboard in Resources */,
 				0453AEF31B98655C00CD3A53 /* welcome_background@2x.png in Resources */,
 				F5A973011BCFD50E00C91D1A /* 32x-CloseMark.png in Resources */,
@@ -1142,8 +1171,10 @@
 				F5F9CA571BA444EB008E1715 /* ReaderThumbsView.m in Sources */,
 				F5F9CA531BA444EB008E1715 /* ReaderThumbFetch.m in Sources */,
 				F515F4F51BE10E1A00810B90 /* SubjectsCollectionViewController.m in Sources */,
+				F5703B451BE270A300703B73 /* SVProgressHUD.m in Sources */,
 				F5F9CA551BA444EB008E1715 /* ReaderThumbRender.m in Sources */,
 				F549D35E1BBD3127000A9E79 /* NHNetworkClock.m in Sources */,
+				F5703B431BE270A300703B73 /* SVIndefiniteAnimatedView.m in Sources */,
 				F5F9CA591BA444EB008E1715 /* ReaderViewController.m in Sources */,
 				F5F9CA4A1BA444EB008E1715 /* ReaderConstants.m in Sources */,
 				F5F9CA491BA444EB008E1715 /* CGPDFDocument.m in Sources */,
@@ -1166,6 +1197,7 @@
 				F549D35D1BBD3127000A9E79 /* NHNetAssociation.m in Sources */,
 				F5A972EF1BCFB7EA00C91D1A /* ChatViewController.m in Sources */,
 				F5F9CA511BA444EB008E1715 /* ReaderMainToolbar.m in Sources */,
+				F5703B461BE270A300703B73 /* SVRadialGradientLayer.m in Sources */,
 				F507E5DE1B9F19120066283F /* ProfileViewController.m in Sources */,
 				F5F9CA581BA444EB008E1715 /* ReaderThumbView.m in Sources */,
 				F5F9CA4D1BA444EB008E1715 /* ReaderContentView.m in Sources */,

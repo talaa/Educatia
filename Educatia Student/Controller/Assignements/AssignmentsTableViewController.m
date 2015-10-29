@@ -15,13 +15,17 @@
 #import "ReaderViewController.h"
 #import "ThumbnailPDF.h"
 #import "AssignmentObject.h"
+#import "SVProgressHUD.h"
+
 
 @interface AssignmentsTableViewController () <UIDocumentPickerDelegate,HSDatePickerViewControllerDelegate,ReaderViewControllerDelegate>
 {
     NSMutableArray      *assignmentsMArray;
     NSOperationQueue    *operationQueue;
     NSOperationQueue    *mainQueue;
+    bool                isLoadingObjectsFinished;
 }
+
 @property (strong, nonatomic) NSData *documentPickerselectedData;
 
 @property (strong, nonatomic) NSDate *deadLineDate;
@@ -35,6 +39,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    isLoadingObjectsFinished = FALSE;
+    
     operationQueue      = [[NSOperationQueue alloc] init];
     mainQueue           = [NSOperationQueue mainQueue];
     assignmentsMArray   = [NSMutableArray new];
@@ -48,7 +54,17 @@
     [self loadAssignmentsObjects];
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    if (isLoadingObjectsFinished){
+        [SVProgressHUD dismiss];
+    }else{
+        [SVProgressHUD showWithStatus:@"Loading..."];
+    }
+}
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [SVProgressHUD dismiss];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -388,6 +404,7 @@
  *
  */
 - (void)loadAssignmentsObjects {
+    [SVProgressHUD showWithStatus:@"Loading..."];
     PFQuery *query = [PFQuery queryWithClassName:@"Assignement"];
     NSString *subjID = [ManageLayerViewController getDataParsingSubjectID];
     [query whereKey:@"subjectID" equalTo:subjID];
@@ -406,9 +423,12 @@
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                     // Main thread work (UI usually)
                     [self.tableView reloadData];
+                    isLoadingObjectsFinished = TRUE;
+                    [SVProgressHUD dismiss];
                 }];
             }];
         } else {
+            [SVProgressHUD dismiss];
             
         }
     }];

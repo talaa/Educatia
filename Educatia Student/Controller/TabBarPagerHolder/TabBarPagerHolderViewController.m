@@ -9,6 +9,7 @@
 #import "TabBarPagerHolderViewController.h"
 #import "DataParsing.h"
 #import "ManageLayerViewController.h"
+#import "SVProgressHUD.h"
 
 @interface TabBarPagerHolderViewController ()
 {
@@ -124,5 +125,6 @@
 - (IBAction)dismissPressed:(id)sender {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 @end
