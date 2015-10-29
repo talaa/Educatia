@@ -129,12 +129,73 @@ static NSString * const reuseIdentifier = @"SubjectCell";
 - (IBAction)addNewSubjectPressed:(id)sender {
     if ([ManageLayerViewController getDataParsingIsCurrentTeacher]){
         //this is a teacher user
+        [self teacherAddNewSubjectAlertController];
     }else {
         //this is a student user
         [self studentPickUpSubjectAlertController];
     }
     
 }
+
+/*
+ *
+ ************ Teacher Add New Subject AlertController
+ *
+ */
+- (void)teacherAddNewSubjectAlertController{
+    
+    UIAlertController * alertController=   [UIAlertController
+                                            alertControllerWithTitle:@"New Subject"
+                                            message:@"Enter New Subject Name"
+                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        //Do Some action here ---> OK
+        UITextField *subjectNameTextField = alertController.textFields.firstObject;
+        
+        //start ActivityIndicator
+        //[self activityLoadingwithLabel];
+        
+        if (subjectNameTextField.text.length > 0) {
+            PFObject *subject = [PFObject objectWithClassName:@"Subjects"];
+            
+            subject[@"subjectName"]     = subjectNameTextField.text;
+            subject[@"teacherUserName"] = [ManageLayerViewController getDataParsingCurrentusername];
+            subject[@"teacherFullName"] = [ManageLayerViewController getDataParsingCurrentName];
+            
+            [subject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                //Stop ActivityIndicator
+                [self activityStopLoading];
+                if (succeeded) {
+                    // The object has been saved.
+                    [self activityCompletedSuccessfully];
+                    //After add then reload collectionView
+                    [self loadSubjects];
+                } else {
+                    // There was a problem, check error.description
+                    [self activityError];
+                }
+            }];
+        }else {
+            [self activityError];
+        }
+    }];
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive
+                                                   handler:^(UIAlertAction * action) {
+                                                       [alertController dismissViewControllerAnimated:YES completion:nil];
+                                                   }];
+    
+    
+    [alertController addAction:ok];
+    [alertController addAction:cancel];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField* textField) {
+        textField.placeholder = @"Subject Name";
+    }];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 
 
 /*
@@ -164,8 +225,7 @@ static NSString * const reuseIdentifier = @"SubjectCell";
                     NSLog(@"Successfully picked up an exit subject.");
                     for (PFObject *object in objects) {
                         //save StudentSubjects table by subject ID and subject Name
-                        [self saveStudentSubjectsbySubjectID:object[@"objectId"] andSubjectName:object[@"subjectName"]];
-                        break;
+                        [self saveStudentSubjectsbySubjectID:object.objectId andSubjectName:object[@"subjectName"]];
                     }
                 } else {
                     // Log details of the failure
@@ -240,7 +300,7 @@ static NSString * const reuseIdentifier = @"SubjectCell";
     //Save data
     [studentSubjectsObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         UIAlertController *alertController;
-        if (succeeded) {
+        if (!error) {
             [self loadSubjects];
             alertController = [UIAlertController alertControllerWithTitle:@"Add New Subject" message:@"Subject has been added sussuccefully." preferredStyle:UIAlertControllerStyleAlert];
         } else {
