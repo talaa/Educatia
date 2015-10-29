@@ -32,18 +32,26 @@
     DataParsing *obj        = [DataParsing getInstance];
     obj.subjectName         = self.subjectName;
     obj.subjectID           = self.subjectID;
-    obj.currentUserName     = [ManageLayerViewController getCurrentFullName];
-    obj.currentUseruserID   = [ManageLayerViewController getCurrentUserID];
-    obj.currentUserusername = [ManageLayerViewController getCurrentUserName];
-    obj.isCurrentTeacher    = [ManageLayerViewController isCurrentUserisTeacher];
     
-    titlesArray = @[@"Course Materials",@"News",@"Grades",@"Assignements",@"Chat",@"Students"];
-    viewControllersArray = @[@"CourseMaterialsTableViewController",
-                             @"NewsViewController",
-                             @"GradesViewController",
-                             @"AssignmentsTableViewController",
-                             @"ChatViewController",
-                             @"StudentsViewController"];
+    if ([ManageLayerViewController getDataParsingIsCurrentTeacher]){
+        //this is a teacher user
+        titlesArray = @[@"Assignments",@"Course Materials",
+                        //@"News",@"Grades",@"Assignements",@"Chat",
+                        @"Subject Info"];
+        viewControllersArray = @[@"AssignmentsTableViewController",@"CourseMaterialsTableViewController",
+                                 //@"NewsViewController",@"GradesViewController",@"AssignementsViewController",@"ChatViewController",
+                                 @"SubjectInfoViewController"];
+    }else {
+        //this is a student user
+        titlesArray = @[@"Course Materials",@"News",@"Grades",@"Assignements",@"Chat",@"Students"];
+        viewControllersArray = @[@"CourseMaterialsTableViewController",
+                                 @"NewsViewController",
+                                 @"GradesViewController",
+                                 @"AssignmentsTableViewController",
+                                 @"ChatViewController",
+                                 @"StudentsViewController"];
+    }
+    
     
     [self showTabsView];
 }
@@ -69,14 +77,14 @@
 
 #pragma mark - Tab Pager Data Source
 - (NSInteger)numberOfViewControllers {
-    return 6;
+    return [viewControllersArray count];
 }
 
 #pragma mark - PagerMenu
 
 -(void)showTabsView{
     controllerArray = [NSMutableArray array];
-    for (int i=0 ; i< 6 ; i++){
+    for (int i=0 ; i< [viewControllersArray count] ; i++){
         UIViewController *viewController =  [[self storyboard] instantiateViewControllerWithIdentifier:[viewControllersArray objectAtIndex:i]];
         viewController.title = [titlesArray objectAtIndex:i];
         [controllerArray addObject:viewController];

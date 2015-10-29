@@ -15,20 +15,13 @@
 #import <Parse/Parse.h>
 #import "SubjectObject.h"
 #import "StudentSubjects.h"
+#import "DataParsing.h"
 
 @interface SubjectsCollectionViewController ()
 {
     NSMutableArray *subjectsMArray;
     NSMutableArray *studentSubjectsMArray;
 }
-
-//@property (strong, nonatomic) NSString *subjectName;
-//@property (strong, nonatomic) NSString *studentName;
-//@property (strong, nonatomic) NSString *studentUsername;
-//@property (strong, nonatomic) NSString *studentID;
-//@property (strong, nonatomic) NSMutableArray *subjectsNameMArray;
-//@property (strong, nonatomic) NSMutableArray *subjectsIDMArray;
-
 @end
 
 @implementation SubjectsCollectionViewController
@@ -134,68 +127,75 @@ static NSString * const reuseIdentifier = @"SubjectCell";
  */
 
 - (IBAction)addNewSubjectPressed:(id)sender {
-    //[self presentAlretController];
+    if ([ManageLayerViewController getDataParsingIsCurrentTeacher]){
+        //this is a teacher user
+    }else {
+        //this is a student user
+        [self studentPickUpSubjectAlertController];
+    }
+    
 }
 
+
 /*
- UIAlertController
+ *
+ ************* Student PickUp Subject AlertController ****************
+ *
  */
-/*
- - (void)presentAlretController {
- UIAlertController * alertController=   [UIAlertController
- alertControllerWithTitle:@"New Subject"
- message:@"Enter Subject ID"
- preferredStyle:UIAlertControllerStyleAlert];
- 
- UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
- //Do Some action here ---> OK
- UITextField *subjectIDTextField = alertController.textFields.firstObject;
- //start ActivityIndicator
- //[self activityLoadingwithLabel];
- 
- if (subjectIDTextField.text.length > 9) {
- //search by SubjectID to get subjectName
- PFQuery *query = [PFQuery queryWithClassName:@"Subjects"];
- [query whereKey:@"objectId" equalTo:subjectIDTextField.text];
- [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
- if (!error && ([objects count]>0)) {
- // The find succeeded.
- NSLog(@"Successfully retrieved scores.");
- // Do something with the found objects To get SubjectName
- for (PFObject *object in objects) {
- _subjectName = object[@"subjectName"];
- }
- //save StudentSubjects table by subject ID and subject Name
- [self saveStudentSubjectsbySubjectID:subjectIDTextField.text andSubjectName:_subjectName];
- } else {
- // Log details of the failure
- UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Incorrect Subject ID.Try again." preferredStyle:UIAlertControllerStyleAlert];
- [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
- [self presentViewController:alertController animated:YES completion:nil];
- }
- }];
- }else {
- UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Add New Subject" message:@"You have entered ID less than the correct one!" preferredStyle:UIAlertControllerStyleAlert];
- [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
- [self presentViewController:alertController animated:YES completion:nil];
- }
- }];
- UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive
- handler:^(UIAlertAction * action) {
- [alertController dismissViewControllerAnimated:YES completion:nil];
- }];
- 
- 
- [alertController addAction:ok];
- [alertController addAction:cancel];
- 
- [alertController addTextFieldWithConfigurationHandler:^(UITextField* textField) {
- textField.placeholder = @"Subject ID";
- }];
- 
- [self presentViewController:alertController animated:YES completion:nil];
- }
- */
+- (void)studentPickUpSubjectAlertController {
+    UIAlertController * alertController=   [UIAlertController
+                                            alertControllerWithTitle:@"New Subject"
+                                            message:@"Enter Subject ID"
+                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        //Do Some action here ---> OK
+        UITextField *subjectIDTextField = alertController.textFields.firstObject;
+        //start ActivityIndicator
+        //[self activityLoadingwithLabel];
+        
+        if (subjectIDTextField.text.length > 9) {
+            //search by SubjectID to get subjectName
+            PFQuery *query = [PFQuery queryWithClassName:@"Subjects"];
+            [query whereKey:@"objectId" equalTo:subjectIDTextField.text];
+            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                if (!error && ([objects count]>0)) {
+                    // The find succeeded.
+                    NSLog(@"Successfully picked up an exit subject.");
+                    for (PFObject *object in objects) {
+                        //save StudentSubjects table by subject ID and subject Name
+                        [self saveStudentSubjectsbySubjectID:object[@"objectId"] andSubjectName:object[@"subjectName"]];
+                        break;
+                    }
+                } else {
+                    // Log details of the failure
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Incorrect Subject ID.Try again." preferredStyle:UIAlertControllerStyleAlert];
+                    [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+                    [self presentViewController:alertController animated:YES completion:nil];
+                }
+            }];
+        }else {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Add New Subject" message:@"You have entered ID less than the correct one!" preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+    }];
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive
+                                                   handler:^(UIAlertAction * action) {
+                                                       [alertController dismissViewControllerAnimated:YES completion:nil];
+                                                   }];
+    
+    
+    [alertController addAction:ok];
+    [alertController addAction:cancel];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField* textField) {
+        textField.placeholder = @"Subject ID";
+    }];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 /*
  ShowActivity Methos
  */
@@ -219,39 +219,39 @@ static NSString * const reuseIdentifier = @"SubjectCell";
 }
 
 /*
+ *
+ *
  ******* Save Student Sujects on Parse StudentSubjects table *****************
+ *
+ *
  */
-
 - (void)saveStudentSubjectsbySubjectID:(NSString*)subjectID andSubjectName:(NSString*)subjectName {
-    /*
-     PFObject *studentSubjectsObject = [PFObject objectWithClassName:@"StudentSubjects"];
-     studentSubjectsObject[@"subjectName"]       = subjectName;
-     studentSubjectsObject[@"subjectID"]         = subjectID;
-     //Get Student Data --> ID, Username and Full Name
-     [self setStudentData];
-     studentSubjectsObject[@"studentID"]         = _studentID;
-     studentSubjectsObject[@"studentUserName"]   = _studentUsername;
-     studentSubjectsObject[@"studentName"]       = _studentName;
-     //Save data
-     [studentSubjectsObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-     UIAlertController *alertController;
-     if (succeeded) {
-     [self loadSubjects];
-     alertController = [UIAlertController alertControllerWithTitle:@"Add New Subject" message:@"Subject has been added sussuccefully." preferredStyle:UIAlertControllerStyleAlert];
-     } else {
-     alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Try again!!" preferredStyle:UIAlertControllerStyleAlert];
-     }
-     [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
-     [self presentViewController:alertController animated:YES completion:nil];
-     }];
-     */
+    PFObject *studentSubjectsObject = [PFObject objectWithClassName:@"StudentSubjects"];
+    
+    studentSubjectsObject[@"subjectName"]       = subjectName;
+    studentSubjectsObject[@"subjectID"]         = subjectID;
+    
+    //Get Student Data --> ID, Username and Full Name
+    DataParsing *dataParsingObj = [DataParsing getInstance];
+    studentSubjectsObject[@"studentID"]         = dataParsingObj.currentUseruserID;
+    studentSubjectsObject[@"studentUserName"]   = dataParsingObj.currentUserusername;
+    studentSubjectsObject[@"studentName"]       = dataParsingObj.currentUserName;
+    
+    //Save data
+    [studentSubjectsObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        UIAlertController *alertController;
+        if (succeeded) {
+            [self loadSubjects];
+            alertController = [UIAlertController alertControllerWithTitle:@"Add New Subject" message:@"Subject has been added sussuccefully." preferredStyle:UIAlertControllerStyleAlert];
+        } else {
+            alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Try again!!" preferredStyle:UIAlertControllerStyleAlert];
+        }
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }];
+    
 }
 
-- (void)setStudentData {
-    //    _studentID          = [ManageLayerViewController getCurrentUserID];
-    //    _studentName        = [ManageLayerViewController getCurrentFullName];
-    //    _studentUsername    = [ManageLayerViewController getCurrentUserName];
-}
 
 /*
  *
@@ -262,6 +262,7 @@ static NSString * const reuseIdentifier = @"SubjectCell";
  */
 - (void)loadSubjects {
     [self activityLoadingwithLabel];
+    [subjectsMArray removeAllObjects];
     if ([ManageLayerViewController getDataParsingIsCurrentTeacher]){
         //this is a teacher user
         PFQuery *query = [PFQuery queryWithClassName:@"Subjects"];
@@ -293,17 +294,6 @@ static NSString * const reuseIdentifier = @"SubjectCell";
             }
             
         }];
-
-//        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//            if (!error) {
-//                for (PFObject *object in objects){
-//                    [studentSubjectsMArray addObject:object[@"subjectID"]];
-//                }
-//                            }else{
-//                [self activityStopLoading];
-//            }
-//        }];
-        
     }
 }
 @end
