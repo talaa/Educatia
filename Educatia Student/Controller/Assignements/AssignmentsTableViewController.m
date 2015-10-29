@@ -47,12 +47,7 @@
     
     [self loadAssignmentsObjects];
 }
-- (void)viewDidAppear:(BOOL)animated{
-}
 
--(void)requestData{
-    [self loadAssignmentsObjects];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -394,14 +389,14 @@
  */
 - (void)loadAssignmentsObjects {
     PFQuery *query = [PFQuery queryWithClassName:@"Assignement"];
-    [query whereKey:@"subjectID" equalTo:[ManageLayerViewController getDataParsingSubjectID]];
+    NSString *subjID = [ManageLayerViewController getDataParsingSubjectID];
+    [query whereKey:@"subjectID" equalTo:subjID];
     if ([ManageLayerViewController isCurrentUserisTeacher]){
         [query whereKey:@"teacherID" equalTo:[ManageLayerViewController getCurrentUserID]];
     }
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             NSLog(@"\nStart init nsmutable arry Assignment\n");
-            
             [operationQueue addOperationWithBlock:^{
                 [assignmentsMArray removeAllObjects];
                 // Perform long-running tasks without blocking main thread
@@ -413,10 +408,6 @@
                     [self.tableView reloadData];
                 }];
             }];
-
-            
-            
-            
         } else {
             
         }

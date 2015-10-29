@@ -345,7 +345,10 @@ static NSString * const reuseIdentifier = @"SubjectCell";
         [query findObjectsInBackgroundWithBlock:^(NSArray *subObjects, NSError * error) {
             if (!error){
                 for (PFObject *sObject in subObjects){
-                    [subjectsMArray addObject:[[SubjectObject alloc] initWithObject:sObject]];
+                    SubjectObject *subObject = [[SubjectObject alloc] init];
+                    subObject.name = sObject[@"subjectName"];
+                    subObject.objectID = sObject[@"subjectID"];
+                    [subjectsMArray addObject:subObject];
                 }
                 [self activityStopLoading];
                 [self.collectionView reloadData];

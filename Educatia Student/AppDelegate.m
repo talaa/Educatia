@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
-#import "TabBarHolderController.h"
 #import "NHNetworkTime.h"
 #import "ManageLayerViewController.h" 
 

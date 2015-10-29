@@ -18,5 +18,4 @@
 @property (strong, nonatomic) NSString  *teacherName;
 
 - (instancetype)initWithObject:(PFObject *)object;
-
 @end
