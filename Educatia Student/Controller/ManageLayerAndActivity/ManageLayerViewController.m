@@ -7,8 +7,6 @@
 //
 
 #import "ManageLayerViewController.h"
-#import "RNActivityView.h"
-#import "UIView+RNActivityView.h"
 #import "DataParsing.h"
 
 @interface ManageLayerViewController ()

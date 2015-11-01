@@ -8,13 +8,13 @@
 
 #import "ChatViewController.h"
 #import "ChatTableViewController.h"
+#import "MBProgressHUD.h"
 #import <Parse/Parse.h>
-#import "RNActivityView.h"
-#import "UIView+RNActivityView.h"
 
-@interface ChatViewController () <UIScrollViewDelegate, UITextFieldDelegate>
+@interface ChatViewController () <UIScrollViewDelegate, UITextFieldDelegate,MBProgressHUDDelegate>
 {
     ChatTableViewController *chatTVC;
+    MBProgressHUD *HUD;
 }
 
 @end
@@ -26,7 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     if (chatBOOL == NO){
         
     } else {
@@ -59,14 +58,17 @@
     }
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
     if (chatBOOL == NO){
         //Loading Activity
-        
         [self myProgressTask];
     }else{
         
     }
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    //[SVProgressHUD dismiss];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,7 +97,9 @@
                 [push sendPushInBackground];
             } else {
                 // There was a problem, check error.description
-                [[[UIAlertView alloc] initWithTitle:@"Education Student" message:@"An error has been happened" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Educatia Student" message:@"An error has been happened" preferredStyle:UIAlertControllerStyleAlert];
+                [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+                [self presentViewController:alertController animated:YES completion:nil];
             }
         }];
     }
@@ -168,17 +172,23 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
 #pragma mark - Progress
 
 - (void)myProgressTask {
-    [self.view showActivityViewWithLabel:@"Coming Soon on next version"];
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.dimBackground = YES;
+    HUD.delegate = self;
+    HUD.labelText = @"Chat is Coming Soon...";
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+#pragma mark - MBProgressHUDDelegate
+
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+    // Remove HUD from screen when the HUD was hidded
+    [HUD removeFromSuperview];
+    HUD = nil;
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+}
+
 
 @end

@@ -48,8 +48,6 @@
 		F507E5DA1B9F15C00066283F /* icon_Summary@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5CE1B9F15C00066283F /* icon_Summary@3x.png */; };
 		F507E5DE1B9F19120066283F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F507E5DD1B9F19120066283F /* ProfileViewController.m */; };
 		F50D6D4E1BA5B49300BF6309 /* ThumbnailPDF.m in Sources */ = {isa = PBXBuildFile; fileRef = F50D6D4D1BA5B49300BF6309 /* ThumbnailPDF.m */; };
-		F512D7011BA83FE500F3E252 /* RNActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = F512D6FE1BA83FE500F3E252 /* RNActivityView.m */; };
-		F512D7021BA83FE500F3E252 /* UIView+RNActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = F512D7001BA83FE500F3E252 /* UIView+RNActivityView.m */; };
 		F515F4F51BE10E1A00810B90 /* SubjectsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F515F4F41BE10E1A00810B90 /* SubjectsCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
 		F51746B11BAAE940003B026A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51746B01BAAE940003B026A /* MobileCoreServices.framework */; };
 		F533BFB61BBC06B8008706A0 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = F533BFB41BBC06B8008706A0 /* 37x-Checkmark.png */; };
@@ -102,6 +100,7 @@
 		F5A973021BCFD50E00C91D1A /* 32x-CloseMark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A973001BCFD50E00C91D1A /* 32x-CloseMark@2x.png */; };
 		F5CD216F1BE65067004039DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5CD216E1BE65067004039DE /* Foundation.framework */; };
 		F5CD21711BE65072004039DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5CD21701BE65072004039DE /* UIKit.framework */; };
+		F5CD21791BE66D9B004039DE /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CD21781BE66D9A004039DE /* MBProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
 		F5F0B6DD1BE0FEC200AD5A31 /* UserTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F0B6DC1BE0FEC200AD5A31 /* UserTabBarController.m */; settings = {ASSET_TAGS = (); }; };
 		F5F9CA1D1BA4434A008E1715 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F9CA1C1BA4434A008E1715 /* ImageIO.framework */; };
 		F5F9CA1F1BA44355008E1715 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F9CA1E1BA44355008E1715 /* MessageUI.framework */; };
@@ -208,10 +207,6 @@
 		F507E5DD1B9F19120066283F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		F50D6D4C1BA5B49300BF6309 /* ThumbnailPDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbnailPDF.h; sourceTree = "<group>"; };
 		F50D6D4D1BA5B49300BF6309 /* ThumbnailPDF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbnailPDF.m; sourceTree = "<group>"; };
-		F512D6FD1BA83FE500F3E252 /* RNActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNActivityView.h; sourceTree = "<group>"; };
-		F512D6FE1BA83FE500F3E252 /* RNActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNActivityView.m; sourceTree = "<group>"; };
-		F512D6FF1BA83FE500F3E252 /* UIView+RNActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RNActivityView.h"; sourceTree = "<group>"; };
-		F512D7001BA83FE500F3E252 /* UIView+RNActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RNActivityView.m"; sourceTree = "<group>"; };
 		F515F4F31BE10E1A00810B90 /* SubjectsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectsCollectionViewController.h; sourceTree = "<group>"; };
 		F515F4F41BE10E1A00810B90 /* SubjectsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectsCollectionViewController.m; sourceTree = "<group>"; };
 		F517469E1BAAAFC7003B026A /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
@@ -307,6 +302,8 @@
 		F5A973001BCFD50E00C91D1A /* 32x-CloseMark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "32x-CloseMark@2x.png"; sourceTree = "<group>"; };
 		F5CD216E1BE65067004039DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F5CD21701BE65072004039DE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F5CD21771BE66D9A004039DE /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		F5CD21781BE66D9A004039DE /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		F5F0B6DB1BE0FEC200AD5A31 /* UserTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTabBarController.h; sourceTree = "<group>"; };
 		F5F0B6DC1BE0FEC200AD5A31 /* UserTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTabBarController.m; sourceTree = "<group>"; };
 		F5F9CA1C1BA4434A008E1715 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -374,6 +371,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				693E692C1B876C2900009A84 /* QuartzCore.framework in Frameworks */,
 				693E692A1B876C2900009A84 /* CoreGraphics.framework in Frameworks */,
 				F5CD21711BE65072004039DE /* UIKit.framework in Frameworks */,
 				F5CD216F1BE65067004039DE /* Foundation.framework in Frameworks */,
@@ -387,7 +385,6 @@
 				F5F9CA1F1BA44355008E1715 /* MessageUI.framework in Frameworks */,
 				F5F9CA1D1BA4434A008E1715 /* ImageIO.framework in Frameworks */,
 				F589AC3B1BDA1C050085CB70 /* ParseUI.framework in Frameworks */,
-				693E692C1B876C2900009A84 /* QuartzCore.framework in Frameworks */,
 				693E69381B876C8B00009A84 /* libsqlite3.dylib in Frameworks */,
 				693E69361B876C7800009A84 /* libz.dylib in Frameworks */,
 				693E69301B876C4D00009A84 /* StoreKit.framework in Frameworks */,
@@ -522,13 +519,13 @@
 		04A2AB1C1B9C6CBD009B2C60 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				F5CD21761BE66D9A004039DE /* MBProgressHUD */,
 				F5703B3A1BE270A300703B73 /* SVProgressHUD */,
 				F54E13411BD8FA1D00D84FCB /* HSDatePickerViewController */,
 				F539D0131BC5669400F05BDD /* Animations */,
 				F549D3601BBD3144000A9E79 /* CocoaAsyncSocket */,
 				F549D3541BBD3127000A9E79 /* NHNetworkTime */,
 				F54A98081BBACC540073CF58 /* Vertigo */,
-				F512D6FC1BA83FE500F3E252 /* RNActivityView */,
 				F50D6D4B1BA5B49300BF6309 /* ThumbnailPDF */,
 				F5F9CA201BA444EB008E1715 /* PDFReader */,
 				F5055CD71BA1C00E00BB6547 /* PagerMenu */,
@@ -660,17 +657,6 @@
 				F50D6D4D1BA5B49300BF6309 /* ThumbnailPDF.m */,
 			);
 			path = ThumbnailPDF;
-			sourceTree = "<group>";
-		};
-		F512D6FC1BA83FE500F3E252 /* RNActivityView */ = {
-			isa = PBXGroup;
-			children = (
-				F512D6FD1BA83FE500F3E252 /* RNActivityView.h */,
-				F512D6FE1BA83FE500F3E252 /* RNActivityView.m */,
-				F512D6FF1BA83FE500F3E252 /* UIView+RNActivityView.h */,
-				F512D7001BA83FE500F3E252 /* UIView+RNActivityView.m */,
-			);
-			path = RNActivityView;
 			sourceTree = "<group>";
 		};
 		F515F4F21BE10E1A00810B90 /* SubjectsCollectionView */ = {
@@ -939,6 +925,15 @@
 			path = Students;
 			sourceTree = "<group>";
 		};
+		F5CD21761BE66D9A004039DE /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				F5CD21771BE66D9A004039DE /* MBProgressHUD.h */,
+				F5CD21781BE66D9A004039DE /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		F5F0B6DA1BE0FE5600AD5A31 /* SubjectTabBarHolder */ = {
 			isa = PBXGroup;
 			children = (
@@ -1181,6 +1176,7 @@
 				F515F4F51BE10E1A00810B90 /* SubjectsCollectionViewController.m in Sources */,
 				F5703B451BE270A300703B73 /* SVProgressHUD.m in Sources */,
 				F5F9CA551BA444EB008E1715 /* ReaderThumbRender.m in Sources */,
+				F5CD21791BE66D9B004039DE /* MBProgressHUD.m in Sources */,
 				F549D35E1BBD3127000A9E79 /* NHNetworkClock.m in Sources */,
 				F5703B431BE270A300703B73 /* SVIndefiniteAnimatedView.m in Sources */,
 				F5F9CA591BA444EB008E1715 /* ReaderViewController.m in Sources */,
@@ -1212,12 +1208,10 @@
 				F549D3701BBD3144000A9E79 /* GCDAsyncUdpSocket.m in Sources */,
 				F53CD8961BD4F18700DF1C28 /* SubjectCollectionViewCell.m in Sources */,
 				F549D35F1BBD3127000A9E79 /* NSDate+NetworkClock.m in Sources */,
-				F512D7011BA83FE500F3E252 /* RNActivityView.m in Sources */,
 				69FE08AD1B84E51500C81ABC /* main.m in Sources */,
 				0453AEF11B98647E00CD3A53 /* LoginViewController.m in Sources */,
 				F53408391BD010B2000B545B /* CourseMaterialsTableViewController.m in Sources */,
 				F5A972F11BCFB7EA00C91D1A /* GradesViewController.m in Sources */,
-				F512D7021BA83FE500F3E252 /* UIView+RNActivityView.m in Sources */,
 				F5A972EE1BCFB7EA00C91D1A /* ChatTableViewController.m in Sources */,
 				F5F0B6DD1BE0FEC200AD5A31 /* UserTabBarController.m in Sources */,
 				F539D0161BC5669400F05BDD /* CHTransitionAnimationController.m in Sources */,
