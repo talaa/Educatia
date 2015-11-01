@@ -80,7 +80,6 @@
 		F56A429D1BE0C7FA0066CEC1 /* AssignmentObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A429C1BE0C7FA0066CEC1 /* AssignmentObject.m */; settings = {ASSET_TAGS = (); }; };
 		F56A42A01BE0C8230066CEC1 /* UserObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A429F1BE0C8230066CEC1 /* UserObject.m */; settings = {ASSET_TAGS = (); }; };
 		F56A42A31BE0D8600066CEC1 /* SubjectObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A42A21BE0D8600066CEC1 /* SubjectObject.m */; settings = {ASSET_TAGS = (); }; };
-		F56FBCDB1BD005D300ECDDA6 /* SubjectInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F56FBCDA1BD005D300ECDDA6 /* SubjectInfoViewController.m */; };
 		F5703B351BE22AC700703B73 /* StudentSubjects.m in Sources */ = {isa = PBXBuildFile; fileRef = F5703B341BE22AC700703B73 /* StudentSubjects.m */; settings = {ASSET_TAGS = (); }; };
 		F5703B391BE243FE00703B73 /* TabBarPagerHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5703B381BE243FE00703B73 /* TabBarPagerHolderViewController.m */; settings = {ASSET_TAGS = (); }; };
 		F5703B431BE270A300703B73 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5703B3C1BE270A300703B73 /* SVIndefiniteAnimatedView.m */; settings = {ASSET_TAGS = (); }; };
@@ -101,6 +100,7 @@
 		F5CD216F1BE65067004039DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5CD216E1BE65067004039DE /* Foundation.framework */; };
 		F5CD21711BE65072004039DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5CD21701BE65072004039DE /* UIKit.framework */; };
 		F5CD21791BE66D9B004039DE /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CD21781BE66D9A004039DE /* MBProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
+		F5CD217D1BE67B9F004039DE /* SubjectInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CD217C1BE67B9F004039DE /* SubjectInfoViewController.m */; settings = {ASSET_TAGS = (); }; };
 		F5F0B6DD1BE0FEC200AD5A31 /* UserTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F0B6DC1BE0FEC200AD5A31 /* UserTabBarController.m */; settings = {ASSET_TAGS = (); }; };
 		F5F9CA1D1BA4434A008E1715 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F9CA1C1BA4434A008E1715 /* ImageIO.framework */; };
 		F5F9CA1F1BA44355008E1715 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F9CA1E1BA44355008E1715 /* MessageUI.framework */; };
@@ -268,8 +268,6 @@
 		F56A429F1BE0C8230066CEC1 /* UserObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserObject.m; sourceTree = "<group>"; };
 		F56A42A11BE0D8600066CEC1 /* SubjectObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectObject.h; sourceTree = "<group>"; };
 		F56A42A21BE0D8600066CEC1 /* SubjectObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectObject.m; sourceTree = "<group>"; };
-		F56FBCD91BD005D300ECDDA6 /* SubjectInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectInfoViewController.h; sourceTree = "<group>"; };
-		F56FBCDA1BD005D300ECDDA6 /* SubjectInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectInfoViewController.m; sourceTree = "<group>"; };
 		F56FBCDC1BD00D0600ECDDA6 /* Educatia Student.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Educatia Student.entitlements"; sourceTree = "<group>"; };
 		F5703B331BE22AC700703B73 /* StudentSubjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentSubjects.h; sourceTree = "<group>"; };
 		F5703B341BE22AC700703B73 /* StudentSubjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentSubjects.m; sourceTree = "<group>"; };
@@ -304,6 +302,8 @@
 		F5CD21701BE65072004039DE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F5CD21771BE66D9A004039DE /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		F5CD21781BE66D9A004039DE /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		F5CD217B1BE67B9F004039DE /* SubjectInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectInfoViewController.h; sourceTree = "<group>"; };
+		F5CD217C1BE67B9F004039DE /* SubjectInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectInfoViewController.m; sourceTree = "<group>"; };
 		F5F0B6DB1BE0FEC200AD5A31 /* UserTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTabBarController.h; sourceTree = "<group>"; };
 		F5F0B6DC1BE0FEC200AD5A31 /* UserTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTabBarController.m; sourceTree = "<group>"; };
 		F5F9CA1C1BA4434A008E1715 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -414,6 +414,7 @@
 		0453AEDA1B9861FB00CD3A53 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F5CD217A1BE67B9F004039DE /* SubjectInfo */,
 				F5703B361BE243FE00703B73 /* TabBarPagerHolder */,
 				F515F4F21BE10E1A00810B90 /* SubjectsCollectionView */,
 				F5F0B6DA1BE0FE5600AD5A31 /* SubjectTabBarHolder */,
@@ -422,7 +423,6 @@
 				F534083A1BD0156E000B545B /* ManageLayerAndActivity */,
 				F53408361BD0108D000B545B /* Course Materials */,
 				F5A972C51BCFB72400C91D1A /* Student */,
-				F5A972C61BCFB72400C91D1A /* Teacher */,
 				F539D00F1BC55DB700F05BDD /* Main */,
 				F507E5DB1B9F18EA0066283F /* Profile */,
 				04A2AB081B9C3BD5009B2C60 /* Forgot Password */,
@@ -825,15 +825,6 @@
 			path = Assignements;
 			sourceTree = "<group>";
 		};
-		F56FBCD81BD005B700ECDDA6 /* SubjectInfo */ = {
-			isa = PBXGroup;
-			children = (
-				F56FBCD91BD005D300ECDDA6 /* SubjectInfoViewController.h */,
-				F56FBCDA1BD005D300ECDDA6 /* SubjectInfoViewController.m */,
-			);
-			path = SubjectInfo;
-			sourceTree = "<group>";
-		};
 		F5703B361BE243FE00703B73 /* TabBarPagerHolder */ = {
 			isa = PBXGroup;
 			children = (
@@ -877,14 +868,6 @@
 				F5A972DE1BCFB7EA00C91D1A /* Students */,
 			);
 			path = Student;
-			sourceTree = "<group>";
-		};
-		F5A972C61BCFB72400C91D1A /* Teacher */ = {
-			isa = PBXGroup;
-			children = (
-				F56FBCD81BD005B700ECDDA6 /* SubjectInfo */,
-			);
-			path = Teacher;
 			sourceTree = "<group>";
 		};
 		F5A972D01BCFB7EA00C91D1A /* Chat */ = {
@@ -932,6 +915,15 @@
 				F5CD21781BE66D9A004039DE /* MBProgressHUD.m */,
 			);
 			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		F5CD217A1BE67B9F004039DE /* SubjectInfo */ = {
+			isa = PBXGroup;
+			children = (
+				F5CD217B1BE67B9F004039DE /* SubjectInfoViewController.h */,
+				F5CD217C1BE67B9F004039DE /* SubjectInfoViewController.m */,
+			);
+			path = SubjectInfo;
 			sourceTree = "<group>";
 		};
 		F5F0B6DA1BE0FE5600AD5A31 /* SubjectTabBarHolder */ = {
@@ -1178,6 +1170,7 @@
 				F5F9CA551BA444EB008E1715 /* ReaderThumbRender.m in Sources */,
 				F5CD21791BE66D9B004039DE /* MBProgressHUD.m in Sources */,
 				F549D35E1BBD3127000A9E79 /* NHNetworkClock.m in Sources */,
+				F5CD217D1BE67B9F004039DE /* SubjectInfoViewController.m in Sources */,
 				F5703B431BE270A300703B73 /* SVIndefiniteAnimatedView.m in Sources */,
 				F5F9CA591BA444EB008E1715 /* ReaderViewController.m in Sources */,
 				F5F9CA4A1BA444EB008E1715 /* ReaderConstants.m in Sources */,
@@ -1228,7 +1221,6 @@
 				F553220C1BD7BEA700E17FBF /* AssignementTableViewCell.m in Sources */,
 				F545320E1BD3C9220062343B /* DataParsing.m in Sources */,
 				F549D36F1BBD3144000A9E79 /* GCDAsyncSocket.m in Sources */,
-				F56FBCDB1BD005D300ECDDA6 /* SubjectInfoViewController.m in Sources */,
 				F54A98101BBACC540073CF58 /* TGRImageViewController.m in Sources */,
 				F58055611BDFE483000C8B74 /* CourseMaterialObject.m in Sources */,
 				04A2AB201B9C6CBD009B2C60 /* FlatDatePicker.m in Sources */,

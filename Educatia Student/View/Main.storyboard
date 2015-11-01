@@ -724,9 +724,96 @@
                     <view key="view" contentMode="scaleToFill" id="sjE-mT-NST">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="welcome_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="QxF-2x-Gqb">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Irl-fR-XSm">
+                                <rect key="frame" x="267" y="55" width="234" height="46"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="SFh-zv-iW6"/>
+                                    <constraint firstAttribute="width" constant="234" id="uUH-Px-T8O"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPj-PC-fva">
+                                <rect key="frame" x="40" y="189" width="355" height="62"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Code:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GcL-Ow-chO">
+                                        <rect key="frame" x="8" y="8" width="76" height="46"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOR-vn-l70">
+                                        <rect key="frame" x="92" y="8" width="255" height="46"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="355" id="uPp-31-2zp"/>
+                                    <constraint firstAttribute="height" constant="62" id="v9j-BF-1a1"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sWE-MJ-h4r">
+                                <rect key="frame" x="40" y="259" width="355" height="62"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Teacher:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sO-R6-WeA">
+                                        <rect key="frame" x="8" y="8" width="76" height="46"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJu-40-3fr">
+                                        <rect key="frame" x="92" y="8" width="255" height="46"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="355" id="BkU-4Z-0bF"/>
+                                    <constraint firstAttribute="height" constant="62" id="qIC-rA-fhB"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e9W-QL-c06">
+                                <rect key="frame" x="162" y="578" width="87" height="35"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ifq-9h-eQJ">
+                                <rect key="frame" x="117" y="370" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="T5g-Tx-vTK"/>
+                                    <constraint firstAttribute="width" constant="200" id="hSn-Yz-Aul"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Irl-fR-XSm" firstAttribute="top" secondItem="bIH-iO-GgB" secondAttribute="bottom" constant="35" id="Aac-Bz-XbN"/>
+                            <constraint firstItem="Ifq-9h-eQJ" firstAttribute="leading" secondItem="sjE-mT-NST" secondAttribute="leading" constant="117" id="atB-AH-TD7"/>
+                            <constraint firstItem="sWE-MJ-h4r" firstAttribute="top" secondItem="VPj-PC-fva" secondAttribute="bottom" constant="8" id="eXc-0t-Q70"/>
+                            <constraint firstItem="Irl-fR-XSm" firstAttribute="centerX" secondItem="sjE-mT-NST" secondAttribute="centerX" id="fgF-R7-bqq"/>
+                            <constraint firstItem="sWE-MJ-h4r" firstAttribute="leading" secondItem="sjE-mT-NST" secondAttribute="leading" constant="40" id="g5U-m8-27D"/>
+                            <constraint firstItem="VPj-PC-fva" firstAttribute="leading" secondItem="sjE-mT-NST" secondAttribute="leading" constant="40" id="iYh-mn-TRi"/>
+                            <constraint firstItem="VPj-PC-fva" firstAttribute="top" secondItem="Irl-fR-XSm" secondAttribute="bottom" constant="88" id="jE4-Cg-ZQQ"/>
+                            <constraint firstItem="Ifq-9h-eQJ" firstAttribute="top" secondItem="sWE-MJ-h4r" secondAttribute="bottom" constant="49" id="ykf-et-sYU"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="codeLabel" destination="UOR-vn-l70" id="VC1-rw-rJt"/>
+                        <outlet property="subjectLabel" destination="Irl-fR-XSm" id="VO3-tD-NOg"/>
+                        <outlet property="subjectLogoImageView" destination="Ifq-9h-eQJ" id="t0I-Hm-0NK"/>
+                        <outlet property="teacherLabel" destination="JJu-40-3fr" id="9wy-bA-SY4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JPd-qi-PEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

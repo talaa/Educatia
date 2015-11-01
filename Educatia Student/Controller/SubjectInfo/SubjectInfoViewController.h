@@ -10,4 +10,8 @@
 
 @interface SubjectInfoViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *subjectLabel;
+@property (weak, nonatomic) IBOutlet UILabel *codeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *teacherLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *subjectLogoImageView;
 @end
