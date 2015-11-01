@@ -13,7 +13,7 @@
 #import "ManageLayerViewController.h"
 #import "MBProgressHUD.h"
 
-@interface SubjectInfoViewController () <MBProgressHUDDelegate>
+@interface SubjectInfoViewController () <MBProgressHUDDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     MBProgressHUD  *HUD;
     bool            isUserTeacher;
@@ -158,12 +158,76 @@
     UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Upload Logo Picture" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     [alertcontroller addAction:[UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         //take photo code
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.allowsEditing = YES;
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            [self presentViewController:picker animated:YES completion:NULL];
+        }];
+        
     }]];
     
     [alertcontroller addAction:[UIAlertAction actionWithTitle:@"Upload Exit Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         //uplaod exit photo code
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            //your code
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.allowsEditing = YES;
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            [self presentViewController:picker animated:YES completion:NULL];
+        }];
     }]];
     
     [self presentViewController:alertcontroller animated:YES completion:nil];
+}
+
+
+#pragma mark - UIImagePickerControllerDelegete
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    NSData *imageData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((chosenImage),0.5)];
+    
+    //save image on parse
+    [self saveChoosenImage:imageData];
+    
+    self.subjectLogoImageView.image = chosenImage;
+    [ManageLayerViewController imageViewLayerProfilePicture:self.subjectLogoImageView Corner:100.0f];
+    [self imageExistPresentChangeButton];
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+
+/*
+ */
+- (void)saveChoosenImage:(NSData *)imageData{
+    PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
+    PFQuery *query = [PFQuery queryWithClassName:@"Subjects"];
+    [query whereKey:@"objectId" equalTo:[ManageLayerViewController getDataParsingSubjectID]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            for (PFObject *object in objects) {
+                object[@"subjectLogo"] = imageFile;
+                [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (!error){
+                        [SVProgressHUD showSuccessWithStatus:@"Picture has been uploaded successfully"];
+                    }else{
+                        [SVProgressHUD showErrorWithStatus:@"Can save this picture.Try again!"];
+                    }
+                }];
+            }
+        } else {
+            // Log details of the failure
+            [SVProgressHUD showErrorWithStatus:@"An error occured.Try again!"];
+        }
+    }];
 }
 @end
