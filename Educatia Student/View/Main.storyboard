@@ -783,10 +783,6 @@
                                     <constraint firstAttribute="height" constant="62" id="qIC-rA-fhB"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e9W-QL-c06">
-                                <rect key="frame" x="162" y="578" width="87" height="35"/>
-                                <state key="normal" title="Button"/>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ifq-9h-eQJ">
                                 <rect key="frame" x="117" y="370" width="200" height="200"/>
                                 <constraints>
@@ -794,25 +790,59 @@
                                     <constraint firstAttribute="width" constant="200" id="hSn-Yz-Aul"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e9W-QL-c06">
+                                <rect key="frame" x="157" y="578" width="121" height="23"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="121" id="4e9-l5-mp6"/>
+                                    <constraint firstAttribute="height" constant="23" id="m7h-X8-eKy"/>
+                                </constraints>
+                                <state key="normal" title="upload logo">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="uploadLogoPressed:" destination="HYu-Hy-eCA" eventType="touchUpInside" id="O3g-wh-eTp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FD1-Gb-jWW">
+                                <rect key="frame" x="157" y="578" width="121" height="23"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="121" id="GbV-CS-eRf"/>
+                                    <constraint firstAttribute="height" constant="23" id="hoD-Pf-ikb"/>
+                                </constraints>
+                                <state key="normal" title="change logo">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeLogoPressed:" destination="HYu-Hy-eCA" eventType="touchUpInside" id="rmK-5Z-RlL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="FD1-Gb-jWW" firstAttribute="top" secondItem="Ifq-9h-eQJ" secondAttribute="bottom" constant="8" id="3cQ-Ev-dkj"/>
                             <constraint firstItem="Irl-fR-XSm" firstAttribute="top" secondItem="bIH-iO-GgB" secondAttribute="bottom" constant="35" id="Aac-Bz-XbN"/>
+                            <constraint firstItem="FD1-Gb-jWW" firstAttribute="leading" secondItem="sjE-mT-NST" secondAttribute="leading" constant="157" id="QtA-OC-pxN"/>
                             <constraint firstItem="Ifq-9h-eQJ" firstAttribute="leading" secondItem="sjE-mT-NST" secondAttribute="leading" constant="117" id="atB-AH-TD7"/>
+                            <constraint firstItem="e9W-QL-c06" firstAttribute="top" secondItem="Ifq-9h-eQJ" secondAttribute="bottom" constant="8" id="eV4-Wv-9Q0"/>
                             <constraint firstItem="sWE-MJ-h4r" firstAttribute="top" secondItem="VPj-PC-fva" secondAttribute="bottom" constant="8" id="eXc-0t-Q70"/>
                             <constraint firstItem="Irl-fR-XSm" firstAttribute="centerX" secondItem="sjE-mT-NST" secondAttribute="centerX" id="fgF-R7-bqq"/>
                             <constraint firstItem="sWE-MJ-h4r" firstAttribute="leading" secondItem="sjE-mT-NST" secondAttribute="leading" constant="40" id="g5U-m8-27D"/>
                             <constraint firstItem="VPj-PC-fva" firstAttribute="leading" secondItem="sjE-mT-NST" secondAttribute="leading" constant="40" id="iYh-mn-TRi"/>
                             <constraint firstItem="VPj-PC-fva" firstAttribute="top" secondItem="Irl-fR-XSm" secondAttribute="bottom" constant="88" id="jE4-Cg-ZQQ"/>
+                            <constraint firstItem="e9W-QL-c06" firstAttribute="leading" secondItem="sjE-mT-NST" secondAttribute="leading" constant="157" id="nd6-r7-TZF"/>
                             <constraint firstItem="Ifq-9h-eQJ" firstAttribute="top" secondItem="sWE-MJ-h4r" secondAttribute="bottom" constant="49" id="ykf-et-sYU"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
+                        <outlet property="changeLogoButton" destination="FD1-Gb-jWW" id="trn-Py-TfN"/>
                         <outlet property="codeLabel" destination="UOR-vn-l70" id="VC1-rw-rJt"/>
                         <outlet property="subjectLabel" destination="Irl-fR-XSm" id="VO3-tD-NOg"/>
                         <outlet property="subjectLogoImageView" destination="Ifq-9h-eQJ" id="t0I-Hm-0NK"/>
                         <outlet property="teacherLabel" destination="JJu-40-3fr" id="9wy-bA-SY4"/>
+                        <outlet property="uploadLogoButton" destination="e9W-QL-c06" id="a8W-VZ-wgs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JPd-qi-PEm" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,10 +11,12 @@
 #import "SubjectObject.h"
 #import "SVProgressHUD.h"
 #import "ManageLayerViewController.h"
+#import "MBProgressHUD.h"
 
-@interface SubjectInfoViewController ()
+@interface SubjectInfoViewController () <MBProgressHUDDelegate>
 {
-    NSMutableArray *subjectObjectMArray;
+    MBProgressHUD  *HUD;
+    bool            isUserTeacher;
 }
 @end
 
@@ -23,6 +25,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [ManageLayerViewController imageViewLayerProfilePicture:self.subjectLogoImageView Corner:100.0f];
+    
+    //check if subjectLogoImageView presents an image
+    //present change button in case of image existing otherwise present uplaod button
+    isUserTeacher = [ManageLayerViewController getDataParsingIsCurrentTeacher];
+    [self hideLogoButtons];
+    
+    //Loading
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    HUD.delegate = self;
+    HUD.labelText = @"Loading...";
+    
     [self loadSubjectData];
 }
 
@@ -50,28 +66,104 @@
                 self.teacherLabel.text = object[@"teacherFullName"];
                 //load image
                 PFFile *subjectLogoFile = object[@"subjectLogo"];
-                [subjectLogoFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-                    if (!error) {
-                        self.subjectLogoImageView.image = [UIImage imageWithData:imageData];
+                if (subjectLogoFile == nil){
+                    if (isUserTeacher){
+                        [self imageNotExistPresentUploadButton];
+                    }else{
                     }
-                }];
+                }else {
+                    [subjectLogoFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                        if (!error) {
+                            self.subjectLogoImageView.image = [UIImage imageWithData:imageData];
+                            if (isUserTeacher){
+                                [self imageExistPresentChangeButton];
+                            }
+                            
+                        }
+                    }];
+                }
+                HUD.hidden = YES;
             }
         } else {
             // Log details of the failure
             [SVProgressHUD showErrorWithStatus:@"Can't get data now.Try again!"];
         }
     }];
-
+    
 }
+
+- (IBAction)uploadLogoPressed:(id)sender {
+    [self uploadLogoPresentAlert];
+    
+}
+
+- (IBAction)changeLogoPressed:(id)sender {
+}
+
+#pragma mark - LogoButtons Behaviors
+- (void)showLogoButtons{
+    self.uploadLogoButton.hidden    = NO;
+    self.changeLogoButton.hidden    = NO;
+    self.uploadLogoButton.enabled   = YES;
+    self.changeLogoButton.enabled   = YES;
+}
+
+- (void)hideLogoButtons{
+    self.uploadLogoButton.hidden    = YES;
+    self.changeLogoButton.hidden    = YES;
+    self.uploadLogoButton.enabled   = NO;
+    self.changeLogoButton.enabled   = NO;
+}
+
+- (void)imageExistPresentChangeButton{
+    self.uploadLogoButton.hidden    = YES;
+    self.changeLogoButton.hidden    = NO;
+    self.uploadLogoButton.enabled   = NO;
+    self.changeLogoButton.enabled   = YES;
+}
+
+- (void)imageNotExistPresentUploadButton{
+    self.uploadLogoButton.hidden    = NO;
+    self.changeLogoButton.hidden    = YES;
+    self.uploadLogoButton.enabled   = YES;
+    self.changeLogoButton.enabled   = NO;
+}
+
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+ * in case of image exists, present change logo button other wise present upload logo
+ */
+- (void)subjectLogoButtonPrsent{
+    if (self.subjectLogoImageView.image != nil){
+        [self imageExistPresentChangeButton];
+    }else{
+        [self imageNotExistPresentUploadButton];
+    }
 }
-*/
 
+#pragma mark - MBProgressHUDDelegate
+
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+    // Remove HUD from screen when the HUD was hidded
+    [HUD removeFromSuperview];
+    HUD = nil;
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+}
+
+
+- (void)uploadLogoPresentAlert{
+    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Upload Logo Picture" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertcontroller addAction:[UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //take photo code
+    }]];
+    
+    [alertcontroller addAction:[UIAlertAction actionWithTitle:@"Upload Exit Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //uplaod exit photo code
+    }]];
+    
+    [self presentViewController:alertcontroller animated:YES completion:nil];
+}
 @end
