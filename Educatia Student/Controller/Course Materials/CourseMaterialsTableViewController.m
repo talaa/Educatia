@@ -16,14 +16,16 @@
 #import "TGRImageViewController.h"
 #import "TGRImageZoomAnimationController.h"
 #import "CourseMaterialObject.h"
+#import "MBProgressHUD.h"
 #import "SVProgressHUD.h"
 
-@interface CourseMaterialsTableViewController () <UIDocumentPickerDelegate,ReaderViewControllerDelegate,UIViewControllerTransitioningDelegate>
+@interface CourseMaterialsTableViewController () <UIDocumentPickerDelegate,ReaderViewControllerDelegate,UIViewControllerTransitioningDelegate, MBProgressHUDDelegate>
 {
     BOOL                *isCurrentUserisTeacher;
     NSMutableArray      *coursesMaterialArray;
     NSOperationQueue    *operationQueue;
     bool                isLoadingObjectsFinished;
+    MBProgressHUD       *HUD;
 }
 @property (strong, nonatomic) NSString *currentUserFullName;
 @property (strong, nonatomic) NSString *currentUserObjectID;
@@ -39,6 +41,11 @@
     [super viewDidLoad];
     
     isLoadingObjectsFinished = FALSE;
+    
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    HUD.delegate = self;
+    HUD.labelText = @"Loading...";
     
     operationQueue = [[NSOperationQueue alloc] init];
     coursesMaterialArray = [NSMutableArray new];
@@ -58,14 +65,14 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     if (isLoadingObjectsFinished){
-        [SVProgressHUD dismiss];
+        HUD.hidden = YES;
     }else{
-        [SVProgressHUD showWithStatus:@"Loading..."];
+        HUD.hidden = NO;
     }
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-    [SVProgressHUD dismiss];
+    HUD.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -140,7 +147,7 @@
                     // Main thread work (UI usually)
                     [self.tableView reloadData];
                     isLoadingObjectsFinished = TRUE;
-                    [SVProgressHUD dismiss];
+                    HUD.hidden = YES;
                 }];
             }];
             
@@ -367,6 +374,19 @@
 - (void)dismissReaderViewController:(ReaderViewController *)viewController {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark - MBProgressHUDDelegate
+
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+    // Remove HUD from screen when the HUD was hidded
+    [HUD removeFromSuperview];
+    HUD = nil;
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+}
+
 
 
 

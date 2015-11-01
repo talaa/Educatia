@@ -14,15 +14,15 @@
 #import "ThumbnailPDF.h"
 #import "AssignmentObject.h"
 #import "SVProgressHUD.h"
+#import "MBProgressHUD.h"
 
-
-
-@interface AssignmentsTableViewController () <UIDocumentPickerDelegate,HSDatePickerViewControllerDelegate,ReaderViewControllerDelegate>
+@interface AssignmentsTableViewController () <UIDocumentPickerDelegate,HSDatePickerViewControllerDelegate,ReaderViewControllerDelegate,MBProgressHUDDelegate>
 {
     NSMutableArray      *assignmentsMArray;
     NSOperationQueue    *operationQueue;
     NSOperationQueue    *mainQueue;
     bool                isLoadingObjectsFinished;
+    MBProgressHUD       *HUD;
 }
 
 @property (strong, nonatomic) NSData *documentPickerselectedData;
@@ -38,7 +38,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     isLoadingObjectsFinished = FALSE;
+    
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    HUD.delegate = self;
+    HUD.labelText = @"Loading...";
     
     operationQueue      = [[NSOperationQueue alloc] init];
     mainQueue           = [NSOperationQueue mainQueue];
@@ -55,14 +61,14 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     if (isLoadingObjectsFinished){
-        [SVProgressHUD dismiss];
+        HUD.hidden = YES;
     }else{
-        [SVProgressHUD showWithStatus:@"Loading..."];
+        HUD.hidden = NO;
     }
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-    [SVProgressHUD dismiss];
+    HUD.hidden = YES;
 }
 
 
@@ -403,7 +409,7 @@
                     // Main thread work (UI usually)
                     [self.tableView reloadData];
                     isLoadingObjectsFinished = TRUE;
-                    [SVProgressHUD dismiss];
+                    HUD.hidden = YES;
                 }];
             }];
         } else {
@@ -465,5 +471,18 @@
 - (void)dismissReaderViewController:(ReaderViewController *)viewController {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark - MBProgressHUDDelegate
+
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+    // Remove HUD from screen when the HUD was hidded
+    [HUD removeFromSuperview];
+    HUD = nil;
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+}
+
 
 @end
