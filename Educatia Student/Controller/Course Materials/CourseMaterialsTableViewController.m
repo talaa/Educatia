@@ -7,8 +7,6 @@
 //
 
 #import "CourseMaterialsTableViewController.h"
-#import "RNActivityView.h"
-#import "UIView+RNActivityView.h"
 #import "ManageLayerViewController.h"
 #import <Parse/Parse.h>
 #import "DataParsing.h"
@@ -18,12 +16,14 @@
 #import "TGRImageViewController.h"
 #import "TGRImageZoomAnimationController.h"
 #import "CourseMaterialObject.h"
+#import "SVProgressHUD.h"
 
 @interface CourseMaterialsTableViewController () <UIDocumentPickerDelegate,ReaderViewControllerDelegate,UIViewControllerTransitioningDelegate>
 {
-    BOOL *isCurrentUserisTeacher;
-    NSMutableArray* coursesMaterialArray;
-    NSOperationQueue* operationQueue;
+    BOOL                *isCurrentUserisTeacher;
+    NSMutableArray      *coursesMaterialArray;
+    NSOperationQueue    *operationQueue;
+    bool                isLoadingObjectsFinished;
 }
 @property (strong, nonatomic) NSString *currentUserFullName;
 @property (strong, nonatomic) NSString *currentUserObjectID;
@@ -37,8 +37,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    isLoadingObjectsFinished = FALSE;
+    
     operationQueue = [[NSOperationQueue alloc] init];
     coursesMaterialArray = [NSMutableArray new];
+    
     if ([ManageLayerViewController isCurrentUserisTeacher] == YES){
         //Is a Teacher
         self.addNewMaterilView.hidden       = NO;
@@ -52,10 +56,16 @@
     [self loadMaterialsObjects];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated{
+    if (isLoadingObjectsFinished){
+        [SVProgressHUD dismiss];
+    }else{
+        [SVProgressHUD showWithStatus:@"Loading..."];
+    }
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated{
+    [SVProgressHUD dismiss];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -119,8 +129,6 @@
     [query whereKey:@"cmSubjectName" equalTo:[ManageLayerViewController getDataParsingSubjectName]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            NSLog(@"\nStart init nsmutablre arry Course nsmutabl Array\n");
-            
             // Do something with the found objects
             [operationQueue addOperationWithBlock:^{
                 [coursesMaterialArray removeAllObjects];
@@ -131,11 +139,13 @@
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                     // Main thread work (UI usually)
                     [self.tableView reloadData];
+                    isLoadingObjectsFinished = TRUE;
+                    [SVProgressHUD dismiss];
                 }];
             }];
             
         }else {
-            
+            [SVProgressHUD showErrorWithStatus:@"Unable to get course materilas now.Try again!"];
         }
     }];
 }
@@ -158,16 +168,12 @@
                                                handler:^(UIAlertAction * action) {
                                                    //Do Some action here ---> OK
                                                    UITextField *courseMaterialName = alertController.textFields.firstObject;
-                                                   
-                                                   //start ActivityIndicator
-                                                   [self activityLoadingwithLabel];
-                                                   
-                                                   if (courseMaterialName.text.length > 4) {
+                                                   if (courseMaterialName.text.length > 3) {
                                                        self.courseMaterialName = courseMaterialName.text;
                                                        [self showDocumentPickerInMode:UIDocumentPickerModeOpen];
                                                        
                                                    }else {
-                                                       [self activityError];
+                                                       [SVProgressHUD showErrorWithStatus:@"you enter incorrect name,try again!"];
                                                    }
                                                }];
     UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive
@@ -184,28 +190,6 @@
     }];
     
     [self presentViewController:alertController animated:YES completion:nil];
-}
-
-/*
- ShowActivity Methos
- */
-
-- (void)activityCompletedSuccessfully {
-    [self.view showActivityViewWithLabel:@"Subject has been added" image:[UIImage imageNamed:@"37x-Checkmark.png"]];
-    [self.view hideActivityViewWithAfterDelay:2];
-}
-
-- (void)activityError {
-    [self.view showActivityViewWithLabel:@"Error,Try again!" image:[UIImage imageNamed:@"32x-Closemark.png"]];
-    [self.view hideActivityViewWithAfterDelay:2];
-}
-
-- (void)activityLoadingwithLabel {
-    [self.view showActivityViewWithLabel:@"Loading...."];
-}
-
-- (void)activityStopLoading {
-    [self.view hideActivityView];
 }
 
 
@@ -226,10 +210,10 @@
 - (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url {
     if (controller.documentPickerMode == UIDocumentPickerModeImport) {
         //Successful import
-        BOOL startAccessingWorked = [url startAccessingSecurityScopedResource];
-        NSURL *ubiquityURL = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
-        NSLog(@"ubiquityURL %@",ubiquityURL);
-        NSLog(@"start %d",startAccessingWorked);
+//        BOOL startAccessingWorked = [url startAccessingSecurityScopedResource];
+//        NSURL *ubiquityURL = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
+//        NSLog(@"ubiquityURL %@",ubiquityURL);
+//        NSLog(@"start %d",startAccessingWorked);
         
         NSFileCoordinator *fileCoordinator = [[NSFileCoordinator alloc] init];
         NSError *error;
@@ -271,8 +255,6 @@
  */
 - (void)saveOnParseURL:(NSURL*)pathURL AndData:(NSData*)data {
     //save file to upload to Course Material core
-    //NSString *path = [pathURL absoluteString];
-    //NSData *data = [[NSFileManager defaultManager] contentsAtPath:path];
     PFFile *file = [PFFile fileWithName:[pathURL lastPathComponent] data:data];
     [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         // Handle success or failure here ...
@@ -294,7 +276,6 @@
             [coursMaterialObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
                     // The object has been saved.
-                    [self activityStopLoading];
                     NSString *alertMessage = alertMessage = [NSString stringWithFormat:@"Successfully imported %@", [pathURL lastPathComponent]];
                     UIAlertController *alertController = [UIAlertController
                                                           alertControllerWithTitle:@"Import"
@@ -302,11 +283,13 @@
                                                           preferredStyle:UIAlertControllerStyleAlert];
                     [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
                     [self presentViewController:alertController animated:YES completion:nil];
+                    [SVProgressHUD dismiss];
                     [self loadMaterialsObjects];
                     [self.tableView reloadData];
                 } else {
                     // There was a problem, check error.description
                     // The object has been saved.
+                    [SVProgressHUD dismiss];
                     NSLog(@"Error is %@", error);
                     NSString *alertMessage = alertMessage = [NSString stringWithFormat:@"Ops,UnSuccessfully imported, %@", [pathURL lastPathComponent]];
                     UIAlertController *alertController = [UIAlertController
@@ -315,11 +298,11 @@
                                                           preferredStyle:UIAlertControllerStyleAlert];
                     [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
                     [self presentViewController:alertController animated:YES completion:nil];
-                    [self activityStopLoading];
                 }
             }];
             
         } else {
+            [SVProgressHUD dismiss];
             UIAlertController *alertController = [UIAlertController
                                                   alertControllerWithTitle:@"Error"
                                                   message:@"Sorry, can't import this file now.Please try it again."
@@ -334,6 +317,7 @@
         
     } progressBlock:^(int percentDone) {
         // Update your progress spinner here. percentDone will be between 0 and 100.
+        [SVProgressHUD showProgress:percentDone status:@"uploading file...."];
     }];
     
     

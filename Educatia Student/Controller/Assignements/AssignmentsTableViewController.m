@@ -9,13 +9,12 @@
 #import "AssignmentsTableViewController.h"
 #import "ManageLayerViewController.h"
 #import "AssignementTableViewCell.h"
-#import "RNActivityView.h"
-#import "UIView+RNActivityView.h"
 #import "HSDatePickerViewController.h"
 #import "ReaderViewController.h"
 #import "ThumbnailPDF.h"
 #import "AssignmentObject.h"
 #import "SVProgressHUD.h"
+
 
 
 @interface AssignmentsTableViewController () <UIDocumentPickerDelegate,HSDatePickerViewControllerDelegate,ReaderViewControllerDelegate>
@@ -65,6 +64,8 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [SVProgressHUD dismiss];
 }
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -164,10 +165,9 @@
         
         if (self.assignmentName.length > 1 && self.assignmentMaxScore.length > 1 && self.deadLineDate) {
             //start ActivityIndicator
-            [self activityLoadingwithLabel];
-            // self.courseMaterialName = courseMaterialName.text;
+            [SVProgressHUD showWithStatus:@"Loading..."];
             [self showDocumentPickerInMode:UIDocumentPickerModeOpen];
-            [self activityStopLoading];
+            [SVProgressHUD dismiss];
             
         }else {
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Assignment name, max score and deadline must be typed first correnctly." preferredStyle:UIAlertControllerStyleAlert];
@@ -219,10 +219,10 @@
 - (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url {
     if (controller.documentPickerMode == UIDocumentPickerModeImport) {
         //Successful import
-        BOOL startAccessingWorked = [url startAccessingSecurityScopedResource];
-        NSURL *ubiquityURL = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
-        NSLog(@"ubiquityURL %@",ubiquityURL);
-        NSLog(@"start %d",startAccessingWorked);
+        //BOOL startAccessingWorked = [url startAccessingSecurityScopedResource];
+//        NSURL *ubiquityURL = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
+//        NSLog(@"ubiquityURL %@",ubiquityURL);
+//        NSLog(@"start %d",startAccessingWorked);
         
         NSFileCoordinator *fileCoordinator = [[NSFileCoordinator alloc] init];
         NSError *error;
@@ -239,7 +239,7 @@
         }];
         [alertController addAction:ok];
         [self presentViewController:alertController animated:YES completion:nil];
-        [self activityStopLoading];
+        [SVProgressHUD dismiss];
     }
 }
 
@@ -257,27 +257,6 @@
     return @[@"kUTTypeContent",@"kUTTypeItem",@"public.audiovisual-content",@"public.movie",@"public.audiovisual-content",@"public.video",@"public.audio",@"public.text",@"public.data",@"public.zip-archive",@"com.pkware.zip-archive",@"public.composite-content",@"public.text"];
 }
 
-/*
- ShowActivity Methos
- */
-
-- (void)activityCompletedSuccessfully {
-    [self.view showActivityViewWithLabel:@"Subject has been added" image:[UIImage imageNamed:@"37x-Checkmark.png"]];
-    [self.view hideActivityViewWithAfterDelay:2];
-}
-
-- (void)activityError {
-    [self.view showActivityViewWithLabel:@"Error,Try again!" image:[UIImage imageNamed:@"32x-Closemark.png"]];
-    [self.view hideActivityViewWithAfterDelay:2];
-}
-
-- (void)activityLoadingwithLabel {
-    [self.view showActivityViewWithLabel:@"Loading...."];
-}
-
-- (void)activityStopLoading {
-    [self.view hideActivityView];
-}
 
 /*
  *
@@ -308,7 +287,6 @@
             [assignmentObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
                     // The object has been saved.
-                    [self activityStopLoading];
                     NSString *alertMessage = alertMessage = [NSString stringWithFormat:@"Successfully imported %@", [pathURL lastPathComponent]];
                     UIAlertController *alertController = [UIAlertController
                                                           alertControllerWithTitle:@"Import"
@@ -318,6 +296,7 @@
                     [self presentViewController:alertController animated:YES completion:nil];
                     
                     // refresh table view to present latest assignments
+                    [SVProgressHUD dismiss];
                     [self loadAssignmentsObjects];
                     [self.tableView reloadData];
                 } else {
@@ -331,11 +310,12 @@
                                                           preferredStyle:UIAlertControllerStyleAlert];
                     [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
                     [self presentViewController:alertController animated:YES completion:nil];
-                    [self activityStopLoading];
+                    [SVProgressHUD dismiss];
                 }
             }];
             
         } else {
+            [SVProgressHUD dismiss];
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Sorry, can't import this file now.Please try it again." preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
                 [self dismissViewControllerAnimated:YES completion:nil];
@@ -345,6 +325,7 @@
         }
     } progressBlock:^(int percentDone) {
         // Update your progress spinner here. percentDone will be between 0 and 100.
+        [SVProgressHUD showProgress:percentDone status:@"uploading file ...."];
     }];
 }
 
@@ -404,7 +385,6 @@
  *
  */
 - (void)loadAssignmentsObjects {
-    [SVProgressHUD showWithStatus:@"Loading..."];
     PFQuery *query = [PFQuery queryWithClassName:@"Assignement"];
     NSString *subjID = [ManageLayerViewController getDataParsingSubjectID];
     [query whereKey:@"subjectID" equalTo:subjID];
@@ -413,7 +393,6 @@
     }
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            NSLog(@"\nStart init nsmutable arry Assignment\n");
             [operationQueue addOperationWithBlock:^{
                 [assignmentsMArray removeAllObjects];
                 // Perform long-running tasks without blocking main thread
@@ -428,8 +407,7 @@
                 }];
             }];
         } else {
-            [SVProgressHUD dismiss];
-            
+            [SVProgressHUD showErrorWithStatus:@"Unable to get course assignment now.Try again!"];
         }
     }];
 }

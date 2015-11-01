@@ -10,8 +10,7 @@
 #import "ManageLayerViewController.h"
 #import "TabBarPagerHolderViewController.h"
 #import "SubjectCollectionViewCell.h"
-#import "RNActivityView.h"
-#import "UIView+RNActivityView.h"
+#import "SVProgressHUD.h"
 #import <Parse/Parse.h>
 #import "SubjectObject.h"
 #import "StudentSubjects.h"
@@ -164,20 +163,18 @@ static NSString * const reuseIdentifier = @"SubjectCell";
             subject[@"teacherFullName"] = [ManageLayerViewController getDataParsingCurrentName];
             
             [subject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                //Stop ActivityIndicator
-                [self activityStopLoading];
                 if (succeeded) {
                     // The object has been saved.
-                    [self activityCompletedSuccessfully];
+                    [SVProgressHUD showSuccessWithStatus:@"Subject has been added successfully"];
                     //After add then reload collectionView
                     [self loadSubjects];
                 } else {
                     // There was a problem, check error.description
-                    [self activityError];
+                    [SVProgressHUD showErrorWithStatus:@"An error occuered, Try again!"];
                 }
             }];
         }else {
-            [self activityError];
+            [SVProgressHUD showErrorWithStatus:@"Type a correct name.Try again!"];
         }
     }];
     UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive
@@ -256,27 +253,6 @@ static NSString * const reuseIdentifier = @"SubjectCell";
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
-/*
- ShowActivity Methos
- */
-
-- (void)activityCompletedSuccessfully {
-    [self.view showActivityViewWithLabel:@"Subject has been added" image:[UIImage imageNamed:@"37x-Checkmark.png"]];
-    [self.view hideActivityViewWithAfterDelay:2];
-}
-
-- (void)activityError {
-    [self.view showActivityViewWithLabel:@"Error,Try again!" image:[UIImage imageNamed:@"32x-Closemark.png"]];
-    [self.view hideActivityViewWithAfterDelay:2];
-}
-
-- (void)activityLoadingwithLabel {
-    [self.view showActivityViewWithLabel:@"Loading...."];
-}
-
-- (void)activityStopLoading {
-    [self.view hideActivityView];
-}
 
 /*
  *
@@ -321,7 +297,7 @@ static NSString * const reuseIdentifier = @"SubjectCell";
  *
  */
 - (void)loadSubjects {
-    [self activityLoadingwithLabel];
+    [SVProgressHUD showWithStatus:@"Loading..."];
     [subjectsMArray removeAllObjects];
     if ([ManageLayerViewController getDataParsingIsCurrentTeacher]){
         //this is a teacher user
@@ -333,8 +309,10 @@ static NSString * const reuseIdentifier = @"SubjectCell";
                 for (PFObject *object in objects){
                     [subjectsMArray addObject:[[SubjectObject alloc] initWithObject:object]];
                 }
-                [self activityStopLoading];
                 [self.collectionView reloadData];
+                [SVProgressHUD dismiss];
+            }else{
+                [SVProgressHUD showErrorWithStatus:@"An error occured.Try again!"];
             }
         }];
         
@@ -350,10 +328,10 @@ static NSString * const reuseIdentifier = @"SubjectCell";
                     subObject.objectID = sObject[@"subjectID"];
                     [subjectsMArray addObject:subObject];
                 }
-                [self activityStopLoading];
                 [self.collectionView reloadData];
+                [SVProgressHUD dismiss];
             }else{
-                [self activityStopLoading];
+                [SVProgressHUD showErrorWithStatus:@"An error occured.Try again!"];
             }
             
         }];

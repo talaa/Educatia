@@ -100,6 +100,8 @@
 		F5A972F31BCFB7EA00C91D1A /* StudentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972E01BCFB7EA00C91D1A /* StudentsViewController.m */; };
 		F5A973011BCFD50E00C91D1A /* 32x-CloseMark.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A972FF1BCFD50E00C91D1A /* 32x-CloseMark.png */; };
 		F5A973021BCFD50E00C91D1A /* 32x-CloseMark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A973001BCFD50E00C91D1A /* 32x-CloseMark@2x.png */; };
+		F5CD216F1BE65067004039DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5CD216E1BE65067004039DE /* Foundation.framework */; };
+		F5CD21711BE65072004039DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5CD21701BE65072004039DE /* UIKit.framework */; };
 		F5F0B6DD1BE0FEC200AD5A31 /* UserTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F0B6DC1BE0FEC200AD5A31 /* UserTabBarController.m */; settings = {ASSET_TAGS = (); }; };
 		F5F9CA1D1BA4434A008E1715 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F9CA1C1BA4434A008E1715 /* ImageIO.framework */; };
 		F5F9CA1F1BA44355008E1715 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F9CA1E1BA44355008E1715 /* MessageUI.framework */; };
@@ -303,6 +305,8 @@
 		F5A972E01BCFB7EA00C91D1A /* StudentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentsViewController.m; sourceTree = "<group>"; };
 		F5A972FF1BCFD50E00C91D1A /* 32x-CloseMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "32x-CloseMark.png"; sourceTree = "<group>"; };
 		F5A973001BCFD50E00C91D1A /* 32x-CloseMark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "32x-CloseMark@2x.png"; sourceTree = "<group>"; };
+		F5CD216E1BE65067004039DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F5CD21701BE65072004039DE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F5F0B6DB1BE0FEC200AD5A31 /* UserTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTabBarController.h; sourceTree = "<group>"; };
 		F5F0B6DC1BE0FEC200AD5A31 /* UserTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTabBarController.m; sourceTree = "<group>"; };
 		F5F9CA1C1BA4434A008E1715 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -370,6 +374,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				693E692A1B876C2900009A84 /* CoreGraphics.framework in Frameworks */,
+				F5CD21711BE65072004039DE /* UIKit.framework in Frameworks */,
+				F5CD216F1BE65067004039DE /* Foundation.framework in Frameworks */,
 				F589AC391BDA1C050085CB70 /* Bolts.framework in Frameworks */,
 				F534083F1BD02F0E000B545B /* CloudKit.framework in Frameworks */,
 				F51746B11BAAE940003B026A /* MobileCoreServices.framework in Frameworks */,
@@ -384,7 +391,6 @@
 				693E69381B876C8B00009A84 /* libsqlite3.dylib in Frameworks */,
 				693E69361B876C7800009A84 /* libz.dylib in Frameworks */,
 				693E69301B876C4D00009A84 /* StoreKit.framework in Frameworks */,
-				693E692A1B876C2900009A84 /* CoreGraphics.framework in Frameworks */,
 				693E692B1B876C2900009A84 /* CoreLocation.framework in Frameworks */,
 				693E69241B876C0000009A84 /* AudioToolbox.framework in Frameworks */,
 			);
@@ -543,6 +549,8 @@
 		693E69391B876CA600009A84 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F5CD21701BE65072004039DE /* UIKit.framework */,
+				F5CD216E1BE65067004039DE /* Foundation.framework */,
 				F534083E1BD02F0E000B545B /* CloudKit.framework */,
 				F51746B01BAAE940003B026A /* MobileCoreServices.framework */,
 				F51746A01BAAAFCF003B026A /* libc++.dylib */,
