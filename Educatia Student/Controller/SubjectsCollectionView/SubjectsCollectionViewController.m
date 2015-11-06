@@ -166,6 +166,9 @@ static NSString * const reuseIdentifier = @"SubjectCell";
                 if (succeeded) {
                     // The object has been saved.
                     [SVProgressHUD showSuccessWithStatus:@"Subject has been added successfully"];
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Notice" message:@"Kindly don't forget to send Subject ID to your students" preferredStyle:UIAlertControllerStyleAlert];
+                    [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil]];
+                    [self presentViewController:alertController animated:YES completion:nil];
                     //After add then reload collectionView
                     [self loadSubjects];
                 } else {

@@ -163,6 +163,7 @@
             picker.delegate = self;
             picker.allowsEditing = YES;
             picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            picker.modalPresentationStyle = UIModalPresentationOverCurrentContext;
             [self presentViewController:picker animated:YES completion:NULL];
         }];
         
@@ -176,6 +177,7 @@
             picker.delegate = self;
             picker.allowsEditing = YES;
             picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            picker.modalPresentationStyle = UIModalPresentationOverCurrentContext;
             [self presentViewController:picker animated:YES completion:NULL];
         }];
     }]];
