@@ -33,6 +33,7 @@
     self.flatDatePicker = [[FlatDatePicker alloc] initWithParentView:self.view];
     self.flatDatePicker.delegate = self;
     self.flatDatePicker.title = @"Select your birthday";
+    self.flatDatePicker.maximumDate = [NSDate date];
     
     //Deticate emailTextfield input life
     [self.emailTextField addTarget:self action:@selector(checkTextField:) forControlEvents:UIControlEventEditingChanged];
@@ -232,35 +233,37 @@
 #pragma mark - FlatDatePicker Delegate
 
 - (void)flatDatePicker:(FlatDatePicker*)datePicker dateDidChange:(NSDate*)date {
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setLocale:[NSLocale currentLocale]];
-    [dateFormatter setDateFormat:@"dd MMMM yyyy"];
-    NSString *value = [dateFormatter stringFromDate:date];
-    
-    self.birthdateTextField.text = value;
 }
 
 - (void)flatDatePicker:(FlatDatePicker*)datePicker didCancel:(UIButton*)sender {
-    
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"FlatDatePicker" message:@"Did cancelled !" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    [alertView show];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"FlatDatePicker" message:@"Did cancelled !" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)flatDatePicker:(FlatDatePicker*)datePicker didValid:(UIButton*)sender date:(NSDate*)date {
-    
+    UIAlertController *alertController;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setLocale:[NSLocale currentLocale]];
     [dateFormatter setDateFormat:@"dd MMMM yyyy"];
     NSString *value = [dateFormatter stringFromDate:date];
-    
-    self.birthdateTextField.text = value;
-    
-    NSString *message = [NSString stringWithFormat:@"Did valid date : %@", value];
-    
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"FlatDatePicker" message:message delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    [alertView show];
-}
+    if (date >= [NSDate date]){
+        NSString *message = [NSString stringWithFormat:@"Incorrect Birthdate : %@", value];
+        alertController = [UIAlertController alertControllerWithTitle:@"Incorrect Birth Date" message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alertController addAction:okAction];
+    }else {
+        self.birthdateTextField.text = value;
+        NSString *message = [NSString stringWithFormat:@"Did valid date : %@", value];
+        alertController = [UIAlertController alertControllerWithTitle:@"Birth Date" message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alertController addAction:okAction];
+    }
+    [self presentViewController:alertController animated:YES completion:nil];}
 
 #pragma mark - EmailActivityIndicator and ImageTrue Behaviour
 
@@ -338,7 +341,6 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    
     /*Check Image Size
      //Check if picture size is greater than 400K
      NSData *imageData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((chosenImage),0.5)];
@@ -348,7 +350,6 @@
      [[[UIAlertView alloc] initWithTitle:@"EducationStudent" message:@"Picture you have choosen is greater than 400K!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
      }else {}
      */
-    
     //hide uploadProfileButton
     [self hideUploadButton];
     
@@ -360,7 +361,6 @@
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 

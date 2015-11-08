@@ -29,6 +29,7 @@
     self.flatDatePicker = [[FlatDatePicker alloc] initWithParentView:self.view];
     self.flatDatePicker.delegate = self;
     self.flatDatePicker.title = @"Select your birthday";
+    self.flatDatePicker.maximumDate = [NSDate date];
     
     defaultProfilePicture = [UIImage imageNamed:@"Image_AddProfilPic"];
     
@@ -276,40 +277,39 @@
 #pragma mark - FlatDatePicker Delegate
 
 - (void)flatDatePicker:(FlatDatePicker*)datePicker dateDidChange:(NSDate*)date {
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setLocale:[NSLocale currentLocale]];
-    [dateFormatter setDateFormat:@"dd MMMM yyyy"];
-    NSString *value = [dateFormatter stringFromDate:date];
-    
-    self.birthDateTextField.text = value;
 }
 
 - (void)flatDatePicker:(FlatDatePicker*)datePicker didCancel:(UIButton*)sender {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"FlatDataPicker" message:@"Did cancelled" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self presentViewController:alertController animated:YES completion:nil];
     }];
     [alertController addAction:okAction];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)flatDatePicker:(FlatDatePicker*)datePicker didValid:(UIButton*)sender date:(NSDate*)date {
-    
+    UIAlertController *alertController;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setLocale:[NSLocale currentLocale]];
     [dateFormatter setDateFormat:@"dd MMMM yyyy"];
     NSString *value = [dateFormatter stringFromDate:date];
-    
-    self.birthDateTextField.text = value;
-    
-    NSString *message = [NSString stringWithFormat:@"Did valid date : %@", value];
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"FlatDataPicker" message:message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
-    [alertController addAction:okAction];
+    if (date >= [NSDate date]){
+        NSString *message = [NSString stringWithFormat:@"Incorrect Birthdate : %@", value];
+        alertController = [UIAlertController alertControllerWithTitle:@"Incorrect Birth Date" message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alertController addAction:okAction];
+    }else {
+        self.birthDateTextField.text = value;
+        NSString *message = [NSString stringWithFormat:@"Did valid date : %@", value];
+         alertController = [UIAlertController alertControllerWithTitle:@"Birth Date" message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alertController addAction:okAction];
+    }
     [self presentViewController:alertController animated:YES completion:nil];
 }
 

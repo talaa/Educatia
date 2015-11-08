@@ -26,13 +26,13 @@
 #define kFlatDatePickerFontColorLabelSelected self.fontColorLabelSelected
 
 // Constants sizes :
-#define kFlatDatePickerHeight 260
-#define kFlatDatePickerHeaderHeight ((UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) ? 44 : (self.title == nil || self.title.length == 0) ? 0 : 44)
+#define kFlatDatePickerHeight 300
+#define kFlatDatePickerHeaderHeight ((UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) ? 44 : (self.title == nil || self.title.length == 0) ? 0 : 44)
 #define kFlatDatePickerButtonHeaderWidth 44
 #define kFlatDatePickerHeaderBottomMargin 1
-#define kFlatDatePickerScrollViewDaysWidth 90
-#define kFlatDatePickerScrollViewMonthWidth 140
-#define kFlatDatePickerScrollViewDateWidth 165
+#define kFlatDatePickerScrollViewDaysWidth _parentView.frame.size.width/3
+#define kFlatDatePickerScrollViewMonthWidth _parentView.frame.size.width/3
+#define kFlatDatePickerScrollViewDateWidth _parentView.frame.size.width/3
 #define kFlatDatePickerScrollViewLeftMargin 1
 #define kFlatDatePickerScrollViewItemHeight 45
 #define kFlatDatePickerLineWidth 1
@@ -258,7 +258,7 @@
     // Button Cancel
     NSLog(@"kFlatDatePickerHeaderHeight: %d", kFlatDatePickerHeaderHeight);
     _buttonClose = [[UIButton alloc] initWithFrame:CGRectMake(0.0, 0.0, kFlatDatePickerButtonHeaderWidth, kFlatDatePickerHeaderHeight)];
-    _buttonClose.hidden = !IS_PHONE;
+    //_buttonClose.hidden = !IS_PHONE;
     _buttonClose.backgroundColor = kFlatDatePickerBackgroundColorButtonCancel;
     [_buttonClose setImage:[UIImage imageNamed:kFlatDatePickerIconCancel] forState:UIControlStateNormal];
     [_buttonClose addTarget:self action:@selector(actionButtonCancel) forControlEvents:UIControlEventTouchUpInside];
@@ -266,7 +266,7 @@
 
     // Button Valid
     _buttonValid = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - kFlatDatePickerButtonHeaderWidth, 0.0, kFlatDatePickerButtonHeaderWidth, kFlatDatePickerHeaderHeight)];
-    _buttonValid.hidden = !IS_PHONE;
+    //_buttonValid.hidden = !IS_PHONE;
     _buttonValid.backgroundColor = kFlatDatePickerBackgroundColorButtonValid;
     [_buttonValid setImage:[UIImage imageNamed:kFlatDatePickerIconValid] forState:UIControlStateNormal];
     [_buttonValid addTarget:self action:@selector(actionButtonValid) forControlEvents:UIControlEventTouchUpInside];
