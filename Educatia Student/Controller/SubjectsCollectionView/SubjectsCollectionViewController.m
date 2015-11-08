@@ -32,11 +32,16 @@ static NSString * const reuseIdentifier = @"SubjectCell";
     
     subjectsMArray          = [NSMutableArray new];
     studentSubjectsMArray   = [NSMutableArray new];
+    
+    //Load objects
+    [self loadSubjects];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:YES];
-    [self loadSubjects];
+}
+
+- (void)viewDidLayoutSubviews{
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,6 +89,10 @@ static NSString * const reuseIdentifier = @"SubjectCell";
     // Configure the cell
     SubjectObject *subjectObj = [subjectsMArray objectAtIndex:indexPath.row];
     cell.subjectNameLabel.text = subjectObj.name;
+    cell.subjectImageView.image = [UIImage imageWithData:subjectObj.logo];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
+        
+    });
     
     [ManageLayerViewController subjectCollectionViewCellLayer:cell];
     
@@ -134,6 +143,11 @@ static NSString * const reuseIdentifier = @"SubjectCell";
         [self studentPickUpSubjectAlertController];
     }
     
+}
+
+- (IBAction)refreshPressed:(id)sender {
+    //Load objects
+    [self loadSubjects];
 }
 
 /*

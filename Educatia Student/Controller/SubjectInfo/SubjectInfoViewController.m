@@ -98,6 +98,7 @@
 }
 
 - (IBAction)changeLogoPressed:(id)sender {
+    [self uploadLogoPresentAlert];
 }
 
 #pragma mark - LogoButtons Behaviors
@@ -163,7 +164,7 @@
             picker.delegate = self;
             picker.allowsEditing = YES;
             picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-            picker.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+            picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
             [self presentViewController:picker animated:YES completion:NULL];
         }];
         
@@ -198,8 +199,7 @@
     self.subjectLogoImageView.image = chosenImage;
     [ManageLayerViewController imageViewLayerProfilePicture:self.subjectLogoImageView Corner:100.0f];
     [self imageExistPresentChangeButton];
-    
-    [picker dismissViewControllerAnimated:YES completion:NULL];
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {

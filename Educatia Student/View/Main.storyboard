@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nkt-Gd-cbk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nkt-Gd-cbk">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -1056,6 +1056,11 @@
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="Subjects" image="Icon_Subjects" id="8MZ-yK-5aZ"/>
                     <navigationItem key="navigationItem" title="Subjects" id="7Un-zj-PvM">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="q7d-CQ-UcE">
+                            <connections>
+                                <action selector="refreshPressed:" destination="z5F-ab-IBJ" id="Jnt-Ub-Hyk"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="HYO-4Z-l3t">
                             <connections>
                                 <action selector="addNewSubjectPressed:" destination="z5F-ab-IBJ" id="qF6-Qx-NnW"/>

@@ -12,5 +12,6 @@
 @interface SubjectsCollectionViewController : UICollectionViewController
 
 - (IBAction)addNewSubjectPressed:(id)sender;
+- (IBAction)refreshPressed:(id)sender;
 
 @end
