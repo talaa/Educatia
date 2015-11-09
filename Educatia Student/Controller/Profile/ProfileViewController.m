@@ -281,9 +281,7 @@
 
 - (void)flatDatePicker:(FlatDatePicker*)datePicker didCancel:(UIButton*)sender {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"FlatDataPicker" message:@"Did cancelled" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        [self presentViewController:alertController animated:YES completion:nil];
-    }];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){}];
     [alertController addAction:okAction];
     [self presentViewController:alertController animated:YES completion:nil];
 }
