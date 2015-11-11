@@ -36,14 +36,13 @@
     
     if ([ManageLayerViewController getDataParsingIsCurrentTeacher]){
         //this is a teacher user
-        titlesArray = @[@"Assignments",@"Subject Info",@"Course Materials"];
-        viewControllersArray = @[@"AssignmentsTableViewController",@"SubjectInfoViewController",
-                                 @"CourseMaterialsTableViewController"];
+        titlesArray = @[@"Assignments",@"Subject Info",@"Course Materials",@"News"];
+        viewControllersArray = @[@"AssignmentsTableViewController",@"SubjectInfoViewController",@"CourseMaterialsTableViewController",@"NewsTableViewController"];
     }else {
         //this is a student user
         titlesArray = @[@"Course Materials",@"News",@"Grades",@"Assignements",@"Chat",@"Students",@"Subject Info"];
         viewControllersArray = @[@"CourseMaterialsTableViewController",
-                                 @"NewsViewController",
+                                 @"NewsTableViewController",
                                  @"GradesViewController",
                                  @"AssignmentsTableViewController",
                                  @"ChatViewController",
@@ -65,14 +64,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 #pragma mark - Tab Pager Data Source
 - (NSInteger)numberOfViewControllers {

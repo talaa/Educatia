@@ -90,6 +90,9 @@
 		F589AC391BDA1C050085CB70 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F589AC361BDA1C050085CB70 /* Bolts.framework */; settings = {ASSET_TAGS = (); }; };
 		F589AC3A1BDA1C050085CB70 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F589AC371BDA1C050085CB70 /* Parse.framework */; settings = {ASSET_TAGS = (); }; };
 		F589AC3B1BDA1C050085CB70 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F589AC381BDA1C050085CB70 /* ParseUI.framework */; settings = {ASSET_TAGS = (); }; };
+		F589C8CF1BF37B400040306A /* NewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8CE1BF37B400040306A /* NewsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		F589C8D21BF37BC20040306A /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8D11BF37BC20040306A /* NewsTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		F589C8D51BF37DF30040306A /* NewsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8D41BF37DF30040306A /* NewsObject.m */; settings = {ASSET_TAGS = (); }; };
 		F5A972EE1BCFB7EA00C91D1A /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972D21BCFB7EA00C91D1A /* ChatTableViewController.m */; };
 		F5A972EF1BCFB7EA00C91D1A /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972D41BCFB7EA00C91D1A /* ChatViewController.m */; };
 		F5A972F11BCFB7EA00C91D1A /* GradesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972DA1BCFB7EA00C91D1A /* GradesViewController.m */; };
@@ -286,6 +289,12 @@
 		F589AC361BDA1C050085CB70 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		F589AC371BDA1C050085CB70 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		F589AC381BDA1C050085CB70 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		F589C8CD1BF37B400040306A /* NewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewController.h; sourceTree = "<group>"; };
+		F589C8CE1BF37B400040306A /* NewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewController.m; sourceTree = "<group>"; };
+		F589C8D01BF37BC20040306A /* NewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewCell.h; sourceTree = "<group>"; };
+		F589C8D11BF37BC20040306A /* NewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewCell.m; sourceTree = "<group>"; };
+		F589C8D31BF37DF30040306A /* NewsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsObject.h; sourceTree = "<group>"; };
+		F589C8D41BF37DF30040306A /* NewsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsObject.m; sourceTree = "<group>"; };
 		F5A972D11BCFB7EA00C91D1A /* ChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewController.h; sourceTree = "<group>"; };
 		F5A972D21BCFB7EA00C91D1A /* ChatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewController.m; sourceTree = "<group>"; };
 		F5A972D31BCFB7EA00C91D1A /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
@@ -414,6 +423,7 @@
 		0453AEDA1B9861FB00CD3A53 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F589C8C91BF375BC0040306A /* News */,
 				F5CD217A1BE67B9F004039DE /* SubjectInfo */,
 				F5703B361BE243FE00703B73 /* TabBarPagerHolder */,
 				F515F4F21BE10E1A00810B90 /* SubjectsCollectionView */,
@@ -730,6 +740,8 @@
 				F56A42A21BE0D8600066CEC1 /* SubjectObject.m */,
 				F5703B331BE22AC700703B73 /* StudentSubjects.h */,
 				F5703B341BE22AC700703B73 /* StudentSubjects.m */,
+				F589C8D31BF37DF30040306A /* NewsObject.h */,
+				F589C8D41BF37DF30040306A /* NewsObject.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -857,6 +869,17 @@
 				F589AC381BDA1C050085CB70 /* ParseUI.framework */,
 			);
 			path = ParseSDK_1.9.0;
+			sourceTree = "<group>";
+		};
+		F589C8C91BF375BC0040306A /* News */ = {
+			isa = PBXGroup;
+			children = (
+				F589C8CD1BF37B400040306A /* NewsTableViewController.h */,
+				F589C8CE1BF37B400040306A /* NewsTableViewController.m */,
+				F589C8D01BF37BC20040306A /* NewsTableViewCell.h */,
+				F589C8D11BF37BC20040306A /* NewsTableViewCell.m */,
+			);
+			path = News;
 			sourceTree = "<group>";
 		};
 		F5A972C51BCFB72400C91D1A /* Student */ = {
@@ -1164,8 +1187,10 @@
 				F5703B351BE22AC700703B73 /* StudentSubjects.m in Sources */,
 				F553220F1BD7CD0700E17FBF /* AssignmentsTableViewController.m in Sources */,
 				F5F9CA571BA444EB008E1715 /* ReaderThumbsView.m in Sources */,
+				F589C8CF1BF37B400040306A /* NewsTableViewController.m in Sources */,
 				F5F9CA531BA444EB008E1715 /* ReaderThumbFetch.m in Sources */,
 				F515F4F51BE10E1A00810B90 /* SubjectsCollectionViewController.m in Sources */,
+				F589C8D21BF37BC20040306A /* NewsTableViewCell.m in Sources */,
 				F5703B451BE270A300703B73 /* SVProgressHUD.m in Sources */,
 				F5F9CA551BA444EB008E1715 /* ReaderThumbRender.m in Sources */,
 				F5CD21791BE66D9B004039DE /* MBProgressHUD.m in Sources */,
@@ -1183,6 +1208,7 @@
 				F5055CDA1BA1C00E00BB6547 /* CAPSPageMenu.m in Sources */,
 				F5F9CA4C1BA444EB008E1715 /* ReaderContentTile.m in Sources */,
 				F56A42A01BE0C8230066CEC1 /* UserObject.m in Sources */,
+				F589C8D51BF37DF30040306A /* NewsObject.m in Sources */,
 				F5F9CA4E1BA444EB008E1715 /* ReaderDocument.m in Sources */,
 				F534083D1BD0156E000B545B /* ManageLayerViewController.m in Sources */,
 				F5F9CA4F1BA444EB008E1715 /* ReaderDocumentOutline.m in Sources */,
