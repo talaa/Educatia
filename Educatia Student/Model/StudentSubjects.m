@@ -18,6 +18,10 @@
         self.studentID          = object[@"studentID"];
         self.studentName        = object[@"studentName"];
         self.studentUserName    = object[@"studentUserName"];
+        self.studentEmail       = object[@"studentEmail"];
+        self.studentPhone       = object[@"studentPhone"];
+        PFFile *studentPic      = object[@"studentProfile"];
+        self.studentProfilePic = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:studentPic.url]];
     }
     return self;
 }

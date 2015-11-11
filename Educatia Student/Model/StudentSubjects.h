@@ -16,8 +16,10 @@
 @property (strong, nonatomic) NSString *studentID;
 @property (strong, nonatomic) NSString *studentUserName;
 @property (strong, nonatomic) NSString *studentName;
+@property (strong, nonatomic) NSString *studentPhone;
+@property (strong, nonatomic) NSString *studentEmail;
+@property (strong, nonatomic) NSData   *studentProfilePic;
 
-
-- (instancetype)initWithObject: (PFObject*)object;
+- (instancetype)initWithObject:(PFObject*)object;
 
 @end

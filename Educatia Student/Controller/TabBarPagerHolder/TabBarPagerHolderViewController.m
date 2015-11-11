@@ -36,8 +36,8 @@
     
     if ([ManageLayerViewController getDataParsingIsCurrentTeacher]){
         //this is a teacher user
-        titlesArray = @[@"Assignments",@"Subject Info",@"Course Materials",@"News"];
-        viewControllersArray = @[@"AssignmentsTableViewController",@"SubjectInfoViewController",@"CourseMaterialsTableViewController",@"NewsTableViewController"];
+        titlesArray = @[@"Assignments",@"Subject Info",@"Course Materials",@"News",@"Students"];
+        viewControllersArray = @[@"AssignmentsTableViewController",@"SubjectInfoViewController",@"CourseMaterialsTableViewController",@"NewsTableViewController",@"StudentsTableViewController"];
     }else {
         //this is a student user
         titlesArray = @[@"Course Materials",@"News",@"Grades",@"Assignements",@"Chat",@"Students",@"Subject Info"];
@@ -46,7 +46,7 @@
                                  @"GradesViewController",
                                  @"AssignmentsTableViewController",
                                  @"ChatViewController",
-                                 @"StudentsViewController",
+                                 @"StudentsTableViewController",
                                  @"SubjectInfoViewController"];
     }
     

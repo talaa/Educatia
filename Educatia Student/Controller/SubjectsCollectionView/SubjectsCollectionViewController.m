@@ -289,6 +289,10 @@ static NSString * const reuseIdentifier = @"SubjectCell";
     studentSubjectsObject[@"studentID"]         = dataParsingObj.currentUseruserID;
     studentSubjectsObject[@"studentUserName"]   = dataParsingObj.currentUserusername;
     studentSubjectsObject[@"studentName"]       = dataParsingObj.currentUserName;
+    studentSubjectsObject[@"studentEmail"]      = dataParsingObj.currentUserEmail;
+    studentSubjectsObject[@"studentPhone"]      = dataParsingObj.currentUserPhone;
+    PFFile *userProfileFile                     = [PFFile fileWithName:[dataParsingObj.currentUserName stringByAppendingString:@".png"] data:dataParsingObj.currentUserProfileData];
+    studentSubjectsObject[@"studentProfile"]    = userProfileFile;
     
     //Save data
     [studentSubjectsObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

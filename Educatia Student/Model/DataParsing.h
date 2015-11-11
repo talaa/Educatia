@@ -14,6 +14,10 @@
 @property (nonatomic , retain) NSString *currentUserusername;
 @property (nonatomic , retain) NSString *currentUseruserID;
 @property (nonatomic , retain) NSString *currentUserName;
+@property (nonatomic , retain) NSString *currentUserEmail;
+@property (nonatomic , retain) NSString *currentUserPhone;
+@property (nonatomic , retain) NSData   *currentUserProfileData;
+
 @property (assign) BOOL isCurrentTeacher;
 + (DataParsing*)getInstance;
 @end

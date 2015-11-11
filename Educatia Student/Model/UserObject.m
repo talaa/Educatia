@@ -13,7 +13,13 @@
 - (instancetype)initWithObject:(PFObject *)object{
     self = [super self];
     if (self) {
-        
+        self.objectID = object[@"objectId"];
+        self.firstName = object[@"FirstName"];
+        self.lastName = object[@"LastName"];
+        self.phone = object[@"Phone"];
+        self.email = object[@"email"];
+        PFFile *userProfilePic = object[@"profilePicture"];
+        self.profPic = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:userProfilePic.url]];
     }
     return self;
 }

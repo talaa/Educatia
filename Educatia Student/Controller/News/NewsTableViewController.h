@@ -7,8 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 
-@interface NewsTableViewController : UITableViewController
+@interface NewsTableViewController : UITableViewController <MBProgressHUDDelegate>
+{
+    NSOperationQueue    *operationQueue;
+    NSMutableArray      *newsMArray;
+    bool                isLoadingObjectsFinished;
+    MBProgressHUD       *HUD;
+    NSOperationQueue    *mainQueue;
+}
 
 @property (weak, nonatomic) IBOutlet UIView *addNewsView;
 

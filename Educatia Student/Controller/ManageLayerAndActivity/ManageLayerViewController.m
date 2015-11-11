@@ -121,6 +121,10 @@
     obj.currentUserName         = [[user[@"FirstName"] stringByAppendingString:@" "] stringByAppendingString:user[@"LastName"]];
     obj.currentUseruserID       = user.objectId;
     obj.currentUserusername     = user.username;
+    obj.currentUserEmail        = user.email;
+    obj.currentUserPhone        = user[@"Phone"];
+    PFFile *userProfile         = user[@"profilePicture"];
+    obj.currentUserProfileData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:userProfile.url]];
     if ([user[@"type"] isEqualToString:@"Teacher"]) {
         obj.isCurrentTeacher    = TRUE;
     }else {

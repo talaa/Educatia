@@ -93,11 +93,11 @@
 		F589C8CF1BF37B400040306A /* NewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8CE1BF37B400040306A /* NewsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		F589C8D21BF37BC20040306A /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8D11BF37BC20040306A /* NewsTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		F589C8D51BF37DF30040306A /* NewsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8D41BF37DF30040306A /* NewsObject.m */; settings = {ASSET_TAGS = (); }; };
+		F589C8D91BF38A2A0040306A /* StudentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8D81BF38A2A0040306A /* StudentsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		F589C8DC1BF38BC50040306A /* StudentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8DB1BF38BC50040306A /* StudentsTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		F5A972EE1BCFB7EA00C91D1A /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972D21BCFB7EA00C91D1A /* ChatTableViewController.m */; };
 		F5A972EF1BCFB7EA00C91D1A /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972D41BCFB7EA00C91D1A /* ChatViewController.m */; };
 		F5A972F11BCFB7EA00C91D1A /* GradesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972DA1BCFB7EA00C91D1A /* GradesViewController.m */; };
-		F5A972F21BCFB7EA00C91D1A /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972DD1BCFB7EA00C91D1A /* NewsViewController.m */; };
-		F5A972F31BCFB7EA00C91D1A /* StudentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972E01BCFB7EA00C91D1A /* StudentsViewController.m */; };
 		F5A973011BCFD50E00C91D1A /* 32x-CloseMark.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A972FF1BCFD50E00C91D1A /* 32x-CloseMark.png */; };
 		F5A973021BCFD50E00C91D1A /* 32x-CloseMark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A973001BCFD50E00C91D1A /* 32x-CloseMark@2x.png */; };
 		F5CD216F1BE65067004039DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5CD216E1BE65067004039DE /* Foundation.framework */; };
@@ -295,16 +295,16 @@
 		F589C8D11BF37BC20040306A /* NewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewCell.m; sourceTree = "<group>"; };
 		F589C8D31BF37DF30040306A /* NewsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsObject.h; sourceTree = "<group>"; };
 		F589C8D41BF37DF30040306A /* NewsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsObject.m; sourceTree = "<group>"; };
+		F589C8D71BF38A2A0040306A /* StudentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentsTableViewController.h; sourceTree = "<group>"; };
+		F589C8D81BF38A2A0040306A /* StudentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentsTableViewController.m; sourceTree = "<group>"; };
+		F589C8DA1BF38BC50040306A /* StudentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentsTableViewCell.h; sourceTree = "<group>"; };
+		F589C8DB1BF38BC50040306A /* StudentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentsTableViewCell.m; sourceTree = "<group>"; };
 		F5A972D11BCFB7EA00C91D1A /* ChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewController.h; sourceTree = "<group>"; };
 		F5A972D21BCFB7EA00C91D1A /* ChatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewController.m; sourceTree = "<group>"; };
 		F5A972D31BCFB7EA00C91D1A /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		F5A972D41BCFB7EA00C91D1A /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		F5A972D91BCFB7EA00C91D1A /* GradesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradesViewController.h; sourceTree = "<group>"; };
 		F5A972DA1BCFB7EA00C91D1A /* GradesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradesViewController.m; sourceTree = "<group>"; };
-		F5A972DC1BCFB7EA00C91D1A /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
-		F5A972DD1BCFB7EA00C91D1A /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
-		F5A972DF1BCFB7EA00C91D1A /* StudentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentsViewController.h; sourceTree = "<group>"; };
-		F5A972E01BCFB7EA00C91D1A /* StudentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentsViewController.m; sourceTree = "<group>"; };
 		F5A972FF1BCFD50E00C91D1A /* 32x-CloseMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "32x-CloseMark.png"; sourceTree = "<group>"; };
 		F5A973001BCFD50E00C91D1A /* 32x-CloseMark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "32x-CloseMark@2x.png"; sourceTree = "<group>"; };
 		F5CD216E1BE65067004039DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -423,6 +423,7 @@
 		0453AEDA1B9861FB00CD3A53 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F589C8D61BF389D80040306A /* Students TableViewController */,
 				F589C8C91BF375BC0040306A /* News */,
 				F5CD217A1BE67B9F004039DE /* SubjectInfo */,
 				F5703B361BE243FE00703B73 /* TabBarPagerHolder */,
@@ -882,13 +883,22 @@
 			path = News;
 			sourceTree = "<group>";
 		};
+		F589C8D61BF389D80040306A /* Students TableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F589C8D71BF38A2A0040306A /* StudentsTableViewController.h */,
+				F589C8D81BF38A2A0040306A /* StudentsTableViewController.m */,
+				F589C8DA1BF38BC50040306A /* StudentsTableViewCell.h */,
+				F589C8DB1BF38BC50040306A /* StudentsTableViewCell.m */,
+			);
+			path = "Students TableViewController";
+			sourceTree = "<group>";
+		};
 		F5A972C51BCFB72400C91D1A /* Student */ = {
 			isa = PBXGroup;
 			children = (
 				F5A972D01BCFB7EA00C91D1A /* Chat */,
 				F5A972D81BCFB7EA00C91D1A /* Grades */,
-				F5A972DB1BCFB7EA00C91D1A /* News */,
-				F5A972DE1BCFB7EA00C91D1A /* Students */,
 			);
 			path = Student;
 			sourceTree = "<group>";
@@ -911,24 +921,6 @@
 				F5A972DA1BCFB7EA00C91D1A /* GradesViewController.m */,
 			);
 			path = Grades;
-			sourceTree = "<group>";
-		};
-		F5A972DB1BCFB7EA00C91D1A /* News */ = {
-			isa = PBXGroup;
-			children = (
-				F5A972DC1BCFB7EA00C91D1A /* NewsViewController.h */,
-				F5A972DD1BCFB7EA00C91D1A /* NewsViewController.m */,
-			);
-			path = News;
-			sourceTree = "<group>";
-		};
-		F5A972DE1BCFB7EA00C91D1A /* Students */ = {
-			isa = PBXGroup;
-			children = (
-				F5A972DF1BCFB7EA00C91D1A /* StudentsViewController.h */,
-				F5A972E01BCFB7EA00C91D1A /* StudentsViewController.m */,
-			);
-			path = Students;
 			sourceTree = "<group>";
 		};
 		F5CD21761BE66D9A004039DE /* MBProgressHUD */ = {
@@ -1213,7 +1205,6 @@
 				F534083D1BD0156E000B545B /* ManageLayerViewController.m in Sources */,
 				F5F9CA4F1BA444EB008E1715 /* ReaderDocumentOutline.m in Sources */,
 				F50D6D4E1BA5B49300BF6309 /* ThumbnailPDF.m in Sources */,
-				F5A972F31BCFB7EA00C91D1A /* StudentsViewController.m in Sources */,
 				F5F9CA561BA444EB008E1715 /* ReaderThumbRequest.m in Sources */,
 				F54A98131BBACC540073CF58 /* UIImage+AspectFit.m in Sources */,
 				F5F9CA4B1BA444EB008E1715 /* ReaderContentPage.m in Sources */,
@@ -1222,6 +1213,7 @@
 				F5F9CA511BA444EB008E1715 /* ReaderMainToolbar.m in Sources */,
 				F5703B461BE270A300703B73 /* SVRadialGradientLayer.m in Sources */,
 				F507E5DE1B9F19120066283F /* ProfileViewController.m in Sources */,
+				F589C8D91BF38A2A0040306A /* StudentsTableViewController.m in Sources */,
 				F5F9CA581BA444EB008E1715 /* ReaderThumbView.m in Sources */,
 				F5F9CA4D1BA444EB008E1715 /* ReaderContentView.m in Sources */,
 				F549D3701BBD3144000A9E79 /* GCDAsyncUdpSocket.m in Sources */,
@@ -1237,8 +1229,8 @@
 				F56A429D1BE0C7FA0066CEC1 /* AssignmentObject.m in Sources */,
 				F54A98121BBACC540073CF58 /* TGRImageZoomAnimationController.m in Sources */,
 				F549D3711BBD3144000A9E79 /* AsyncSocket.m in Sources */,
+				F589C8DC1BF38BC50040306A /* StudentsTableViewCell.m in Sources */,
 				F5F9CA501BA444EB008E1715 /* ReaderMainPagebar.m in Sources */,
-				F5A972F21BCFB7EA00C91D1A /* NewsViewController.m in Sources */,
 				F54532111BD3E5DF0062343B /* CourseMaterialTableViewCell.m in Sources */,
 				F549D3721BBD3144000A9E79 /* AsyncUdpSocket.m in Sources */,
 				F5F9CA5B1BA444EB008E1715 /* ThumbsViewController.m in Sources */,
