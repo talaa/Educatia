@@ -10,6 +10,8 @@
 #import "ManageLayerViewController.h"
 #import "NewsObject.h"
 #import "SVProgressHUD.h"
+#import "RMCustomViewActionController.h"
+//#import "RMMapActionController.h"
 
 @implementation NewsTableViewController
 
@@ -37,6 +39,38 @@
 }
 
 - (IBAction)addNewsPressed:(id)sender {
+    RMActionControllerStyle style = RMActionControllerStyleWhite;
+    
+    RMAction *selectAction = [RMAction<RMCustomViewActionController *> actionWithTitle:@"Select" style:RMActionStyleDone andHandler:^(RMCustomViewActionController *controller) {
+        NSLog(@"Action controller finished successfully");
+    }];
+    
+    RMAction *cancelAction = [RMAction<RMCustomViewActionController *> actionWithTitle:@"Cancel" style:RMActionStyleCancel andHandler:^(RMCustomViewActionController *controller) {
+        NSLog(@"Action controller was canceled");
+    }];
+    
+    RMCustomViewActionController *actionController = [RMCustomViewActionController actionControllerWithStyle:style];
+    actionController.title = @"Test";
+    actionController.message = @"This is a test action controller.\nPlease tap 'Select' or 'Cancel'.";
+    
+    [actionController addAction:selectAction];
+    [actionController addAction:cancelAction];
+    
+
+    //On the iPad we want to show the map action controller within a popover. Fortunately, we can use iOS 8 API for this! :)
+    //(Of course only if we are running on iOS 8 or later)
+    if([actionController respondsToSelector:@selector(popoverPresentationController)] && [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        //First we set the modal presentation style to the popover style
+        actionController.modalPresentationStyle = UIModalPresentationPopover;
+        
+        //Then we tell the popover presentation controller, where the popover should appear
+        actionController.popoverPresentationController.sourceView = self.addNewsView;
+        //actionController.popoverPresentationController.sourceRect = [self.tableView rectForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    }
+    
+    //Now just present the date selection controller using the standard iOS presentation method
+    [self presentViewController:actionController animated:YES completion:nil];
+    
 }
 
 /**
