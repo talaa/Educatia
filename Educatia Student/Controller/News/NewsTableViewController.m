@@ -7,11 +7,11 @@
 //
 
 #import "NewsTableViewController.h"
+#import "NewsTableViewCell.h"
 #import "ManageLayerViewController.h"
 #import "NewsObject.h"
 #import "SVProgressHUD.h"
-#import "RMCustomViewActionController.h"
-//#import "RMMapActionController.h"
+#import "ManageLayerViewController.h"
 
 @implementation NewsTableViewController
 
@@ -28,49 +28,44 @@
     operationQueue      = [[NSOperationQueue alloc] init];
     mainQueue           = [NSOperationQueue mainQueue];
     newsMArray          = [NSMutableArray new];
-
+    
     if ([ManageLayerViewController getDataParsingIsCurrentTeacher]) {
         self.addNewsView.hidden = NO;
     }else {
         self.addNewsView.hidden = YES;
     }
     
-    [self loadAssignmentsObjects];
+    [self loadNewsObjects];
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    //#warning Potentially incomplete method implementation.
+    // Return the number of sections.
+    return [newsMArray count]? 1:0;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    //#warning Incomplete method implementation.
+    // Return the number of rows in the section.
+    return [newsMArray count]?[newsMArray count]:0;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    // Configure the cell...
+    NewsObject *newsObject = [newsMArray objectAtIndex:indexPath.row];
+    cell.newsSubject.text = newsObject.subject;
+    cell.newsTextView.text = newsObject.text;
+    cell.newsCreatedAtLabel.text = [self convertDateToString:newsObject.date];
+    return cell;
 }
 
 - (IBAction)addNewsPressed:(id)sender {
-    RMActionControllerStyle style = RMActionControllerStyleWhite;
-    
-    RMAction *selectAction = [RMAction<RMCustomViewActionController *> actionWithTitle:@"Select" style:RMActionStyleDone andHandler:^(RMCustomViewActionController *controller) {
-        NSLog(@"Action controller finished successfully");
-    }];
-    
-    RMAction *cancelAction = [RMAction<RMCustomViewActionController *> actionWithTitle:@"Cancel" style:RMActionStyleCancel andHandler:^(RMCustomViewActionController *controller) {
-        NSLog(@"Action controller was canceled");
-    }];
-    
-    RMCustomViewActionController *actionController = [RMCustomViewActionController actionControllerWithStyle:style];
-    actionController.title = @"Test";
-    actionController.message = @"This is a test action controller.\nPlease tap 'Select' or 'Cancel'.";
-    
-    [actionController addAction:selectAction];
-    [actionController addAction:cancelAction];
-    
-
-    //On the iPad we want to show the map action controller within a popover. Fortunately, we can use iOS 8 API for this! :)
-    //(Of course only if we are running on iOS 8 or later)
-    if([actionController respondsToSelector:@selector(popoverPresentationController)] && [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-        //First we set the modal presentation style to the popover style
-        actionController.modalPresentationStyle = UIModalPresentationPopover;
-        
-        //Then we tell the popover presentation controller, where the popover should appear
-        actionController.popoverPresentationController.sourceView = self.addNewsView;
-        //actionController.popoverPresentationController.sourceRect = [self.tableView rectForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    }
-    
-    //Now just present the date selection controller using the standard iOS presentation method
-    [self presentViewController:actionController animated:YES completion:nil];
-    
+    [self presentAlertController];
 }
 
 /**
@@ -80,7 +75,7 @@
  *
  *
  **/
-- (void)loadAssignmentsObjects{
+- (void)loadNewsObjects{
     PFQuery *query = [PFQuery queryWithClassName:@"News"];
     NSString *subjID = [ManageLayerViewController getDataParsingSubjectID];
     [query whereKey:@"subjectID" equalTo:subjID];
@@ -103,5 +98,88 @@
             [SVProgressHUD showErrorWithStatus:@"Unable to get course assignment now.Try again!"];
         }
     }];
+}
+
+/*
+ *
+ ********** Presenting AlertController *************
+ *
+ */
+-(void)presentAlertController{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Add News" message:@"Kindly enter news name and text" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"Name...";
+        textField.returnKeyType = UIReturnKeyDone;
+    }];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        //
+        CGRect frameRect = textField.frame;
+        frameRect.size.height = 53;
+        textField.frame = frameRect;
+        textField.placeholder = @"Text...";
+        textField.returnKeyType = UIReturnKeyDone;
+    }];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //code
+        UITextField *subjectTextfield = alertController.textFields.firstObject;
+        UITextField *textTextfield = alertController.textFields.lastObject;
+        
+        if (subjectTextfield.text.length >0 && textTextfield.text.length >0){
+            [self saveNewsSubject:subjectTextfield.text Text:textTextfield.text];
+            
+        }else{
+            [SVProgressHUD showErrorWithStatus:@"Kindly don't forget to fill Subject and Text"];
+        }
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        //Code
+    }];
+    
+    [alertController addAction:ok];
+    [alertController addAction:cancel];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+
+/*
+ *
+ *********** Save News On Parse *************
+ *
+ */
+
+- (void)saveNewsSubject:(NSString*)subject Text:(NSString*)text{
+    [SVProgressHUD showWithStatus:@"Adding news..."];
+    PFObject *newsObject        = [PFObject objectWithClassName:@"News"];
+    newsObject[@"subjectID"]    = [ManageLayerViewController getDataParsingSubjectID];
+    newsObject[@"newsSubject"]  = subject;
+    newsObject[@"newsText"]     = text;
+    [newsObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showSuccessWithStatus:@"Nes has been added Successfully"];
+            [self loadNewsObjects];
+        } else {
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showErrorWithStatus:@"An error has been occured,Try again!"];
+        }
+    }];
+}
+
+/*
+ *
+ ********* Convert from NSDate to NSString *********************
+ *
+ */
+- (NSString*)convertDateToString:(NSDate*)date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd-MM-YYYY HH:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:date];
+    //NSLog(@"The Date: %@", dateString);
+    return dateString;
 }
 @end

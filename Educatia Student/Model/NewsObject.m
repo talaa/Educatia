@@ -15,7 +15,7 @@
     if (self){
         self.subject    = object[@"newsSubject"];
         self.text       = object[@"newsText"];
-        self.date       = object[@"createdAt"];
+        self.date       = object.createdAt;
         self.subjectID  = object[@"subjectID"];
     }
     return self;

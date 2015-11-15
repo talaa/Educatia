@@ -13,7 +13,7 @@
 
 @property (strong, nonatomic) NSString *subject;
 @property (strong, nonatomic) NSString *text;
-@property (strong, nonatomic) NSDate *date;
+@property (strong, nonatomic) NSDate   *date;
 @property (strong, nonatomic) NSString *subjectID;
 
 - (instancetype)initWithObject:(PFObject*)object;

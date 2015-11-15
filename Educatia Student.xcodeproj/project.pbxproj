@@ -95,8 +95,6 @@
 		F589C8D51BF37DF30040306A /* NewsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8D41BF37DF30040306A /* NewsObject.m */; settings = {ASSET_TAGS = (); }; };
 		F589C8D91BF38A2A0040306A /* StudentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8D81BF38A2A0040306A /* StudentsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		F589C8DC1BF38BC50040306A /* StudentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8DB1BF38BC50040306A /* StudentsTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		F5A691C01BF874EC00128989 /* RMCustomViewActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A691BD1BF874EC00128989 /* RMCustomViewActionController.m */; settings = {ASSET_TAGS = (); }; };
-		F5A691C51BF8757500128989 /* RMActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A691C41BF8757500128989 /* RMActionController.m */; settings = {ASSET_TAGS = (); }; };
 		F5A972EE1BCFB7EA00C91D1A /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972D21BCFB7EA00C91D1A /* ChatTableViewController.m */; };
 		F5A972EF1BCFB7EA00C91D1A /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972D41BCFB7EA00C91D1A /* ChatViewController.m */; };
 		F5A972F11BCFB7EA00C91D1A /* GradesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972DA1BCFB7EA00C91D1A /* GradesViewController.m */; };
@@ -301,10 +299,6 @@
 		F589C8D81BF38A2A0040306A /* StudentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentsTableViewController.m; sourceTree = "<group>"; };
 		F589C8DA1BF38BC50040306A /* StudentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentsTableViewCell.h; sourceTree = "<group>"; };
 		F589C8DB1BF38BC50040306A /* StudentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentsTableViewCell.m; sourceTree = "<group>"; };
-		F5A691BC1BF874EC00128989 /* RMCustomViewActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCustomViewActionController.h; sourceTree = "<group>"; };
-		F5A691BD1BF874EC00128989 /* RMCustomViewActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCustomViewActionController.m; sourceTree = "<group>"; };
-		F5A691C31BF8757500128989 /* RMActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMActionController.h; sourceTree = "<group>"; };
-		F5A691C41BF8757500128989 /* RMActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMActionController.m; sourceTree = "<group>"; };
 		F5A972D11BCFB7EA00C91D1A /* ChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewController.h; sourceTree = "<group>"; };
 		F5A972D21BCFB7EA00C91D1A /* ChatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewController.m; sourceTree = "<group>"; };
 		F5A972D31BCFB7EA00C91D1A /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
@@ -536,7 +530,6 @@
 		04A2AB1C1B9C6CBD009B2C60 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				F5A691BB1BF874EC00128989 /* RMCustomeViewActionController */,
 				F5CD21761BE66D9A004039DE /* MBProgressHUD */,
 				F5703B3A1BE270A300703B73 /* SVProgressHUD */,
 				F54E13411BD8FA1D00D84FCB /* HSDatePickerViewController */,
@@ -901,25 +894,6 @@
 			path = "Students TableViewController";
 			sourceTree = "<group>";
 		};
-		F5A691BB1BF874EC00128989 /* RMCustomeViewActionController */ = {
-			isa = PBXGroup;
-			children = (
-				F5A691C21BF8757500128989 /* RMActionController */,
-				F5A691BC1BF874EC00128989 /* RMCustomViewActionController.h */,
-				F5A691BD1BF874EC00128989 /* RMCustomViewActionController.m */,
-			);
-			path = RMCustomeViewActionController;
-			sourceTree = "<group>";
-		};
-		F5A691C21BF8757500128989 /* RMActionController */ = {
-			isa = PBXGroup;
-			children = (
-				F5A691C31BF8757500128989 /* RMActionController.h */,
-				F5A691C41BF8757500128989 /* RMActionController.m */,
-			);
-			path = RMActionController;
-			sourceTree = "<group>";
-		};
 		F5A972C51BCFB72400C91D1A /* Student */ = {
 			isa = PBXGroup;
 			children = (
@@ -1212,7 +1186,6 @@
 				F5703B451BE270A300703B73 /* SVProgressHUD.m in Sources */,
 				F5F9CA551BA444EB008E1715 /* ReaderThumbRender.m in Sources */,
 				F5CD21791BE66D9B004039DE /* MBProgressHUD.m in Sources */,
-				F5A691C51BF8757500128989 /* RMActionController.m in Sources */,
 				F549D35E1BBD3127000A9E79 /* NHNetworkClock.m in Sources */,
 				F5CD217D1BE67B9F004039DE /* SubjectInfoViewController.m in Sources */,
 				F5703B431BE270A300703B73 /* SVIndefiniteAnimatedView.m in Sources */,
@@ -1251,7 +1224,6 @@
 				F53408391BD010B2000B545B /* CourseMaterialsTableViewController.m in Sources */,
 				F5A972F11BCFB7EA00C91D1A /* GradesViewController.m in Sources */,
 				F5A972EE1BCFB7EA00C91D1A /* ChatTableViewController.m in Sources */,
-				F5A691C01BF874EC00128989 /* RMCustomViewActionController.m in Sources */,
 				F5F0B6DD1BE0FEC200AD5A31 /* UserTabBarController.m in Sources */,
 				F539D0161BC5669400F05BDD /* CHTransitionAnimationController.m in Sources */,
 				F56A429D1BE0C7FA0066CEC1 /* AssignmentObject.m in Sources */,
