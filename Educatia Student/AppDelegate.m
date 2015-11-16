@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import "NHNetworkTime.h"
-#import "ManageLayerViewController.h" 
+#import "ManageLayerViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,8 +18,11 @@
 @implementation AppDelegate
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    //send a notification to NSNotificationCenter:
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"NewMessage" object:self];
+    if (application.applicationState == UIApplicationStateInactive) {
+        // The application was just brought from the background to the foreground,
+        // so we consider the app as having been "opened by a push notification."
+        [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
+    }
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -29,6 +32,19 @@
     [currentInstallation addUniqueObject:@"Students" forKey:@"channels"];
     [currentInstallation setDeviceTokenFromData:deviceToken];
     [currentInstallation saveInBackground];
+}
+
+//Finally, if using iOS 7 any of its new push features (including the new "content-available" push functionality)
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    if (application.applicationState == UIApplicationStateInactive) {
+        [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
+    }
+}
+
+//If your OS X application supports receiving push notifications and you'd like to track application opens related to pushes
+- (void)applicationDidFinishLaunching:(NSNotification *)notification {
+    // ... other Parse setup logic here
+    [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:[notification userInfo]];
 }
 
 
@@ -54,11 +70,6 @@
     PFUser *user = [PFUser currentUser];
     if(user){
         [ManageLayerViewController setDataParsingCurrentUserObject:user];
-//        if ([ManageLayerViewController getDataParsingIsCurrentTeacher]){
-//            self.tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"TeacherTabBarViewController"];
-//        }else{
-//            self.tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"StudentTabBarHolderController"];
-//        }
         self.tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"UserTabBarController"];
         [self.window setRootViewController:self.tabBarController];
     }else {
@@ -67,14 +78,26 @@
         [self.window setRootViewController:LoginViewController];
     }
     //////////////////////////////////////////////// */
-
-    // [Optional] Track statistics around application opens.
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
     
     //synchronize time from server
     [[NHNetworkClock sharedNetworkClock] syncWithComplete:^{
         NSLog(@"huync - %s - Time synced %@", __PRETTY_FUNCTION__, [NSDate networkDate]);
     }];
+    
+    //Tracking Pushes and App Opens
+    if (application.applicationState != UIApplicationStateBackground) {
+        // Track an app open here if we launch with a push, unless
+        // "content_available" was used to trigger a background push (introduced
+        // in iOS 7). In that case, we skip tracking here to avoid double
+        // counting the app-open.
+        BOOL preBackgroundPush = ![application respondsToSelector:@selector(backgroundRefreshStatus)];
+        BOOL oldPushHandlerOnly = ![self respondsToSelector:@selector(application:didReceiveRemoteNotification:fetchCompletionHandler:)];
+        BOOL noPushPayload = ![launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+        if (preBackgroundPush || oldPushHandlerOnly || noPushPayload) {
+            [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+        }
+    }
     
     return YES;
 }
@@ -95,6 +118,13 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    //A good time to clear your app's badge is usually when your app is opened. 
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    if (currentInstallation.badge != 0) {
+        currentInstallation.badge = 0;
+        [currentInstallation saveEventually];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
