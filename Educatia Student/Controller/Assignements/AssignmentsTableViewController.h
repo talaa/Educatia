@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 #import "TGRImageViewController.h"
 #import "TGRImageZoomAnimationController.h"
 
-@interface AssignmentsTableViewController : UITableViewController <UIViewControllerTransitioningDelegate>
+@interface AssignmentsTableViewController : UITableViewController <UIViewControllerTransitioningDelegate,MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *addNewAssignmentView;
 @property (weak, nonatomic) IBOutlet UIButton *addNewAssignmentButton;

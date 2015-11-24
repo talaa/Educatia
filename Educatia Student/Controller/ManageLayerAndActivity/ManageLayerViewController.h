@@ -29,5 +29,6 @@
 + (NSString *)getDataParsingCurrentuserID;
 + (NSString*)getDataParsingCurrentusername;
 + (NSString*)getDataParsingCurrentName;
++ (NSString*)getDataParsingCurrentUserEmail;
 
 @end

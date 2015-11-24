@@ -13,13 +13,16 @@
 -(instancetype)initWithObject:(PFObject*)data{
     self = [super init];
     if (self){
-        self.assigID = data.objectId;
-        self.assigName = data[@"assignmentName"];
-        self.assigMaxScore = data[@"assignmentMaxScore"];
-        self.assigTeacherName = data[@"teacherName"];
-        self.assigDeadLine = data[@"assignmentDeadLine"];
-        PFFile *assigFile = data[@"assignmentFile"];
-        self.assigFile = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:assigFile.url]];
+        self.assigID            = data.objectId;
+        self.assigName          = data[@"assignmentName"];
+        self.assigMaxScore      = data[@"assignmentMaxScore"];
+        self.assigTeacherName   = data[@"teacherName"];
+        self.assigTeacherEmail  = data[@"teacherEmail"];
+        self.subjectID          = data[@"subjectID"];
+        self.subjectName        = data[@"subjectName"];
+        self.assigDeadLine      = data[@"assignmentDeadLine"];
+        PFFile *assigFile       = data[@"assignmentFile"];
+        self.assigFile          = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:assigFile.url]];
         [self savefileLocally:assigFile];
     }
     return self;

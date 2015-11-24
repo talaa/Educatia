@@ -107,6 +107,9 @@
         cell.submitSolutionButton.hidden = YES;
     }else{
         cell.submitSolutionButton.hidden = NO;
+        cell.submitSolutionButton.tag    = indexPath.row;
+        [cell.submitSolutionButton addTarget:self action:@selector(SubmitButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        
     }
     
     //Cell Assignment View
@@ -224,12 +227,6 @@
  */
 - (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url {
     if (controller.documentPickerMode == UIDocumentPickerModeImport) {
-        //Successful import
-        //BOOL startAccessingWorked = [url startAccessingSecurityScopedResource];
-//        NSURL *ubiquityURL = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
-//        NSLog(@"ubiquityURL %@",ubiquityURL);
-//        NSLog(@"start %d",startAccessingWorked);
-        
         NSFileCoordinator *fileCoordinator = [[NSFileCoordinator alloc] init];
         NSError *error;
         [fileCoordinator coordinateReadingItemAtURL:url options:0 error:&error byAccessor:^(NSURL *newURL) {
@@ -285,7 +282,7 @@
             assignmentObject[@"teacherID"]          = [ManageLayerViewController getDataParsingCurrentuserID];
             assignmentObject[@"teacherUserName"]    = [ManageLayerViewController getDataParsingCurrentusername];
             assignmentObject[@"teacherName"]        = [ManageLayerViewController getDataParsingCurrentName];
-            
+            assignmentObject[@"teacherEmail"]       = [ManageLayerViewController getDataParsingCurrentUserEmail];
             //save Subject data
             assignmentObject[@"subjectID"]          = [ManageLayerViewController getDataParsingSubjectID];
             assignmentObject[@"subjectName"]        = [ManageLayerViewController getDataParsingSubjectName];
@@ -431,19 +428,62 @@
     return dateString;
 }
 
-/*
- *
- ******* Assignment View Button Pressed ************************
- *
- *
- */
+
+#pragma mark - CellSubmitButtonClicked
+- (void)SubmitButtonPressed:(id)sender {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(AssignementTableViewCell *)[[sender superview] superview]];
+    AssignmentObject *assigObject = [assignmentsMArray objectAtIndex:indexPath.row];
+    [self displayComposerSheet:assigObject];
+}
+
+
+-(void)displayComposerSheet:(AssignmentObject*)assigObject {
+    if ([MFMailComposeViewController canSendMail]){
+        MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+        picker.mailComposeDelegate = self;
+        [picker setSubject:assigObject.assigName];
+        
+        // Set up the recipients.
+        NSArray *toRecipients = [NSArray arrayWithObjects:assigObject.assigTeacherEmail,nil];
+        //NSArray *ccRecipients = [NSArray arrayWithObjects:@"second@example.com",@"third@example.com", nil];
+        //NSArray *bccRecipients = [NSArray arrayWithObjects:@"four@example.com",nil];
+        [picker setToRecipients:toRecipients];
+        //[picker setCcRecipients:ccRecipients];
+        //[picker setBccRecipients:bccRecipients];
+        
+        // Attach an image to the email.
+        //    NSString *path = [[NSBundle mainBundle] pathForResource:@"ipodnano" ofType:@"png"];
+        //    NSData *myData = [NSData dataWithContentsOfFile:path];
+         //  [picker addAttachmentData:myData mimeType:@"image/png" fileName:@"ipodnano"];
+        
+        NSString *body = [NSString stringWithFormat:@"Student Name: %@ \nStudent ID: %@ \n\nSubject Name: %@ \nSubject ID: %@\n\n Assignment Name: %@",[ManageLayerViewController getDataParsingCurrentName],[ManageLayerViewController getDataParsingCurrentuserID],assigObject.subjectName,assigObject.subjectID,assigObject.assigName];
+        // Fill out the email body text.إ
+        NSString *emailBody = body;
+        [picker setMessageBody:emailBody isHTML:NO];
+        
+        // Present the mail composition interface.
+        picker.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self presentViewController:picker animated:YES completion:NULL];
+    }else{
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Warring" message:@"Kindly enable at leat one e-mail account" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    
+}
+
+// The mail compose view controller delegate method
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 #pragma mark - CellAssignmentButtonClicked
 
 - (void)assignmentViewButtonPressed:(id)sender
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:(AssignementTableViewCell *)[[sender superview] superview]];
-    NSLog(@"The row id is %ld",  (long)indexPath.row);
     AssignmentObject *assigObject = [assignmentsMArray objectAtIndex:indexPath.row];
     ReaderDocument *document = [ReaderDocument withDocumentFilePath:assigObject.assigFilePath password:nil];
     if (document != nil)

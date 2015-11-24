@@ -131,6 +131,10 @@
         obj.isCurrentTeacher    = FALSE;
     }
 }
++ (NSString*)getDataParsingCurrentUserEmail{
+    DataParsing *obj=[DataParsing getInstance];
+    return obj.currentUserEmail;
+}
 
 + (NSString*)getDataParsingSubjectName{
     DataParsing *obj=[DataParsing getInstance];
