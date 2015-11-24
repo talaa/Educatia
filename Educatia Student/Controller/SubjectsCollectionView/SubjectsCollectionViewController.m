@@ -90,10 +90,6 @@ static NSString * const reuseIdentifier = @"SubjectCell";
     SubjectObject *subjectObj = [subjectsMArray objectAtIndex:indexPath.row];
     cell.subjectNameLabel.text = subjectObj.name;
     cell.subjectImageView.image = [UIImage imageWithData:subjectObj.logo];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
-        
-    });
-    
     [ManageLayerViewController subjectCollectionViewCellLayer:cell];
     
     return cell;
@@ -226,8 +222,6 @@ static NSString * const reuseIdentifier = @"SubjectCell";
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         //Do Some action here ---> OK
         UITextField *subjectIDTextField = alertController.textFields.firstObject;
-        //start ActivityIndicator
-        //[self activityLoadingwithLabel];
         
         if (subjectIDTextField.text.length > 9) {
             //search by SubjectID to get subjectName
@@ -339,6 +333,8 @@ static NSString * const reuseIdentifier = @"SubjectCell";
         
     }else{
         //this is a student user
+        PFQuery *subjectQuery = [PFQuery queryWithClassName:@"Subjects"];
+        
         PFQuery *query = [PFQuery queryWithClassName:@"StudentSubjects"];
         [query whereKey:@"studentID" equalTo:[ManageLayerViewController getDataParsingCurrentuserID]];
         [query findObjectsInBackgroundWithBlock:^(NSArray *subObjects, NSError * error) {
@@ -347,6 +343,13 @@ static NSString * const reuseIdentifier = @"SubjectCell";
                     SubjectObject *subObject = [[SubjectObject alloc] init];
                     subObject.name = sObject[@"subjectName"];
                     subObject.objectID = sObject[@"subjectID"];
+                    
+                    [subjectQuery whereKey:@"objectId" equalTo:sObject[@"subjectID"]];
+                    NSArray *subjectArray = [subjectQuery findObjects];
+                    PFObject *sub2Object = [subjectArray objectAtIndex:0];
+        
+                    PFFile *logoFile = sub2Object[@"subjectLogo"];
+                    subObject.logo = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:logoFile.url]];
                     [subjectsMArray addObject:subObject];
                 }
                 [self.collectionView reloadData];
