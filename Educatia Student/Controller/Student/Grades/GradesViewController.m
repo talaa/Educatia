@@ -7,9 +7,12 @@
 //
 
 #import "GradesViewController.h"
+#import "MBProgressHUD.h"
 
-@interface GradesViewController ()
-
+@interface GradesViewController ()<MBProgressHUDDelegate>
+{
+    MBProgressHUD *HUD;
+}
 @end
 
 @implementation GradesViewController
@@ -17,6 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self myProgressTask];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,5 +40,26 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Progress
+
+- (void)myProgressTask {
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.dimBackground = YES;
+    HUD.delegate = self;
+    HUD.labelText = @"Grades is Coming Soon...";
+}
+
+#pragma mark - MBProgressHUDDelegate
+
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+    // Remove HUD from screen when the HUD was hidded
+    [HUD removeFromSuperview];
+    HUD = nil;
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+}
 
 @end
