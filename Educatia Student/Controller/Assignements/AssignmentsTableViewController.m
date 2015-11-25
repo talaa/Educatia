@@ -22,7 +22,9 @@
     NSOperationQueue    *operationQueue;
     NSOperationQueue    *mainQueue;
     bool                isLoadingObjectsFinished;
+    bool                isTeacher;
     MBProgressHUD       *HUD;
+    AssignmentObject    *assignObject;
 }
 
 @property (strong, nonatomic) NSData *documentPickerselectedData;
@@ -51,9 +53,11 @@
     assignmentsMArray   = [NSMutableArray new];
     
     if ([ManageLayerViewController getDataParsingIsCurrentTeacher]) {
-        self.addNewAssignmentView.hidden = NO;
+        self.addNewAssignmentView.hidden    = NO;
+        isTeacher                           = YES;
     }else {
-        self.addNewAssignmentView.hidden = YES;
+        self.addNewAssignmentView.hidden    = YES;
+        isTeacher                           = NO;
     }
     
     [self loadAssignmentsObjects];
@@ -109,7 +113,6 @@
         cell.submitSolutionButton.hidden = NO;
         cell.submitSolutionButton.tag    = indexPath.row;
         [cell.submitSolutionButton addTarget:self action:@selector(SubmitButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        
     }
     
     //Cell Assignment View
@@ -231,7 +234,13 @@
         NSError *error;
         [fileCoordinator coordinateReadingItemAtURL:url options:0 error:&error byAccessor:^(NSURL *newURL) {
             NSData *data = [NSData dataWithContentsOfURL:newURL];
-            [self saveOnParseURL:newURL AndData:data];
+            //check if current is a Teacher then it was submitting a new assignment, else it is a student and he/she was submitting an assignment's solution
+            if (isTeacher){
+                [self saveOnParseURL:newURL AndData:data];
+            }else{
+                [self displayComposerSheet:assignObject :data];
+            }
+            
         }];
         [url stopAccessingSecurityScopedResource];
     }else{
@@ -432,12 +441,21 @@
 #pragma mark - CellSubmitButtonClicked
 - (void)SubmitButtonPressed:(id)sender {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:(AssignementTableViewCell *)[[sender superview] superview]];
-    AssignmentObject *assigObject = [assignmentsMArray objectAtIndex:indexPath.row];
-    [self displayComposerSheet:assigObject];
+    assignObject = [assignmentsMArray objectAtIndex:indexPath.row];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Submit Solution" message:@"1- Press add solution button to add your solution file.\n2- Go ahead, press send and Good Luck!." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *addFile = [UIAlertAction actionWithTitle:@"Add Solution" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //Code to pick up a file from ICloud
+        [self showDocumentPickerInMode:UIDocumentPickerModeOpen];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:nil];
+    [alertController addAction:addFile];
+    [alertController addAction:cancel];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 
--(void)displayComposerSheet:(AssignmentObject*)assigObject {
+-(void)displayComposerSheet:(AssignmentObject*)assigObject :(NSData*)data {
     if ([MFMailComposeViewController canSendMail]){
         MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
         picker.mailComposeDelegate = self;
@@ -454,7 +472,7 @@
         // Attach an image to the email.
         //    NSString *path = [[NSBundle mainBundle] pathForResource:@"ipodnano" ofType:@"png"];
         //    NSData *myData = [NSData dataWithContentsOfFile:path];
-         //  [picker addAttachmentData:myData mimeType:@"image/png" fileName:@"ipodnano"];
+        [picker addAttachmentData:data mimeType:@"attachment" fileName:assigObject.assigName];
         
         NSString *body = [NSString stringWithFormat:@"Student Name: %@ \nStudent ID: %@ \n\nSubject Name: %@ \nSubject ID: %@\n\n Assignment Name: %@",[ManageLayerViewController getDataParsingCurrentName],[ManageLayerViewController getDataParsingCurrentuserID],assigObject.subjectName,assigObject.subjectID,assigObject.assigName];
         // Fill out the email body text.إ
@@ -473,8 +491,24 @@
 }
 
 // The mail compose view controller delegate method
-
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    switch (result) {
+        case MFMailComposeResultSent:
+            [SVProgressHUD showSuccessWithStatus:@"Your mail has been sent"];
+            break;
+        case MFMailComposeResultSaved:
+            [SVProgressHUD showInfoWithStatus:@"You saved a draft of this email"];
+            break;
+        case MFMailComposeResultCancelled:
+            [SVProgressHUD showInfoWithStatus:@"You cancelled sending this email."];
+            break;
+        case MFMailComposeResultFailed:
+            [SVProgressHUD showErrorWithStatus:@"Mail failed:  An error occurred when trying to compose this email"];
+            break;
+        default:
+            NSLog(@"An error occurred when trying to compose this email");
+            break;
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
