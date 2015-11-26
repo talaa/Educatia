@@ -10,8 +10,7 @@
 #import <Parse/Parse.h>
 #import "ManageLayerViewController.h"
 
-@interface SignupViewController () <UITextFieldDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate>
-
+@interface SignupViewController ()
 @end
 
 @implementation SignupViewController
@@ -250,17 +249,13 @@
     if (date >= [NSDate date]){
         NSString *message = [NSString stringWithFormat:@"Incorrect Birthdate : %@", value];
         alertController = [UIAlertController alertControllerWithTitle:@"Incorrect Birth Date" message:message preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
         [alertController addAction:okAction];
     }else {
         self.birthdateTextField.text = value;
-        NSString *message = [NSString stringWithFormat:@"Did valid date : %@", value];
+        NSString *message = [NSString stringWithFormat:@"Valid date : %@", value];
         alertController = [UIAlertController alertControllerWithTitle:@"Birth Date" message:message preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
         [alertController addAction:okAction];
     }
     [self presentViewController:alertController animated:YES completion:nil];}
@@ -319,11 +314,14 @@
 {
     //NSLog(@"Button Index %ld", (long)buttonIndex);
     if (buttonIndex == 0){
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.delegate = self;
-        picker.allowsEditing = YES;
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        [self presentViewController:picker animated:YES completion:NULL];
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.allowsEditing = YES;
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+            [self presentViewController:picker animated:YES completion:NULL];
+        }];
     }else { //buttonIndex = 1
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             //your code
@@ -331,7 +329,7 @@
             picker.delegate = self;
             picker.allowsEditing = YES;
             picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            [self presentViewController:picker animated:YES completion:NULL];
+            [self presentViewController:picker animated:YES completion:nil];
         }];
         
     }

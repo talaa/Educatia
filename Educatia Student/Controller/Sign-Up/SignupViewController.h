@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FlatDatePicker.h"
 
-@interface SignupViewController : UIViewController <FlatDatePickerDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate>
+@interface SignupViewController : UIViewController <FlatDatePickerDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate,UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *picProfileImageView;
 @property (weak, nonatomic) IBOutlet UIButton *uploadPhotoButton;
