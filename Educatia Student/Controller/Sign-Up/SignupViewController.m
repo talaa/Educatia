@@ -59,6 +59,7 @@
     self.birthdateTextField.text        = @"";
     self.emailTextField.text            = @"";
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
