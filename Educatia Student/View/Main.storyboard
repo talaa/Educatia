@@ -1219,7 +1219,7 @@
         <!--Upgrade App View Controller-->
         <scene sceneID="fwz-cE-DLf">
             <objects>
-                <viewController id="Uwo-8y-4nu" customClass="UpgradeAppViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UpgradeAppViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Uwo-8y-4nu" customClass="UpgradeAppViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SKc-p0-4CE"/>
                         <viewControllerLayoutGuide type="bottom" id="cnT-8s-kzr"/>

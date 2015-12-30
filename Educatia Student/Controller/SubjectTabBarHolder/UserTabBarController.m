@@ -8,6 +8,7 @@
 
 #import "UserTabBarController.h"
 #import "ProfileViewController.h"
+#import "UpgradeAppViewController.h"
 
 @interface UserTabBarController ()
 
@@ -25,9 +26,12 @@
     
     UINavigationController *navigationSubjects = [storyboard instantiateViewControllerWithIdentifier:@"SubjectsNavigationController"];
     
+    UpgradeAppViewController *upgrade = [storyboard instantiateViewControllerWithIdentifier:@"UpgradeAppViewController"];
+    
     NSMutableArray *tabViewControllers = [[NSMutableArray alloc] init];
     [tabViewControllers addObject:profile];
     [tabViewControllers addObject:navigationSubjects];
+    [tabViewControllers addObject:upgrade];
     
     
     [self setViewControllers:tabViewControllers];
@@ -40,6 +44,11 @@
     [[UITabBarItem alloc] initWithTitle:@"Subjects"
                                   image:[UIImage imageNamed:@"Icon_Subjects"]
                                     tag:2];
+    
+    upgrade.tabBarItem =
+    [[UITabBarItem alloc] initWithTitle:@"Upgrade"
+                                  image:[UIImage imageNamed:@"icon_Buy"]
+                                    tag:3];
 
 }
 
