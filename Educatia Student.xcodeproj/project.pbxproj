@@ -32,6 +32,7 @@
 		69FE08B01B84E51500C81ABC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08AF1B84E51500C81ABC /* AppDelegate.m */; };
 		69FE08B81B84E51500C81ABC /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69FE08B71B84E51500C81ABC /* images.xcassets */; };
 		69FE08C71B84E51500C81ABC /* Educatia_StudentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE08C61B84E51500C81ABC /* Educatia_StudentTests.m */; };
+		F5029C721C34062C000F7A85 /* UpgradeAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5029C711C34062C000F7A85 /* UpgradeAppViewController.m */; };
 		F5055CCB1BA1B37300BB6547 /* Math1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F5055CCA1BA1B37300BB6547 /* Math1.jpg */; };
 		F5055CDA1BA1C00E00BB6547 /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = F5055CD91BA1C00E00BB6547 /* CAPSPageMenu.m */; };
 		F507E5CF1B9F15C00066283F /* icon_Expences.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5C31B9F15C00066283F /* icon_Expences.png */; };
@@ -48,7 +49,7 @@
 		F507E5DA1B9F15C00066283F /* icon_Summary@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F507E5CE1B9F15C00066283F /* icon_Summary@3x.png */; };
 		F507E5DE1B9F19120066283F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F507E5DD1B9F19120066283F /* ProfileViewController.m */; };
 		F50D6D4E1BA5B49300BF6309 /* ThumbnailPDF.m in Sources */ = {isa = PBXBuildFile; fileRef = F50D6D4D1BA5B49300BF6309 /* ThumbnailPDF.m */; };
-		F515F4F51BE10E1A00810B90 /* SubjectsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F515F4F41BE10E1A00810B90 /* SubjectsCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
+		F515F4F51BE10E1A00810B90 /* SubjectsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F515F4F41BE10E1A00810B90 /* SubjectsCollectionViewController.m */; };
 		F51746B11BAAE940003B026A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51746B01BAAE940003B026A /* MobileCoreServices.framework */; };
 		F533BFB61BBC06B8008706A0 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = F533BFB41BBC06B8008706A0 /* 37x-Checkmark.png */; };
 		F533BFB71BBC06B8008706A0 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F533BFB51BBC06B8008706A0 /* 37x-Checkmark@2x.png */; };
@@ -77,24 +78,24 @@
 		F54E13461BD8FA1D00D84FCB /* HSDatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54E13441BD8FA1D00D84FCB /* HSDatePickerViewController.xib */; };
 		F553220C1BD7BEA700E17FBF /* AssignementTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F553220A1BD7BEA700E17FBF /* AssignementTableViewCell.m */; };
 		F553220F1BD7CD0700E17FBF /* AssignmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F553220E1BD7CD0700E17FBF /* AssignmentsTableViewController.m */; };
-		F56A429D1BE0C7FA0066CEC1 /* AssignmentObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A429C1BE0C7FA0066CEC1 /* AssignmentObject.m */; settings = {ASSET_TAGS = (); }; };
-		F56A42A01BE0C8230066CEC1 /* UserObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A429F1BE0C8230066CEC1 /* UserObject.m */; settings = {ASSET_TAGS = (); }; };
-		F56A42A31BE0D8600066CEC1 /* SubjectObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A42A21BE0D8600066CEC1 /* SubjectObject.m */; settings = {ASSET_TAGS = (); }; };
-		F5703B351BE22AC700703B73 /* StudentSubjects.m in Sources */ = {isa = PBXBuildFile; fileRef = F5703B341BE22AC700703B73 /* StudentSubjects.m */; settings = {ASSET_TAGS = (); }; };
-		F5703B391BE243FE00703B73 /* TabBarPagerHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5703B381BE243FE00703B73 /* TabBarPagerHolderViewController.m */; settings = {ASSET_TAGS = (); }; };
-		F5703B431BE270A300703B73 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5703B3C1BE270A300703B73 /* SVIndefiniteAnimatedView.m */; settings = {ASSET_TAGS = (); }; };
-		F5703B441BE270A300703B73 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5703B3E1BE270A300703B73 /* SVProgressHUD.bundle */; settings = {ASSET_TAGS = (); }; };
-		F5703B451BE270A300703B73 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F5703B401BE270A300703B73 /* SVProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
-		F5703B461BE270A300703B73 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F5703B421BE270A300703B73 /* SVRadialGradientLayer.m */; settings = {ASSET_TAGS = (); }; };
-		F58055611BDFE483000C8B74 /* CourseMaterialObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F58055601BDFE483000C8B74 /* CourseMaterialObject.m */; settings = {ASSET_TAGS = (); }; };
-		F589AC391BDA1C050085CB70 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F589AC361BDA1C050085CB70 /* Bolts.framework */; settings = {ASSET_TAGS = (); }; };
-		F589AC3A1BDA1C050085CB70 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F589AC371BDA1C050085CB70 /* Parse.framework */; settings = {ASSET_TAGS = (); }; };
-		F589AC3B1BDA1C050085CB70 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F589AC381BDA1C050085CB70 /* ParseUI.framework */; settings = {ASSET_TAGS = (); }; };
-		F589C8CF1BF37B400040306A /* NewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8CE1BF37B400040306A /* NewsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		F589C8D21BF37BC20040306A /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8D11BF37BC20040306A /* NewsTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		F589C8D51BF37DF30040306A /* NewsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8D41BF37DF30040306A /* NewsObject.m */; settings = {ASSET_TAGS = (); }; };
-		F589C8D91BF38A2A0040306A /* StudentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8D81BF38A2A0040306A /* StudentsTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		F589C8DC1BF38BC50040306A /* StudentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8DB1BF38BC50040306A /* StudentsTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		F56A429D1BE0C7FA0066CEC1 /* AssignmentObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A429C1BE0C7FA0066CEC1 /* AssignmentObject.m */; };
+		F56A42A01BE0C8230066CEC1 /* UserObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A429F1BE0C8230066CEC1 /* UserObject.m */; };
+		F56A42A31BE0D8600066CEC1 /* SubjectObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A42A21BE0D8600066CEC1 /* SubjectObject.m */; };
+		F5703B351BE22AC700703B73 /* StudentSubjects.m in Sources */ = {isa = PBXBuildFile; fileRef = F5703B341BE22AC700703B73 /* StudentSubjects.m */; };
+		F5703B391BE243FE00703B73 /* TabBarPagerHolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5703B381BE243FE00703B73 /* TabBarPagerHolderViewController.m */; };
+		F5703B431BE270A300703B73 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5703B3C1BE270A300703B73 /* SVIndefiniteAnimatedView.m */; };
+		F5703B441BE270A300703B73 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5703B3E1BE270A300703B73 /* SVProgressHUD.bundle */; };
+		F5703B451BE270A300703B73 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F5703B401BE270A300703B73 /* SVProgressHUD.m */; };
+		F5703B461BE270A300703B73 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F5703B421BE270A300703B73 /* SVRadialGradientLayer.m */; };
+		F58055611BDFE483000C8B74 /* CourseMaterialObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F58055601BDFE483000C8B74 /* CourseMaterialObject.m */; };
+		F589AC391BDA1C050085CB70 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F589AC361BDA1C050085CB70 /* Bolts.framework */; };
+		F589AC3A1BDA1C050085CB70 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F589AC371BDA1C050085CB70 /* Parse.framework */; };
+		F589AC3B1BDA1C050085CB70 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F589AC381BDA1C050085CB70 /* ParseUI.framework */; };
+		F589C8CF1BF37B400040306A /* NewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8CE1BF37B400040306A /* NewsTableViewController.m */; };
+		F589C8D21BF37BC20040306A /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8D11BF37BC20040306A /* NewsTableViewCell.m */; };
+		F589C8D51BF37DF30040306A /* NewsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8D41BF37DF30040306A /* NewsObject.m */; };
+		F589C8D91BF38A2A0040306A /* StudentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8D81BF38A2A0040306A /* StudentsTableViewController.m */; };
+		F589C8DC1BF38BC50040306A /* StudentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F589C8DB1BF38BC50040306A /* StudentsTableViewCell.m */; };
 		F5A972EE1BCFB7EA00C91D1A /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972D21BCFB7EA00C91D1A /* ChatTableViewController.m */; };
 		F5A972EF1BCFB7EA00C91D1A /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972D41BCFB7EA00C91D1A /* ChatViewController.m */; };
 		F5A972F11BCFB7EA00C91D1A /* GradesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A972DA1BCFB7EA00C91D1A /* GradesViewController.m */; };
@@ -102,9 +103,9 @@
 		F5A973021BCFD50E00C91D1A /* 32x-CloseMark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A973001BCFD50E00C91D1A /* 32x-CloseMark@2x.png */; };
 		F5CD216F1BE65067004039DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5CD216E1BE65067004039DE /* Foundation.framework */; };
 		F5CD21711BE65072004039DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5CD21701BE65072004039DE /* UIKit.framework */; };
-		F5CD21791BE66D9B004039DE /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CD21781BE66D9A004039DE /* MBProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
-		F5CD217D1BE67B9F004039DE /* SubjectInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CD217C1BE67B9F004039DE /* SubjectInfoViewController.m */; settings = {ASSET_TAGS = (); }; };
-		F5F0B6DD1BE0FEC200AD5A31 /* UserTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F0B6DC1BE0FEC200AD5A31 /* UserTabBarController.m */; settings = {ASSET_TAGS = (); }; };
+		F5CD21791BE66D9B004039DE /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CD21781BE66D9A004039DE /* MBProgressHUD.m */; };
+		F5CD217D1BE67B9F004039DE /* SubjectInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CD217C1BE67B9F004039DE /* SubjectInfoViewController.m */; };
+		F5F0B6DD1BE0FEC200AD5A31 /* UserTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F0B6DC1BE0FEC200AD5A31 /* UserTabBarController.m */; };
 		F5F9CA1D1BA4434A008E1715 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F9CA1C1BA4434A008E1715 /* ImageIO.framework */; };
 		F5F9CA1F1BA44355008E1715 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F9CA1E1BA44355008E1715 /* MessageUI.framework */; };
 		F5F9CA491BA444EB008E1715 /* CGPDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F9CA221BA444EB008E1715 /* CGPDFDocument.m */; };
@@ -191,6 +192,8 @@
 		69FE08C01B84E51500C81ABC /* Educatia StudentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Educatia StudentTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69FE08C51B84E51500C81ABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69FE08C61B84E51500C81ABC /* Educatia_StudentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Educatia_StudentTests.m; sourceTree = "<group>"; };
+		F5029C701C34062C000F7A85 /* UpgradeAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeAppViewController.h; sourceTree = "<group>"; };
+		F5029C711C34062C000F7A85 /* UpgradeAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeAppViewController.m; sourceTree = "<group>"; };
 		F5055CCA1BA1B37300BB6547 /* Math1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Math1.jpg; sourceTree = "<group>"; };
 		F5055CD81BA1C00E00BB6547 /* CAPSPageMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPSPageMenu.h; sourceTree = "<group>"; };
 		F5055CD91BA1C00E00BB6547 /* CAPSPageMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAPSPageMenu.m; sourceTree = "<group>"; };
@@ -380,6 +383,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				693E69301B876C4D00009A84 /* StoreKit.framework in Frameworks */,
 				F5F9CA1F1BA44355008E1715 /* MessageUI.framework in Frameworks */,
 				693E692C1B876C2900009A84 /* QuartzCore.framework in Frameworks */,
 				693E692A1B876C2900009A84 /* CoreGraphics.framework in Frameworks */,
@@ -396,7 +400,6 @@
 				F589AC3B1BDA1C050085CB70 /* ParseUI.framework in Frameworks */,
 				693E69381B876C8B00009A84 /* libsqlite3.dylib in Frameworks */,
 				693E69361B876C7800009A84 /* libz.dylib in Frameworks */,
-				693E69301B876C4D00009A84 /* StoreKit.framework in Frameworks */,
 				693E692B1B876C2900009A84 /* CoreLocation.framework in Frameworks */,
 				693E69241B876C0000009A84 /* AudioToolbox.framework in Frameworks */,
 			);
@@ -423,6 +426,7 @@
 		0453AEDA1B9861FB00CD3A53 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F5029C6F1C340612000F7A85 /* UpgradeApp */,
 				F589C8D61BF389D80040306A /* Students TableViewController */,
 				F589C8C91BF375BC0040306A /* News */,
 				F5CD217A1BE67B9F004039DE /* SubjectInfo */,
@@ -641,6 +645,15 @@
 				69FE08C51B84E51500C81ABC /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F5029C6F1C340612000F7A85 /* UpgradeApp */ = {
+			isa = PBXGroup;
+			children = (
+				F5029C701C34062C000F7A85 /* UpgradeAppViewController.h */,
+				F5029C711C34062C000F7A85 /* UpgradeAppViewController.m */,
+			);
+			path = UpgradeApp;
 			sourceTree = "<group>";
 		};
 		F5055CD71BA1C00E00BB6547 /* PagerMenu */ = {
@@ -1224,6 +1237,7 @@
 				F549D35F1BBD3127000A9E79 /* NSDate+NetworkClock.m in Sources */,
 				69FE08AD1B84E51500C81ABC /* main.m in Sources */,
 				0453AEF11B98647E00CD3A53 /* LoginViewController.m in Sources */,
+				F5029C721C34062C000F7A85 /* UpgradeAppViewController.m in Sources */,
 				F53408391BD010B2000B545B /* CourseMaterialsTableViewController.m in Sources */,
 				F5A972F11BCFB7EA00C91D1A /* GradesViewController.m in Sources */,
 				F5A972EE1BCFB7EA00C91D1A /* ChatTableViewController.m in Sources */,
@@ -1376,7 +1390,7 @@
 					Student/Resources/SDK/ParseSDK_1.9.0,
 				);
 				INFOPLIST_FILE = "Educatia Student/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1413,7 +1427,7 @@
 					Student/Resources/SDK/ParseSDK_1.9.0,
 				);
 				INFOPLIST_FILE = "Educatia Student/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

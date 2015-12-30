@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nkt-Gd-cbk">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -1215,6 +1216,54 @@
             </objects>
             <point key="canvasLocation" x="3065" y="1974"/>
         </scene>
+        <!--Upgrade App View Controller-->
+        <scene sceneID="fwz-cE-DLf">
+            <objects>
+                <viewController id="Uwo-8y-4nu" customClass="UpgradeAppViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SKc-p0-4CE"/>
+                        <viewControllerLayoutGuide type="bottom" id="cnT-8s-kzr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Xj2-db-5hd">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="SFh-Z1-izz">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1024" id="kMt-33-aIO"/>
+                                    <constraint firstAttribute="width" constant="768" id="y1S-7Q-Cm6"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfj-Om-uAl">
+                                <rect key="frame" x="334" y="462" width="100" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="28E-SV-sAy"/>
+                                    <constraint firstAttribute="width" constant="100" id="Zyp-S3-ZmT"/>
+                                </constraints>
+                                <state key="normal" image="icon_Buy"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="SFh-Z1-izz" secondAttribute="trailing" id="FsH-5N-FzW"/>
+                            <constraint firstItem="dfj-Om-uAl" firstAttribute="centerY" secondItem="Xj2-db-5hd" secondAttribute="centerY" id="IMs-yp-Sus"/>
+                            <constraint firstItem="dfj-Om-uAl" firstAttribute="centerX" secondItem="Xj2-db-5hd" secondAttribute="centerX" id="Kdm-k5-kPv"/>
+                            <constraint firstItem="cnT-8s-kzr" firstAttribute="top" secondItem="SFh-Z1-izz" secondAttribute="bottom" id="bWT-H5-Hvl"/>
+                            <constraint firstItem="SFh-Z1-izz" firstAttribute="top" secondItem="Xj2-db-5hd" secondAttribute="top" id="eNc-Gu-xCd"/>
+                            <constraint firstItem="SFh-Z1-izz" firstAttribute="leading" secondItem="Xj2-db-5hd" secondAttribute="leading" id="xgn-rw-5jn"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="upgradeButton" destination="dfj-Om-uAl" id="msz-P1-gns"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dlc-of-HuU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1235" y="1974"/>
+        </scene>
         <!--News Table View Controller-->
         <scene sceneID="OZr-ME-hIb">
             <objects>
@@ -1645,6 +1694,7 @@
         <image name="Icon_True" width="16" height="16"/>
         <image name="Icon_Username" width="16" height="16"/>
         <image name="Icone_BirthDay" width="32" height="32"/>
+        <image name="icon_Buy" width="50" height="50"/>
         <image name="welcome_background.png" width="320" height="568"/>
     </resources>
     <inferredMetricsTieBreakers>
