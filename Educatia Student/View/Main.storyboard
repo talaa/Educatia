@@ -1236,20 +1236,23 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfj-Om-uAl">
-                                <rect key="frame" x="334" y="462" width="100" height="100"/>
+                                <rect key="frame" x="321" y="482" width="127" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="28E-SV-sAy"/>
-                                    <constraint firstAttribute="width" constant="100" id="Zyp-S3-ZmT"/>
+                                    <constraint firstAttribute="height" constant="60" id="kpo-2E-LWQ"/>
+                                    <constraint firstAttribute="width" constant="127" id="zcd-4S-ejN"/>
                                 </constraints>
-                                <state key="normal" image="icon_Buy"/>
+                                <state key="normal" title="Purchase" image="icon_Buy"/>
+                                <connections>
+                                    <action selector="purchase:" destination="Uwo-8y-4nu" eventType="touchUpInside" id="7G5-Ai-MNd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="SFh-Z1-izz" secondAttribute="trailing" id="FsH-5N-FzW"/>
-                            <constraint firstItem="dfj-Om-uAl" firstAttribute="centerY" secondItem="Xj2-db-5hd" secondAttribute="centerY" id="IMs-yp-Sus"/>
-                            <constraint firstItem="dfj-Om-uAl" firstAttribute="centerX" secondItem="Xj2-db-5hd" secondAttribute="centerX" id="Kdm-k5-kPv"/>
+                            <constraint firstItem="dfj-Om-uAl" firstAttribute="centerX" secondItem="Xj2-db-5hd" secondAttribute="centerX" id="K5Z-2N-taM"/>
+                            <constraint firstItem="dfj-Om-uAl" firstAttribute="centerY" secondItem="Xj2-db-5hd" secondAttribute="centerY" id="L3b-tN-zue"/>
                             <constraint firstItem="cnT-8s-kzr" firstAttribute="top" secondItem="SFh-Z1-izz" secondAttribute="bottom" id="bWT-H5-Hvl"/>
                             <constraint firstItem="SFh-Z1-izz" firstAttribute="top" secondItem="Xj2-db-5hd" secondAttribute="top" id="eNc-Gu-xCd"/>
                             <constraint firstItem="SFh-Z1-izz" firstAttribute="leading" secondItem="Xj2-db-5hd" secondAttribute="leading" id="xgn-rw-5jn"/>
@@ -1694,7 +1697,7 @@
         <image name="Icon_True" width="16" height="16"/>
         <image name="Icon_Username" width="16" height="16"/>
         <image name="Icone_BirthDay" width="32" height="32"/>
-        <image name="icon_Buy" width="50" height="50"/>
+        <image name="icon_Buy" width="25" height="25"/>
         <image name="welcome_background.png" width="320" height="568"/>
     </resources>
     <inferredMetricsTieBreakers>

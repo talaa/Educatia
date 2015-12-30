@@ -7,8 +7,9 @@
 //
 
 #import "UpgradeAppViewController.h"
+#define kInAppPurchaseProUpgradeProductId @"com.BWS.EducatiaStudent.oneMonth"
 
-@interface UpgradeAppViewController ()
+@interface UpgradeAppViewController () <SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
 @end
 
@@ -34,7 +35,30 @@
 }
 */
 
-- (IBAction)upgradePressed:(id)sender{
-    
+
+/***********************************/
+#pragma mark - InApp Purchase   
+/**********************************/
+
+- (IBAction)purchase:(id)sender{
+    SKProductsRequest *request= [[SKProductsRequest alloc]
+                                 initWithProductIdentifiers: [NSSet setWithObject: @"com.BWS.EducatiaStudent.oneMonth"]];
+    request.delegate = self;
+    [request start];
+
 }
+
+- (void)buyProductIdentifier:(NSString *)productIdentifier
+{
+    SKMutablePayment *payment = [[SKMutablePayment alloc] init] ;
+    payment.productIdentifier = productIdentifier;
+    [[SKPaymentQueue defaultQueue] addPayment:payment];
+}
+
+
+-(void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response{
+    SKProduct *selectedProduct = response.products[0];
+    [self buyProductIdentifier:selectedProduct.productIdentifier];
+}
+
 @end

@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <StoreKit/StoreKit.h>
 
 @interface UpgradeAppViewController : UIViewController
-
 @property (weak, nonatomic) IBOutlet UIButton *upgradeButton;
-- (IBAction)upgradePressed:(id)sender;
+@property (strong, nonatomic) SKProduct *product;
 
 @end
