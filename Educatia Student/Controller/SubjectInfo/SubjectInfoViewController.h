@@ -16,8 +16,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *subjectLogoImageView;
 @property (weak, nonatomic) IBOutlet UIButton *uploadLogoButton;
 @property (weak, nonatomic) IBOutlet UIButton *changeLogoButton;
+@property (weak, nonatomic) IBOutlet UIButton *sendCodeButton;
 
 - (IBAction)uploadLogoPressed:(id)sender;
 - (IBAction)changeLogoPressed:(id)sender;
-
+- (IBAction)sendCodePressed:(id)sender;
 @end
