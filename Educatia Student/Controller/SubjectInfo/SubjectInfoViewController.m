@@ -12,8 +12,9 @@
 #import "SVProgressHUD.h"
 #import "ManageLayerViewController.h"
 #import "MBProgressHUD.h"
+#import <MessageUI/MessageUI.h>
 
-@interface SubjectInfoViewController () <MBProgressHUDDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface SubjectInfoViewController () <MBProgressHUDDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate>
 {
     MBProgressHUD  *HUD;
     bool            isUserTeacher;
@@ -28,6 +29,11 @@
     
     [ManageLayerViewController imageViewLayerProfilePicture:self.subjectLogoImageView Corner:100.0f];
     
+    //SendCodeButton Layout
+    self.sendCodeButton.layer.cornerRadius = 7.0f;
+    self.sendCodeButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.sendCodeButton.layer.borderWidth = 2.0f;
+    
     //check if subjectLogoImageView presents an image
     //present change button in case of image existing otherwise present uplaod button
     isUserTeacher = [ManageLayerViewController getDataParsingIsCurrentTeacher];
@@ -40,6 +46,20 @@
     HUD.labelText = @"Loading...";
     
     [self loadSubjectData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    
+    //check if current user is teacher --> enable and present sendCodeButton.Otherwise, hide and disabled
+    if ([ManageLayerViewController getDataParsingIsCurrentTeacher]) {
+        self.sendCodeButton.hidden      = NO;
+        self.sendCodeButton.enabled     = YES;
+    }else {
+        self.sendCodeButton.hidden      = YES;
+        self.sendCodeButton.enabled     = NO;
+    }
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -232,4 +252,70 @@
         }
     }];
 }
+
+- (IBAction)sendCodePressed:(id)sender {
+    [self displayComposerSheet:self.codeLabel.text AndSubjectName:self.subjectLabel.text];
+}
+
+/********************************************/
+//              Email                       //
+/********************************************/
+
+-(void)displayComposerSheet:(NSString*)code AndSubjectName:(NSString*)subjectName {
+    if ([MFMailComposeViewController canSendMail]){
+        MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+        picker.mailComposeDelegate = self;
+        [picker setSubject:subjectName];
+        
+        // Set up the recipients.
+        //NSArray *toRecipients = [NSArray arrayWithObjects:assigObject.assigTeacherEmail,nil];
+        //NSArray *ccRecipients = [NSArray arrayWithObjects:@"second@example.com",@"third@example.com", nil];
+        //NSArray *bccRecipients = [NSArray arrayWithObjects:@"four@example.com",nil];
+        //[picker setToRecipients:toRecipients];
+        //[picker setCcRecipients:ccRecipients];
+        //[picker setBccRecipients:bccRecipients];
+        
+        // Attach an image to the email.
+        //    NSString *path = [[NSBundle mainBundle] pathForResource:@"ipodnano" ofType:@"png"];
+        //    NSData *myData = [NSData dataWithContentsOfFile:path];
+        //[picker addAttachmentData:data mimeType:@"attachment" fileName:subjectName];
+        
+        NSString *body = [NSString stringWithFormat:@"Subject Name: %@\nSubject Code: %@\n\nI wish you enjoy our course.\nGood Luck",subjectName,code];
+        // Fill out the email body text.إ
+        NSString *emailBody = body;
+        [picker setMessageBody:emailBody isHTML:NO];
+        
+        // Present the mail composition interface.
+        picker.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self presentViewController:picker animated:YES completion:NULL];
+    }else{
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Warring" message:@"Kindly enable at leat one e-mail account" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    
+}
+
+// The mail compose view controller delegate method
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    switch (result) {
+        case MFMailComposeResultSent:
+            [SVProgressHUD showSuccessWithStatus:@"Your mail has been sent"];
+            break;
+        case MFMailComposeResultSaved:
+            [SVProgressHUD showInfoWithStatus:@"You saved a draft of this email"];
+            break;
+        case MFMailComposeResultCancelled:
+            [SVProgressHUD showInfoWithStatus:@"You cancelled sending this email."];
+            break;
+        case MFMailComposeResultFailed:
+            [SVProgressHUD showErrorWithStatus:@"Mail failed:  An error occurred when trying to compose this email"];
+            break;
+        default:
+            NSLog(@"An error occurred when trying to compose this email");
+            break;
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end

@@ -819,13 +819,30 @@
                                     <action selector="changeLogoPressed:" destination="HYu-Hy-eCA" eventType="touchUpInside" id="rmK-5Z-RlL"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brf-aU-PSY">
+                                <rect key="frame" x="292" y="800" width="184" height="59"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.32000000000000001" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="Yxi-ZG-V8w"/>
+                                    <constraint firstAttribute="width" constant="184" id="ex4-AC-1Hz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Send the Code">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendCodePressed:" destination="HYu-Hy-eCA" eventType="touchUpInside" id="DgE-L2-6Ms"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="FD1-Gb-jWW" firstAttribute="top" secondItem="Ifq-9h-eQJ" secondAttribute="bottom" constant="8" id="3cQ-Ev-dkj"/>
                             <constraint firstItem="Irl-fR-XSm" firstAttribute="top" secondItem="bIH-iO-GgB" secondAttribute="bottom" constant="35" id="Aac-Bz-XbN"/>
+                            <constraint firstItem="brf-aU-PSY" firstAttribute="centerX" secondItem="sjE-mT-NST" secondAttribute="centerX" id="H3N-tz-HRZ"/>
                             <constraint firstItem="FD1-Gb-jWW" firstAttribute="leading" secondItem="sjE-mT-NST" secondAttribute="leading" constant="157" id="QtA-OC-pxN"/>
                             <constraint firstItem="Ifq-9h-eQJ" firstAttribute="leading" secondItem="sjE-mT-NST" secondAttribute="leading" constant="117" id="atB-AH-TD7"/>
+                            <constraint firstItem="Ass-Cd-gDC" firstAttribute="top" secondItem="brf-aU-PSY" secondAttribute="bottom" constant="165" id="byl-Uq-Iil"/>
                             <constraint firstItem="e9W-QL-c06" firstAttribute="top" secondItem="Ifq-9h-eQJ" secondAttribute="bottom" constant="8" id="eV4-Wv-9Q0"/>
                             <constraint firstItem="sWE-MJ-h4r" firstAttribute="top" secondItem="VPj-PC-fva" secondAttribute="bottom" constant="8" id="eXc-0t-Q70"/>
                             <constraint firstItem="Irl-fR-XSm" firstAttribute="centerX" secondItem="sjE-mT-NST" secondAttribute="centerX" id="fgF-R7-bqq"/>
@@ -840,6 +857,7 @@
                     <connections>
                         <outlet property="changeLogoButton" destination="FD1-Gb-jWW" id="trn-Py-TfN"/>
                         <outlet property="codeLabel" destination="UOR-vn-l70" id="VC1-rw-rJt"/>
+                        <outlet property="sendCodeButton" destination="brf-aU-PSY" id="e2z-xg-VkE"/>
                         <outlet property="subjectLabel" destination="Irl-fR-XSm" id="VO3-tD-NOg"/>
                         <outlet property="subjectLogoImageView" destination="Ifq-9h-eQJ" id="t0I-Hm-0NK"/>
                         <outlet property="teacherLabel" destination="JJu-40-3fr" id="9wy-bA-SY4"/>
