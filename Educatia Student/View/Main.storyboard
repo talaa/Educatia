@@ -935,29 +935,28 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neJ-ky-E3L">
-                                            <rect key="frame" x="121" y="8" width="75" height="21"/>
+                                            <rect key="frame" x="121" y="8" width="75" height="28"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="WLY-eW-csH"/>
-                                                <constraint firstAttribute="width" constant="75" id="kYe-uG-DN2"/>
+                                                <constraint firstAttribute="width" constant="75" id="FkY-An-ug5"/>
+                                                <constraint firstAttribute="height" constant="28" id="hLg-1C-132"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFA-ja-xcE">
-                                            <rect key="frame" x="204" y="8" width="158" height="21"/>
+                                            <rect key="frame" x="204" y="8" width="221" height="28"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="158" id="NdV-7W-riU"/>
-                                                <constraint firstAttribute="height" constant="21" id="q9p-Zc-WPP"/>
+                                                <constraint firstAttribute="width" constant="221" id="BSG-iA-TXD"/>
+                                                <constraint firstAttribute="height" constant="28" id="wEC-rT-CIW"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                             <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="auF-gj-hUG" secondAttribute="bottom" constant="8" id="43Z-j7-KgD"/>
-                                        <constraint firstItem="neJ-ky-E3L" firstAttribute="leading" secondItem="L0g-tz-HIV" secondAttribute="trailing" constant="8" id="45A-v7-ckF"/>
                                         <constraint firstAttribute="bottom" secondItem="qva-tx-sAt" secondAttribute="bottom" constant="8" id="8rN-bI-v2y"/>
                                         <constraint firstAttribute="bottom" secondItem="L0g-tz-HIV" secondAttribute="bottom" constant="8" id="9Vo-q3-TSI"/>
                                         <constraint firstItem="auF-gj-hUG" firstAttribute="top" secondItem="WQx-7p-9fD" secondAttribute="top" constant="105" id="9ng-Tv-YKA"/>
@@ -965,13 +964,14 @@
                                         <constraint firstItem="qva-tx-sAt" firstAttribute="top" secondItem="WQx-7p-9fD" secondAttribute="top" constant="105" id="CBc-U6-W5J"/>
                                         <constraint firstItem="USJ-rw-iqo" firstAttribute="top" secondItem="WQx-7p-9fD" secondAttribute="top" constant="8" id="Iew-QE-1JS"/>
                                         <constraint firstItem="qva-tx-sAt" firstAttribute="leading" secondItem="auF-gj-hUG" secondAttribute="trailing" constant="8" id="Mxp-Wa-E9f"/>
-                                        <constraint firstItem="YFA-ja-xcE" firstAttribute="leading" secondItem="neJ-ky-E3L" secondAttribute="trailing" constant="8" id="Sh8-5H-Bog"/>
-                                        <constraint firstItem="YFA-ja-xcE" firstAttribute="top" secondItem="WQx-7p-9fD" secondAttribute="top" constant="8" id="Vko-aJ-ELY"/>
-                                        <constraint firstItem="neJ-ky-E3L" firstAttribute="top" secondItem="WQx-7p-9fD" secondAttribute="top" constant="8" id="WKe-OT-p0M"/>
+                                        <constraint firstItem="YFA-ja-xcE" firstAttribute="leading" secondItem="neJ-ky-E3L" secondAttribute="trailing" constant="8" id="cpm-rT-Gs0"/>
                                         <constraint firstItem="auF-gj-hUG" firstAttribute="leading" secondItem="L0g-tz-HIV" secondAttribute="trailing" constant="8" id="eQS-ok-cKm"/>
                                         <constraint firstAttribute="bottom" secondItem="USJ-rw-iqo" secondAttribute="bottom" constant="8" id="eXf-vo-sTC"/>
+                                        <constraint firstItem="YFA-ja-xcE" firstAttribute="top" secondItem="WQx-7p-9fD" secondAttribute="top" constant="8" id="gpc-MF-5nS"/>
                                         <constraint firstItem="L0g-tz-HIV" firstAttribute="leading" secondItem="WQx-7p-9fD" secondAttribute="leading" constant="8" id="ldg-lm-Uaw"/>
+                                        <constraint firstItem="neJ-ky-E3L" firstAttribute="leading" secondItem="L0g-tz-HIV" secondAttribute="trailing" constant="8" id="m8i-yy-LFZ"/>
                                         <constraint firstItem="L0g-tz-HIV" firstAttribute="top" secondItem="WQx-7p-9fD" secondAttribute="top" constant="8" id="nDb-V2-WpV"/>
+                                        <constraint firstItem="neJ-ky-E3L" firstAttribute="top" secondItem="WQx-7p-9fD" secondAttribute="top" constant="8" id="rbV-FJ-xnl"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
